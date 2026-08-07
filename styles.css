@@ -1,0 +1,14 @@
+/* Keep wide output (model summaries, matrices) inside its own scroll box so
+   the page body never scrolls horizontally on a phone. */
+pre, .cell-output, table { overflow-x: auto; max-width: 100%; }
+
+/* The exercise blocks are the point of the page: give them room to breathe. */
+.exercise-cell { margin-block: 1.25rem; }
+
+/* Interpretation carried over from the solutions, shown only where allowed. */
+.solution-note {
+  border-left: 3px solid var(--bs-secondary, #6c757d);
+  padding: 0.4rem 0 0.4rem 0.9rem;
+  margin-block: 1rem;
+  opacity: 0.92;
+}

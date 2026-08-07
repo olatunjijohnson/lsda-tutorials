@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "week11.html",
+    "href": "week11.html",
+    "title": "Spatial data analysis: week 11 tutorial",
+    "section": "",
+    "text": "Week 11 — Spatial point processes\nIn this tutorial sheet, you will learn the following:\nIn this tutorial, we analyse the spatial distribution of nests of two ant species, Messor wasmanni and Cataglyphis bicolor, recorded at a site in northern Greece. The dataset ants from the spatstat.data package contains locations of 97 ant nests within a sampling window.. You can load the data using"
+  },
+  {
+    "objectID": "week11.html#challenge",
+    "href": "week11.html#challenge",
+    "title": "Spatial data analysis: week 11 tutorial",
+    "section": "Challenge",
+    "text": "Challenge\n\n\n\n\n\n\n\n\n\nFit a model with a quadratic trend surface using x + y + I(x^2) + I(y^2) as covariates. Compare it with the linear model.\n\n\n\n\n\n\n\n\n\n\nSimulate 99 point patterns from your best model and compare their envelope with the observed K-function using envelope()."
+  },
+  {
+    "objectID": "week09.html",
+    "href": "week09.html",
+    "title": "Spatial data analysis: week 9 tutorial",
+    "section": "",
+    "text": "Week 9 — Areal data and Moran’s I\nIn this tutorial sheet, you will learn the following:\nWe analyse the Lip cancer data in scotland. The data contain, for each of the Scotland counties, the number of observed and expected lip cancer cases among males in Scotland between 1975-1980, and a variable that indicates the proportion of the population engaged in agriculture, fishing, or forestry (aff). The aff variable is related to exposure to sunlight which is a risk factor for lip cancer. The data also contain the shapefile of the Scotland counties and everything can be found in scotland_lip"
+  },
+  {
+    "objectID": "week09.html#challenge",
+    "href": "week09.html#challenge",
+    "title": "Spatial data analysis: week 9 tutorial",
+    "section": "Challenge",
+    "text": "Challenge\n\n\n\n\n\n\n\n\n\nCalculate the neighbors of each of the regions of Scotland based on 3 nearest neighbors and map the neighbors obtained.\n\n\n\n\n\n\n\n\n\n\nCalculate the neighbors of each of the regions of Scotland based on distance and map the neighbors obtained.\n\n\n\n\n\n\n\n\n\n\nCalculate the neighbors of each of the regions of Scotland based on contiguity Neighbors of order 2 and map the neighbors obtained.\n\n\n\n\n\n\n\n\n\n\nConstruct the spatial weights matrix using inverse distance values."
+  },
+  {
+    "objectID": "week07.html",
+    "href": "week07.html",
+    "title": "Spatial data analysis: week 7 tutorial",
+    "section": "",
+    "text": "Week 7 — Geostatistics and variograms\nIn this tutorial sheet, you will learn the following:\nWe analyse the Galicia dataset, often used in geostatistical analysis, refers to lead concentration data from a network of meteorological stations across the Galicia region in Northwest Spain. The Galicia dataset has the following columns:"
+  },
+  {
+    "objectID": "week07.html#challenge",
+    "href": "week07.html#challenge",
+    "title": "Spatial data analysis: week 7 tutorial",
+    "section": "Challenge",
+    "text": "Challenge\nUsing the dataset named loaloa, Fit an appropriate model and examine the residual for the evidence of spatial correlation. This dataset is from Loaloa prevalence survey collected in Cameroon and some part of Nigeria. Hint: Repeat the task in question 1 to 6. To learn more about the data, read the readme file named “ReadMe_loaloa.txt”"
+  },
+  {
+    "objectID": "week04.html",
+    "href": "week04.html",
+    "title": "Longitudinal Data Analysis: week 4 tutorial",
+    "section": "",
+    "text": "Week 4 — Generalised linear mixed models\n\n\n\n\n\n\nNoteHow to use this page\n\n\n\n\n\nEach exercise below is a live R session. Type your answer and press Run; you can experiment freely, nothing is saved and nothing can break. The first block takes a few seconds to start while R loads in your browser.\nWorked solutions are on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ1: In this tutorial, the epilepsy data set will be analysed in using GLMs and GLMMs. The epilepsy seizure data can be obtained from package in . Get the data using\n\n\n\n\n\n\n\n\nThe dataset contain two-week seizure counts for 59 epileptics. The number of seizures was recorded for a baseline period of 8 weeks, and then patients were randomly assigned to a treatment group or a control group. Counts were then recorded for four successive two-week periods. Detailed information about the data can be obtained using the following code.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor each placebo and treatment group, extract the epilepsy seizure counts at each period as a single vector and form a data frame with row vector containing the counts at different periods.\n\n\n\n\n\n\n\n\n\n\nBased on (1), for each group calculate the sample covariance matrix and sample correlation matrix.\n\n\n\n\n\n\n\n\n\n\nBased on (1), for each group produce a pairwise scatter plot. Report your finding.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsider a Poisson GLM applied to the dataset to analyse the effect of treatment on seizure counts. Assume that the number of seisure count follows a Poisson distribution with mean \\(\\lambda\\), where\n\n[ () = \\ ] [ = _0 + _1 () + _2 () + _3 ( ) + _4 () + _5 (). ]\nObserve if this covariates are statistically significant and interpret your results.\n\n\n\n\n\n\n\n\n\nIn Question (4) above, if the variable Period is treated as a factor with four levels, use the model to refit the data. Observe if each time period has a significant effect and interpret your results.\n\n\n\n\n\n\n\n\n\n\nReconsider Questions (4) and (5), but this time use GLMM (PQL approach) to analyse the data, incorporating a random intercept."
+  },
+  {
+    "objectID": "week02.html",
+    "href": "week02.html",
+    "title": "Longitudinal data analysis: week 2 tutorial",
+    "section": "",
+    "text": "Week 2 — Linear mixed models\n\n\n\n\n\n\nNoteHow to use this page\n\n\n\n\n\nEach exercise below is a live R session. Type your answer and press Run; you can experiment freely, nothing is saved and nothing can break. The first block takes a few seconds to start while R loads in your browser.\nWorked solutions are on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ1: For the fev1 data, consider a linear mixed model of the form [ ( ){ij} = 0 + 1 {ij} + b{0i} + b{1i} {ij} + {ij}, ] where \\(\\log\\left( \\frac{\\text{FEV}_1}{\\text{Height}} \\right)_{ij}\\): the response for individual \\(i\\) at time \\(j\\) \\(\\beta_0\\): fixed intercept \\(\\beta_1\\): fixed slope for age \\(b_{0i}\\): random intercept for individual \\(i\\), capturing between-subject variation \\(b_{1i}\\): random slope for age for individual \\(i\\) \\(\\varepsilon_{ij}\\): within-subject residual error. Note that \\(\\mathbf{b}_i \\sim N(\\mathbf{0}, \\mathbf{G})\\) and \\(\\varepsilon_{i}) \\sim N(\\mathbf{0},\\mathbf{R}_i)\\).\n\n\n\n\n\n\n\n\n\nExpress the above model in matrix form and explain the corresponding matrices/vectors.\n\n\n\n\n\n\n\n\n\n\nIn R, use the function `lme( )’ to analyze the data by specifying \\(\\mathbf{G}\\) as general covariance structure and \\(\\mathbf{R}_i\\) as\n\n\n\n\n\n\n\n\n\n\n2.1. independent covariance structure,\\\n\n\n\n\n\n\n\n\n2.2. compound symmetry covariance structure,\\\n\n\n\n\n\n\n\n\n2.3. AR(1) structure,\\\n\n\n\n\n\n\n\n\n2.4. ARMA(1,1) structure,\nwhere the option `method’ in R is the maximum likelihood (ML) estimation method. Select the best structure of \\(\\mathbf{R}_i\\) in terms of the resulting AIC or BIC value.\n\n\n\n\n\n\n\n\n\nWith the selected structure for \\(\\mathbf{R}_i\\), select the best structure for \\(\\mathbf{G}\\) among the candidates below:\n\n\n\n\n\n\n\n\n\n\n3.1. independent covariance structure,\\\n\n\n\n\n\n\n\n\n3.2. diagonal covariance structure,\\\n\n\n\n\n\n\n\n\n3.3. general covariance structure.\nAgain, the option `method’ in R is the maximum likelihood (ML) estimation method.\n\n\n\n\n\n\n\n\n\nFor your overall best model, interpret the parameters of the model.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n–&gt;"
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Install R packages",
+    "section": "",
+    "text": "Everything this course uses is bundled in one package, lsda. Installing it brings the datasets, the helper functions and the interactive apps."
+  },
+  {
+    "objectID": "setup.html#install",
+    "href": "setup.html#install",
+    "title": "Install R packages",
+    "section": "Install",
+    "text": "Install\ninstall.packages(\"lsda\", repos = c(\"https://olatunjijohnson.r-universe.dev\",\n                                   \"https://cloud.r-project.org\"))\nThe r-universe repository serves pre-built binaries, so you do not need a compiler. If that repository is unavailable, install from source instead:\n# install.packages(\"remotes\")\nremotes::install_github(\"olatunjijohnson/lsda\")"
+  },
+  {
+    "objectID": "setup.html#check-it-worked",
+    "href": "setup.html#check-it-worked",
+    "title": "Install R packages",
+    "section": "Check it worked",
+    "text": "Check it worked\nlibrary(lsda)\ndata(cattle)\ndim(cattle)          # 60 x 12\nrun_app()            # lists the interactive apps"
+  },
+  {
+    "objectID": "setup.html#the-datasets",
+    "href": "setup.html#the-datasets",
+    "title": "Install R packages",
+    "section": "The datasets",
+    "text": "The datasets\ndata(package = \"lsda\")   # everything available\n?galicia                 # variables, units and source for any one of them\n\n\n\n\n\n\n\n\nDataset\nWeeks\nWhat it is\n\n\n\n\ncattle\n1–3\nBodyweight of 60 cattle at 11 times. Balanced.\n\n\nfev1\n1–2\nLung function in 299 Topeka girls. Unbalanced.\n\n\ncd4\n—\nCD4+ counts around seroconversion.\n\n\nichs\n5\nRespiratory infection and vitamin A in 250 children.\n\n\ngalicia\n7–8\nLead in moss at 132 Galician stations.\n\n\nloaloa\n7\nLoa loa prevalence, 197 villages.\n\n\nliberia\n8\nMalaria incidence and child growth.\n\n\nscotland_lip\n9–10\nMale lip cancer in 56 Scottish counties (sf)."
+  },
+  {
+    "objectID": "setup.html#if-something-goes-wrong",
+    "href": "setup.html#if-something-goes-wrong",
+    "title": "Install R packages",
+    "section": "If something goes wrong",
+    "text": "If something goes wrong\nSpatial packages (sf, spdep, terra) need system libraries GDAL, GEOS and PROJ. On the University machines these are already present. On your own Linux machine:\nsudo apt install libgdal-dev libgeos-dev libproj-dev libudunits2-dev\nOn macOS with Homebrew:\nbrew install gdal geos proj udunits\nWindows binaries bundle these already, so no extra step is needed."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Longitudinal and Spatial Data Analysis",
+    "section": "",
+    "text": "These are the weekly tutorial sheets. Every code block on this site runs in your browser — there is nothing to install to get started, and nothing you can break. Edit the code, press Run, and see what happens."
+  },
+  {
+    "objectID": "index.html#the-weeks",
+    "href": "index.html#the-weeks",
+    "title": "Longitudinal and Spatial Data Analysis",
+    "section": "The weeks",
+    "text": "The weeks\n\n\n\nWeek\nTopic\nData\n\n\n\n\n1\nExploring longitudinal data: spaghetti plots, sample correlation\ncattle, fev1\n\n\n2\nLinear mixed models and covariance structures\nfev1\n\n\n3\nEstimation, ML and REML, inference, model choice\ncattle\n\n\n4\nGeneralised linear mixed models\nepil (MASS)\n\n\n5\nGeneralised estimating equations\nichs\n\n\n6\nCoursework week — no tutorial\n\n\n\n7\nGeostatistics: stationarity, variograms\ngalicia, loaloa\n\n\n8\nModel fitting, kriging and spatial prediction\ngalicia\n\n\n9\nAreal data: adjacency and Moran’s I\nscotland_lip\n\n\n10\nCAR and ICAR models\nscotland_lip\n\n\n11\nSpatial point processes\nants (spatstat)"
+  },
+  {
+    "objectID": "index.html#working-on-your-own-machine",
+    "href": "index.html#working-on-your-own-machine",
+    "title": "Longitudinal and Spatial Data Analysis",
+    "section": "Working on your own machine",
+    "text": "Working on your own machine\nThe browser is fine for the exercises, but for the coursework you will want R locally. Everything the course uses is in one package — see Install R packages.\ninstall.packages(\"lsda\", repos = c(\"https://olatunjijohnson.r-universe.dev\",\n                                   \"https://cloud.r-project.org\"))\nThen every dataset is one call away, with documentation:\nlibrary(lsda)\ndata(cattle)\n?cattle"
+  },
+  {
+    "objectID": "index.html#interactive-apps",
+    "href": "index.html#interactive-apps",
+    "title": "Longitudinal and Spatial Data Analysis",
+    "section": "Interactive apps",
+    "text": "Interactive apps\nSome ideas are much easier to see than to read about.\n\n\n\n\n\n\n\n\nApp\nWeek\nWhat it shows\n\n\n\n\nrun_app(\"cov_explorer\")\n2\nWhat compound symmetry, AR(1) and ARMA(1,1) actually look like\n\n\nrun_app(\"lmm_simulator\")\n2–3\nSet the true parameters, fit, and watch the estimates vary\n\n\nrun_app(\"gee_robustness\")\n5\nWhy a wrong working correlation still gives an unbiased slope\n\n\nrun_app(\"variogram\")\n7\nNugget, sill and range, and the shape each family implies"
+  },
+  {
+    "objectID": "index.html#where-everything-else-lives",
+    "href": "index.html#where-everything-else-lives",
+    "title": "Longitudinal and Spatial Data Analysis",
+    "section": "Where everything else lives",
+    "text": "Where everything else lives\nLecture notes, slides, solutions and the coursework brief are on Canvas. This site carries the tutorial questions only."
+  },
+  {
+    "objectID": "week01.html",
+    "href": "week01.html",
+    "title": "Longitudinal Data Analysis: week 1 tutorial",
+    "section": "",
+    "text": "Week 1 — Exploring longitudinal data\n\n\n\n\n\n\nNoteHow to use this page\n\n\n\n\n\nEach exercise below is a live R session. Type your answer and press Run; you can experiment freely, nothing is saved and nothing can break. The first block takes a few seconds to start while R loads in your browser.\nWorked solutions are on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ1: This question relates to the cattle data, available in the course package as cattle.\n\n\n\n\n\n\n\n\n\nConsult the R online manuals, specifically “An Introduction to R” (PDF file), Section 7, titled “Reading Data from Files.” Proceed to import the dataset into R.\n\n\n\n\n\n\n\n\n\n\nGenerate a spaghetti plot for the cattle data.\n\n\n\n\n\n\n\n\n\n\nCalculate the sample means for observations at each time point. Additionally, compute the sample covariance matrix and sample correlation matrix.\n\n\n\n\n\n\n\n\n\n\nCreate a pairwise scatter plot for the cattle data. Analyse and describe the key features of the observed correlations.\n\n\n\n\n\n\n\n\n\n\nDivide the cattle dataset into two groups, Group A and Group B. For each group, determine the sample means at each time point, as well as the sample covariance and sample correlation.\n\n\n\n\n\n\n\n\n\n\nProduce pairwise scatter plots for each group. Identify and discuss any similarities or differences between the two groups evident in the plots.\n\n\n\n\n\n\n\n\n\n\nPlot the sample means of both groups against time within a single figure. Provide your interpretations and conclusions drawn from the figure.\n\n\n\n\n\n\n\n\n\nQ2 You will work with longitudinal data on lung function growth in school-age girls from Topeka, Kansas, as part of the Six Cities Study of Air Pollution and Health. The dataset contains repeated pulmonary function measurements from 299 girls, typically enrolled around ages 6-10 and followed annually until high school graduation or loss to follow-up. The number of observations per individual ranges from 1 to 12, making the dataset unbalanced with respect to age.\nAt each visit, lung function was measured using simple spirometry, and the outcome of interest is the logarithm of the ratio of forced expiratory volume in 1 second (FEV1) to height, i.e., log(FEV1/height).\nThe dataset is available in the course package.\nKey variables include:\n- id: unique identifier for each girl\n- ht: height (m)\n- age: age at measurement (years)\n- baseht: height at the first visit\n- baseage: age at the first visit\n- fev1: volume of air exhaled in the first second (litres)\n- logfev1: logarithm of fev1\n- logfev1_ht: pre-computed log(fev1/height)\n  \n\n\n\n\n\n\n\n\n\nLoad the dataset and check the structure of the data. How many observations are there in total? How many individuals?\n\n\n\n\n\n\n\n\n\n\nSummarise the number of observations per individual. What does this tell you about the balance of the data?\n\n\n\n\n\n\n\n\n\n\nProduce a plot of log(fev1 / height) against age for 50 randomly selected girls. Connect points for the same individual. Comment on the variability between individuals and the measurement patterns over age.\n\n\n\n\n\n\n\n\n\n\nCompute and plot the average log(fev1 / height) at each age, aggregating across individuals."
+  },
+  {
+    "objectID": "week03.html",
+    "href": "week03.html",
+    "title": "Longitudinal Data Analysis: week 3 tutorial",
+    "section": "",
+    "text": "Week 3 — Estimation and inference\n\n\n\n\n\n\nNoteHow to use this page\n\n\n\n\n\nEach exercise below is a live R session. Type your answer and press Run; you can experiment freely, nothing is saved and nothing can break. The first block takes a few seconds to start while R loads in your browser.\nWorked solutions are on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ1: For the cattle data, use the linear mixed model with random intercept and random slope in Day: to model the bodyweight growth of cattle over the observation period, where \\(\\mathbf{b}_i\\)=\\((b_{i1},b_{i2})'\\sim N_2(\\mathbf{0}, \\mathbf{G})\\) with \\(\\mathbf{G}\\) being (\\(2\\times 2\\)) positive definite and \\(\\varepsilon_i=(\\varepsilon_{i1},...,\\varepsilon_{i11})'\\sim\nN_{11}(\\mathbf{0},\\mathbf{R}_i)\\) with \\(\\mathbf{R}_i\\) being (\\(11\\times\n11\\)) positive definite.\n\n\n\n\n\n\n\n\n\nExpress the above model in matrix form and explain the corresponding matrices/vectors.\n\n\n\n\n\n\n\n\n\n\nIn R, use the function `lme( )’ to analyze the data by specifying \\(\\mathbf{G}\\) as general covariance structure and \\(\\mathbf{R}_i\\) as\n\n\n\n\n\n\n\n\n\n\n2.1. independent covariance structure,\\\n\n\n\n\n\n\n\n\n2.2. compound symmetry covariance structure,\\\n\n\n\n\n\n\n\n\n2.3. AR(1) structure,\\\n\n\n\n\n\n\n\n\n2.4. ARMA(1,1) structure,\nwhere the option `method’ in R is the maximum likelihood (ML) estimation method. Select the best structure of \\(\\mathbf{R}_i\\) in terms of the resulting AIC or BIC value.\n\n\n\n\n\n\n\n\n\nWith the selected structure for \\(\\mathbf{R}_i\\), select the best structure for \\(\\mathbf{G}\\) among the candidates below:\n\n\n\n\n\n\n\n\n\n\n3.1. independent covariance structure,\\\n\n\n\n\n\n\n\n\n3.2. diagonal covariance structure,\\\n\n\n\n\n\n\n\n\n3.3. general covariance structure.\nAgain, the option `method’ in R is the maximum likelihood (ML) estimation method.\n\n\n\n\n\n\n\n\n\nRefit the selected model so far, but using the restricted maximum likelihood (REML) estimation method this time.\n\n\n\n\n\n\n\n\n\n\nBased on the selected model, fitted using the REML method, answer the following questions:\n\n\n\n\n\n\n\n\n\n\n5.1. Produce the standardized residuals plot (i.e., residuals against fitted\nvalues) and the residual qqnorm plot. Justify whether the fitted model is good.\n\n\n\n\n\n\n\n\n\n5.2. Justify whether the predicted random effects are normally\ndistributed (for example check the qqnorm plot).\n\n\n\n\n\n\n\n\n\n5.3. Give the 95\\% confidence intervals for the estimates of fixed effects and\nvariance components. Explain whether or not they are significant.\n\n\n\n\n\n\n\n\n\n5.4. Plot the predicted mean lines of the two treatment groups in a\nsingle figure. Comment on the plot.\n\n\n\n\n\n\n\n\n\n5.5. Plot the estimated line and the real observations for the first two\ncattle in each group. Comment on the plots."
+  },
+  {
+    "objectID": "week05.html",
+    "href": "week05.html",
+    "title": "Longitudinal data analysis: week 5 tutorial",
+    "section": "",
+    "text": "Week 5 — Generalised estimating equations\n\n\n\n\n\n\nNoteHow to use this page\n\n\n\n\n\nEach exercise below is a live R session. Type your answer and press Run; you can experiment freely, nothing is saved and nothing can break. The first block takes a few seconds to start while R loads in your browser.\nWorked solutions are on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn a study of the effects of vitamin A deficiency in preschool children (available in the course package as ichs), 250 children were examined at an initial clinic visit and again at 3 month intervals for a year (at 3, 6, 9, 12, 15 months after the first visit). The investigators are particularly interested in assessing whether or not the children with vitamin A deficiency are at increased risk of developing respiratory infection. At each examination, the presence or absence of respiratory infection, the child’s age in years, gender, and whether they suffered from vitamin A deficiency are recorded. The ICHS data file has the following columns:\n\nLet \\(Y_i\\) be the vector of responses for the \\(i\\)th child, consisting of the elements \\(Y_{ij}\\), which are observations on whether the child has a respiratory infection at time \\(t_{ij}\\) (recorded in months; Yes=1 and No=0). Write down a model for \\(E(Y_{ij})\\) with an appropriate link function that is linear in an intercept and additive terms for time, age, gender, and vitamin A status. Also, write down \\(\\mbox{Var}(Y_{ij})\\) given the nature of the response.\n\n\n\n\n\n\n\n\n\n\nFit the model in part (1) without taking the within-subject correlation into account, i.e., taking all the observations from the children as if they were independent. Based on this fit, is there any sufficient evidence to suggest that the mean pattern of respiratory response is associated with the presence or absence of vitamin A deficiency? State the null hypothesis corresponding to this question in your model (a), describe the test statistic and p-value on which you draw the conclusion, and state your conclusion.\n\n\n\n\n\n\n\n\n\n\nWrite down a model that extends the model in part (1) by taking into account the within-subject correlation among repeated measurements.\n\n\n\n\n\n\n\n\n\n\nFit your model in part (3) to the data. Assuming that your model for the within-subject correlation is correct, conduct a hypothesis test for the null hypothesis in part (2). State your conclusion. Does the result agree with that in part (2)? Based on the results from your R output, give an explanation for your conclusion. Provide a summary of your model selection and justify your choice.\n\n\n\n\n\n\n\n\n\n\nIs there any sufficient evidence to suggest that the probability of respiratory infection changes over the 15 month study period? Is there any sufficient evidence to suggest that it is worthwhile to take gender into account in understanding the risk of respiratory infection in this population of children?"
+  },
+  {
+    "objectID": "week08.html",
+    "href": "week08.html",
+    "title": "Spatial data analysis: week 8 tutorial",
+    "section": "",
+    "text": "Week 8 — Kriging and spatial prediction\nIn this tutorial sheet, you will learn the following:\nWe analyse the Galicia dataset, often used in geostatistical analysis, refers to lead concentration data from a network of 121 meteorological stations across the Galicia region in Northwest Spain. The Galicia dataset has the following columns:"
+  },
+  {
+    "objectID": "week08.html#challenge",
+    "href": "week08.html#challenge",
+    "title": "Spatial data analysis: week 8 tutorial",
+    "section": "Challenge",
+    "text": "Challenge\nUse the Liberia data from the RiskMap package to build a binomial geostatistical model to investigate the relationship between log elevation and onchocerciasis prevalence in Liberia.. The dataset can be called in R using data(liberia). This data-set contains counts of reported onchocerciasis (or riverblindess) cases from 91 villages sampled across Liberia. The variables are as follows:\n\nlat latitude of the of sampled villages.\nlong longitude of the sampled villages.\nntest number of tested people for the presence nodules.\nnpos number of people that tested positive for the presence of nodules.\nelevation the elevation in meters of the sampled village.\nlog_elevation the log-transformed elevation in meters of the sampled village."
+  },
+  {
+    "objectID": "week10.html",
+    "href": "week10.html",
+    "title": "Spatial data analysis: week 10 tutorial",
+    "section": "",
+    "text": "Week 10 — CAR and ICAR models\nIn this tutorial sheet, you will learn the following:\nWe analyse the Lip cancer data in scotland. The data contain, for each of the Scotland counties, the number of observed and expected lip cancer cases among males in Scotland between 1975-1980, and a variable that indicates the proportion of the population engaged in agriculture, fishing, or forestry (aff). The aff variable is related to exposure to sunlight which is a risk factor for lip cancer. The data also contain the shapefile of the Scotland counties and everything can be found in scotland_lip\n[ Y_i (E_i _i), i = 1, , n, ]\nwhere ( E_i ) is the expected cancer cases and ( _i ) is the relative risk in county ( i ). The logarithm of ( _i ) is expressed as:\n[ (_i) = _0 + _1 _i + u_i + v_i, ]\nwhere:"
+  },
+  {
+    "objectID": "week10.html#challenge",
+    "href": "week10.html#challenge",
+    "title": "Spatial data analysis: week 10 tutorial",
+    "section": "Challenge",
+    "text": "Challenge\n\n\n\n\n\n\n\n\n\nMap the probability that the relative risk is greater than 2.\n\n\n\n\n\n\n\n\n\n\nFit another model where ( u_i ) is modeled using a Intrinsic Conditional Autoregressive (CAR) distribution"
+  }
+]
