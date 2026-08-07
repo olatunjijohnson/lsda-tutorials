@@ -5,10 +5,7 @@ pre, .cell-output, table { overflow-x: auto; max-width: 100%; }
 /* The exercise blocks are the point of the page: give them room to breathe. */
 .exercise-cell { margin-block: 1.25rem; }
 
-/* Interpretation carried over from the solutions, shown only where allowed. */
-.solution-note {
-  border-left: 3px solid var(--bs-secondary, #6c757d);
-  padding: 0.4rem 0 0.4rem 0.9rem;
-  margin-block: 1rem;
-  opacity: 0.92;
-}
+/* Note: .solution-note is deliberately not styled here. Interpretation blocks
+   are stripped from the public site (solutions live on Canvas), so a rule for
+   them would be dead CSS — and a hint in the stylesheet that such content
+   exists. */
