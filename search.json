@@ -67,7 +67,7 @@
     "href": "setup.html#install",
     "title": "Install R packages",
     "section": "Install",
-    "text": "Install\ninstall.packages(\"lsda\", repos = c(\"https://olatunjijohnson.r-universe.dev\",\n                                   \"https://cloud.r-project.org\"))\nThe r-universe repository serves pre-built binaries, so you do not need a compiler. If that repository is unavailable, install from source instead:\n# install.packages(\"remotes\")\nremotes::install_github(\"olatunjijohnson/lsda\")"
+    "text": "Install\ninstall.packages(\"lsda\", repos = c(\"https://olatunjijohnson.r-universe.dev\",\n                                   \"https://cloud.r-project.org\"))\nThe r-universe repository serves pre-built binaries, so you do not need a compiler. The same repository provides the WebAssembly build that powers the interactive exercises on this site. If that repository is unavailable, install from source instead:\n# install.packages(\"remotes\")\nremotes::install_github(\"olatunjijohnson/lsda\")"
   },
   {
     "objectID": "setup.html#check-it-worked",
