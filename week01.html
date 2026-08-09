@@ -116,6 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
+<script src="progress.js" defer=""></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -379,8 +380,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-1-complete" id="toc-week-1-complete" class="nav-link active" data-scroll-target="#week-1-complete">Week 1 complete</a>
+  <ul class="collapse">
+  <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -692,6 +702,23 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEzIn0sImNvZGUiOiJt
 <span id="interpolate-46-4"><a href="#interpolate-46-4" aria-hidden="true" tabindex="-1"></a>worth bearing <span class="cf">in</span> mind when you read the plot.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div id="week-complete" class="lsda-complete" hidden="" data-week="week01">
+<section id="week-1-complete" class="level2">
+<h2 class="anchored" data-anchor-id="week-1-complete">Week 1 complete</h2>
+<div class="lsda-stamp">
+
+</div>
+<section id="what-you-have-learnt" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-have-learnt">What you have learnt</h3>
+<p>You have worked with two longitudinal datasets and seen the feature that motivates the whole unit: <strong>observations on the same subject are not independent</strong>.</p>
+<ul>
+<li>A <strong>spaghetti plot</strong> shows every subject’s trajectory at once. Lines that stay ordered — heavy animals staying heavy — are correlation you can see by eye.</li>
+<li>The <strong>sample correlation matrix over time</strong> puts a number on it. Correlation was strong between adjacent times and decayed as the gap widened. That decay is what AR(1) will model in week 2.</li>
+<li><strong>Balanced and unbalanced designs.</strong> The cattle data are balanced: every animal measured at the same 11 times. The FEV1 data are not — girls contribute between 1 and 12 visits at ages that do not line up. That difference changes what the design matrices look like and which methods are convenient.</li>
+<li><strong>Group comparisons.</strong> Splitting by treatment and comparing means over time is the crudest form of the analysis the rest of the unit does properly.</li>
+</ul>
+<p>The thing to carry forward: if you analysed either dataset with ordinary linear regression, you would be assuming away the correlation you have just spent an hour looking at. The standard errors would be wrong.</p>
+</section></section></div>
 
 
 <script type="webr-data">
@@ -711,6 +738,8 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC00NCIsImlubGluZSI6ZmFsc2UsIm1l
 <script type="vfs-file">
 W10=
 </script>
+
+
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">

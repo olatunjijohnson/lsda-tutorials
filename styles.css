@@ -9,3 +9,30 @@ pre, .cell-output, table { overflow-x: auto; max-width: 100%; }
    are stripped from the public site (solutions live on Canvas), so a rule for
    them would be dead CSS — and a hint in the stylesheet that such content
    exists. */
+
+/* ---- tutorial progress chip ------------------------------------------- */
+.lsda-progress-chip {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 1000;
+  padding: 0.45rem 0.85rem; border-radius: 999px;
+  font-size: 0.85rem; font-variant-numeric: tabular-nums;
+  background: var(--bs-secondary-bg, #e9ecef); color: var(--bs-body-color, #212529);
+  border: 1px solid rgba(0,0,0,.12); box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+.lsda-progress-chip.is-complete {
+  background: #1b7f4d; color: #fff; border-color: #17673f;
+}
+
+/* ---- end-of-week completion panel -------------------------------------- */
+.lsda-complete {
+  margin-top: 2.5rem; padding: 1.25rem 1.5rem;
+  border: 2px solid #1b7f4d; border-radius: 0.6rem;
+  background: rgba(27,127,77,.06);
+}
+.lsda-complete > h2:first-of-type { margin-top: 0; color: #1b7f4d; }
+.lsda-stamp {
+  font-size: 0.85rem; opacity: .8; font-variant-numeric: tabular-nums;
+  margin-bottom: 0.75rem;
+}
+@media (prefers-color-scheme: dark) {
+  .lsda-complete { background: rgba(27,127,77,.14); }
+}

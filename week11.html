@@ -116,6 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
+<script src="progress.js" defer=""></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -385,6 +386,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#week-11-complete" id="toc-week-11-complete" class="nav-link" data-scroll-target="#week-11-complete">Week 11 complete</a>
+  <ul class="collapse">
+  <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -630,6 +635,25 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJi
 <span id="interpolate-31-6"><a href="#interpolate-31-6" aria-hidden="true" tabindex="-1"></a>apparent clustering.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div id="week-complete" class="lsda-complete" hidden="" data-week="week11">
+</div></section>
+<section id="week-11-complete" class="level2">
+<h2 class="anchored" data-anchor-id="week-11-complete">Week 11 complete</h2>
+<div class="lsda-stamp">
+
+</div>
+<section id="what-you-have-learnt" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-have-learnt">What you have learnt</h3>
+<p>You have analysed the third type of spatial data, where the <em>locations themselves</em> are the random quantity.</p>
+<ul>
+<li><strong>A different question.</strong> For geostatistical and areal data the locations are given and the values are random. For a point pattern the locations are the data, and the question is whether they are clustered, regular or random.</li>
+<li><strong>First-order versus second-order.</strong> Intensity is how many points per unit area and how that varies across the window; interaction is whether points attract or repel each other. They are genuinely different, and are easily confused.</li>
+<li><strong>Complete spatial randomness</strong> is the homogeneous Poisson process, and it is the null against which everything else is judged.</li>
+<li><strong>Quadrat tests</strong> are simple but blunt: a small p-value tells you the homogeneous Poisson model fails without saying whether the cause is a trend in intensity or interaction between points.</li>
+<li><strong>Ripley’s K</strong> with a simulation envelope separates the two. Above the theoretical curve suggests clustering, below suggests regularity.</li>
+<li><strong>The important subtlety.</strong> Fitting an inhomogeneous Poisson process and then re-testing with an envelope simulated <em>from that model</em> asks whether anything is left once the trend is accounted for. Apparent clustering often turns out to be a varying intensity rather than interaction — the classic confounding of first and second order.</li>
+</ul>
+</section></section></main></div>
 
 
 <script type="webr-data">
@@ -649,9 +673,10 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0yOSIsImlubGluZSI6ZmFsc2UsIm1l
 <script type="vfs-file">
 W10=
 </script>
-</section>
 
-</main> <!-- /main -->
+
+
+ <!-- /main -->
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
 </script>
@@ -1076,7 +1101,7 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">

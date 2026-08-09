@@ -116,6 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
+<script src="progress.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -414,6 +415,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#week-10-complete" id="toc-week-10-complete" class="nav-link" data-scroll-target="#week-10-complete">Week 10 complete</a>
+  <ul class="collapse">
+  <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -594,6 +599,25 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJt
 <span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a><span class="st">structure is entirely local, so it tends to smooth more.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div id="week-complete" class="lsda-complete" hidden="" data-week="week10">
+</div></section>
+<section id="week-10-complete" class="level2">
+<h2 class="anchored" data-anchor-id="week-10-complete">Week 10 complete</h2>
+<div class="lsda-stamp">
+
+</div>
+<section id="what-you-have-learnt" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-have-learnt">What you have learnt</h3>
+<p>You have fitted Bayesian spatial models to area-level counts.</p>
+<ul>
+<li><strong>The hierarchy.</strong> Counts are Poisson given a relative risk; the log relative risk is a covariate effect plus a spatially structured random effect plus an unstructured one.</li>
+<li><strong>The offset does the work.</strong> <code>offset(log(expected))</code> is what turns a model for counts into a model for <em>relative risk</em>. Without it you are modelling how many cases occur, not whether that is more than expected.</li>
+<li><strong>CAR models borrow strength.</strong> The conditional autoregressive prior says an area’s risk is like its neighbours’. The result is a smoothed map — and the smoothing is strongest exactly where the raw SIR was least reliable, in areas with small expected counts.</li>
+<li><strong>Structured and unstructured effects.</strong> The first is spatially correlated, the second is area-specific noise. The Leroux parameterisation lets the data decide the balance; ICAR fixes it at purely spatial.</li>
+<li><strong>Posterior samples answer real questions.</strong> From the samples you can compute the probability that relative risk exceeds 2 area by area. That is a far more useful statement for a public health decision than a point estimate.</li>
+<li><strong>MCMC needs checking.</strong> Burn-in, thinning and convergence are not formalities.</li>
+</ul>
+</section></section></main></div>
 
 
 <script type="webr-data">
@@ -613,9 +637,10 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNiIsImlubGluZSI6ZmFsc2UsIm1l
 <script type="vfs-file">
 W10=
 </script>
-</section>
 
-</main> <!-- /main -->
+
+
+ <!-- /main -->
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
 </script>
@@ -1040,7 +1065,7 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
