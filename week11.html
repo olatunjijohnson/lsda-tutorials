@@ -513,9 +513,9 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJR
 </div>
 <div class="cell" data-exercise="q02" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q02">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-11-1"><a href="#interpolate-11-1" aria-hidden="true" tabindex="-1"></a>Two complementary views. <span class="st">`</span><span class="at">quadratcount()</span><span class="st">`</span> divides the window into a grid and</span>
-<span id="interpolate-11-2"><a href="#interpolate-11-2" aria-hidden="true" tabindex="-1"></a>counts points per cell — crude but easy to test. <span class="st">`</span><span class="at">density.ppp()</span><span class="st">`</span> gives a smooth</span>
-<span id="interpolate-11-3"><a href="#interpolate-11-3" aria-hidden="true" tabindex="-1"></a>kernel estimate of the intensity surface.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-11-1"><a href="#interpolate-11-1" aria-hidden="true" tabindex="-1"></a>Two complementary views. One <span class="cf">function</span> divides the window into a grid and counts points per cell — crude</span>
+<span id="interpolate-11-2"><a href="#interpolate-11-2" aria-hidden="true" tabindex="-1"></a>but easy to test. Another gives a smooth kernel estimate of the intensity</span>
+<span id="interpolate-11-3"><a href="#interpolate-11-3" aria-hidden="true" tabindex="-1"></a>surface; it is the <span class="st">`</span><span class="at">ppp</span><span class="st">`</span> method of a familiar function.</span>
 <span id="interpolate-11-4"><a href="#interpolate-11-4" aria-hidden="true" tabindex="-1"></a>The bandwidth matters<span class="sc">:</span> too small and you see noise, too large and you smooth the</span>
 <span id="interpolate-11-5"><a href="#interpolate-11-5" aria-hidden="true" tabindex="-1"></a>structure away.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -557,7 +557,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJf
 </div>
 <div class="cell" data-exercise="q04" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q04">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-19-1"><a href="#interpolate-19-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">quadrat.test()</span><span class="st">`</span> compares observed and expected counts per cell. A small</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-19-1"><a href="#interpolate-19-1" aria-hidden="true" tabindex="-1"></a>There is a test that compares observed and expected counts per quadrat. A small</span>
 <span id="interpolate-19-2"><a href="#interpolate-19-2" aria-hidden="true" tabindex="-1"></a>p<span class="sc">-</span>value says the homogeneous Poisson model does not fit — but it will not tell</span>
 <span id="interpolate-19-3"><a href="#interpolate-19-3" aria-hidden="true" tabindex="-1"></a>you whether the cause is a trend <span class="cf">in</span> intensity or genuine interaction between</span>
 <span id="interpolate-19-4"><a href="#interpolate-19-4" aria-hidden="true" tabindex="-1"></a>points.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -622,11 +622,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJi
 </div>
 <div class="cell" data-exercise="q07" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q07">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-31-1"><a href="#interpolate-31-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">envelope(fitted_model, Kest, nsim = 99)</span><span class="st">`</span> simulates from the fitted model rather</span>
-<span id="interpolate-31-2"><a href="#interpolate-31-2" aria-hidden="true" tabindex="-1"></a>than from complete spatial randomness. That is the sharper test<span class="sc">:</span> it asks whether</span>
-<span id="interpolate-31-3"><a href="#interpolate-31-3" aria-hidden="true" tabindex="-1"></a>anything is left unexplained once the trend is accounted for.</span>
-<span id="interpolate-31-4"><a href="#interpolate-31-4" aria-hidden="true" tabindex="-1"></a>If the observed K now sits inside the envelope, the inhomogeneity explained the</span>
-<span id="interpolate-31-5"><a href="#interpolate-31-5" aria-hidden="true" tabindex="-1"></a>apparent clustering.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-31-1"><a href="#interpolate-31-1" aria-hidden="true" tabindex="-1"></a>The same envelope <span class="cf">function</span> you used <span class="cf">in</span> item <span class="dv">5</span> accepts a <span class="sc">*</span>fitted model<span class="sc">*</span> <span class="cf">in</span> place</span>
+<span id="interpolate-31-2"><a href="#interpolate-31-2" aria-hidden="true" tabindex="-1"></a>of the point pattern, <span class="cf">in</span> which case it simulates from that model rather than</span>
+<span id="interpolate-31-3"><a href="#interpolate-31-3" aria-hidden="true" tabindex="-1"></a>from complete spatial randomness. That is the sharper test<span class="sc">:</span> it asks whether</span>
+<span id="interpolate-31-4"><a href="#interpolate-31-4" aria-hidden="true" tabindex="-1"></a>anything is left unexplained once the trend is accounted for.</span>
+<span id="interpolate-31-5"><a href="#interpolate-31-5" aria-hidden="true" tabindex="-1"></a>If the observed K now sits inside the envelope, the inhomogeneity explained the</span>
+<span id="interpolate-31-6"><a href="#interpolate-31-6" aria-hidden="true" tabindex="-1"></a>apparent clustering.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 

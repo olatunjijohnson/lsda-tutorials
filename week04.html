@@ -623,10 +623,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q07" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q07">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-28-1"><a href="#interpolate-28-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">glmmPQL()</span><span class="st">`</span> from <span class="st">`</span><span class="at">MASS</span><span class="st">`</span>, with <span class="st">`</span><span class="at">random = ~ 1 | subject</span><span class="st">`</span>. This adds a</span>
-<span id="interpolate-28-2"><a href="#interpolate-28-2" aria-hidden="true" tabindex="-1"></a>patient<span class="sc">-</span>specific intercept, so patients who seize more often than the model</span>
-<span id="interpolate-28-3"><a href="#interpolate-28-3" aria-hidden="true" tabindex="-1"></a>expects are accounted <span class="cf">for</span> rather than inflating the apparent precision.</span>
-<span id="interpolate-28-4"><a href="#interpolate-28-4" aria-hidden="true" tabindex="-1"></a>Compare the standard errors with the GLM<span class="sc">:</span> what happened, and why?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-28-1"><a href="#interpolate-28-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">MASS</span><span class="st">`</span> provides a penalised quasi<span class="sc">-</span>likelihood fitter <span class="cf">for</span> GLMMs. Give it a</span>
+<span id="interpolate-28-2"><a href="#interpolate-28-2" aria-hidden="true" tabindex="-1"></a>random intercept per patient. This adds a</span>
+<span id="interpolate-28-3"><a href="#interpolate-28-3" aria-hidden="true" tabindex="-1"></a>patient<span class="sc">-</span>specific intercept, so patients who seize more often than the model</span>
+<span id="interpolate-28-4"><a href="#interpolate-28-4" aria-hidden="true" tabindex="-1"></a>expects are accounted <span class="cf">for</span> rather than inflating the apparent precision.</span>
+<span id="interpolate-28-5"><a href="#interpolate-28-5" aria-hidden="true" tabindex="-1"></a>Compare the standard errors with the GLM<span class="sc">:</span> what happened, and why?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 

@@ -540,10 +540,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q04" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q04">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-18-1"><a href="#interpolate-18-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">poly2nb()</span><span class="st">`</span> builds the neighbour list; <span class="st">`</span><span class="at">queen = TRUE</span><span class="st">`</span> counts a shared corner as</span>
-<span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a>adjacency, <span class="st">`</span><span class="at">queen = FALSE</span><span class="st">`</span> requires a shared edge.</span>
-<span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a>Scotland has islands. If a region ends up with no neighbours, that is a real</span>
-<span id="interpolate-18-4"><a href="#interpolate-18-4" aria-hidden="true" tabindex="-1"></a>feature of the geography, not a bug — though <span class="st">`</span><span class="at">snap</span><span class="st">`</span> can bridge small gaps.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-18-1"><a href="#interpolate-18-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">spdep</span><span class="st">`</span> builds a neighbour list straight from polygons. Its <span class="st">`</span><span class="at">queen</span><span class="st">`</span> argument</span>
+<span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a>decides the rule<span class="sc">:</span> <span class="st">`</span><span class="at">TRUE</span><span class="st">`</span> counts a shared corner as adjacency, <span class="st">`</span><span class="at">FALSE</span><span class="st">`</span> requires a</span>
+<span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a>shared edge.</span>
+<span id="interpolate-18-4"><a href="#interpolate-18-4" aria-hidden="true" tabindex="-1"></a>Scotland has islands. If a region ends up with no neighbours, that is a real</span>
+<span id="interpolate-18-5"><a href="#interpolate-18-5" aria-hidden="true" tabindex="-1"></a>feature of the geography, not a bug — though <span class="st">`</span><span class="at">snap</span><span class="st">`</span> can bridge small gaps.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ol start="5" type="1">
@@ -622,10 +623,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q08" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q08">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-34-1"><a href="#interpolate-34-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">nb2listw()</span><span class="st">`</span> to convert the neighbour list into weights, then <span class="st">`</span><span class="at">moran.test()</span><span class="st">`</span>.</span>
-<span id="interpolate-34-2"><a href="#interpolate-34-2" aria-hidden="true" tabindex="-1"></a>Positive Moran<span class="st">'s I means nearby counties have similar SIRs. Check the p-value,</span></span>
-<span id="interpolate-34-3"><a href="#interpolate-34-3" aria-hidden="true" tabindex="-1"></a><span class="st">but also look at the statistic against its expectation, which is -1/(n-1) rather</span></span>
-<span id="interpolate-34-4"><a href="#interpolate-34-4" aria-hidden="true" tabindex="-1"></a><span class="st">than zero.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-34-1"><a href="#interpolate-34-1" aria-hidden="true" tabindex="-1"></a>Convert the neighbour list into a weights list object first, then pass it to</span>
+<span id="interpolate-34-2"><a href="#interpolate-34-2" aria-hidden="true" tabindex="-1"></a>the Moran<span class="st">'s I test function.</span></span>
+<span id="interpolate-34-3"><a href="#interpolate-34-3" aria-hidden="true" tabindex="-1"></a><span class="st">Positive Moran'</span>s I means nearby counties have similar SIRs. Check the p<span class="sc">-</span>value,</span>
+<span id="interpolate-34-4"><a href="#interpolate-34-4" aria-hidden="true" tabindex="-1"></a>but also look at the statistic against its expectation, which is <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-1</span>) rather</span>
+<span id="interpolate-34-5"><a href="#interpolate-34-5" aria-hidden="true" tabindex="-1"></a>than zero.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ol type="1">
@@ -643,9 +645,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJj
 </div>
 <div class="cell" data-exercise="q09" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q09">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-38-1"><a href="#interpolate-38-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">knn2nb(knearneigh(coords, k = 3))</span><span class="st">`</span>. Note this gives every region exactly three</span>
-<span id="interpolate-38-2"><a href="#interpolate-38-2" aria-hidden="true" tabindex="-1"></a>neighbours, including the islands — which is either a feature or a distortion,</span>
-<span id="interpolate-38-3"><a href="#interpolate-38-3" aria-hidden="true" tabindex="-1"></a>depending on what you think adjacency should mean.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-38-1"><a href="#interpolate-38-1" aria-hidden="true" tabindex="-1"></a>Two steps<span class="sc">:</span> find the k nearest centroids, then convert that to a neighbour list</span>
+<span id="interpolate-38-2"><a href="#interpolate-38-2" aria-hidden="true" tabindex="-1"></a>with <span class="st">`</span><span class="at">knn2nb()</span><span class="st">`</span>. Note this gives every region exactly three neighbours,</span>
+<span id="interpolate-38-3"><a href="#interpolate-38-3" aria-hidden="true" tabindex="-1"></a>including the islands — which is either a feature or a distortion,</span>
+<span id="interpolate-38-4"><a href="#interpolate-38-4" aria-hidden="true" tabindex="-1"></a>depending on what you think adjacency should mean.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ol start="2" type="1">
@@ -663,7 +666,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJu
 </div>
 <div class="cell" data-exercise="q10" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-42-1"><a href="#interpolate-42-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">dnearneigh()</span><span class="st">`</span> takes a lower and upper distance bound. The geometry is <span class="cf">in</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-42-1"><a href="#interpolate-42-1" aria-hidden="true" tabindex="-1"></a>The distance<span class="sc">-</span>based constructor <span class="cf">in</span> <span class="st">`</span><span class="at">spdep</span><span class="st">`</span> takes a lower and an upper bound. The geometry is <span class="cf">in</span></span>
 <span id="interpolate-42-2"><a href="#interpolate-42-2" aria-hidden="true" tabindex="-1"></a>metres, so the bounds must be too.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -682,7 +685,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJu
 </div>
 <div class="cell" data-exercise="q11" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-46-1"><a href="#interpolate-46-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">nblag()</span><span class="st">`</span> gives higher<span class="sc">-</span>order neighbours. Order <span class="dv">2</span> means <span class="st">"neighbours of my</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-46-1"><a href="#interpolate-46-1" aria-hidden="true" tabindex="-1"></a>There is a <span class="st">`</span><span class="at">spdep</span><span class="st">`</span> <span class="cf">function</span> <span class="cf">for</span> higher<span class="sc">-</span><span class="fu">order</span> (lagged) neighbours. Order <span class="dv">2</span> means <span class="st">"neighbours of my</span></span>
 <span id="interpolate-46-2"><a href="#interpolate-46-2" aria-hidden="true" tabindex="-1"></a><span class="st">neighbours"</span>, which widens the definition of local considerably.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>

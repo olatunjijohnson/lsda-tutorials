@@ -538,8 +538,9 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJs
 <div class="cell" data-exercise="q05" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q05">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-14-1"><a href="#interpolate-14-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">update()</span><span class="st">`</span> saves retyping the whole call — pass only what changes.</span>
-<span id="interpolate-14-2"><a href="#interpolate-14-2" aria-hidden="true" tabindex="-1"></a>Compound symmetry is <span class="st">`</span><span class="at">corCompSymm(form = ~ 1 | subject)</span><span class="st">`</span><span class="sc">:</span> every pair of times</span>
-<span id="interpolate-14-3"><a href="#interpolate-14-3" aria-hidden="true" tabindex="-1"></a>equally correlated, however far apart.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="interpolate-14-2"><a href="#interpolate-14-2" aria-hidden="true" tabindex="-1"></a>Compound symmetry means every pair of times is equally correlated, however far</span>
+<span id="interpolate-14-3"><a href="#interpolate-14-3" aria-hidden="true" tabindex="-1"></a>apart. The <span class="st">`</span><span class="at">nlme</span><span class="st">`</span> constructor <span class="cf">for</span> it is listed <span class="cf">in</span> <span class="st">`</span><span class="at">?corClasses</span><span class="st">`</span>; its <span class="st">`</span><span class="at">form</span><span class="st">`</span></span>
+<span id="interpolate-14-4"><a href="#interpolate-14-4" aria-hidden="true" tabindex="-1"></a>argument names the grouping, here <span class="st">`</span><span class="at">~ 1 | subject</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <pre><code>2.3. AR(1) structure,\</code></pre>
@@ -555,9 +556,9 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q06" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q06">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-18-1"><a href="#interpolate-18-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">corAR1(form = ~ day | subject)</span><span class="st">`</span>. Correlation now decays geometrically with the</span>
-<span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a>gap <span class="cf">in</span> days, which is usually more plausible <span class="cf">for</span> growth data than compound</span>
-<span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a>symmetry.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-18-1"><a href="#interpolate-18-1" aria-hidden="true" tabindex="-1"></a>Now correlation should decay with the gap <span class="cf">in</span> days rather than being constant —</span>
+<span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a>an autoregressive structure of order <span class="fl">1.</span> Its <span class="st">`</span><span class="at">form</span><span class="st">`</span> needs the time variable as</span>
+<span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a>well as the grouping, so <span class="st">`</span><span class="at">~ day | subject</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <pre><code>2.4. ARMA(1,1) structure,</code></pre>
@@ -574,9 +575,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q07" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q07">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-22-1"><a href="#interpolate-22-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">corARMA</span><span class="st">`</span> needs both orders<span class="sc">:</span> <span class="st">`</span><span class="at">p = 1, q = 1</span><span class="st">`</span>.</span>
-<span id="interpolate-22-2"><a href="#interpolate-22-2" aria-hidden="true" tabindex="-1"></a>Then <span class="st">`</span><span class="at">anova()</span><span class="st">`</span> on all four fits gives the comparison. They are nested, so the</span>
-<span id="interpolate-22-3"><a href="#interpolate-22-3" aria-hidden="true" tabindex="-1"></a>likelihood ratio tests <span class="cf">in</span> that table are meaningful.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-22-1"><a href="#interpolate-22-1" aria-hidden="true" tabindex="-1"></a>The ARMA constructor needs both orders given explicitly, <span class="st">`</span><span class="at">p</span><span class="st">`</span> and <span class="st">`</span><span class="at">q</span><span class="st">`</span>.</span>
+<span id="interpolate-22-2"><a href="#interpolate-22-2" aria-hidden="true" tabindex="-1"></a>There is a single <span class="cf">function</span> that takes several fitted <span class="st">`</span><span class="at">lme</span><span class="st">`</span> objects and returns</span>
+<span id="interpolate-22-3"><a href="#interpolate-22-3" aria-hidden="true" tabindex="-1"></a>a comparison table with AIC, BIC and likelihood ratio tests. They are nested, so the</span>
+<span id="interpolate-22-4"><a href="#interpolate-22-4" aria-hidden="true" tabindex="-1"></a>likelihood ratio tests <span class="cf">in</span> that table are meaningful.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ol start="3" type="1">
@@ -596,9 +598,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q09" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q09">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-26-1"><a href="#interpolate-26-1" aria-hidden="true" tabindex="-1"></a>Now hold <span class="st">`</span><span class="at">correlation</span><span class="st">`</span> fixed and vary <span class="st">`</span><span class="at">random</span><span class="st">`</span>. <span class="st">`</span><span class="at">pdIdent(~ day)</span><span class="st">`</span> forces the</span>
-<span id="interpolate-26-2"><a href="#interpolate-26-2" aria-hidden="true" tabindex="-1"></a>random intercept and slope to have equal variance and zero covariance — the most</span>
-<span id="interpolate-26-3"><a href="#interpolate-26-3" aria-hidden="true" tabindex="-1"></a>restrictive of the three.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-26-1"><a href="#interpolate-26-1" aria-hidden="true" tabindex="-1"></a>Now hold <span class="st">`</span><span class="at">correlation</span><span class="st">`</span> fixed and vary <span class="st">`</span><span class="at">random</span><span class="st">`</span>. The most restrictive option forces the random intercept and slope to have equal</span>
+<span id="interpolate-26-2"><a href="#interpolate-26-2" aria-hidden="true" tabindex="-1"></a>variance and zero covariance. Look <span class="cf">for</span> the <span class="st">`</span><span class="at">pd</span><span class="st">`</span> constructor meaning <span class="st">"identity"</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <pre><code>3.2. diagonal covariance structure,\</code></pre>
@@ -614,8 +615,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJs
 </div>
 <div class="cell" data-exercise="q10" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-30-1"><a href="#interpolate-30-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">pdDiag(~ day)</span><span class="st">`</span> allows different variances but still no covariance between the</span>
-<span id="interpolate-30-2"><a href="#interpolate-30-2" aria-hidden="true" tabindex="-1"></a>random intercept and slope.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-30-1"><a href="#interpolate-30-1" aria-hidden="true" tabindex="-1"></a>The <span class="cf">next</span><span class="sc">-</span>least<span class="sc">-</span>restrictive option allows different variances but still no</span>
+<span id="interpolate-30-2"><a href="#interpolate-30-2" aria-hidden="true" tabindex="-1"></a>covariance between the random intercept and slope — a diagonal G.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <pre><code>3.3. general covariance structure.</code></pre>
@@ -696,8 +697,9 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE1In0sImNvZGUiOiJx
 </div>
 <div class="cell" data-exercise="q15" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-46-1"><a href="#interpolate-46-1" aria-hidden="true" tabindex="-1"></a>Random effects are not residuals<span class="sc">:</span> use <span class="st">`</span><span class="at">qqnorm(fit, ~ ranef(.))</span><span class="st">`</span>. You are</span>
-<span id="interpolate-46-2"><a href="#interpolate-46-2" aria-hidden="true" tabindex="-1"></a>checking the assumption b_i <span class="sc">~</span> <span class="fu">N</span>(<span class="dv">0</span>, G).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-46-1"><a href="#interpolate-46-1" aria-hidden="true" tabindex="-1"></a>Random effects are not residuals, so the formula inside <span class="st">`</span><span class="at">qqnorm()</span><span class="st">`</span> must extract</span>
+<span id="interpolate-46-2"><a href="#interpolate-46-2" aria-hidden="true" tabindex="-1"></a>the predicted random effects rather than <span class="st">`</span><span class="at">resid(.)</span><span class="st">`</span>. You are checking the</span>
+<span id="interpolate-46-3"><a href="#interpolate-46-3" aria-hidden="true" tabindex="-1"></a>assumption b_i <span class="sc">~</span> <span class="fu">N</span>(<span class="dv">0</span>, G).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <pre><code>5.3. Give the 95\% confidence intervals for the estimates of fixed effects and</code></pre>
@@ -715,8 +717,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE2In0sImNvZGUiOiJf
 </div>
 <div class="cell" data-exercise="q16" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-50-1"><a href="#interpolate-50-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">intervals()</span><span class="st">`</span> returns confidence intervals <span class="cf">for</span> fixed effects, variance</span>
-<span id="interpolate-50-2"><a href="#interpolate-50-2" aria-hidden="true" tabindex="-1"></a>components and correlation parameters <span class="cf">in</span> one call. An interval <span class="cf">for</span> a variance</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-50-1"><a href="#interpolate-50-1" aria-hidden="true" tabindex="-1"></a>One <span class="st">`</span><span class="at">nlme</span><span class="st">`</span> <span class="cf">function</span> returns confidence intervals <span class="cf">for</span> the fixed effects, the</span>
+<span id="interpolate-50-2"><a href="#interpolate-50-2" aria-hidden="true" tabindex="-1"></a>variance components and the correlation parameters together. An interval <span class="cf">for</span> a variance</span>
 <span id="interpolate-50-3"><a href="#interpolate-50-3" aria-hidden="true" tabindex="-1"></a>that nearly touches zero is telling you something.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
