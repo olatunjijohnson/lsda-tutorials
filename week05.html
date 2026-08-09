@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -577,6 +578,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJm
 </ul>
 <p>Worth trying: <code>run_app("gee_robustness")</code> — set the truth to exchangeable and the working correlation to independence, and watch the slope stay unbiased while the naive standard error goes badly wrong.</p>
 </section></section></div>
+<div class="lsda-checkpoint">
+<h2 class="anchored">Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="YQ==">
+<p class="lsda-stem"><strong>1.</strong> Across your four GEE fits with different working correlations, the estimated coefficients barely moved but the standard errors changed noticeably. Why?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week05-q1" value="a"> <span>$\hat{\boldsymbol{\beta}}$ is consistent under misspecification of the working correlation, but the precision depends on it</span></label>
+<label><input type="radio" name="week05-q1" value="b"> <span>The standard errors are wrong in all four fits</span></label>
+<label><input type="radio" name="week05-q1" value="c"> <span>The estimates should have changed; something went wrong</span></label>
+<label><input type="radio" name="week05-q1" value="d"> <span>A coincidence of this dataset</span></label>
+</div>
+<div class="lsda-fb" hidden="">This is the central GEE result happening in front of you. Provided the mean model is right, the working correlation affects efficiency and the naive standard errors, not consistency of the point estimates. It is why the working correlation is a working assumption rather than a claim you must defend — and why the robust standard errors matter. </div>
+</div>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>2.</strong> You want to report whether vitamin A deficiency is associated with respiratory infection. Which standard error should the Wald test use?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week05-q2" value="a"> <span>The naive (model-based) one</span></label>
+<label><input type="radio" name="week05-q2" value="b"> <span>The robust (sandwich) one</span></label>
+<label><input type="radio" name="week05-q2" value="c"> <span>Either, they agree</span></label>
+<label><input type="radio" name="week05-q2" value="d"> <span>Neither; use a likelihood ratio test</span></label>
+</div>
+<div class="lsda-fb" hidden="">The naive standard error is only valid if the working correlation happens to be right. The sandwich estimator builds the covariance from the observed residuals and stays valid regardless, which is the reason to prefer it by default. A likelihood ratio test is not available at all here: GEE has no likelihood. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>3.</strong> How should you describe the vitamin A coefficient in the write-up?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week05-q3" value="a"> <span>The change in log odds of infection for a given child</span></label>
+<label><input type="radio" name="week05-q3" value="b"> <span>The relative risk of infection</span></label>
+<label><input type="radio" name="week05-q3" value="c"> <span>The change in the probability of infection</span></label>
+<label><input type="radio" name="week05-q3" value="d"> <span>The change in log odds of infection comparing populations of children who differ in vitamin A status</span></label>
+</div>
+<div class="lsda-fb" hidden="">GEE models the marginal mean, so its coefficients are population-averaged: they compare groups, not the same child under two conditions. Describing it as the change for a given child is the subject-specific interpretation, which belongs to the GLMM you fitted last week. For a logit link the two differ in magnitude, so choosing the wrong wording misdescribes the finding.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

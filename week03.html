@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -788,6 +789,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE4In0sImNvZGUiOiJm
 </ul>
 <p>Worth trying: <code>run_app("lmm_simulator")</code> with a small number of subjects — you can watch ML underestimate the between-subject standard deviation while REML does not.</p>
 </section></section></div>
+<div class="lsda-checkpoint">
+<h2 class="anchored">Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>1.</strong> You selected a covariance structure using ML, then refitted the chosen model with REML. Why not simply use REML throughout?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week03-q1" value="a"> <span>ML gives better variance estimates</span></label>
+<label><input type="radio" name="week03-q1" value="b"> <span>REML likelihoods from models with different fixed effects are not comparable, so ML is needed for the selection stage</span></label>
+<label><input type="radio" name="week03-q1" value="c"> <span>REML is slower</span></label>
+<label><input type="radio" name="week03-q1" value="d"> <span>REML cannot fit ARMA structures</span></label>
+</div>
+<div class="lsda-fb" hidden="">REML works with error contrasts that depend on the fixed-effects design matrix, so changing the fixed effects changes what is being maximised and the likelihoods cannot be compared. ML is the right tool for selection and REML for the final variance estimates — which is exactly the order the tutorial used. The claim that ML gives better variance estimates has it backwards: ML variance estimates are biased downwards. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>2.</strong> The QQ plot of residuals looked fine but the QQ plot of the predicted random effects showed two clear outliers. What does that suggest?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week03-q2" value="a"> <span>The model is fine; only the residual plot matters</span></label>
+<label><input type="radio" name="week03-q2" value="b"> <span>The random effects should be removed from the model</span></label>
+<label><input type="radio" name="week03-q2" value="c"> <span>The data must be transformed</span></label>
+<label><input type="radio" name="week03-q2" value="d"> <span>Two animals depart from the assumed normal distribution of random effects, which is a different assumption from the residual one</span></label>
+</div>
+<div class="lsda-fb" hidden="">These are two separate assumptions and each needs its own check. The residual plot asks whether the model describes the data *within* an animal; the random-effects plot asks whether animals are normally distributed *around* the population mean. Two unusual animals is worth investigating — are they real, or data errors? — before deciding what to do. </div>
+</div>
+<div class="lsda-q" data-a="Yw==">
+<p class="lsda-stem"><strong>3.</strong> `intervals()` gave a confidence interval for one variance component that extended almost to zero. How should you read that?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week03-q3" value="a"> <span>The variance is exactly zero</span></label>
+<label><input type="radio" name="week03-q3" value="b"> <span>The model has failed</span></label>
+<label><input type="radio" name="week03-q3" value="c"> <span>There is little evidence that this source of variation is needed, though the boundary problem means a naive likelihood ratio test would be conservative</span></label>
+<label><input type="radio" name="week03-q3" value="d"> <span>The interval should be ignored</span></label>
+</div>
+<div class="lsda-fb" hidden="">An interval nearly touching zero says the data are consistent with that random effect being unnecessary. Testing it formally runs into the boundary problem: the null sits on the edge of the parameter space, so the usual $\chi^2_1$ reference distribution is wrong and the naive test under-rejects. A near-zero variance estimate is a signal to consider the simpler model, not a failure.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

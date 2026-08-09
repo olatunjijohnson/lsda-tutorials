@@ -36,3 +36,22 @@ pre, .cell-output, table { overflow-x: auto; max-width: 100%; }
 @media (prefers-color-scheme: dark) {
   .lsda-complete { background: rgba(27,127,77,.14); }
 }
+
+/* ---- post-tutorial checkpoint ------------------------------------------ */
+.lsda-checkpoint { margin-top: 2rem; padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(0,0,0,.15); border-radius: .6rem; }
+.lsda-checkpoint h2 { margin-top: 0; font-size: 1.3rem; }
+.lsda-q { margin-block: 1.25rem; padding-left: .75rem; border-left: 3px solid transparent; }
+.lsda-q.is-right { border-left-color: #1b7f4d; }
+.lsda-q.is-wrong { border-left-color: #b3261e; }
+.lsda-opts label { display: block; margin: .3rem 0; padding: .25rem .4rem; border-radius: .3rem; cursor: pointer; }
+.lsda-opts label.is-right { background: rgba(27,127,77,.15); font-weight: 600; }
+.lsda-opts label.is-wrong { background: rgba(179,38,30,.12); text-decoration: line-through; }
+.lsda-fb { margin-top: .6rem; padding: .6rem .8rem; font-size: .92rem;
+  background: var(--bs-secondary-bg, #f1f3f5); border-radius: .35rem; }
+.lsda-cp-actions { margin-top: 1rem; display: flex; gap: .6rem; align-items: center; }
+.lsda-cp-score { font-variant-numeric: tabular-nums; }
+.lsda-cp-score.is-full { color: #1b7f4d; font-weight: 600; }
+@media (prefers-color-scheme: dark) {
+  .lsda-fb { background: rgba(255,255,255,.07); }
+}

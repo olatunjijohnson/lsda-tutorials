@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -611,6 +612,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJk
 <li><strong>Kriging, and its uncertainty.</strong> Prediction variance is smallest near the data and rises towards the process variance as you move away. The map of standard errors is as important as the map of predictions; showing one without the other invites over-confidence.</li>
 </ul>
 </section></section></main></div>
+<div class="lsda-checkpoint">
+<h2>Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>1.</strong> Model 2 estimated the nugget as 0.00087 with a confidence interval of $[0, \infty)$, and its log-likelihood matched model 1 exactly. What is the right reading?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week08-q1" value="a"> <span>The nugget is highly significant</span></label>
+<label><input type="radio" name="week08-q1" value="b"> <span>The optimiser failed</span></label>
+<label><input type="radio" name="week08-q1" value="c"> <span>The nugget should be fixed at the sill</span></label>
+<label><input type="radio" name="week08-q1" value="d"> <span>The data contain essentially no information about the nugget, largely because the design has very few close pairs of stations</span></label>
+</div>
+<div class="lsda-fb" hidden="">The nugget describes behaviour at very short distances, so it can only be estimated from pairs of points at those distances. With 132 stations spread across Galicia there are almost none, the likelihood is flat in $\tau^2$, and the interval is uninformative. The practical lesson is about design: if you need to estimate a nugget, include close pairs deliberately. </div>
+</div>
+<div class="lsda-q" data-a="YQ==">
+<p class="lsda-stem"><strong>2.</strong> Adding PM10 reduced the process variance from 0.0323 to 0.0304 and the correlation scale from 9.02 to 7.86 km. What does that show?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week08-q2" value="a"> <span>The mean and covariance parts of a spatial model are not separable — a spatially smooth covariate absorbs some of the structure the process was representing</span></label>
+<label><input type="radio" name="week08-q2" value="b"> <span>The units were wrong</span></label>
+<label><input type="radio" name="week08-q2" value="c"> <span>The model is overfitted</span></label>
+<label><input type="radio" name="week08-q2" value="d"> <span>Adding any covariate always reduces both</span></label>
+</div>
+<div class="lsda-fb" hidden="">This is worth stating in a report: covariance parameters are interpretable only relative to the mean model. A covariate that is itself spatially organised takes over part of the smooth variation, leaving a residual process with less variance and a shorter range. A covariate with no spatial pattern would have little such effect. </div>
+</div>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>3.</strong> Your map of prediction standard errors showed low values around the stations and high values in the gaps and at the edges. Why?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week08-q3" value="a"> <span>The nugget varies across the region</span></label>
+<label><input type="radio" name="week08-q3" value="b"> <span>The kriging variance falls as $\mathbf{c}_0$ grows, and rises towards $\sigma^2$ where correlations have decayed to nothing</span></label>
+<label><input type="radio" name="week08-q3" value="c"> <span>The grid is coarser at the edges</span></label>
+<label><input type="radio" name="week08-q3" value="d"> <span>The model fits better near the data by construction</span></label>
+</div>
+<div class="lsda-fb" hidden="">The prediction variance is $\sigma^2 - \mathbf{c}_0^{\mathrm{T}}\boldsymbol{\Sigma}^{-1}\mathbf{c}_0$. Near data the subtracted term is large; far away the correlations vanish and the variance returns to the prior variance, meaning the model has nothing to add beyond the overall mean. The distance over which this happens is set by the practical range — about 43 km here.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

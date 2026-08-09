@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -654,6 +655,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJi
 <li><strong>The important subtlety.</strong> Fitting an inhomogeneous Poisson process and then re-testing with an envelope simulated <em>from that model</em> asks whether anything is left once the trend is accounted for. Apparent clustering often turns out to be a varying intensity rather than interaction — the classic confounding of first and second order.</li>
 </ul>
 </section></section></main></div>
+<div class="lsda-checkpoint">
+<h2>Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>1.</strong> Your quadrat test on the ant nests returned a small p-value. What can you conclude?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week11-q1" value="a"> <span>The intensity is constant</span></label>
+<label><input type="radio" name="week11-q1" value="b"> <span>The homogeneous Poisson model does not fit, but the test cannot say whether the cause is a varying intensity or interaction between nests</span></label>
+<label><input type="radio" name="week11-q1" value="c"> <span>The nests repel one another</span></label>
+<label><input type="radio" name="week11-q1" value="d"> <span>The nests are clustered</span></label>
+</div>
+<div class="lsda-fb" hidden="">The quadrat test compares observed and expected counts per cell, so it detects departures from constant intensity and independence *together*. A small p-value says something is wrong without saying what. Separating first-order from second-order structure needs the K-function, and ideally an envelope simulated from a fitted inhomogeneous model. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>2.</strong> Your K-function fell below the theoretical CSR curve over a range of distances. What does that suggest?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week11-q2" value="a"> <span>The intensity is too high</span></label>
+<label><input type="radio" name="week11-q2" value="b"> <span>The window is too small</span></label>
+<label><input type="radio" name="week11-q2" value="c"> <span>Clustering</span></label>
+<label><input type="radio" name="week11-q2" value="d"> <span>Regularity or inhibition — fewer close neighbours than CSR predicts</span></label>
+</div>
+<div class="lsda-fb" hidden="">$K(r)$ is proportional to the expected number of further points within distance $r$ of a typical point, so falling below the curve means points are avoiding one another. For ant nests that is biologically plausible: colonies compete for space and forage territory. </div>
+</div>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>3.</strong> After fitting an inhomogeneous model, you re-ran `envelope()` using that fitted model rather than CSR. Why does that matter?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week11-q3" value="a"> <span>It is faster</span></label>
+<label><input type="radio" name="week11-q3" value="b"> <span>A varying intensity alone can make a pattern look clustered against a CSR envelope, so the CSR comparison confounds trend with interaction</span></label>
+<label><input type="radio" name="week11-q3" value="c"> <span>The K-function is undefined under an inhomogeneous model</span></label>
+<label><input type="radio" name="week11-q3" value="d"> <span>CSR envelopes are always too narrow</span></label>
+</div>
+<div class="lsda-fb" hidden="">More points in one part of the window means more close pairs than CSR predicts, and so an apparently clustered pattern, even when points are placed independently given the intensity. Simulating from the fitted model asks the sharper question: is anything left once the trend is accounted for? This confounding of first and second order is the most common real error in point pattern analysis.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

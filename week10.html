@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -618,6 +619,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJt
 <li><strong>MCMC needs checking.</strong> Burn-in, thinning and convergence are not formalities.</li>
 </ul>
 </section></section></main></div>
+<div class="lsda-checkpoint">
+<h2>Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>1.</strong> Comparing your map of smoothed relative risk with the raw SIR map from week 9, which counties changed most?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week10-q1" value="a"> <span>The changes were uniform</span></label>
+<label><input type="radio" name="week10-q1" value="b"> <span>The largest counties</span></label>
+<label><input type="radio" name="week10-q1" value="c"> <span>Those with the highest AFF values</span></label>
+<label><input type="radio" name="week10-q1" value="d"> <span>Those with small expected counts, where the raw SIR was least reliable</span></label>
+</div>
+<div class="lsda-fb" hidden="">Where the data are informative, the likelihood dominates and the estimate stays near the raw SIR. Where the expected count is small the likelihood is weak, the CAR prior pulls harder, and the estimate is drawn towards the neighbourhood average. This is the same borrowing of strength as BLUP shrinkage in week 3 — and it is the reason for fitting the model rather than mapping raw ratios. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>2.</strong> What would happen if you omitted `offset(log(expected))` from the model?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week10-q2" value="a"> <span>Nothing; the offset only rescales the intercept</span></label>
+<label><input type="radio" name="week10-q2" value="b"> <span>The covariate effect would be unchanged</span></label>
+<label><input type="radio" name="week10-q2" value="c"> <span>The MCMC would fail to converge</span></label>
+<label><input type="radio" name="week10-q2" value="d"> <span>You would be modelling the number of cases rather than the relative risk, so the map would largely reflect population size</span></label>
+</div>
+<div class="lsda-fb" hidden="">The offset is what converts a model for counts into a model for relative risk. Without it, counties with more people have more cases and the map becomes a population map. The offset carries a coefficient fixed at 1 rather than estimated, which is precisely what makes $\theta_i$ interpretable as a ratio to expectation. </div>
+</div>
+<div class="lsda-q" data-a="YQ==">
+<p class="lsda-stem"><strong>3.</strong> You computed the posterior probability that relative risk exceeds 2 for each county. Why is that more useful to a public health team than the posterior mean?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week10-q3" value="a"> <span>It answers the decision-relevant question directly, and carries the uncertainty with it rather than discarding it</span></label>
+<label><input type="radio" name="week10-q3" value="b"> <span>It is easier to compute</span></label>
+<label><input type="radio" name="week10-q3" value="c"> <span>It is always larger than the mean</span></label>
+<label><input type="radio" name="week10-q3" value="d"> <span>It does not depend on the prior</span></label>
+</div>
+<div class="lsda-fb" hidden="">A posterior mean of 1.9 could come with high or low confidence and the number alone does not say which. $P(\theta_i &gt; 2 \mid \text{data})$ answers "how sure are we that risk here is at least doubled?", which is the question that actually determines whether to act. Being able to compute any functional of the posterior from the samples is one of the practical advantages of the Bayesian approach.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

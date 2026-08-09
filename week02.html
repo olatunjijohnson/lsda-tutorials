@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -678,6 +679,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJf
 </ul>
 <p>Worth trying: <code>run_app("cov_explorer")</code> to see what each structure actually looks like as a matrix and as simulated trajectories.</p>
 </section></section></div>
+<div class="lsda-checkpoint">
+<h2 class="anchored">Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>1.</strong> Your AIC and BIC table for the four $\mathbf{R}_i$ structures gave AIC lowest for ARMA(1,1) but BIC lowest for AR(1). Which is the more defensible conclusion?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week02-q1" value="a"> <span>Neither model should be used</span></label>
+<label><input type="radio" name="week02-q1" value="b"> <span>Either choice is defensible; AR(1) is the simpler model and BIC penalises the extra parameter more heavily, so say which criterion you used and why</span></label>
+<label><input type="radio" name="week02-q1" value="c"> <span>ARMA(1,1) is correct because AIC is the better criterion</span></label>
+<label><input type="radio" name="week02-q1" value="d"> <span>The comparison is invalid because the models are nested</span></label>
+</div>
+<div class="lsda-fb" hidden="">Disagreement between AIC and BIC is common and is not a symptom of anything being wrong — it means the extra parameter bought a moderate improvement in fit. What matters in a report is that you state the criterion and the reasoning rather than quietly picking whichever answer you preferred. Nesting is not a problem for either criterion. </div>
+</div>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>2.</strong> You fitted `fit_ind` with no `correlation` argument at all. What does that model assume about the residuals within a girl?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week02-q2" value="a"> <span>That they are exchangeable</span></label>
+<label><input type="radio" name="week02-q2" value="b"> <span>That they are uncorrelated, so all within-girl correlation comes from the random effects</span></label>
+<label><input type="radio" name="week02-q2" value="c"> <span>That they follow an AR(1) process</span></label>
+<label><input type="radio" name="week02-q2" value="d"> <span>That there are no random effects</span></label>
+</div>
+<div class="lsda-fb" hidden="">Omitting `correlation` sets $\mathbf{R}_i = \sigma^2\mathbf{I}$. That does *not* mean the observations are independent: the random intercept and slope still contribute $\mathbf{Z}_i\mathbf{G}\mathbf{Z}_i^{\mathrm{T}}$ to the marginal covariance. Confusing independent errors with independent observations is one of the most common misreadings of a mixed model. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>3.</strong> In `summary(fit_G_diag)` the random effects table reported a standard deviation for the intercept and one for `age`, but no correlation between them. Why?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week02-q3" value="a"> <span>The correlation was estimated as exactly zero</span></label>
+<label><input type="radio" name="week02-q3" value="b"> <span>The model failed to converge</span></label>
+<label><input type="radio" name="week02-q3" value="c"> <span>Correlations are never reported by `nlme`</span></label>
+<label><input type="radio" name="week02-q3" value="d"> <span>`pdDiag` constrains the covariance between random effects to be zero, so there is no correlation to report</span></label>
+</div>
+<div class="lsda-fb" hidden="">A diagonal G *assumes* zero covariance rather than estimating it and finding zero. If you believe girls who start with higher lung function also grow faster, that is a claim about the covariance, and you need the general structure to let the data speak to it.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

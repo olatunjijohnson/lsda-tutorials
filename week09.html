@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -761,6 +762,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJk
 </ul>
 <p>The point to hold on to: every one of these results depends on the weights matrix you chose. Report that choice as part of the analysis.</p>
 </section></section></main></div>
+<div class="lsda-checkpoint">
+<h2>Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>1.</strong> When you built queen-contiguity neighbours, three counties came out with none. What is the correct response?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week09-q1" value="a"> <span>Use a different projection</span></label>
+<label><input type="radio" name="week09-q1" value="b"> <span>Recognise that Orkney, Shetland and the Western Isles are islands, and handle empty neighbour sets deliberately</span></label>
+<label><input type="radio" name="week09-q1" value="c"> <span>Fix the shapefile; this is an error</span></label>
+<label><input type="radio" name="week09-q1" value="d"> <span>Delete those counties from the analysis</span></label>
+</div>
+<div class="lsda-fb" hidden="">An island genuinely shares no boundary with anything, so the empty set is correct. Your options are to allow it with `zero.policy = TRUE`, to use a rule that always produces neighbours such as k nearest or a distance threshold, or to bridge the gap with a snapping tolerance — remembering that the tolerance is in the units of the geometry, metres for this dataset. Deleting the islands would discard real data. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>2.</strong> Your Moran's I test gave a statistic of about 0.59 with an expectation of $-0.018$ and a very small p-value. How do you report it?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week09-q2" value="a"> <span>The test is invalid because the expectation is not zero</span></label>
+<label><input type="radio" name="week09-q2" value="b"> <span>The SIRs are negatively autocorrelated</span></label>
+<label><input type="radio" name="week09-q2" value="c"> <span>There is no spatial autocorrelation</span></label>
+<label><input type="radio" name="week09-q2" value="d"> <span>There is strong evidence of positive spatial autocorrelation in the SIRs — neighbouring counties have similar values</span></label>
+</div>
+<div class="lsda-fb" hidden="">Moran's I is not centred on zero; its null expectation is $-1/(n-1)$, here about $-0.018$. A statistic well above that with a small p-value indicates positive autocorrelation. This is the finding that motivates the CAR models in week 10 — if neighbouring counties are similar, a model can borrow strength between them. </div>
+</div>
+<div class="lsda-q" data-a="ZA==">
+<p class="lsda-stem"><strong>3.</strong> You built both a binary and a row-standardised weights matrix. Why might the choice change your results?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week09-q3" value="a"> <span>It does not; the two are equivalent</span></label>
+<label><input type="radio" name="week09-q3" value="b"> <span>Row-standardised weights can only be used with Geary's C</span></label>
+<label><input type="radio" name="week09-q3" value="c"> <span>Binary weights are always wrong</span></label>
+<label><input type="radio" name="week09-q3" value="d"> <span>Binary gives well-connected counties more total influence, whereas row-standardising equalises each county's total weight</span></label>
+</div>
+<div class="lsda-fb" hidden="">A county with eight neighbours contributes eight units of weight under a binary scheme and one unit under row standardisation. That changes Moran's I, and it changes what a CAR model smooths towards. Because every result on area-level data depends on the weights matrix, the choice belongs in the methods section rather than being left implicit.</div>
+</div>
+</div>
 
 
 <script type="webr-data">

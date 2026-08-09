@@ -117,6 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="coi-serviceworker.js"></script>
 <script src="progress.js" defer=""></script>
+<script src="checkpoint.js" defer=""></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -719,6 +720,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEzIn0sImNvZGUiOiJt
 </ul>
 <p>The thing to carry forward: if you analysed either dataset with ordinary linear regression, you would be assuming away the correlation you have just spent an hour looking at. The standard errors would be wrong.</p>
 </section></section></div>
+<div class="lsda-checkpoint">
+<h2 class="anchored">Check your understanding</h2>
+<p>Three questions on what you have just done. Not recorded, and you can retry as often as you like.</p>
+<div class="lsda-q" data-a="Yw==">
+<p class="lsda-stem"><strong>1.</strong> Looking at the correlation matrix you computed for the cattle weights, the correlation between times 1 and 2 was much higher than between times 1 and 11. What does that pattern tell you?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week01-q1" value="a"> <span>The measurements at time 11 are unreliable</span></label>
+<label><input type="radio" name="week01-q1" value="b"> <span>The data are unbalanced</span></label>
+<label><input type="radio" name="week01-q1" value="c"> <span>Correlation decays as the gap between measurements grows</span></label>
+<label><input type="radio" name="week01-q1" value="d"> <span>The two groups differ in their mean weight</span></label>
+</div>
+<div class="lsda-fb" hidden="">This decay with lag is the signature the AR(1) structure is built to capture, and it is why compound symmetry — which forces every pair to share the same correlation — would fit these data poorly. Nothing here says anything about reliability, group means or balance.</div>
+</div>
+<div class="lsda-q" data-a="Yw==">
+<p class="lsda-stem"><strong>2.</strong> Your histogram of observations per girl in the `fev1` data was right-skewed, with most girls having several visits and a few having only one or two. What is the practical consequence for modelling?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week01-q2" value="a"> <span>The data must be discarded and a balanced subset used</span></label>
+<label><input type="radio" name="week01-q2" value="b"> <span>The response must be transformed</span></label>
+<label><input type="radio" name="week01-q2" value="c"> <span>The design is unbalanced, so each subject contributes matrices of a different size and subject-specific estimates vary in precision</span></label>
+<label><input type="radio" name="week01-q2" value="d"> <span>Nothing; the number of visits is irrelevant</span></label>
+</div>
+<div class="lsda-fb" hidden="">Unbalanced is normal, not a defect — mixed models handle it directly. What it does mean is that $n_i$ differs between girls, so $\mathbf{X}_i$ and $\mathbf{Z}_i$ differ in dimension, and a girl with two visits carries far less information than one with twelve. That difference is exactly what produces shrinkage in week 3. Discarding data to force balance would throw away information for no gain. </div>
+</div>
+<div class="lsda-q" data-a="Yg==">
+<p class="lsda-stem"><strong>3.</strong> You plotted the group means against time and they diverged after time 4. What would you need in the model to represent that?</p>
+<div class="lsda-opts">
+<label><input type="radio" name="week01-q3" value="a"> <span>An AR(1) correlation structure</span></label>
+<label><input type="radio" name="week01-q3" value="b"> <span>An interaction between time and treatment group</span></label>
+<label><input type="radio" name="week01-q3" value="c"> <span>A random intercept only</span></label>
+<label><input type="radio" name="week01-q3" value="d"> <span>A larger sample size</span></label>
+</div>
+<div class="lsda-fb" hidden="">Diverging means are a difference in *slope*, which is what a time-by-group interaction represents. A random intercept lets animals differ in level, not in trend, and an AR(1) structure describes the correlation of the errors rather than the mean. This interaction is the term you fit in week 3, and it is the parameter the experiment exists to estimate.</div>
+</div>
+</div>
 
 
 <script type="webr-data">
