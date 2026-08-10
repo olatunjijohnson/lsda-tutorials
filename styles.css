@@ -55,3 +55,19 @@ pre, .cell-output, table { overflow-x: auto; max-width: 100%; }
 @media (prefers-color-scheme: dark) {
   .lsda-fb { background: rgba(255,255,255,.07); }
 }
+
+/* ---- explanation, revealed once the exercise has run -------------------- */
+.lsda-explain {
+  margin: .75rem 0 1.5rem; padding: .85rem 1.1rem;
+  border-left: 4px solid #0d6efd; border-radius: 0 .4rem .4rem 0;
+  background: rgba(13,110,253,.06);
+}
+.lsda-explain-head {
+  font-weight: 600; font-size: .85rem; letter-spacing: .02em;
+  text-transform: uppercase; color: #0d6efd; margin-bottom: .4rem;
+}
+.lsda-explain.is-revealed { animation: lsda-fade .35s ease-out; }
+@keyframes lsda-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; } }
+@media (prefers-color-scheme: dark) {
+  .lsda-explain { background: rgba(13,110,253,.14); }
+}

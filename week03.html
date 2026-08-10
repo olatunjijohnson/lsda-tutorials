@@ -513,6 +513,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 <span id="interpolate-6-3"><a href="#interpolate-6-3" aria-hidden="true" tabindex="-1"></a>reshape to long form first.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q01" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p><code>reshape()</code> turns the 60 by 11 wide matrix into 660 rows, one per animal per day. <code>groupedData()</code> then records that <code>subject</code> identifies the clusters, which is what lets <code>nlme</code> know which rows belong together.</p>
+</div>
 <ol type="1">
 <li><p>Express the above model in matrix form and explain the corresponding matrices/vectors.</p></li>
 <li><p>In R, use the function `lme(&nbsp;)’ to analyze the data by specifying <span class="math inline">\(\mathbf{G}\)</span> as general covariance structure and <span class="math inline">\(\mathbf{R}_i\)</span> as<br>
@@ -535,6 +539,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJs
 <span id="interpolate-10-2"><a href="#interpolate-10-2" aria-hidden="true" tabindex="-1"></a>argument at all. Keep <span class="st">`</span><span class="at">random = ~ day | subject</span><span class="st">`</span> so G stays general.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q04" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The four fixed effects are the intercept, the growth rate, the group difference in level, and the group difference in <em>slope</em> — the interaction, which is the parameter the experiment exists to estimate.</p>
+<p>Note the random intercept only at this stage. The question specifies a random slope as well, and you will add it in item 9. Comparing R_i structures with the simpler G first is deliberate: with a random slope, ARMA(1,1) does not converge on these data, because a random slope already makes the marginal correlation depend on the gap between days and an ARMA error does the same thing. The two compete to explain one feature, and the likelihood has no clear maximum.</p>
+</div>
 <pre><code>2.2. compound symmetry covariance structure,\</code></pre>
 <div class="cell" data-exercise="q05">
 <div>
@@ -554,6 +563,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJs
 <span id="interpolate-14-4"><a href="#interpolate-14-4" aria-hidden="true" tabindex="-1"></a>argument names the grouping, here <span class="st">`</span><span class="at">~ 1 | subject</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q05" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Compound symmetry estimates a single correlation shared by every pair of days, however far apart. Compare it with the AR(1) estimate in the next item.</p>
+</div>
 <pre><code>2.3. AR(1) structure,\</code></pre>
 <div class="cell" data-exercise="q06">
 <div>
@@ -571,6 +584,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJs
 <span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a>an autoregressive structure of order <span class="fl">1.</span> Its <span class="st">`</span><span class="at">form</span><span class="st">`</span> needs the time variable as</span>
 <span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a>well as the grouping, so <span class="st">`</span><span class="at">~ day | subject</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q06" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The AR(1) parameter. Correlation between residuals now decays as <span class="math inline">\(\rho^{|s-t|}\)</span>, so adjacent days are strongly related and distant days barely so — a much more plausible story for growth measurements than one constant correlation.</p>
 </div>
 <pre><code>2.4. ARMA(1,1) structure,</code></pre>
 <p>where the option `method’ in R is the maximum likelihood (ML) estimation method. Select the best structure of <span class="math inline">\(\mathbf{R}_i\)</span> in terms of the resulting AIC or BIC value.</p>
@@ -591,6 +608,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJs
 <span id="interpolate-22-3"><a href="#interpolate-22-3" aria-hidden="true" tabindex="-1"></a>a comparison table with AIC, BIC and likelihood ratio tests. They are nested, so the</span>
 <span id="interpolate-22-4"><a href="#interpolate-22-4" aria-hidden="true" tabindex="-1"></a>likelihood ratio tests <span class="cf">in</span> that table are meaningful.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q07" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p><code>anova()</code> on nested fits gives AIC, BIC and likelihood ratio tests together.</p>
+<p>AR(1) and ARMA(1,1) both improve enormously on independence and compound symmetry — around 440 units of AIC. Between the two the difference is small: ARMA edges it on both criteria, but by about 7 units of AIC and only 2 of BIC, which is close to a tie.</p>
+<p>Here you meet a practical constraint that model selection tables do not show. ARMA(1,1) cannot be fitted alongside the richer G structures you are about to compare, so continuing with it would mean abandoning the second stage entirely. AR(1) is chosen for that reason, and because BIC separates the two by almost nothing. That is a defensible decision, but it is a decision, and it belongs in the write-up rather than being made silently.</p>
 </div>
 <ol start="3" type="1">
 <li>With the selected structure for <span class="math inline">\(\mathbf{R}_i\)</span>, select the best structure for <span class="math inline">\(\mathbf{G}\)</span> among the candidates below:<br>
@@ -613,6 +636,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJs
 <span id="interpolate-26-2"><a href="#interpolate-26-2" aria-hidden="true" tabindex="-1"></a>variance and zero covariance. Look <span class="cf">for</span> the <span class="st">`</span><span class="at">pd</span><span class="st">`</span> constructor meaning <span class="st">"identity"</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q09" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Now the random slope appears. <code>pdIdent</code> is the most restrictive G: equal variances for intercept and slope, and no covariance between them.</p>
+<p><code>control = lmeControl(opt = "optim")</code> switches optimiser. With the default the general structure does not converge here. If a mixed model fails to converge, trying another optimiser is a reasonable first step — but if several fail, treat that as evidence the model is asking too much of the data rather than a technical nuisance.</p>
+</div>
 <pre><code>3.2. diagonal covariance structure,\</code></pre>
 <div class="cell" data-exercise="q10">
 <div>
@@ -629,6 +657,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJs
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-30-1"><a href="#interpolate-30-1" aria-hidden="true" tabindex="-1"></a>The <span class="cf">next</span><span class="sc">-</span>least<span class="sc">-</span>restrictive option allows different variances but still no</span>
 <span id="interpolate-30-2"><a href="#interpolate-30-2" aria-hidden="true" tabindex="-1"></a>covariance between the random intercept and slope — a diagonal G.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q10" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p><code>pdDiag</code> allows the intercept and slope to have different variances but still forces their covariance to zero. The two standard deviations printed are on quite different scales, because one is a weight and the other a weight per day.</p>
 </div>
 <pre><code>3.3. general covariance structure.</code></pre>
 <p>Again, the option `method’ in R is the maximum likelihood (ML) estimation method.</p>
@@ -647,6 +679,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJh
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-34-1"><a href="#interpolate-34-1" aria-hidden="true" tabindex="-1"></a>The general structure is the unrestricted one you already fitted. Compare all</span>
 <span id="interpolate-34-2"><a href="#interpolate-34-2" aria-hidden="true" tabindex="-1"></a>three with <span class="st">`</span><span class="at">anova()</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q11" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The three G structures are nested, so the likelihood ratio tests in this table are meaningful.</p>
+<p>If the diagonal structure is not clearly beaten by the general one, prefer it: the extra covariance parameter is buying little, and a simpler G is easier to interpret and more stable to fit.</p>
 </div>
 <ol start="4" type="1">
 <li>Refit the selected model so far, but using the restricted maximum likelihood (REML) estimation method this time.</li>
@@ -671,6 +708,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJs
 <span id="interpolate-38-6"><a href="#interpolate-38-6" aria-hidden="true" tabindex="-1"></a>happen.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q12" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Refitting with REML now that the structure is settled. ML underestimates variance components because it does not pay for having estimated the fixed effects; REML corrects that. The fixed effects barely move — it is the variance components that change.</p>
+<p><code>run_app("lmm_simulator")</code> with a small number of subjects shows this directly.</p>
+</div>
 <ol start="5" type="1">
 <li>Based on the selected model, fitted using the REML method, answer the following questions:<br>
 5.1. Produce the standardized residuals plot (i.e., residuals against fitted values) and the residual qqnorm plot. Justify whether the fitted model is good.<br>
@@ -693,6 +735,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE0In0sImNvZGUiOiJw
 <span id="interpolate-42-3"><a href="#interpolate-42-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">plot(fit, resid(., type = "p") ~ fitted(.))</span><span class="st">`</span> gives the first.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q14" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Standardised residuals against fitted values. You are looking for a horizontal band of roughly constant width. A funnel shape would suggest the variance grows with the mean and a transformation is needed; curvature would suggest the mean model is wrong.</p>
+</div>
 <pre><code>5.2. Justify whether the predicted random effects are normally</code></pre>
 <p>distributed (for example check the qqnorm plot).<br>
 </p>
@@ -712,6 +758,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE1In0sImNvZGUiOiJx
 <span id="interpolate-46-2"><a href="#interpolate-46-2" aria-hidden="true" tabindex="-1"></a>the predicted random effects rather than <span class="st">`</span><span class="at">resid(.)</span><span class="st">`</span>. You are checking the</span>
 <span id="interpolate-46-3"><a href="#interpolate-46-3" aria-hidden="true" tabindex="-1"></a>assumption b_i <span class="sc">~</span> <span class="fu">N</span>(<span class="dv">0</span>, G).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q15" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>This is a different assumption from the last plot. Here you are checking <span class="math inline">\(\mathbf{b}_i \sim N(\mathbf{0}, \mathbf{G})\)</span> — that the <em>animals</em> are normally distributed around the population, not that the residuals are. Points close to the line support it; a few stragglers are worth identifying, since they are individual animals behaving unusually rather than individual measurements.</p>
 </div>
 <pre><code>5.3. Give the 95\% confidence intervals for the estimates of fixed effects and</code></pre>
 <p>variance components. Explain whether or not they are significant.<br>
@@ -733,6 +783,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE2In0sImNvZGUiOiJf
 <span id="interpolate-50-3"><a href="#interpolate-50-3" aria-hidden="true" tabindex="-1"></a>that nearly touches zero is telling you something.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q16" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Confidence intervals for the fixed effects. The interaction is the one to read: if its interval excludes zero, the two groups genuinely differ in growth rate, which is the scientific question.</p>
+<p>Interpret the interval, not just whether it contains zero. An interval from 0.01 to 0.9 excludes zero but is consistent with an effect too small to matter.</p>
+</div>
 <pre><code>5.4. Plot the predicted mean lines of the two treatment groups in a</code></pre>
 <p>single figure. Comment on the plot.<br>
 </p>
@@ -752,6 +807,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE3In0sImNvZGUiOiJk
 <span id="interpolate-54-2"><a href="#interpolate-54-2" aria-hidden="true" tabindex="-1"></a>the two curves together. The gap between them is the treatment effect.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q17" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Population-level predictions, <code>level = 0</code>, meaning the average animal in each group rather than any particular animal.</p>
+<p>The two curves cross, which is what the raw means suggested in week 1. Group A starts heavier and group B overtakes it — a difference in slope, which is exactly what the interaction term encodes.</p>
+</div>
 <pre><code>5.5. Plot the estimated line and the real observations for the first two</code></pre>
 <p>cattle in each group. Comment on the plots.</p>
 <div class="cell" data-exercise="q18">
@@ -770,6 +830,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTE4In0sImNvZGUiOiJm
 <span id="interpolate-58-2"><a href="#interpolate-58-2" aria-hidden="true" tabindex="-1"></a>the observed points. Because these are subject<span class="sc">-</span>specific predictions, the lines</span>
 <span id="interpolate-58-3"><a href="#interpolate-58-3" aria-hidden="true" tabindex="-1"></a>should track individual animals more closely than the group means did.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q18" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Subject-specific predictions, the default <code>level = 1</code>, which add each animal’s own random intercept and slope.</p>
+<p>Compare these with the group curves in item 17: they track the individual points much more closely. That gap between the population line and the subject line is the random effect, and its size is what <span class="math inline">\(\mathbf{G}\)</span> measures.</p>
 </div>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week03">
 <section id="week-3-complete" class="level2">

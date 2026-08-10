@@ -521,6 +521,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJs
 <span id="interpolate-6-8"><a href="#interpolate-6-8" aria-hidden="true" tabindex="-1"></a>their fixed or covariance structure.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q03" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Four models differing only in <code>correlation</code>. <code>update()</code> avoids retyping the call, so the one thing that changes stays visible.</p>
+<p>The two sets of fixed effects printed at the end are almost identical. Changing the assumed error correlation barely moves the estimates; it moves the <em>standard errors</em>. That is the same lesson GEE makes explicit in week 5.</p>
+<p>One thing worth knowing, because it will bite you if you try it. The question specifies a random intercept <strong>and</strong> a random slope, but fitting <code>random = ~ age | id</code> together with <code>corAR1</code> or <code>corARMA</code> fails to converge on these data. That is not a bug in your code: a random slope already makes the marginal correlation change with the gap between visits, and AR(1) errors do the same thing, so the two compete to explain the same structure and the likelihood has no well-identified maximum. Comparing R_i structures with the simpler G, then choosing G afterwards, avoids the problem — which is exactly why the tutorial splits the selection into two stages.</p>
+</div>
 <pre><code>2.1. independent covariance structure,\
 2.2. compound symmetry covariance structure,\
 2.3. AR(1) structure,\
@@ -542,6 +548,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJf
 <span id="interpolate-10-2"><a href="#interpolate-10-2" aria-hidden="true" tabindex="-1"></a>Lower is better <span class="cf">for</span> both. If they disagree, remember BIC penalises extra</span>
 <span id="interpolate-10-3"><a href="#interpolate-10-3" aria-hidden="true" tabindex="-1"></a>parameters harder.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q07" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Both criteria are shown because they can disagree. Here they do not: AR(1) wins decisively on each, by around 400 units of AIC over independence. A gap that large is not a close call.</p>
+<p>That result makes sense. The girls are measured roughly annually over several years, and residuals a year apart should be more alike than residuals five years apart. Compound symmetry, which forces every pair to share one correlation, scores no better than independence — it is the wrong shape for these data.</p>
 </div>
 <ol start="3" type="1">
 <li>With the selected structure for <span class="math inline">\(\mathbf{R}_i\)</span>, select the best structure for <span class="math inline">\(\mathbf{G}\)</span> among the candidates below:<br>
@@ -567,6 +578,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiJm
 <span id="interpolate-14-6"><a href="#interpolate-14-6" aria-hidden="true" tabindex="-1"></a><span class="st">you write `random = ~ age | id`.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q08" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p><code>correlation</code> is now fixed at AR(1) and <code>random</code> varies. The three G structures are nested: identity within diagonal within general.</p>
+<p>Note <code>control = lmeControl(opt = "optim")</code>. With the default optimiser the general structure does not converge; switching optimisers fixes it. If a mixed model fails to converge, changing the optimiser is worth trying before concluding the model is wrong — though if several optimisers fail, that is a genuine signal of over-parameterisation.</p>
+<p>In the printed variance components, <code>pdDiag</code> gives a standard deviation for the intercept and one for <code>age</code> but no correlation between them, because a diagonal G <em>assumes</em> that correlation is zero rather than estimating it.</p>
+</div>
 <pre><code>3.1. independent covariance structure,\
 3.2. diagonal covariance structure,\
 3.3. general covariance structure.</code></pre>
@@ -585,6 +602,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJB
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-18-1"><a href="#interpolate-18-1" aria-hidden="true" tabindex="-1"></a>Compare the three G structures the same way you compared the R structures.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q11" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The same comparison for the between-subject structure.</p>
+<p>Read this cautiously. A criterion ranks models; it does not tell you a parameter is real. If the general structure wins narrowly, check whether the extra covariance it estimates has a confidence interval that excludes zero before claiming girls who start higher also grow faster.</p>
 </div>
 <ol start="4" type="1">
 <li>For your overall best model, interpret the parameters of the model.</li>
@@ -660,6 +682,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJf
 <span id="interpolate-22-3"><a href="#interpolate-22-3" aria-hidden="true" tabindex="-1"></a>intercept and slope?), and the residual standard deviation.</span>
 <span id="interpolate-22-4"><a href="#interpolate-22-4" aria-hidden="true" tabindex="-1"></a>Try to state each <span class="cf">in</span> a sentence about lung <span class="cf">function</span>, not about the model.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q12" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The summary is the payoff. Three things to read.</p>
+<p><strong>Fixed effects.</strong> The coefficient on <code>age</code> is the population-average annual change in log(FEV1/height). It is positive, which is lung function growing through adolescence, as it should.</p>
+<p><strong>Random effects.</strong> The between-girl standard deviations, compared with the residual standard deviation below them. If the intercept SD is comparable to or larger than the residual SD, girls differ from one another about as much as a single girl varies between visits — which is what makes the mixed model worthwhile.</p>
+<p><strong>Correlation structure.</strong> The estimated AR(1) parameter Phi. A value well above zero says residuals remain related from one visit to the next even after the random effects have absorbed the between-girl differences.</p>
+<p>When you write this up, state each of these in a sentence about lung function rather than about the model.</p>
 </div>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week02">
 <section id="week-2-complete" class="level2">

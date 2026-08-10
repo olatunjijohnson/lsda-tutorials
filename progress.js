@@ -82,9 +82,36 @@
       return !!cell.querySelector(".alert-danger, .alert-warning");
     }
 
+    // Explanations sit hidden next to their exercise until it has produced
+    // output. Reading "what this shows" before running anything teaches
+    // nothing; reading it while looking at your own result teaches a lot.
+    //
+    // Pair them exactly rather than by document order: the page opens with
+    // several non-editable setup cells, so "the Nth explanation belongs to the
+    // Nth cell" is wrong. Each cell's payload carries its exercise label, so
+    // decode that and match it against data-for.
+    function exerciseIdOf(cell) {
+      var id = cell.id;                       // e.g. "webr-7"
+      if (!id) return null;
+      var sc = document.querySelector('script[type="' + id + '-contents"]');
+      if (!sc) return null;
+      try {
+        var payload = JSON.parse(atob(sc.textContent.trim()));
+        return (payload.attr && payload.attr.exercise) || null;
+      } catch (e) { return null; }
+    }
+
+    function explainFor(cell) {
+      var ex = exerciseIdOf(cell);
+      if (!ex) return null;
+      return document.querySelector('.lsda-explain[data-for="' + ex + '"]');
+    }
+
     cells.forEach(function (cell, i) {
+      var ex = explainFor(cell);
       var mark = function () {
         if (hasOutput(cell) && !hasError(cell)) {
+          if (ex && ex.hidden) { ex.hidden = false; ex.classList.add("is-revealed"); }
           if (!doneSet.has(i)) { doneSet.add(i); render(); }
         } else if (hasError(cell) && doneSet.has(i)) {
           // An error after a success un-marks it, so the counter stays honest.
