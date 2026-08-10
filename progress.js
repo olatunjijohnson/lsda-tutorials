@@ -72,14 +72,19 @@
     }
 
     // ---- watch each exercise for successful output ------------------------
+    // The runtime emits cell-output-container / cell-output-display /
+    // cell-output-stdout, never a bare "cell-output". A ".cell-output"
+    // selector matches the exact class token only, so it never fired -- which
+    // is why nothing was being detected. Match any class containing it.
     function hasOutput(cell) {
-      // Any rendered output: printed values, a plot, or a grading alert.
       return !!cell.querySelector(
-        ".cell-output, .exercise-grade, canvas, img, pre:not(.sourceCode)"
+        '[class*="cell-output"], .exercise-grade, canvas, img'
       );
     }
     function hasError(cell) {
-      return !!cell.querySelector(".alert-danger, .alert-warning");
+      // A runtime error is rendered as cell-output-stderr; a failed grading
+      // check as an alert-danger.
+      return !!cell.querySelector('.cell-output-stderr, .alert-danger');
     }
 
     // Explanations sit hidden next to their exercise until it has produced
