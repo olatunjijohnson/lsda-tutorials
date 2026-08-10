@@ -498,13 +498,13 @@ In a study of the effects of vitamin A deficiency in preschool children (availab
 <li><p>Let <span class="math inline">\(Y_i\)</span> be the vector of responses for the <span class="math inline">\(i\)</span>th child, consisting of the elements <span class="math inline">\(Y_{ij}\)</span>, which are observations on whether the child has a respiratory infection at time <span class="math inline">\(t_{ij}\)</span> (recorded in months; Yes=1 and No=0). Write down a model for <span class="math inline">\(E(Y_{ij})\)</span> with an appropriate link function that is linear in an intercept and additive terms for time, age, gender, and vitamin A status. Also, write down <span class="math inline">\(\mbox{Var}(Y_{ij})\)</span> given the nature of the response.</p></li>
 <li><p>Fit the model in part (1) without taking the within-subject correlation into account, i.e., taking all the observations from the children as if they were independent. Based on this fit, is there any sufficient evidence to suggest that the mean pattern of respiratory response is associated with the presence or absence of vitamin A deficiency? State the null hypothesis corresponding to this question in your model (a), describe the test statistic and p-value on which you draw the conclusion, and state your conclusion.</p></li>
 </ol>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIgICAgIyMgTG9hZCBnZWVwYWNrIHBhY2thZ2VcblxubGlicmFyeShnZWVwYWNrKVxuXG4jIyBMb2FkIGRhdGFcblxuSUNIUyA8LSBpY2hzXG5cbmNvbG5hbWVzKElDSFMpIDwtIGMoJ0lEJywgJ1knLCAnVGltZScsICdHZW5kZXInLCAnVml0YW1pbkEnLCAnYWdlJylcbmhlYWQoSUNIUylcblxuICAgIGZpdC5pbmQgPC0gZ2Vlc2UoWX5UaW1lK2FnZStHZW5kZXIrVml0YW1pbkEsIGlkPUlELCBkYXRhPUlDSFMsIGZhbWlseT1fX19fX18sIGNvcnN0cj0naW5kZScpXG4gICAgc3VtbWFyeShmaXQuaW5kKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6IiAgICAjIyBMb2FkIGdlZXBhY2sgcGFja2FnZVxuXG5saWJyYXJ5KGdlZXBhY2spXG5cbiMjIExvYWQgZGF0YVxuXG5JQ0hTIDwtIGljaHNcblxuY29sbmFtZXMoSUNIUykgPC0gYygnSUQnLCAnWScsICdUaW1lJywgJ0dlbmRlcicsICdWaXRhbWluQScsICdhZ2UnKVxuaGVhZChJQ0hTKVxuXG4gICAgZml0LmluZCA8LSBnZWVzZShZflRpbWUrYWdlK0dlbmRlcitWaXRhbWluQSwgaWQ9SUQsIGRhdGE9SUNIUywgZmFtaWx5PV9fX19fXywgY29yc3RyPSdpbmRlJylcbiAgICBzdW1tYXJ5KGZpdC5pbmQpIn0=
 </script>
 </div>
 </div>
@@ -517,12 +517,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIg
 <span id="interpolate-6-5"><a href="#interpolate-6-5" aria-hidden="true" tabindex="-1"></a>Look at the Wald test <span class="cf">for</span> the vitamin A coefficient.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>This is the independence working correlation — the deliberately naive fit that pretends the six visits per child are unrelated.</p>
 <p>Read the vitamin A row. The estimate is about 0.29 on the log-odds scale, so <span class="math inline">\(\exp(0.29) \approx 1.33\)</span>: about a third higher odds of infection for a deficient child. But the Wald p-value is around 0.20, so on this evidence the association is not statistically significant.</p>
 <p>Note that <code>geese</code> reports <strong>sandwich</strong> standard errors by default, in the <code>san.se</code> column. Even in this fit, the standard errors are already robust to the correlation being wrong.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li><p>Write down a model that extends the model in part (1) by taking into account the within-subject correlation among repeated measurements.</p></li>
 <li><p>Fit your model in part (3) to the data. Assuming that your model for the within-subject correlation is correct, conduct a hypothesis test for the null hypothesis in part (2). State your conclusion. Does the result agree with that in part (2)? Based on the results from your R output, give an explanation for your conclusion. Provide a summary of your model selection and justify your choice.</p></li>
@@ -532,13 +534,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIg
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiICAgICMjIExvYWQgZ2VlcGFjayBwYWNrYWdlXG5cbmxpYnJhcnkoZ2VlcGFjaylcblxuIyMgTG9hZCBkYXRhXG5cbklDSFMgPC0gaWNoc1xuXG5jb2xuYW1lcyhJQ0hTKSA8LSBjKCdJRCcsICdZJywgJ1RpbWUnLCAnR2VuZGVyJywgJ1ZpdGFtaW5BJywgJ2FnZScpXG5cbiAgICBmaXQuaW5kIDwtIGdlZXNlKFl+VGltZSthZ2UrR2VuZGVyK1ZpdGFtaW5BLCBpZD1JRCwgZGF0YT1JQ0hTLCBmYW1pbHk9Ymlub21pYWwsIGNvcnN0cj0naW5kZScpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiIgICAgICAgIGZpdC5leCA8LSB1cGRhdGUoZml0LmluZCwgY29yc3RyPVwiX19fX19fXCIpXG4gICAgICAgIHN1bW1hcnkoZml0LmV4KVxuXG4gICAgICAgIGZpdC5hcjEgPC0gdXBkYXRlKGZpdC5pbmQsIGNvcnN0cj1cIl9fX19fX1wiKVxuICAgICAgICBzdW1tYXJ5KGZpdC5hcjEpXG5cbiAgICAgICAgZml0LnVuc3RyIDwtIHVwZGF0ZShmaXQuaW5kLCBjb3JzdHI9XCJfX19fX19cIilcbiAgICAgICAgc3VtbWFyeShmaXQudW5zdHIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6IiAgICAgICAgZml0LmV4IDwtIHVwZGF0ZShmaXQuaW5kLCBjb3JzdHI9XCJfX19fX19cIilcbiAgICAgICAgc3VtbWFyeShmaXQuZXgpXG5cbiAgICAgICAgZml0LmFyMSA8LSB1cGRhdGUoZml0LmluZCwgY29yc3RyPVwiX19fX19fXCIpXG4gICAgICAgIHN1bW1hcnkoZml0LmFyMSlcblxuICAgICAgICBmaXQudW5zdHIgPC0gdXBkYXRlKGZpdC5pbmQsIGNvcnN0cj1cIl9fX19fX1wiKVxuICAgICAgICBzdW1tYXJ5KGZpdC51bnN0cikifQ==
 </script>
 </div>
 </div>
@@ -550,14 +552,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiIg
 <span id="interpolate-11-4"><a href="#interpolate-11-4" aria-hidden="true" tabindex="-1"></a>The estimates should barely move; the standard errors will.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The whole point of the week is in this comparison, so read it carefully.</p>
 <p>The <strong>estimates barely move</strong> across the four working correlations. Vitamin A goes from about 0.287 under independence to about 0.276 under exchangeable, a change far smaller than its standard error. That is the consistency result happening in front of you: get the working correlation wrong and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is still fine.</p>
 <p>The <strong>robust standard errors barely move either</strong> — around 0.223 in both. That is not a coincidence: the sandwich estimator builds the covariance from the observed residuals rather than from the assumed structure, so it does not care much which structure you assumed. Had you looked at the naive standard errors instead, they would have moved a great deal.</p>
 <p>The estimated exchangeable correlation is about 0.51, which is substantial: two visits on the same child are strongly related, and the independence assumption was clearly false. It simply did not damage the estimates.</p>
 <p><code>run_app("gee_robustness")</code> shows the other half of this, where the naive standard error goes wrong by around 70% while the robust one holds.</p>
 </div>
+</details>
 <ol start="5" type="1">
 <li>Is there any sufficient evidence to suggest that the probability of respiratory infection changes over the 15 month study period? Is there any sufficient evidence to suggest that it is worthwhile to take gender into account in understanding the risk of respiratory infection in this population of children?</li>
 </ol>
@@ -566,13 +570,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiIg
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiICAgICMjIExvYWQgZ2VlcGFjayBwYWNrYWdlXG5cbmxpYnJhcnkoZ2VlcGFjaylcblxuIyMgTG9hZCBkYXRhXG5cbklDSFMgPC0gaWNoc1xuXG5jb2xuYW1lcyhJQ0hTKSA8LSBjKCdJRCcsICdZJywgJ1RpbWUnLCAnR2VuZGVyJywgJ1ZpdGFtaW5BJywgJ2FnZScpXG5cbiAgICBmaXQuaW5kIDwtIGdlZXNlKFl+VGltZSthZ2UrR2VuZGVyK1ZpdGFtaW5BLCBpZD1JRCwgZGF0YT1JQ0hTLCBmYW1pbHk9Ymlub21pYWwsIGNvcnN0cj0naW5kZScpXG4gICAgICAgIGZpdC5leCA8LSB1cGRhdGUoZml0LmluZCwgY29yc3RyPVwiZXhjaFwiKVxuXG4gICAgICAgIGZpdC5hcjEgPC0gdXBkYXRlKGZpdC5pbmQsIGNvcnN0cj1cImFyMVwiKVxuXG4gICAgICAgIGZpdC51bnN0ciA8LSB1cGRhdGUoZml0LmluZCwgY29yc3RyPVwidW5zdHJ1Y3R1cmVkXCIpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q05">
+<div class="cell" data-exercise="q05" data-envir="lsda-session">
 <div>
 <div id="webr-14" class="exercise-cell">
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDUifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -583,14 +587,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiIi
 <span id="interpolate-16-3"><a href="#interpolate-16-3" aria-hidden="true" tabindex="-1"></a>test here, because GEE is not likelihood<span class="sc">-</span>based. Use the Wald test, or QIC.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q05" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Two separate questions, answered by dropping one term at a time.</p>
 <p>For <strong>time</strong>, the coefficient is small and positive with a p-value near 0.04, so there is modest evidence that infection risk changes over the fifteen months.</p>
 <p>For <strong>gender</strong>, the coefficient is around -0.56 with a p-value near 0.01, so it is worth keeping: girls have appreciably lower odds of infection than boys in this cohort.</p>
 <p>A methodological note. You cannot compare these models with a likelihood ratio test, because GEE specifies only the first two moments and has no likelihood. Use the Wald tests shown, or QIC if you want a selection criterion.</p>
 <p>Finally, remember what these coefficients mean. They are <strong>population-averaged</strong> log odds ratios, comparing groups of children. They are not the change for an individual child, which is what the GLMM in week 4 estimated. For a logit link the two differ, and reporting one as the other misdescribes the finding.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week05">
 <section id="week-5-complete" class="level2">
 <h2 class="anchored" data-anchor-id="week-5-complete">Week 5 complete</h2>

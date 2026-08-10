@@ -513,13 +513,13 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Imxp
 <li>( u_i ) is a spatially structured random effect modeled using a Conditional Autoregressive (CAR) distribution: [ u_i u_{-i} N({u}_{_i}, ), ]</li>
 <li>( v_i N(0, ^2_v) ) is an unstructured spatial random effect.</li>
 </ul>
-<div class="cell" data-exercise="q01">
+<div class="cell" data-exercise="q01" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJsaWJyYXJ5KENBUkJheWVzKVxubGlicmFyeShzcGRlcClcbmxpYnJhcnkoc2YpXG5zY290IDwtIHNjb3RsYW5kX2xpcFxuVy5uYiA8LSBwb2x5Mm5iKHNjb3QsIHJvdy5uYW1lcyA9IHNjb3QkY291bnR5LCBzbmFwID0gMjAwMDAwKVxuVyA8LSBuYjJtYXQoVy5uYiwgc3R5bGUgPSBcIkJcIilcbm1vZGVsLmNhciA8LSBfX19fX18oZm9ybXVsYT0gY2FzZXMgfiBhZmYgKyBfX19fX18obG9nKGV4cGVjdGVkKSksIGZhbWlseT1cIl9fX19fX1wiLFxuIGRhdGE9c2NvdCxcblc9VywgcmhvPTAsIGJ1cm5pbj0yMDAwLCBuLnNhbXBsZT0xMDAwMCwgdGhpbj04LFxudmVyYm9zZT1GQUxTRSlcbnByaW50KG1vZGVsLmNhcikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDEifSwiY29kZSI6ImxpYnJhcnkoQ0FSQmF5ZXMpXG5saWJyYXJ5KHNwZGVwKVxubGlicmFyeShzZilcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5XLm5iIDwtIHBvbHkybmIoc2NvdCwgcm93Lm5hbWVzID0gc2NvdCRjb3VudHksIHNuYXAgPSAyMDAwMDApXG5XIDwtIG5iMm1hdChXLm5iLCBzdHlsZSA9IFwiQlwiKVxubW9kZWwuY2FyIDwtIF9fX19fXyhmb3JtdWxhPSBjYXNlcyB+IGFmZiArIF9fX19fXyhsb2coZXhwZWN0ZWQpKSwgZmFtaWx5PVwiX19fX19fXCIsXG4gZGF0YT1zY290LFxuVz1XLCByaG89MCwgYnVybmluPTIwMDAsIG4uc2FtcGxlPTEwMDAwLCB0aGluPTgsXG52ZXJib3NlPUZBTFNFKVxucHJpbnQobW9kZWwuY2FyKSJ9
 </script>
 </div>
 </div>
@@ -534,13 +534,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 <span id="interpolate-6-7"><a href="#interpolate-6-7" aria-hidden="true" tabindex="-1"></a>expected.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q01" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q01">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Two things are happening here.</p>
 <p>The adjacency matrix is built from the polygons as in week 9. Note the <code>snap</code> argument in metres — the geometry is in metres, so a tolerance meant to bridge the islands has to be too, and 200 would be 200 metres rather than 200 km.</p>
 <p>Then <code>S.CARleroux</code> fits the Bayesian model by MCMC. Read the output for the <code>aff</code> coefficient and its credible interval, and check the model has converged before trusting anything else.</p>
 <p>The <code>offset(log(expected))</code> is doing essential work. Without it you are modelling the number of cases, which mostly reflects population size. With it, the linear predictor describes the log relative risk — how the observed count compares with what the county’s demographic structure predicts. That is the epidemiological quantity.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Map the relative risk of lip cancer and their uncertainty for each of the counties. Interpret the result noting that the relative risk quantifies whether county <span class="math inline">\(i\)</span> has higher (<span class="math inline">\(\theta_i&gt;1\)</span>) or lower (<span class="math inline">\(\theta_i&lt;1\)</span>) risk than the average risk in the standard population.</li>
 </ol>
@@ -549,13 +551,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShDQVJCYXllcylcbmxpYnJhcnkoc3BkZXApXG5saWJyYXJ5KHNmKVxuc2NvdCA8LSBzY290bGFuZF9saXBcblcubmIgPC0gcG9seTJuYihzY290LCByb3cubmFtZXMgPSBzY290JGNvdW50eSwgc25hcCA9IDIwMDAwMClcblcgPC0gbmIybWF0KFcubmIsIHN0eWxlID0gXCJCXCIpXG5tb2RlbC5jYXIgPC0gUy5DQVJsZXJvdXgoZm9ybXVsYT0gY2FzZXMgfiBhZmYgKyBvZmZzZXQobG9nKGV4cGVjdGVkKSksIGZhbWlseT1cInBvaXNzb25cIixcbiBkYXRhPXNjb3QsXG5XPVcsIHJobz0wLCBidXJuaW49MjAwMCwgbi5zYW1wbGU9MTAwMDAsIHRoaW49OCxcbnZlcmJvc2U9RkFMU0UpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIjIENvbXB1dGUgcmVsYXRpdmUgcmlzayBhbmQgaXRzIHVuY2VydGFpbnR5XG5zY290JFJSX21lYW4gPC0gbW9kZWwuY2FyJF9fX19fXyAvIHNjb3QkZXhwZWN0ZWRcbnNjb3QkUlJfc2QgICA8LSBhcHBseShtb2RlbC5jYXIkc2FtcGxlcyRmaXR0ZWQsIDIsIHNkKSAvIHNjb3QkZXhwZWN0ZWRcblxuIyBDb21wdXRlIFN0YW5kYXJkaXNlZCBJbmNpZGVuY2UgUmF0aW8gKFNJUilcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkodmlyaWRpcylcblxuIyBQbG90IFJlbGF0aXZlIFJpc2sgKG1lYW4pXG5nZ3Bsb3Qoc2NvdCkgK1xuICBnZW9tX3NmKGFlcyhmaWxsID0gUlJfbWVhbikpICtcbiAgIyBjb29yZF9zZihkYXR1bSA9IE5BKSArIFxuICBzY2FsZV94X2NvbnRpbnVvdXMoZXhwYW5kID0gYygwLjgsIDAuOCkpICtcbiAgc2NhbGVfZmlsbF92aXJpZGlzKG9wdGlvbiA9IFwiQ1wiLCBuYW1lID0gXCJSZWxhdGl2ZSBSaXNrXCIpICtcbiAgZ2d0aXRsZShcIlBvc3RlcmlvciBNZWFuIG9mIFJlbGF0aXZlIFJpc2sgKFJSKVwiKSArXG4gIHRoZW1lX21pbmltYWwoKVxuXG4jIFBsb3QgUlIgVW5jZXJ0YWludHkgKFNEKVxuZ2dwbG90KHNjb3QpICtcbiAgZ2VvbV9zZihhZXMoZmlsbCA9IFJSX3NkKSkgK1xuICBzY2FsZV94X2NvbnRpbnVvdXMoZXhwYW5kID0gYygwLjgsIDAuOCkpICtcbiAgc2NhbGVfZmlsbF92aXJpZGlzKG9wdGlvbiA9IFwiQVwiLCBuYW1lID0gXCJTRCBvZiBSUlwiKSArXG4gIGdndGl0bGUoXCJQb3N0ZXJpb3IgVW5jZXJ0YWludHkgKFNEKSBvZiBSUlwiKSArXG4gIHRoZW1lX21pbmltYWwoKVxuXG5saWJyYXJ5KHBhdGNod29yaylcblxucDEgPC0gZ2dwbG90KHNjb3QpICtcbiAgZ2VvbV9zZihhZXMoZmlsbCA9IFNJUikpICtcbiAgY29vcmRfc2YoZGF0dW0gPSBOQSkgK1xuICAjIHNjYWxlX3hfY29udGludW91cyhleHBhbmQgPSBjKDAuNSwgMC41KSkgK1xuICBzY2FsZV9maWxsX3ZpcmlkaXMobmFtZSA9IFwiU0lSXCIpICtcbiAgZ2d0aXRsZShcIlN0YW5kYXJkaXNlZCBJbmNpZGVuY2UgUmF0aW8gKFNJUilcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxucDIgPC0gZ2dwbG90KHNjb3QpICtcbiAgZ2VvbV9zZihhZXMoZmlsbCA9IFJSX21lYW4pKSArXG4gIGNvb3JkX3NmKGRhdHVtID0gTkEpICtcbiAgIyBzY2FsZV94X2NvbnRpbnVvdXMoZXhwYW5kID0gYygwLjUsIDAuNSkpICtcbiAgc2NhbGVfZmlsbF92aXJpZGlzKG5hbWUgPSBcIlJlbGF0aXZlIFJpc2tcIikgK1xuICBnZ3RpdGxlKFwiUG9zdGVyaW9yIFJlbGF0aXZlIFJpc2sgKFJSKVwiKSArXG4gIHRoZW1lX21pbmltYWwoKVxuXG5wMSArIHAyIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6IiMgQ29tcHV0ZSByZWxhdGl2ZSByaXNrIGFuZCBpdHMgdW5jZXJ0YWludHlcbnNjb3QkUlJfbWVhbiA8LSBtb2RlbC5jYXIkX19fX19fIC8gc2NvdCRleHBlY3RlZFxuc2NvdCRSUl9zZCAgIDwtIGFwcGx5KG1vZGVsLmNhciRzYW1wbGVzJGZpdHRlZCwgMiwgc2QpIC8gc2NvdCRleHBlY3RlZFxuXG4jIENvbXB1dGUgU3RhbmRhcmRpc2VkIEluY2lkZW5jZSBSYXRpbyAoU0lSKVxuc2NvdCRTSVIgPC0gc2NvdCRjYXNlcyAvIHNjb3QkZXhwZWN0ZWRcblxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeSh2aXJpZGlzKVxuXG4jIFBsb3QgUmVsYXRpdmUgUmlzayAobWVhbilcbmdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBSUl9tZWFuKSkgK1xuICAjIGNvb3JkX3NmKGRhdHVtID0gTkEpICsgXG4gIHNjYWxlX3hfY29udGludW91cyhleHBhbmQgPSBjKDAuOCwgMC44KSkgK1xuICBzY2FsZV9maWxsX3ZpcmlkaXMob3B0aW9uID0gXCJDXCIsIG5hbWUgPSBcIlJlbGF0aXZlIFJpc2tcIikgK1xuICBnZ3RpdGxlKFwiUG9zdGVyaW9yIE1lYW4gb2YgUmVsYXRpdmUgUmlzayAoUlIpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5cbiMgUGxvdCBSUiBVbmNlcnRhaW50eSAoU0QpXG5nZ3Bsb3Qoc2NvdCkgK1xuICBnZW9tX3NmKGFlcyhmaWxsID0gUlJfc2QpKSArXG4gIHNjYWxlX3hfY29udGludW91cyhleHBhbmQgPSBjKDAuOCwgMC44KSkgK1xuICBzY2FsZV9maWxsX3ZpcmlkaXMob3B0aW9uID0gXCJBXCIsIG5hbWUgPSBcIlNEIG9mIFJSXCIpICtcbiAgZ2d0aXRsZShcIlBvc3RlcmlvciBVbmNlcnRhaW50eSAoU0QpIG9mIFJSXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5cbmxpYnJhcnkocGF0Y2h3b3JrKVxuXG5wMSA8LSBnZ3Bsb3Qoc2NvdCkgK1xuICBnZW9tX3NmKGFlcyhmaWxsID0gU0lSKSkgK1xuICBjb29yZF9zZihkYXR1bSA9IE5BKSArXG4gICMgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC41LCAwLjUpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhuYW1lID0gXCJTSVJcIikgK1xuICBnZ3RpdGxlKFwiU3RhbmRhcmRpc2VkIEluY2lkZW5jZSBSYXRpbyAoU0lSKVwiKSArXG4gIHRoZW1lX21pbmltYWwoKVxuXG5wMiA8LSBnZ3Bsb3Qoc2NvdCkgK1xuICBnZW9tX3NmKGFlcyhmaWxsID0gUlJfbWVhbikpICtcbiAgY29vcmRfc2YoZGF0dW0gPSBOQSkgK1xuICAjIHNjYWxlX3hfY29udGludW91cyhleHBhbmQgPSBjKDAuNSwgMC41KSkgK1xuICBzY2FsZV9maWxsX3ZpcmlkaXMobmFtZSA9IFwiUmVsYXRpdmUgUmlza1wiKSArXG4gIGdndGl0bGUoXCJQb3N0ZXJpb3IgUmVsYXRpdmUgUmlzayAoUlIpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5cbnAxICsgcDIifQ==
 </script>
 </div>
 </div>
@@ -569,13 +571,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIj
 <span id="interpolate-11-6"><a href="#interpolate-11-6" aria-hidden="true" tabindex="-1"></a>expected counts are small and the raw SIR is therefore noisiest.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The smoothed relative risk, and its uncertainty, mapped.</p>
 <p>Compare the smoothed map with the raw SIR map from week 9. The counties that move most are those with <strong>small expected counts</strong>: where the data are weak, the CAR prior pulls the estimate towards the neighbourhood average; where the data are strong, the likelihood dominates and the estimate barely moves.</p>
 <p>That is borrowing strength, and it is the same idea as BLUP shrinkage in week 3 — a compromise between what one unit’s own data say and what its neighbours say, weighted by how much information the unit provides.</p>
 <p>The uncertainty map matters as much as the estimate map. A relative risk of 1.9 means something quite different with a narrow posterior than with a wide one.</p>
 </div>
+</details>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
@@ -586,13 +590,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIj
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShDQVJCYXllcylcbmxpYnJhcnkoc3BkZXApXG5saWJyYXJ5KHNmKVxuc2NvdCA8LSBzY290bGFuZF9saXBcblcubmIgPC0gcG9seTJuYihzY290LCByb3cubmFtZXMgPSBzY290JGNvdW50eSwgc25hcCA9IDIwMDAwMClcblcgPC0gbmIybWF0KFcubmIsIHN0eWxlID0gXCJCXCIpXG5tb2RlbC5jYXIgPC0gUy5DQVJsZXJvdXgoZm9ybXVsYT0gY2FzZXMgfiBhZmYgKyBvZmZzZXQobG9nKGV4cGVjdGVkKSksIGZhbWlseT1cInBvaXNzb25cIixcbiBkYXRhPXNjb3QsXG5XPVcsIHJobz0wLCBidXJuaW49MjAwMCwgbi5zYW1wbGU9MTAwMDAsIHRoaW49OCxcbnZlcmJvc2U9RkFMU0UpXG4jIENvbXB1dGUgcmVsYXRpdmUgcmlzayBhbmQgaXRzIHVuY2VydGFpbnR5XG5zY290JFJSX21lYW4gPC0gbW9kZWwuY2FyJGZpdHRlZC52YWx1ZXMgLyBzY290JGV4cGVjdGVkXG5zY290JFJSX3NkICAgPC0gYXBwbHkobW9kZWwuY2FyJHNhbXBsZXMkZml0dGVkLCAyLCBzZCkgLyBzY290JGV4cGVjdGVkXG5cbiMgQ29tcHV0ZSBTdGFuZGFyZGlzZWQgSW5jaWRlbmNlIFJhdGlvIChTSVIpXG5zY290JFNJUiA8LSBzY290JGNhc2VzIC8gc2NvdCRleHBlY3RlZFxuXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KHZpcmlkaXMpXG5cbiMgUGxvdCBSZWxhdGl2ZSBSaXNrIChtZWFuKVxuZ2dwbG90KHNjb3QpICtcbiAgZ2VvbV9zZihhZXMoZmlsbCA9IFJSX21lYW4pKSArXG4gICMgY29vcmRfc2YoZGF0dW0gPSBOQSkgKyBcbiAgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC44LCAwLjgpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhvcHRpb24gPSBcIkNcIiwgbmFtZSA9IFwiUmVsYXRpdmUgUmlza1wiKSArXG4gIGdndGl0bGUoXCJQb3N0ZXJpb3IgTWVhbiBvZiBSZWxhdGl2ZSBSaXNrIChSUilcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxuIyBQbG90IFJSIFVuY2VydGFpbnR5IChTRClcbmdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBSUl9zZCkpICtcbiAgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC44LCAwLjgpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhvcHRpb24gPSBcIkFcIiwgbmFtZSA9IFwiU0Qgb2YgUlJcIikgK1xuICBnZ3RpdGxlKFwiUG9zdGVyaW9yIFVuY2VydGFpbnR5IChTRCkgb2YgUlJcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxubGlicmFyeShwYXRjaHdvcmspXG5cbnAxIDwtIGdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBTSVIpKSArXG4gIGNvb3JkX3NmKGRhdHVtID0gTkEpICtcbiAgIyBzY2FsZV94X2NvbnRpbnVvdXMoZXhwYW5kID0gYygwLjUsIDAuNSkpICtcbiAgc2NhbGVfZmlsbF92aXJpZGlzKG5hbWUgPSBcIlNJUlwiKSArXG4gIGdndGl0bGUoXCJTdGFuZGFyZGlzZWQgSW5jaWRlbmNlIFJhdGlvIChTSVIpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5cbnAyIDwtIGdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBSUl9tZWFuKSkgK1xuICBjb29yZF9zZihkYXR1bSA9IE5BKSArXG4gICMgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC41LCAwLjUpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhuYW1lID0gXCJSZWxhdGl2ZSBSaXNrXCIpICtcbiAgZ2d0aXRsZShcIlBvc3RlcmlvciBSZWxhdGl2ZSBSaXNrIChSUilcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxucDEgKyBwMiJ9
 </script>
 </div>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-14" class="exercise-cell">
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -604,11 +608,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIi
 <span id="interpolate-16-4"><a href="#interpolate-16-4" aria-hidden="true" tabindex="-1"></a>point estimate, but how confident we are that risk is elevated.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The posterior probability that relative risk exceeds 2, computed by counting the proportion of posterior samples above 2 for each county.</p>
 <p>This is a more useful statement than a point estimate for anyone making a decision. “The estimated risk is 1.9” leaves open how confident we are; “<span class="math inline">\(P(\theta_i &gt; 2 \mid \text{data}) = 0.8\)</span>” answers the question directly. Being able to compute any functional of the posterior straight from the samples is one of the practical advantages of the Bayesian approach.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Fit another model where ( u_i ) is modeled using a Intrinsic Conditional Autoregressive (CAR) distribution</li>
 </ol>
@@ -617,13 +623,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShDQVJCYXllcylcbmxpYnJhcnkoc3BkZXApXG5saWJyYXJ5KHNmKVxuc2NvdCA8LSBzY290bGFuZF9saXBcblcubmIgPC0gcG9seTJuYihzY290LCByb3cubmFtZXMgPSBzY290JGNvdW50eSwgc25hcCA9IDIwMDAwMClcblcgPC0gbmIybWF0KFcubmIsIHN0eWxlID0gXCJCXCIpXG5tb2RlbC5jYXIgPC0gUy5DQVJsZXJvdXgoZm9ybXVsYT0gY2FzZXMgfiBhZmYgKyBvZmZzZXQobG9nKGV4cGVjdGVkKSksIGZhbWlseT1cInBvaXNzb25cIixcbiBkYXRhPXNjb3QsXG5XPVcsIHJobz0wLCBidXJuaW49MjAwMCwgbi5zYW1wbGU9MTAwMDAsIHRoaW49OCxcbnZlcmJvc2U9RkFMU0UpXG4jIENvbXB1dGUgcmVsYXRpdmUgcmlzayBhbmQgaXRzIHVuY2VydGFpbnR5XG5zY290JFJSX21lYW4gPC0gbW9kZWwuY2FyJGZpdHRlZC52YWx1ZXMgLyBzY290JGV4cGVjdGVkXG5zY290JFJSX3NkICAgPC0gYXBwbHkobW9kZWwuY2FyJHNhbXBsZXMkZml0dGVkLCAyLCBzZCkgLyBzY290JGV4cGVjdGVkXG5cbiMgQ29tcHV0ZSBTdGFuZGFyZGlzZWQgSW5jaWRlbmNlIFJhdGlvIChTSVIpXG5zY290JFNJUiA8LSBzY290JGNhc2VzIC8gc2NvdCRleHBlY3RlZFxuXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KHZpcmlkaXMpXG5cbiMgUGxvdCBSZWxhdGl2ZSBSaXNrIChtZWFuKVxuZ2dwbG90KHNjb3QpICtcbiAgZ2VvbV9zZihhZXMoZmlsbCA9IFJSX21lYW4pKSArXG4gICMgY29vcmRfc2YoZGF0dW0gPSBOQSkgKyBcbiAgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC44LCAwLjgpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhvcHRpb24gPSBcIkNcIiwgbmFtZSA9IFwiUmVsYXRpdmUgUmlza1wiKSArXG4gIGdndGl0bGUoXCJQb3N0ZXJpb3IgTWVhbiBvZiBSZWxhdGl2ZSBSaXNrIChSUilcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxuIyBQbG90IFJSIFVuY2VydGFpbnR5IChTRClcbmdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBSUl9zZCkpICtcbiAgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC44LCAwLjgpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhvcHRpb24gPSBcIkFcIiwgbmFtZSA9IFwiU0Qgb2YgUlJcIikgK1xuICBnZ3RpdGxlKFwiUG9zdGVyaW9yIFVuY2VydGFpbnR5IChTRCkgb2YgUlJcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxubGlicmFyeShwYXRjaHdvcmspXG5cbnAxIDwtIGdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBTSVIpKSArXG4gIGNvb3JkX3NmKGRhdHVtID0gTkEpICtcbiAgIyBzY2FsZV94X2NvbnRpbnVvdXMoZXhwYW5kID0gYygwLjUsIDAuNSkpICtcbiAgc2NhbGVfZmlsbF92aXJpZGlzKG5hbWUgPSBcIlNJUlwiKSArXG4gIGdndGl0bGUoXCJTdGFuZGFyZGlzZWQgSW5jaWRlbmNlIFJhdGlvIChTSVIpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5cbnAyIDwtIGdncGxvdChzY290KSArXG4gIGdlb21fc2YoYWVzKGZpbGwgPSBSUl9tZWFuKSkgK1xuICBjb29yZF9zZihkYXR1bSA9IE5BKSArXG4gICMgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC41LCAwLjUpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhuYW1lID0gXCJSZWxhdGl2ZSBSaXNrXCIpICtcbiAgZ2d0aXRsZShcIlBvc3RlcmlvciBSZWxhdGl2ZSBSaXNrIChSUilcIikgK1xuICB0aGVtZV9taW5pbWFsKClcblxucDEgKyBwMlxuIyBFeHRyYWN0IHBvc3RlcmlvciBzYW1wbGVzIG9mIGZpdHRlZCB2YWx1ZXMgKG11X2kpXG5maXR0ZWRfc2FtcGxlcyA8LSBtb2RlbC5jYXIkc2FtcGxlcyRmaXR0ZWQgICMgbWF0cml4OiBzYW1wbGVzIHggYXJlYXNcblxuIyBDb252ZXJ0IHRvIHBvc3RlcmlvciBzYW1wbGVzIG9mIHJlbGF0aXZlIHJpc2tcblJSX3NhbXBsZXMgPC0gZml0dGVkX3NhbXBsZXMgLyBtYXRyaXgoc2NvdCRleHBlY3RlZCwgbnJvdyA9IG5yb3coZml0dGVkX3NhbXBsZXMpLCBuY29sID0gbGVuZ3RoKHNjb3QkZXhwZWN0ZWQpLCBieXJvdyA9IFRSVUUpXG5cbiMgRm9yIGVhY2ggYXJlYSwgY2FsY3VsYXRlIFAoUlIgPiAyKVxuc2NvdCRSUl9ndDIgPC0gYXBwbHkoUlJfc2FtcGxlcywgMiwgZnVuY3Rpb24oeCkgbWVhbih4ID4gMikpXG5cbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkodmlyaWRpcylcblxuZ2dwbG90KHNjb3QpICtcbiAgZ2VvbV9zZihhZXMoZmlsbCA9IFJSX2d0MikpICtcbiAgc2NhbGVfeF9jb250aW51b3VzKGV4cGFuZCA9IGMoMC44LCAwLjgpKSArXG4gIHNjYWxlX2ZpbGxfdmlyaWRpcyhuYW1lID0gXCJQKFJSID4gMilcIiwgbGltaXRzID0gYygwLCAxKSkgK1xuICBnZ3RpdGxlKFwiUG9zdGVyaW9yIFByb2JhYmlsaXR5IHRoYXQgUlIgPiAyXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-19" class="exercise-cell">
 
 </div>
 <script type="webr-19-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -634,11 +640,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiIi
 <span id="interpolate-21-3"><a href="#interpolate-21-3" aria-hidden="true" tabindex="-1"></a><span class="st">structure is entirely local, so it tends to smooth more.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The ICAR model fixes the spatial dependence parameter at its maximum, so all the area-level variation is assumed spatially structured.</p>
 <p>Compare its fitted risks with the Leroux model’s. ICAR generally smooths more, because it has no way to represent an area effect that is simply idiosyncratic. Leroux estimates the balance between structured and unstructured variation instead of assuming it, which is usually the safer default — but it is worth seeing what the stronger assumption does to the map.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week10">
 </div></section>
 <section id="week-10-complete" class="level2">

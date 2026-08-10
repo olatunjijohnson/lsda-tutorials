@@ -473,26 +473,26 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Imxp
 <li>Assess model goodness-of-fit.</li>
 </ul>
 <p>In this tutorial, we analyse the spatial distribution of nests of two ant species, Messor wasmanni and Cataglyphis bicolor, recorded at a site in northern Greece. The dataset <code>ants</code> from the <code>spatstat.data</code> package contains locations of 97 ant nests within a sampling window.. You can load the data using</p>
-<div class="cell" data-exercise="given01">
+<div class="cell" data-exercise="given01" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZ2l2ZW4wMSJ9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cykifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJnaXZlbjAxIn0sImNvZGUiOiJsaWJyYXJ5KHNwYXRzdGF0KVxubGlicmFyeShzcGF0c3RhdC5kYXRhKVxuZGF0YShhbnRzKSJ9
 </script>
 </div>
 </div>
 <ol type="1">
 <li>Visualize the ant nest spatial point pattern data from the spatstat.data package?</li>
 </ol>
-<div class="cell" data-exercise="q01">
+<div class="cell" data-exercise="q01" data-envir="lsda-session">
 <div>
 <div id="webr-5" class="exercise-cell">
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJsaWJyYXJ5KHNwYXRzdGF0KVxubGlicmFyeShzcGF0c3RhdC5kYXRhKVxuZGF0YShhbnRzKVxuXG5zdW1tYXJ5KGFudHMpXG5fX19fX18oYW50cywgbWFpbiA9IFwiU3BhdGlhbCBQb2ludCBQYXR0ZXJuIG9mIEFudCBOZXN0c1wiLCBcbiAgICAgY2V4ID0gMC44LCBwY2ggPSBjKDE2LCAxNyksIGNvbHMgPSBjKFwicmVkXCIsIFwiYmx1ZVwiKSlcbmxlZ2VuZChcInRvcHJpZ2h0XCIsIGxlZ2VuZCA9IGMoXCJDYXRhZ2x5cGhpc1wiLCBcIk1lc3NvclwiKSwgXG4gICAgICAgcGNoID0gYygxNiwgMTcpLCBjb2wgPSBjKFwicmVkXCIsIFwiYmx1ZVwiKSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDEifSwiY29kZSI6ImxpYnJhcnkoc3BhdHN0YXQpXG5saWJyYXJ5KHNwYXRzdGF0LmRhdGEpXG5kYXRhKGFudHMpXG5cbnN1bW1hcnkoYW50cylcbl9fX19fXyhhbnRzLCBtYWluID0gXCJTcGF0aWFsIFBvaW50IFBhdHRlcm4gb2YgQW50IE5lc3RzXCIsIFxuICAgICBjZXggPSAwLjgsIHBjaCA9IGMoMTYsIDE3KSwgY29scyA9IGMoXCJyZWRcIiwgXCJibHVlXCIpKVxubGVnZW5kKFwidG9wcmlnaHRcIiwgbGVnZW5kID0gYyhcIkNhdGFnbHlwaGlzXCIsIFwiTWVzc29yXCIpLCBcbiAgICAgICBwY2ggPSBjKDE2LCAxNyksIGNvbCA9IGMoXCJyZWRcIiwgXCJibHVlXCIpKSJ9
 </script>
 </div>
 </div>
@@ -504,11 +504,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 <span id="interpolate-7-4"><a href="#interpolate-7-4" aria-hidden="true" tabindex="-1"></a>it look clustered, regular, or neither?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q01" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q01">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The ant nest pattern, and the summary gives the window, the number of points and the average intensity.</p>
 <p>Look at the plot and form an opinion before computing anything: does it look clustered, evenly spread, or neither? Point pattern analysis rewards having a prior expectation, because several of the statistics are easy to misread.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Perform exploratory data analysis on the point pattern, including quadrat counting and kernel intensity estimation?</li>
 </ol>
@@ -517,13 +519,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cykifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-10" class="exercise-cell">
 
 </div>
 <script type="webr-10-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJRIDwtIF9fX19fXyhhbnRzLCBueD01LCBueT01KVxucHJpbnQoUSlcbnBsb3QoYW50cywgbWFpbj1cIlF1YWRyYXQgQ291bnQgb2YgQW50IE5lc3RzXCIpXG5wbG90KFEsIGFkZD1UUlVFLCBjb2w9XCJyZWRcIilcblxubGFtYmRhX2hhdCA8LSBfX19fX18oYW50cywgYncuZGlnZ2xlKVxucGxvdChsYW1iZGFfaGF0LCBtYWluPVwiS2VybmVsIEludGVuc2l0eSBFc3RpbWF0ZSBvZiBBbnQgTmVzdHNcIilcbnBsb3QoYW50cywgYWRkPVRSVUUsIHBjaD0xNiwgY2V4PTAuNSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6IlEgPC0gX19fX19fKGFudHMsIG54PTUsIG55PTUpXG5wcmludChRKVxucGxvdChhbnRzLCBtYWluPVwiUXVhZHJhdCBDb3VudCBvZiBBbnQgTmVzdHNcIilcbnBsb3QoUSwgYWRkPVRSVUUsIGNvbD1cInJlZFwiKVxuXG5sYW1iZGFfaGF0IDwtIF9fX19fXyhhbnRzLCBidy5kaWdnbGUpXG5wbG90KGxhbWJkYV9oYXQsIG1haW49XCJLZXJuZWwgSW50ZW5zaXR5IEVzdGltYXRlIG9mIEFudCBOZXN0c1wiKVxucGxvdChhbnRzLCBhZGQ9VFJVRSwgcGNoPTE2LCBjZXg9MC41KSJ9
 </script>
 </div>
 </div>
@@ -536,12 +538,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJR
 <span id="interpolate-12-5"><a href="#interpolate-12-5" aria-hidden="true" tabindex="-1"></a>structure away.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Two complementary views of the <strong>first-order</strong> structure — how the density of points varies across the window.</p>
 <p><strong>Quadrat counts</strong> are crude but directly testable. <strong>Kernel intensity</strong> is smooth and easier to look at, but the bandwidth is a choice: too small and you are looking at noise, too large and you smooth the structure away.</p>
 <p>Neither says anything about whether points interact with one another. That is second-order structure, and it comes later.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Fit spatial point process models to the data, starting with a homogeneous Poisson process and then extending to an inhomogeneous Poisson process with spatial covariates?</li>
 </ol>
@@ -550,13 +554,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJR
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cylcblxuUSA8LSBxdWFkcmF0Y291bnQoYW50cywgbng9NSwgbnk9NSlcblxubGFtYmRhX2hhdCA8LSBkZW5zaXR5KGFudHMsIGJ3LmRpZ2dsZSkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-15" class="exercise-cell">
 
 </div>
 <script type="webr-15-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJwcG1faG9tIDwtIF9fX19fXyhhbnRzLCB+X19fX19fKVxuc3VtbWFyeShwcG1faG9tKVxuXG5wcG1faW5ob20gPC0gcHBtKGFudHMsIH4gX19fX19fICsgX19fX19fKVxuc3VtbWFyeShwcG1faW5ob20pIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6InBwbV9ob20gPC0gX19fX19fKGFudHMsIH5fX19fX18pXG5zdW1tYXJ5KHBwbV9ob20pXG5cbnBwbV9pbmhvbSA8LSBwcG0oYW50cywgfiBfX19fX18gKyBfX19fX18pXG5zdW1tYXJ5KHBwbV9pbmhvbSkifQ==
 </script>
 </div>
 </div>
@@ -569,11 +573,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJw
 <span id="interpolate-17-5"><a href="#interpolate-17-5" aria-hidden="true" tabindex="-1"></a>intensity. Only the first<span class="sc">-</span>order structure has changed.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The homogeneous model assumes constant intensity; the inhomogeneous one lets the log intensity vary linearly across the window.</p>
 <p>Both are still Poisson processes, and this is the point students most often miss: in both, points are placed <strong>independently</strong> given the intensity. Only the first-order structure has changed. Neither model contains any interaction between points.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Assess the goodness-of-fit of the fitted models using quadrat tests?</li>
 </ol>
@@ -582,13 +588,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJw
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cylcblxuUSA8LSBxdWFkcmF0Y291bnQoYW50cywgbng9NSwgbnk9NSlcblxubGFtYmRhX2hhdCA8LSBkZW5zaXR5KGFudHMsIGJ3LmRpZ2dsZSlcbnBwbV9ob20gPC0gcHBtKGFudHMsIH4xKVxuXG5wcG1faW5ob20gPC0gcHBtKGFudHMsIH4geCArIHkpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-20" class="exercise-cell">
 
 </div>
 <script type="webr-20-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJfX19fX18oYW50cywgbng9NSwgbnk9NSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6Il9fX19fXyhhbnRzLCBueD01LCBueT01KSJ9
 </script>
 </div>
 </div>
@@ -600,12 +606,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJf
 <span id="interpolate-22-4"><a href="#interpolate-22-4" aria-hidden="true" tabindex="-1"></a>points.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>A small p-value says the homogeneous Poisson model does not fit.</p>
 <p>It does not say why. The test compares observed and expected counts per cell, so it responds to a varying intensity and to interaction between points in exactly the same way. To distinguish them you need the K-function — and even that needs care, as item 7 shows.</p>
 <p>Note also the warning about small expected counts: the chi-squared approximation is unreliable when quadrats contain few points, which is a reason to be cautious about the exact p-value rather than just the conclusion.</p>
 </div>
+</details>
 <ol start="5" type="1">
 <li>Analyze the second-order properties of the point pattern using the K-function, and interpret whether the pattern is clustered, regular, or random?</li>
 </ol>
@@ -614,13 +622,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJf
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cylcblxuUSA8LSBxdWFkcmF0Y291bnQoYW50cywgbng9NSwgbnk9NSlcblxubGFtYmRhX2hhdCA8LSBkZW5zaXR5KGFudHMsIGJ3LmRpZ2dsZSlcbnBwbV9ob20gPC0gcHBtKGFudHMsIH4xKVxuXG5wcG1faW5ob20gPC0gcHBtKGFudHMsIH4geCArIHkpXG5xdWFkcmF0LnRlc3QoYW50cywgbng9NSwgbnk9NSkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q05">
+<div class="cell" data-exercise="q05" data-envir="lsda-session">
 <div>
 <div id="webr-25" class="exercise-cell">
 
 </div>
 <script type="webr-25-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJwYXIobWZyb3cgPSBjKDEsIDIpKVxuXG4jIENvbXB1dGUgdGhlIEstZnVuY3Rpb24gd2l0aCBSaXBsZXkgY29ycmVjdGlvblxuS2MgPC0gS2VzdChhbnRzLCBjb3JyZWN0aW9uID0gXCJSaXBsZXlcIilcblxuIyBQbG90IHRoZSBlbnZlbG9wZSBvZiB0aGUgSy1mdW5jdGlvbiAoc2ltdWxhdGlvbnMgdW5kZXIgQ1NSKVxucGxvdChfX19fX18oYW50cywgX19fX19fLCBuc2ltID0gMTAwKSwgbWFpbiA9IFwiSyBmdW5jdGlvbiB3aXRoIEVudmVsb3BlXCIpXG5cbiMgUGxvdCB0aGUgY2VudGVyZWQgSy1mdW5jdGlvbiAoZGlmZmVyZW5jZSBiZXR3ZWVuIGVzdGltYXRlZCBhbmQgdGhlb3JldGljYWwgSylcbnBsb3QoS2MkciwgS2MkaXNvIC0gS2MkdGhlbywgdHlwZSA9IFwibFwiLCBcbiAgICAgeGxhYiA9IFwiRGlzdGFuY2UgclwiLCB5bGFiID0gXCJLKHIpIC0gQ1NSXCIsIG1haW4gPSBcIkRldmlhdGlvbiBmcm9tIENTUlwiKVxuYWJsaW5lKGggPSAwLCBsdHkgPSAyLCBjb2wgPSBcImdyYXk0MFwiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDUifSwiY29kZSI6InBhcihtZnJvdyA9IGMoMSwgMikpXG5cbiMgQ29tcHV0ZSB0aGUgSy1mdW5jdGlvbiB3aXRoIFJpcGxleSBjb3JyZWN0aW9uXG5LYyA8LSBLZXN0KGFudHMsIGNvcnJlY3Rpb24gPSBcIlJpcGxleVwiKVxuXG4jIFBsb3QgdGhlIGVudmVsb3BlIG9mIHRoZSBLLWZ1bmN0aW9uIChzaW11bGF0aW9ucyB1bmRlciBDU1IpXG5wbG90KF9fX19fXyhhbnRzLCBfX19fX18sIG5zaW0gPSAxMDApLCBtYWluID0gXCJLIGZ1bmN0aW9uIHdpdGggRW52ZWxvcGVcIilcblxuIyBQbG90IHRoZSBjZW50ZXJlZCBLLWZ1bmN0aW9uIChkaWZmZXJlbmNlIGJldHdlZW4gZXN0aW1hdGVkIGFuZCB0aGVvcmV0aWNhbCBLKVxucGxvdChLYyRyLCBLYyRpc28gLSBLYyR0aGVvLCB0eXBlID0gXCJsXCIsIFxuICAgICB4bGFiID0gXCJEaXN0YW5jZSByXCIsIHlsYWIgPSBcIksocikgLSBDU1JcIiwgbWFpbiA9IFwiRGV2aWF0aW9uIGZyb20gQ1NSXCIpXG5hYmxpbmUoaCA9IDAsIGx0eSA9IDIsIGNvbCA9IFwiZ3JheTQwXCIpIn0=
 </script>
 </div>
 </div>
@@ -632,11 +640,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJw
 <span id="interpolate-27-4"><a href="#interpolate-27-4" aria-hidden="true" tabindex="-1"></a><span class="st">compete for space, so think about which you would expect before you look.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q05" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Ripley’s K with a simulation envelope under complete spatial randomness.</p>
 <p>Above the theoretical curve suggests clustering, below suggests regularity or inhibition. For ant nests, competition for space and forage makes regularity the biologically plausible expectation.</p>
 </div>
+</details>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
@@ -647,13 +657,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJw
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cylcblxuUSA8LSBxdWFkcmF0Y291bnQoYW50cywgbng9NSwgbnk9NSlcblxubGFtYmRhX2hhdCA8LSBkZW5zaXR5KGFudHMsIGJ3LmRpZ2dsZSlcbnBwbV9ob20gPC0gcHBtKGFudHMsIH4xKVxuXG5wcG1faW5ob20gPC0gcHBtKGFudHMsIH4geCArIHkpXG5xdWFkcmF0LnRlc3QoYW50cywgbng9NSwgbnk9NSlcblxuIyBDb21wdXRlIHRoZSBLLWZ1bmN0aW9uIHdpdGggUmlwbGV5IGNvcnJlY3Rpb25cbktjIDwtIEtlc3QoYW50cywgY29ycmVjdGlvbiA9IFwiUmlwbGV5XCIpXG5cbiMgUGxvdCB0aGUgZW52ZWxvcGUgb2YgdGhlIEstZnVuY3Rpb24gKHNpbXVsYXRpb25zIHVuZGVyIENTUilcblxuIyBQbG90IHRoZSBjZW50ZXJlZCBLLWZ1bmN0aW9uIChkaWZmZXJlbmNlIGJldHdlZW4gZXN0aW1hdGVkIGFuZCB0aGVvcmV0aWNhbCBLKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q06">
+<div class="cell" data-exercise="q06" data-envir="lsda-session">
 <div>
 <div id="webr-30" class="exercise-cell">
 
 </div>
 <script type="webr-30-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDYifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -665,11 +675,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIi
 <span id="interpolate-32-4"><a href="#interpolate-32-4" aria-hidden="true" tabindex="-1"></a>a ridge or a hollow that a plane cannot.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q06" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q06">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The quadratic trend surface can capture a ridge or a hollow in intensity that a plane cannot. Compare with the linear fit by AIC.</p>
 <p>Be careful about what this shows: a better-fitting intensity surface tells you the points are unevenly distributed, not that they interact.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Simulate 99 point patterns from your best model and compare their envelope with the observed K-function using envelope().</li>
 </ol>
@@ -678,13 +690,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShzcGF0c3RhdClcbmxpYnJhcnkoc3BhdHN0YXQuZGF0YSlcbmRhdGEoYW50cylcblxuUSA8LSBxdWFkcmF0Y291bnQoYW50cywgbng9NSwgbnk9NSlcblxubGFtYmRhX2hhdCA8LSBkZW5zaXR5KGFudHMsIGJ3LmRpZ2dsZSlcbnBwbV9ob20gPC0gcHBtKGFudHMsIH4xKVxuXG5wcG1faW5ob20gPC0gcHBtKGFudHMsIH4geCArIHkpXG5xdWFkcmF0LnRlc3QoYW50cywgbng9NSwgbnk9NSlcblxuIyBDb21wdXRlIHRoZSBLLWZ1bmN0aW9uIHdpdGggUmlwbGV5IGNvcnJlY3Rpb25cbktjIDwtIEtlc3QoYW50cywgY29ycmVjdGlvbiA9IFwiUmlwbGV5XCIpXG5cbiMgUGxvdCB0aGUgZW52ZWxvcGUgb2YgdGhlIEstZnVuY3Rpb24gKHNpbXVsYXRpb25zIHVuZGVyIENTUilcblxuIyBQbG90IHRoZSBjZW50ZXJlZCBLLWZ1bmN0aW9uIChkaWZmZXJlbmNlIGJldHdlZW4gZXN0aW1hdGVkIGFuZCB0aGVvcmV0aWNhbCBLKVxucHBtX3F1YWQgPC0gcHBtKGFudHMsIH4geCArIHkgKyBJKHheMikgKyBJKHleMikpXG5cbkFJQyhwcG1faW5ob20pXG5BSUMocHBtX3F1YWQpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q07">
+<div class="cell" data-exercise="q07" data-envir="lsda-session">
 <div>
 <div id="webr-35" class="exercise-cell">
 
 </div>
 <script type="webr-35-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDcifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -698,13 +710,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiIi
 <span id="interpolate-37-6"><a href="#interpolate-37-6" aria-hidden="true" tabindex="-1"></a>apparent clustering.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q07" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q07">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>This is the sharpest idea in the week.</p>
 <p>The envelope is now simulated from the <strong>fitted inhomogeneous model</strong> rather than from complete spatial randomness. That changes the question from “are these points arranged as if uniform and independent?” to “is there anything left once the trend is accounted for?”.</p>
 <p>It matters because a varying intensity alone produces more close pairs than CSR predicts, and so makes an independent pattern look clustered. Comparing against CSR confounds first-order and second-order structure. If the observed K now sits inside the envelope, the apparent clustering was inhomogeneity all along.</p>
 <p>This confounding is the most common real error in point pattern analysis, and it is worth remembering well beyond this course.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week11">
 </div></section>
 <section id="week-11-complete" class="level2">

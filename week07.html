@@ -505,13 +505,13 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Imxp
 <ol type="1">
 <li>Load the <code>galicia</code> dataset from the course package and check the columns of the data and ensure that you understand what each column means.</li>
 </ol>
-<div class="cell" data-exercise="q01">
+<div class="cell" data-exercise="q01" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDEifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -522,10 +522,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiIi
 <span id="interpolate-6-3"><a href="#interpolate-6-3" aria-hidden="true" tabindex="-1"></a>modelling the log, not the raw concentration.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q01" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q01">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Five columns: the lead concentration, its logarithm, the two coordinates and PM10. You will model <code>loglead</code> rather than <code>lead</code>, because concentrations are positive and right-skewed, and the Gaussian process the model assumes is symmetric and unbounded.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Map the lead concentration and comment on the design.</li>
 </ol>
@@ -534,13 +536,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIGxpYnJhcmllc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHNmKVxubGlicmFyeSh0bWFwKVxubGlicmFyeShSaXNrTWFwKVxuXG4jIExvYWQgdGhlIGRhdGFcblxuIyBWaWV3IHRoZSBmaXJzdCBmZXcgcm93cyJ9
 </script>
 </div>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIjIENyZWF0ZSBhIHNwYXRpYWwgb2JqZWN0XG5nYWxpY2lhX3NmIDwtIF9fX19fXyhnYWxpY2lhLCBjb29yZHMgPSBjKFwiX19fX19fXCIsIFwiX19fX19fXCIpLCBjcnM9IF9fX19fXylcblxuIyBNYXAgdGhlIGxlYWQgY29uY2VudHJhdGlvblxudG1fc2hhcGUoZ2FsaWNpYV9zZikgK1xuICB0bV9zeW1ib2xzKGNvbCA9IFwibGVhZFwiLCBwYWxldHRlID0gXCJ2aXJpZGlzXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLFxuICAgICAgICAgICAgIHRpdGxlLmNvbCA9IFwiTGVhZCBjb25jLlwiKSArXG4gIHRtX2xheW91dCh0aXRsZSA9IFwiXCIpXG5cbmdncGxvdCgpICtcbiAgZ2VvbV9zZihkYXRhID0gZ2FsaWNpYV9zZiwgYWVzKGNvbG9yID0gbGVhZCksIHNpemUgPSAyKSArXG4gIHNjYWxlX2NvbG9yX3ZpcmlkaXNfYyhvcHRpb24gPSBcIkNcIikgK1xuICBsYWJzKHRpdGxlID0gXCJMZWFkIENvbmNlbnRyYXRpb24gaW4gR2FsaWNpYVwiLCBjb2xvciA9IFwiTGVhZFwiKSArXG4gIHRoZW1lX21pbmltYWwoKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6IiMgQ3JlYXRlIGEgc3BhdGlhbCBvYmplY3RcbmdhbGljaWFfc2YgPC0gX19fX19fKGdhbGljaWEsIGNvb3JkcyA9IGMoXCJfX19fX19cIiwgXCJfX19fX19cIiksIGNycz0gX19fX19fKVxuXG4jIE1hcCB0aGUgbGVhZCBjb25jZW50cmF0aW9uXG50bV9zaGFwZShnYWxpY2lhX3NmKSArXG4gIHRtX3N5bWJvbHMoY29sID0gXCJsZWFkXCIsIHBhbGV0dGUgPSBcInZpcmlkaXNcIiwgc3R5bGUgPSBcInF1YW50aWxlXCIsXG4gICAgICAgICAgICAgdGl0bGUuY29sID0gXCJMZWFkIGNvbmMuXCIpICtcbiAgdG1fbGF5b3V0KHRpdGxlID0gXCJcIilcblxuZ2dwbG90KCkgK1xuICBnZW9tX3NmKGRhdGEgPSBnYWxpY2lhX3NmLCBhZXMoY29sb3IgPSBsZWFkKSwgc2l6ZSA9IDIpICtcbiAgc2NhbGVfY29sb3JfdmlyaWRpc19jKG9wdGlvbiA9IFwiQ1wiKSArXG4gIGxhYnModGl0bGUgPSBcIkxlYWQgQ29uY2VudHJhdGlvbiBpbiBHYWxpY2lhXCIsIGNvbG9yID0gXCJMZWFkXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
 </div>
@@ -553,11 +555,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIj
 <span id="interpolate-11-5"><a href="#interpolate-11-5" aria-hidden="true" tabindex="-1"></a>design regular, clustered, or opportunistic? That governs what you can estimate.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The map shows where the 132 stations are, and this is worth more than a moment’s attention. The design determines what the data can support: sparse regions will have wide prediction intervals in week 8, and the near-absence of closely spaced pairs is exactly why the nugget turns out to be unidentifiable there.</p>
 <p>Design is not a detail you inherit — if you were planning this survey, this map is what you would be choosing.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Plot the scatter plot of the log of the lead concentration and PM10 . Is there any substantial association between the variables?</li>
 </ol>
@@ -566,13 +570,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIj
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIGxpYnJhcmllc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHNmKVxubGlicmFyeSh0bWFwKVxubGlicmFyeShSaXNrTWFwKVxuXG4jIExvYWQgdGhlIGRhdGFcblxuIyBWaWV3IHRoZSBmaXJzdCBmZXcgcm93c1xuIyBDcmVhdGUgYSBzcGF0aWFsIG9iamVjdFxuZ2FsaWNpYV9zZiA8LSBzdF9hc19zZihnYWxpY2lhLCBjb29yZHMgPSBjKFwibG9uZ1wiLCBcImxhdFwiKSwgY3JzPSA0MzI2KVxuXG4jIE1hcCB0aGUgbGVhZCBjb25jZW50cmF0aW9uXG4gIHRtX3N5bWJvbHMoY29sID0gXCJsZWFkXCIsIHBhbGV0dGUgPSBcInZpcmlkaXNcIiwgc3R5bGUgPSBcInF1YW50aWxlXCIsXG4gICAgICAgICAgICAgdGl0bGUuY29sID0gXCJMZWFkIGNvbmMuXCIpICtcbiAgdG1fbGF5b3V0KHRpdGxlID0gXCJcIilcblxuZ2dwbG90KCkgK1xuICBnZW9tX3NmKGRhdGEgPSBnYWxpY2lhX3NmLCBhZXMoY29sb3IgPSBsZWFkKSwgc2l6ZSA9IDIpICtcbiAgc2NhbGVfY29sb3JfdmlyaWRpc19jKG9wdGlvbiA9IFwiQ1wiKSArXG4gIGxhYnModGl0bGUgPSBcIkxlYWQgQ29uY2VudHJhdGlvbiBpbiBHYWxpY2lhXCIsIGNvbG9yID0gXCJMZWFkXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-14" class="exercise-cell">
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -583,11 +587,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIi
 <span id="interpolate-16-3"><a href="#interpolate-16-3" aria-hidden="true" tabindex="-1"></a>be surprising.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>A positive association, which is unsurprising: lead deposition and PM10 are both products of traffic and industry, so they share their sources.</p>
 <p>This matters for the next item. Because PM10 is itself spatially organised, some of what looks like spatial correlation in lead may simply be the effect of PM10. The variogram has to be computed after removing it.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Construct a variogram for residual <span class="math inline">\(\hat{Z}\)</span> from <span class="math display">\[Y_i = \beta_0 + \beta_1 d(x_i) + Z_i,\]</span> where <span class="math inline">\(Y_i\)</span> is the log-lead concentration and <span class="math inline">\(d(x)\)</span> is the PM<span class="math inline">\(_{10}\)</span>. Is there evidence of spatial correlation?</li>
 </ol>
@@ -596,13 +602,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIGxpYnJhcmllc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHNmKVxubGlicmFyeSh0bWFwKVxubGlicmFyeShSaXNrTWFwKVxuXG4jIExvYWQgdGhlIGRhdGFcblxuIyBWaWV3IHRoZSBmaXJzdCBmZXcgcm93c1xuIyBDcmVhdGUgYSBzcGF0aWFsIG9iamVjdFxuZ2FsaWNpYV9zZiA8LSBzdF9hc19zZihnYWxpY2lhLCBjb29yZHMgPSBjKFwibG9uZ1wiLCBcImxhdFwiKSwgY3JzPSA0MzI2KVxuXG4jIE1hcCB0aGUgbGVhZCBjb25jZW50cmF0aW9uXG4gIHRtX3N5bWJvbHMoY29sID0gXCJsZWFkXCIsIHBhbGV0dGUgPSBcInZpcmlkaXNcIiwgc3R5bGUgPSBcInF1YW50aWxlXCIsXG4gICAgICAgICAgICAgdGl0bGUuY29sID0gXCJMZWFkIGNvbmMuXCIpICtcbiAgdG1fbGF5b3V0KHRpdGxlID0gXCJcIilcblxuZ2dwbG90KCkgK1xuICBnZW9tX3NmKGRhdGEgPSBnYWxpY2lhX3NmLCBhZXMoY29sb3IgPSBsZWFkKSwgc2l6ZSA9IDIpICtcbiAgc2NhbGVfY29sb3JfdmlyaWRpc19jKG9wdGlvbiA9IFwiQ1wiKSArXG4gIGxhYnModGl0bGUgPSBcIkxlYWQgQ29uY2VudHJhdGlvbiBpbiBHYWxpY2lhXCIsIGNvbG9yID0gXCJMZWFkXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5nZ3Bsb3QoZ2FsaWNpYSwgYWVzKHggPSBwbTEwLCB5ID0gbG9nbGVhZCkpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IEZBTFNFKSArXG4gIGxhYnModGl0bGUgPSBcIlNjYXR0ZXJwbG90IG9mIGxvZyhsZWFkKSB2cyBQTTEwXCIsIHggPSBcIlBNMTBcIiwgeSA9IFwiTG9nKExlYWQpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-19" class="exercise-cell">
 
 </div>
 <script type="webr-19-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJsbTEgPC0gX19fX19fKGxvZ2xlYWQgfiBfX19fX18sIGRhdGEgPSBnYWxpY2lhKVxuZ2FsaWNpYV9zZiRyZXNpZCA8LSBfX19fX18obG0xKVxuXG5jcnNfZ2FsaWNpYSA8LSBwcm9wb3NlX3V0bShnYWxpY2lhX3NmKVxuZ2FsaWNpYV9zZiA8LSBzdF90cmFuc2Zvcm0oZ2FsaWNpYV9zZiwgY3JzID0gY3JzX2dhbGljaWEpXG5cbmdhbGljaWFfdmFyaW9nIDwtIHNfdmFyaW9ncmFtKGRhdGEgPSBnYWxpY2lhX3NmLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFyaWFibGUgPSBcInJlc2lkXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzY2FsZV90b19rbSA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuX3Blcm11dGF0aW9uID0gMTAwMClcblxucGxvdF9zX3ZhcmlvZ3JhbShnYWxpY2lhX3ZhcmlvZylcblxuXG5wbG90X3NfdmFyaW9ncmFtKGdhbGljaWFfdmFyaW9nLFxuICAgICAgICAgICAgICAgICBwbG90X2VudmVsb3BlID0gVFJVRSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6ImxtMSA8LSBfX19fX18obG9nbGVhZCB+IF9fX19fXywgZGF0YSA9IGdhbGljaWEpXG5nYWxpY2lhX3NmJHJlc2lkIDwtIF9fX19fXyhsbTEpXG5cbmNyc19nYWxpY2lhIDwtIHByb3Bvc2VfdXRtKGdhbGljaWFfc2YpXG5nYWxpY2lhX3NmIDwtIHN0X3RyYW5zZm9ybShnYWxpY2lhX3NmLCBjcnMgPSBjcnNfZ2FsaWNpYSlcblxuZ2FsaWNpYV92YXJpb2cgPC0gc192YXJpb2dyYW0oZGF0YSA9IGdhbGljaWFfc2YsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXJpYWJsZSA9IFwicmVzaWRcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNjYWxlX3RvX2ttID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG5fcGVybXV0YXRpb24gPSAxMDAwKVxuXG5wbG90X3NfdmFyaW9ncmFtKGdhbGljaWFfdmFyaW9nKVxuXG5cbnBsb3Rfc192YXJpb2dyYW0oZ2FsaWNpYV92YXJpb2csXG4gICAgICAgICAgICAgICAgIHBsb3RfZW52ZWxvcGUgPSBUUlVFKSJ9
 </script>
 </div>
 </div>
@@ -614,12 +620,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJs
 <span id="interpolate-21-4"><a href="#interpolate-21-4" aria-hidden="true" tabindex="-1"></a>Add a Monte Carlo envelope so you can judge whether the shape is more than noise.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The variogram is built from the <strong>residuals</strong> of the model with the covariate, not from the raw response. That is deliberate: the variogram assumes a constant mean, and any trend left in the data shows up as increasing dissimilarity with distance and imitates spatial correlation.</p>
 <p>Read the shape. It rises from near the origin and flattens out, which is the signature of spatial correlation: nearby residuals are alike, distant ones are not. Where it flattens is roughly the range; the height at which it flattens is the sill.</p>
 <p>The observed curve falls outside the shaded envelope at short distances. Since the envelope is what you would see if location carried no information, that is evidence of genuine residual spatial structure — and the reason to fit a geostatistical model in week 8 rather than stopping at <code>lm</code>.</p>
 </div>
+</details>
 <ol start="5" type="1">
 <li>Remove the covariate and observe how the variogram changes. Is there any difference in the variogram and what does this imply?</li>
 </ol>
@@ -628,13 +636,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJs
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIGxpYnJhcmllc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHNmKVxubGlicmFyeSh0bWFwKVxubGlicmFyeShSaXNrTWFwKVxuXG4jIExvYWQgdGhlIGRhdGFcblxuIyBWaWV3IHRoZSBmaXJzdCBmZXcgcm93c1xuIyBDcmVhdGUgYSBzcGF0aWFsIG9iamVjdFxuZ2FsaWNpYV9zZiA8LSBzdF9hc19zZihnYWxpY2lhLCBjb29yZHMgPSBjKFwibG9uZ1wiLCBcImxhdFwiKSwgY3JzPSA0MzI2KVxuXG4jIE1hcCB0aGUgbGVhZCBjb25jZW50cmF0aW9uXG4gIHRtX3N5bWJvbHMoY29sID0gXCJsZWFkXCIsIHBhbGV0dGUgPSBcInZpcmlkaXNcIiwgc3R5bGUgPSBcInF1YW50aWxlXCIsXG4gICAgICAgICAgICAgdGl0bGUuY29sID0gXCJMZWFkIGNvbmMuXCIpICtcbiAgdG1fbGF5b3V0KHRpdGxlID0gXCJcIilcblxuZ2dwbG90KCkgK1xuICBnZW9tX3NmKGRhdGEgPSBnYWxpY2lhX3NmLCBhZXMoY29sb3IgPSBsZWFkKSwgc2l6ZSA9IDIpICtcbiAgc2NhbGVfY29sb3JfdmlyaWRpc19jKG9wdGlvbiA9IFwiQ1wiKSArXG4gIGxhYnModGl0bGUgPSBcIkxlYWQgQ29uY2VudHJhdGlvbiBpbiBHYWxpY2lhXCIsIGNvbG9yID0gXCJMZWFkXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5nZ3Bsb3QoZ2FsaWNpYSwgYWVzKHggPSBwbTEwLCB5ID0gbG9nbGVhZCkpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IEZBTFNFKSArXG4gIGxhYnModGl0bGUgPSBcIlNjYXR0ZXJwbG90IG9mIGxvZyhsZWFkKSB2cyBQTTEwXCIsIHggPSBcIlBNMTBcIiwgeSA9IFwiTG9nKExlYWQpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5sbTEgPC0gbG0obG9nbGVhZCB+IHBtMTAsIGRhdGEgPSBnYWxpY2lhKVxuZ2FsaWNpYV9zZiRyZXNpZCA8LSByZXNpZHVhbHMobG0xKVxuXG5jcnNfZ2FsaWNpYSA8LSBwcm9wb3NlX3V0bShnYWxpY2lhX3NmKVxuZ2FsaWNpYV9zZiA8LSBzdF90cmFuc2Zvcm0oZ2FsaWNpYV9zZiwgY3JzID0gY3JzX2dhbGljaWEpXG5cbmdhbGljaWFfdmFyaW9nIDwtIHNfdmFyaW9ncmFtKGRhdGEgPSBnYWxpY2lhX3NmLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFyaWFibGUgPSBcInJlc2lkXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzY2FsZV90b19rbSA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuX3Blcm11dGF0aW9uID0gMTAwMCkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q05">
+<div class="cell" data-exercise="q05" data-envir="lsda-session">
 <div>
 <div id="webr-24" class="exercise-cell">
 
 </div>
 <script type="webr-24-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJsbTIgPC0gbG0obG9nbGVhZCB+IF9fX19fXywgZGF0YSA9IGdhbGljaWEpXG5nYWxpY2lhX3NmJHJlc2lkMiA8LSByZXNpZHVhbHMobG0yKVxuXG5nYWxpY2lhX3ZhcmlvZzIgPC0gc192YXJpb2dyYW0oZGF0YSA9IGdhbGljaWFfc2YsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXJpYWJsZSA9IFwicmVzaWQyXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzY2FsZV90b19rbSA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuX3Blcm11dGF0aW9uID0gMTAwMClcblxucGxvdF9zX3ZhcmlvZ3JhbShnYWxpY2lhX3ZhcmlvZzIpXG5cblxucGxvdF9zX3ZhcmlvZ3JhbShnYWxpY2lhX3ZhcmlvZzIsXG4gICAgICAgICAgICAgICAgIHBsb3RfZW52ZWxvcGUgPSBUUlVFKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDUifSwiY29kZSI6ImxtMiA8LSBsbShsb2dsZWFkIH4gX19fX19fLCBkYXRhID0gZ2FsaWNpYSlcbmdhbGljaWFfc2YkcmVzaWQyIDwtIHJlc2lkdWFscyhsbTIpXG5cbmdhbGljaWFfdmFyaW9nMiA8LSBzX3ZhcmlvZ3JhbShkYXRhID0gZ2FsaWNpYV9zZixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZhcmlhYmxlID0gXCJyZXNpZDJcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNjYWxlX3RvX2ttID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG5fcGVybXV0YXRpb24gPSAxMDAwKVxuXG5wbG90X3NfdmFyaW9ncmFtKGdhbGljaWFfdmFyaW9nMilcblxuXG5wbG90X3NfdmFyaW9ncmFtKGdhbGljaWFfdmFyaW9nMixcbiAgICAgICAgICAgICAgICAgcGxvdF9lbnZlbG9wZSA9IFRSVUUpIn0=
 </script>
 </div>
 </div>
@@ -646,11 +654,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJs
 <span id="interpolate-26-4"><a href="#interpolate-26-4" aria-hidden="true" tabindex="-1"></a>spatial correlation.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q05" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The same variogram with the covariate removed. It rises more steeply and further.</p>
 <p>That difference is the point. PM10 was explaining part of the variation that now appears as spatial correlation. Fit a model without it and the spatial process has to absorb that structure instead — which is precisely what happens to the estimated covariance parameters in week 8.</p>
 </div>
+</details>
 <ol start="6" type="1">
 <li>Perform a confirmatory test for the existence of spatial correlation using the Monte Carlo strategy. Can you confirm an existence of spatial correlation? Is there any effect of the number of permutation on your conclusion?</li>
 </ol>
@@ -659,13 +669,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJs
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIGxpYnJhcmllc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHNmKVxubGlicmFyeSh0bWFwKVxubGlicmFyeShSaXNrTWFwKVxuXG4jIExvYWQgdGhlIGRhdGFcblxuIyBWaWV3IHRoZSBmaXJzdCBmZXcgcm93c1xuIyBDcmVhdGUgYSBzcGF0aWFsIG9iamVjdFxuZ2FsaWNpYV9zZiA8LSBzdF9hc19zZihnYWxpY2lhLCBjb29yZHMgPSBjKFwibG9uZ1wiLCBcImxhdFwiKSwgY3JzPSA0MzI2KVxuXG4jIE1hcCB0aGUgbGVhZCBjb25jZW50cmF0aW9uXG4gIHRtX3N5bWJvbHMoY29sID0gXCJsZWFkXCIsIHBhbGV0dGUgPSBcInZpcmlkaXNcIiwgc3R5bGUgPSBcInF1YW50aWxlXCIsXG4gICAgICAgICAgICAgdGl0bGUuY29sID0gXCJMZWFkIGNvbmMuXCIpICtcbiAgdG1fbGF5b3V0KHRpdGxlID0gXCJcIilcblxuZ2dwbG90KCkgK1xuICBnZW9tX3NmKGRhdGEgPSBnYWxpY2lhX3NmLCBhZXMoY29sb3IgPSBsZWFkKSwgc2l6ZSA9IDIpICtcbiAgc2NhbGVfY29sb3JfdmlyaWRpc19jKG9wdGlvbiA9IFwiQ1wiKSArXG4gIGxhYnModGl0bGUgPSBcIkxlYWQgQ29uY2VudHJhdGlvbiBpbiBHYWxpY2lhXCIsIGNvbG9yID0gXCJMZWFkXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5nZ3Bsb3QoZ2FsaWNpYSwgYWVzKHggPSBwbTEwLCB5ID0gbG9nbGVhZCkpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IEZBTFNFKSArXG4gIGxhYnModGl0bGUgPSBcIlNjYXR0ZXJwbG90IG9mIGxvZyhsZWFkKSB2cyBQTTEwXCIsIHggPSBcIlBNMTBcIiwgeSA9IFwiTG9nKExlYWQpXCIpICtcbiAgdGhlbWVfbWluaW1hbCgpXG5sbTEgPC0gbG0obG9nbGVhZCB+IHBtMTAsIGRhdGEgPSBnYWxpY2lhKVxuZ2FsaWNpYV9zZiRyZXNpZCA8LSByZXNpZHVhbHMobG0xKVxuXG5jcnNfZ2FsaWNpYSA8LSBwcm9wb3NlX3V0bShnYWxpY2lhX3NmKVxuZ2FsaWNpYV9zZiA8LSBzdF90cmFuc2Zvcm0oZ2FsaWNpYV9zZiwgY3JzID0gY3JzX2dhbGljaWEpXG5cbmdhbGljaWFfdmFyaW9nIDwtIHNfdmFyaW9ncmFtKGRhdGEgPSBnYWxpY2lhX3NmLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFyaWFibGUgPSBcInJlc2lkXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzY2FsZV90b19rbSA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuX3Blcm11dGF0aW9uID0gMTAwMClcblxuXG5cbmxtMiA8LSBsbShsb2dsZWFkIH4gMSwgZGF0YSA9IGdhbGljaWEpXG5nYWxpY2lhX3NmJHJlc2lkMiA8LSByZXNpZHVhbHMobG0yKVxuXG5nYWxpY2lhX3ZhcmlvZzIgPC0gc192YXJpb2dyYW0oZGF0YSA9IGdhbGljaWFfc2YsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXJpYWJsZSA9IFwicmVzaWQyXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzY2FsZV90b19rbSA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuX3Blcm11dGF0aW9uID0gMTAwMCkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q06">
+<div class="cell" data-exercise="q06" data-envir="lsda-session">
 <div>
 <div id="webr-29" class="exercise-cell">
 
 </div>
 <script type="webr-29-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDYifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -679,11 +689,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIi
 <span id="interpolate-31-6"><a href="#interpolate-31-6" aria-hidden="true" tabindex="-1"></a>your conclusion is.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q06" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q06">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Changing the number of permutations refines how finely the p-value is resolved — with 99 the smallest attainable is 0.01 — and reduces Monte Carlo noise, but it does not change the underlying evidence.</p>
 <p>If your conclusion flips between 99 and 999 permutations, that is informative in itself: the result is marginal and should be reported that way rather than presented as a finding.</p>
 </div>
+</details>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <p>Using the dataset named <code>loaloa</code>, Fit an appropriate model and examine the residual for the evidence of spatial correlation. This dataset is from Loaloa prevalence survey collected in Cameroon and some part of Nigeria. Hint: Repeat the task in question 1 to 6. To learn more about the data, read the readme file named “ReadMe_loaloa.txt”</p>

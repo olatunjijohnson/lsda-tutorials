@@ -499,13 +499,13 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Imxp
 <li><p>In R, use the function `lme(&nbsp;)’ to analyze the data by specifying <span class="math inline">\(\mathbf{G}\)</span> as general covariance structure and <span class="math inline">\(\mathbf{R}_i\)</span> as<br>
 </p></li>
 </ol>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJsaWJyYXJ5KG5sbWUpXG5kZyA8LSBfX19fX18obG9nZmV2MV9odCB+IGFnZSB8IGlkLCBkYXRhID0gZmV2MSlcblxuIyBDb21wYXJlIFJfaSBzdHJ1Y3R1cmVzIHdpdGggYSByYW5kb20gaW50ZXJjZXB0IG9ubHkuIEFkZGluZyBhIHJhbmRvbSBzbG9wZVxuIyBoZXJlIHN0b3BzIEFSKDEpIGFuZCBBUk1BKDEsMSkgY29udmVyZ2luZyAtLSBzZWUgdGhlIGV4cGxhbmF0aW9uIGJlbG93LlxuZml0X2luZCAgICA8LSBsbWUobG9nZmV2MV9odCB+IGFnZSwgcmFuZG9tID0gfiBfX19fX18gfCBpZCwgZGF0YSA9IGRnLCBtZXRob2QgPSBcIl9fX19fX1wiKVxuZml0X2NzICAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBfX19fX18oZm9ybSA9IH4gMSB8IGlkKSlcbmZpdF9hcjEgICAgPC0gdXBkYXRlKGZpdF9pbmQsIGNvcnJlbGF0aW9uID0gX19fX19fKGZvcm0gPSB+IDEgfCBpZCkpXG5maXRfYXJtYTExIDwtIHVwZGF0ZShmaXRfaW5kLCBjb3JyZWxhdGlvbiA9IF9fX19fXyhmb3JtID0gfiAxIHwgaWQsIHAgPSBfX19fX18sIHEgPSBfX19fX18pKVxuXG5yb3VuZChmaXhlZihmaXRfaW5kKSwgNClcbnJvdW5kKGZpeGVmKGZpdF9hcjEpLCA0KSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6ImxpYnJhcnkobmxtZSlcbmRnIDwtIF9fX19fXyhsb2dmZXYxX2h0IH4gYWdlIHwgaWQsIGRhdGEgPSBmZXYxKVxuXG4jIENvbXBhcmUgUl9pIHN0cnVjdHVyZXMgd2l0aCBhIHJhbmRvbSBpbnRlcmNlcHQgb25seS4gQWRkaW5nIGEgcmFuZG9tIHNsb3BlXG4jIGhlcmUgc3RvcHMgQVIoMSkgYW5kIEFSTUEoMSwxKSBjb252ZXJnaW5nIC0tIHNlZSB0aGUgZXhwbGFuYXRpb24gYmVsb3cuXG5maXRfaW5kICAgIDwtIGxtZShsb2dmZXYxX2h0IH4gYWdlLCByYW5kb20gPSB+IF9fX19fXyB8IGlkLCBkYXRhID0gZGcsIG1ldGhvZCA9IFwiX19fX19fXCIpXG5maXRfY3MgICAgIDwtIHVwZGF0ZShmaXRfaW5kLCBjb3JyZWxhdGlvbiA9IF9fX19fXyhmb3JtID0gfiAxIHwgaWQpKVxuZml0X2FyMSAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBfX19fX18oZm9ybSA9IH4gMSB8IGlkKSlcbmZpdF9hcm1hMTEgPC0gdXBkYXRlKGZpdF9pbmQsIGNvcnJlbGF0aW9uID0gX19fX19fKGZvcm0gPSB+IDEgfCBpZCwgcCA9IF9fX19fXywgcSA9IF9fX19fXykpXG5cbnJvdW5kKGZpeGVmKGZpdF9pbmQpLCA0KVxucm91bmQoZml4ZWYoZml0X2FyMSksIDQpIn0=
 </script>
 </div>
 </div>
@@ -521,12 +521,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJs
 <span id="interpolate-6-8"><a href="#interpolate-6-8" aria-hidden="true" tabindex="-1"></a>their fixed or covariance structure.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Four models differing only in <code>correlation</code>. <code>update()</code> avoids retyping the call, so the one thing that changes stays visible.</p>
 <p>The two sets of fixed effects printed at the end are almost identical. Changing the assumed error correlation barely moves the estimates; it moves the <em>standard errors</em>. That is the same lesson GEE makes explicit in week 5.</p>
 <p>One thing worth knowing, because it will bite you if you try it. The question specifies a random intercept <strong>and</strong> a random slope, but fitting <code>random = ~ age | id</code> together with <code>corAR1</code> or <code>corARMA</code> fails to converge on these data. That is not a bug in your code: a random slope already makes the marginal correlation change with the gap between visits, and AR(1) errors do the same thing, so the two compete to explain the same structure and the likelihood has no well-identified maximum. Comparing R_i structures with the simpler G, then choosing G afterwards, avoids the problem — which is exactly why the tutorial splits the selection into two stages.</p>
 </div>
+</details>
 <pre><code>2.1. independent covariance structure,\
 2.2. compound symmetry covariance structure,\
 2.3. AR(1) structure,\
@@ -537,13 +539,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJs
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShubG1lKVxuZGcgPC0gZ3JvdXBlZERhdGEobG9nZmV2MV9odCB+IGFnZSB8IGlkLCBkYXRhID0gZmV2MSlcblxuIyBDb21wYXJlIFJfaSBzdHJ1Y3R1cmVzIHdpdGggYSByYW5kb20gaW50ZXJjZXB0IG9ubHkuIEFkZGluZyBhIHJhbmRvbSBzbG9wZVxuIyBoZXJlIHN0b3BzIEFSKDEpIGFuZCBBUk1BKDEsMSkgY29udmVyZ2luZyAtLSBzZWUgdGhlIGV4cGxhbmF0aW9uIGJlbG93LlxuZml0X2luZCAgICA8LSBsbWUobG9nZmV2MV9odCB+IGFnZSwgcmFuZG9tID0gfiAxIHwgaWQsIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiKVxuZml0X2NzICAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JDb21wU3ltbShmb3JtID0gfiAxIHwgaWQpKVxuZml0X2FyMSAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSlcbmZpdF9hcm1hMTEgPC0gdXBkYXRlKGZpdF9pbmQsIGNvcnJlbGF0aW9uID0gY29yQVJNQShmb3JtID0gfiAxIHwgaWQsIHAgPSAxLCBxID0gMSkpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q07">
+<div class="cell" data-exercise="q07" data-envir="lsda-session">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJyb3VuZChkYXRhLmZyYW1lKFxuICBBSUMgPSBjKF9fX19fXyhmaXRfaW5kKSwgQUlDKGZpdF9jcyksIEFJQyhmaXRfYXIxKSwgQUlDKGZpdF9hcm1hMTEpKSxcbiAgQklDID0gYyhfX19fX18oZml0X2luZCksIEJJQyhmaXRfY3MpLCBCSUMoZml0X2FyMSksIEJJQyhmaXRfYXJtYTExKSksXG4gIHJvdy5uYW1lcyA9IGMoXCJpbmRlcGVuZGVudFwiLCBcImNvbXBvdW5kIHN5bW1ldHJ5XCIsIFwiQVIoMSlcIiwgXCJBUk1BKDEsMSlcIikpLCAxKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDcifSwiY29kZSI6InJvdW5kKGRhdGEuZnJhbWUoXG4gIEFJQyA9IGMoX19fX19fKGZpdF9pbmQpLCBBSUMoZml0X2NzKSwgQUlDKGZpdF9hcjEpLCBBSUMoZml0X2FybWExMSkpLFxuICBCSUMgPSBjKF9fX19fXyhmaXRfaW5kKSwgQklDKGZpdF9jcyksIEJJQyhmaXRfYXIxKSwgQklDKGZpdF9hcm1hMTEpKSxcbiAgcm93Lm5hbWVzID0gYyhcImluZGVwZW5kZW50XCIsIFwiY29tcG91bmQgc3ltbWV0cnlcIiwgXCJBUigxKVwiLCBcIkFSTUEoMSwxKVwiKSksIDEpIn0=
 </script>
 </div>
 </div>
@@ -554,11 +556,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJy
 <span id="interpolate-11-3"><a href="#interpolate-11-3" aria-hidden="true" tabindex="-1"></a>parameters harder.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q07" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q07">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Both criteria are shown because they can disagree. Here they do not: AR(1) wins decisively on each, by around 400 units of AIC over independence. A gap that large is not a close call.</p>
 <p>That result makes sense. The girls are measured roughly annually over several years, and residuals a year apart should be more alike than residuals five years apart. Compound symmetry, which forces every pair to share one correlation, scores no better than independence — it is the wrong shape for these data.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>With the selected structure for <span class="math inline">\(\mathbf{R}_i\)</span>, select the best structure for <span class="math inline">\(\mathbf{G}\)</span> among the candidates below:<br>
 </li>
@@ -568,13 +572,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJy
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShubG1lKVxuZGcgPC0gZ3JvdXBlZERhdGEobG9nZmV2MV9odCB+IGFnZSB8IGlkLCBkYXRhID0gZmV2MSlcblxuIyBDb21wYXJlIFJfaSBzdHJ1Y3R1cmVzIHdpdGggYSByYW5kb20gaW50ZXJjZXB0IG9ubHkuIEFkZGluZyBhIHJhbmRvbSBzbG9wZVxuIyBoZXJlIHN0b3BzIEFSKDEpIGFuZCBBUk1BKDEsMSkgY29udmVyZ2luZyAtLSBzZWUgdGhlIGV4cGxhbmF0aW9uIGJlbG93LlxuZml0X2luZCAgICA8LSBsbWUobG9nZmV2MV9odCB+IGFnZSwgcmFuZG9tID0gfiAxIHwgaWQsIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiKVxuZml0X2NzICAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JDb21wU3ltbShmb3JtID0gfiAxIHwgaWQpKVxuZml0X2FyMSAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSlcbmZpdF9hcm1hMTEgPC0gdXBkYXRlKGZpdF9pbmQsIGNvcnJlbGF0aW9uID0gY29yQVJNQShmb3JtID0gfiAxIHwgaWQsIHAgPSAxLCBxID0gMSkpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q08">
+<div class="cell" data-exercise="q08" data-envir="lsda-session">
 <div>
 <div id="webr-14" class="exercise-cell">
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiIjIEFSKDEpIHdvbiwgc28gaG9sZCBpdCBmaXhlZCBhbmQgdmFyeSBHLiBUaGUgZ2VuZXJhbCBzdHJ1Y3R1cmUgbmVlZHMgYVxuIyBkaWZmZXJlbnQgb3B0aW1pc2VyIHRvIGNvbnZlcmdlIGhlcmUuXG5jdHJsIDwtIGxtZUNvbnRyb2wob3B0ID0gXCJvcHRpbVwiKVxuXG5maXRfR19pbmQgIDwtIGxtZShsb2dmZXYxX2h0IH4gYWdlLCByYW5kb20gPSBfX19fX18ofiBhZ2UpLFxuICAgICAgICAgICAgICAgICAgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSxcbiAgICAgICAgICAgICAgICAgIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiLCBjb250cm9sID0gY3RybClcbmZpdF9HX2RpYWcgPC0gdXBkYXRlKGZpdF9HX2luZCwgcmFuZG9tID0gX19fX19fKH4gYWdlKSlcbmZpdF9HX2dlbiAgPC0gdXBkYXRlKGZpdF9HX2luZCwgcmFuZG9tID0gfiBhZ2UgfCBpZClcblxuX19fX19fKGZpdF9HX2RpYWcpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDgifSwiY29kZSI6IiMgQVIoMSkgd29uLCBzbyBob2xkIGl0IGZpeGVkIGFuZCB2YXJ5IEcuIFRoZSBnZW5lcmFsIHN0cnVjdHVyZSBuZWVkcyBhXG4jIGRpZmZlcmVudCBvcHRpbWlzZXIgdG8gY29udmVyZ2UgaGVyZS5cbmN0cmwgPC0gbG1lQ29udHJvbChvcHQgPSBcIm9wdGltXCIpXG5cbmZpdF9HX2luZCAgPC0gbG1lKGxvZ2ZldjFfaHQgfiBhZ2UsIHJhbmRvbSA9IF9fX19fXyh+IGFnZSksXG4gICAgICAgICAgICAgICAgICBjb3JyZWxhdGlvbiA9IGNvckFSMShmb3JtID0gfiAxIHwgaWQpLFxuICAgICAgICAgICAgICAgICAgZGF0YSA9IGRnLCBtZXRob2QgPSBcIk1MXCIsIGNvbnRyb2wgPSBjdHJsKVxuZml0X0dfZGlhZyA8LSB1cGRhdGUoZml0X0dfaW5kLCByYW5kb20gPSBfX19fX18ofiBhZ2UpKVxuZml0X0dfZ2VuICA8LSB1cGRhdGUoZml0X0dfaW5kLCByYW5kb20gPSB+IGFnZSB8IGlkKVxuXG5fX19fX18oZml0X0dfZGlhZykifQ==
 </script>
 </div>
 </div>
@@ -588,12 +592,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiIj
 <span id="interpolate-16-6"><a href="#interpolate-16-6" aria-hidden="true" tabindex="-1"></a><span class="st">you write `random = ~ age | id`.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q08" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q08">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p><code>correlation</code> is now fixed at AR(1) and <code>random</code> varies. The three G structures are nested: identity within diagonal within general.</p>
 <p>Note <code>control = lmeControl(opt = "optim")</code>. With the default optimiser the general structure does not converge; switching optimisers fixes it. If a mixed model fails to converge, changing the optimiser is worth trying before concluding the model is wrong — though if several optimisers fail, that is a genuine signal of over-parameterisation.</p>
 <p>In the printed variance components, <code>pdDiag</code> gives a standard deviation for the intercept and one for <code>age</code> but no correlation between them, because a diagonal G <em>assumes</em> that correlation is zero rather than estimating it.</p>
 </div>
+</details>
 <pre><code>3.1. independent covariance structure,\
 3.2. diagonal covariance structure,\
 3.3. general covariance structure.</code></pre>
@@ -603,13 +609,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiIj
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShubG1lKVxuZGcgPC0gZ3JvdXBlZERhdGEobG9nZmV2MV9odCB+IGFnZSB8IGlkLCBkYXRhID0gZmV2MSlcblxuIyBDb21wYXJlIFJfaSBzdHJ1Y3R1cmVzIHdpdGggYSByYW5kb20gaW50ZXJjZXB0IG9ubHkuIEFkZGluZyBhIHJhbmRvbSBzbG9wZVxuIyBoZXJlIHN0b3BzIEFSKDEpIGFuZCBBUk1BKDEsMSkgY29udmVyZ2luZyAtLSBzZWUgdGhlIGV4cGxhbmF0aW9uIGJlbG93LlxuZml0X2luZCAgICA8LSBsbWUobG9nZmV2MV9odCB+IGFnZSwgcmFuZG9tID0gfiAxIHwgaWQsIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiKVxuZml0X2NzICAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JDb21wU3ltbShmb3JtID0gfiAxIHwgaWQpKVxuZml0X2FyMSAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSlcbmZpdF9hcm1hMTEgPC0gdXBkYXRlKGZpdF9pbmQsIGNvcnJlbGF0aW9uID0gY29yQVJNQShmb3JtID0gfiAxIHwgaWQsIHAgPSAxLCBxID0gMSkpXG5cbiMgQVIoMSkgd29uLCBzbyBob2xkIGl0IGZpeGVkIGFuZCB2YXJ5IEcuIFRoZSBnZW5lcmFsIHN0cnVjdHVyZSBuZWVkcyBhXG4jIGRpZmZlcmVudCBvcHRpbWlzZXIgdG8gY29udmVyZ2UgaGVyZS5cbmN0cmwgPC0gbG1lQ29udHJvbChvcHQgPSBcIm9wdGltXCIpXG5cbmZpdF9HX2luZCAgPC0gbG1lKGxvZ2ZldjFfaHQgfiBhZ2UsIHJhbmRvbSA9IHBkSWRlbnQofiBhZ2UpLFxuICAgICAgICAgICAgICAgICAgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSxcbiAgICAgICAgICAgICAgICAgIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiLCBjb250cm9sID0gY3RybClcbmZpdF9HX2RpYWcgPC0gdXBkYXRlKGZpdF9HX2luZCwgcmFuZG9tID0gcGREaWFnKH4gYWdlKSlcbmZpdF9HX2dlbiAgPC0gdXBkYXRlKGZpdF9HX2luZCwgcmFuZG9tID0gfiBhZ2UgfCBpZClcblxuVmFyQ29ycihmaXRfR19kaWFnKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q11">
+<div class="cell" data-exercise="q11" data-envir="lsda-session">
 <div>
 <div id="webr-19" class="exercise-cell">
 
 </div>
 <script type="webr-19-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTEifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -618,11 +624,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiIi
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-21-1"><a href="#interpolate-21-1" aria-hidden="true" tabindex="-1"></a>Compare the three G structures the same way you compared the R structures.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q11" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q11">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The same comparison for the between-subject structure.</p>
 <p>Read this cautiously. A criterion ranks models; it does not tell you a parameter is real. If the general structure wins narrowly, check whether the extra covariance it estimates has a confidence interval that excludes zero before claiming girls who start higher also grow faster.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>For your overall best model, interpret the parameters of the model.</li>
 </ol>
@@ -685,13 +693,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShubG1lKVxuZGcgPC0gZ3JvdXBlZERhdGEobG9nZmV2MV9odCB+IGFnZSB8IGlkLCBkYXRhID0gZmV2MSlcblxuIyBDb21wYXJlIFJfaSBzdHJ1Y3R1cmVzIHdpdGggYSByYW5kb20gaW50ZXJjZXB0IG9ubHkuIEFkZGluZyBhIHJhbmRvbSBzbG9wZVxuIyBoZXJlIHN0b3BzIEFSKDEpIGFuZCBBUk1BKDEsMSkgY29udmVyZ2luZyAtLSBzZWUgdGhlIGV4cGxhbmF0aW9uIGJlbG93LlxuZml0X2luZCAgICA8LSBsbWUobG9nZmV2MV9odCB+IGFnZSwgcmFuZG9tID0gfiAxIHwgaWQsIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiKVxuZml0X2NzICAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JDb21wU3ltbShmb3JtID0gfiAxIHwgaWQpKVxuZml0X2FyMSAgICA8LSB1cGRhdGUoZml0X2luZCwgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSlcbmZpdF9hcm1hMTEgPC0gdXBkYXRlKGZpdF9pbmQsIGNvcnJlbGF0aW9uID0gY29yQVJNQShmb3JtID0gfiAxIHwgaWQsIHAgPSAxLCBxID0gMSkpXG5cbiMgQVIoMSkgd29uLCBzbyBob2xkIGl0IGZpeGVkIGFuZCB2YXJ5IEcuIFRoZSBnZW5lcmFsIHN0cnVjdHVyZSBuZWVkcyBhXG4jIGRpZmZlcmVudCBvcHRpbWlzZXIgdG8gY29udmVyZ2UgaGVyZS5cbmN0cmwgPC0gbG1lQ29udHJvbChvcHQgPSBcIm9wdGltXCIpXG5cbmZpdF9HX2luZCAgPC0gbG1lKGxvZ2ZldjFfaHQgfiBhZ2UsIHJhbmRvbSA9IHBkSWRlbnQofiBhZ2UpLFxuICAgICAgICAgICAgICAgICAgY29ycmVsYXRpb24gPSBjb3JBUjEoZm9ybSA9IH4gMSB8IGlkKSxcbiAgICAgICAgICAgICAgICAgIGRhdGEgPSBkZywgbWV0aG9kID0gXCJNTFwiLCBjb250cm9sID0gY3RybClcbmZpdF9HX2RpYWcgPC0gdXBkYXRlKGZpdF9HX2luZCwgcmFuZG9tID0gcGREaWFnKH4gYWdlKSlcbmZpdF9HX2dlbiAgPC0gdXBkYXRlKGZpdF9HX2luZCwgcmFuZG9tID0gfiBhZ2UgfCBpZClcblxuVmFyQ29ycihmaXRfR19kaWFnKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q12">
+<div class="cell" data-exercise="q12" data-envir="lsda-session">
 <div>
 <div id="webr-24" class="exercise-cell">
 
 </div>
 <script type="webr-24-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJfX19fX18oZml0X0dfZGlhZykifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTIifSwiY29kZSI6Il9fX19fXyhmaXRfR19kaWFnKSJ9
 </script>
 </div>
 </div>
@@ -703,14 +711,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJf
 <span id="interpolate-26-4"><a href="#interpolate-26-4" aria-hidden="true" tabindex="-1"></a>Try to state each <span class="cf">in</span> a sentence about lung <span class="cf">function</span>, not about the model.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q12" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q12">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The summary is the payoff. Three things to read.</p>
 <p><strong>Fixed effects.</strong> The coefficient on <code>age</code> is the population-average annual change in log(FEV1/height). It is positive, which is lung function growing through adolescence, as it should.</p>
 <p><strong>Random effects.</strong> The between-girl standard deviations, compared with the residual standard deviation below them. If the intercept SD is comparable to or larger than the residual SD, girls differ from one another about as much as a single girl varies between visits — which is what makes the mixed model worthwhile.</p>
 <p><strong>Correlation structure.</strong> The estimated AR(1) parameter Phi. A value well above zero says residuals remain related from one visit to the next even after the random effects have absorbed the between-girl differences.</p>
 <p>When you write this up, state each of these in a sentence about lung function rather than about the model.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week02">
 <section id="week-2-complete" class="level2">
 <h2 class="anchored" data-anchor-id="week-2-complete">Week 2 complete</h2>

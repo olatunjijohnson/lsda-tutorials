@@ -497,13 +497,13 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Imxp
 <ol type="1">
 <li>Consult the R online manuals, specifically “An Introduction to R” (PDF file), Section 7, titled “Reading Data from Files.” Proceed to import the dataset into R.</li>
 </ol>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJfX19fX18oY2F0dGxlKVxuZGltKGNhdHRsZSlcbmhlYWQoY2F0dGxlWywgMTo1XSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6Il9fX19fXyhjYXR0bGUpXG5kaW0oY2F0dGxlKVxuaGVhZChjYXR0bGVbLCAxOjVdKSJ9
 </script>
 </div>
 </div>
@@ -514,10 +514,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJf
 <span id="interpolate-6-3"><a href="#interpolate-6-3" aria-hidden="true" tabindex="-1"></a>shape and the first few rows.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>60 rows and 12 columns: one row per animal, the first column the treatment group and the remaining eleven the weights. Every animal has all eleven, so the design is balanced — which is what lets us treat the data as a 60 by 11 matrix at all.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Generate a spaghetti plot for the cattle data.</li>
 </ol>
@@ -526,13 +528,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJf
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJ0aW1lIDwtIDE6MTFcbm1hdHBsb3QodGltZSwgX19fX19fKGNhdHRsZVssIF9fX19fX10pLCB0eXBlID0gXCJsXCIsIGx0eSA9IDEsIGNvbCA9IFwiZ3JleTQwXCIsXG4gICAgICAgIHhsYWIgPSBcIlRpbWVcIiwgeWxhYiA9IFwiV2VpZ2h0IChrZylcIiwgbWFpbiA9IFwiQWxsIDYwIGFuaW1hbHNcIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6InRpbWUgPC0gMToxMVxubWF0cGxvdCh0aW1lLCBfX19fX18oY2F0dGxlWywgX19fX19fXSksIHR5cGUgPSBcImxcIiwgbHR5ID0gMSwgY29sID0gXCJncmV5NDBcIixcbiAgICAgICAgeGxhYiA9IFwiVGltZVwiLCB5bGFiID0gXCJXZWlnaHQgKGtnKVwiLCBtYWluID0gXCJBbGwgNjAgYW5pbWFsc1wiKSJ9
 </script>
 </div>
 </div>
@@ -545,10 +547,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJ0
 <span id="interpolate-11-5"><a href="#interpolate-11-5" aria-hidden="true" tabindex="-1"></a>off, and remember column <span class="dv">1</span> is the group indicator, not a weight.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Each line is one animal. Two things are worth noticing. Weight increases steadily for everyone, so there is a clear time trend. And the lines stay roughly parallel: animals that start heavy stay heavy. That persistent ordering <em>is</em> the within-subject correlation, and it is why treating these 660 measurements as independent would be wrong.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Calculate the sample means for observations at each time point. Additionally, compute the sample covariance matrix and sample correlation matrix.</li>
 </ol>
@@ -557,13 +561,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJ0
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTEifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-14" class="exercise-cell">
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJtZWFucyA8LSBfX19fX18oY2F0dGxlWywgX19fX19fXSlcbnJvdW5kKG1lYW5zLCAxKVxucm91bmQoX19fX19fKGNhdHRsZVssIC0xXSksIDIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6Im1lYW5zIDwtIF9fX19fXyhjYXR0bGVbLCBfX19fX19dKVxucm91bmQobWVhbnMsIDEpXG5yb3VuZChfX19fX18oY2F0dGxlWywgLTFdKSwgMikifQ==
 </script>
 </div>
 </div>
@@ -575,11 +579,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJt
 <span id="interpolate-16-4"><a href="#interpolate-16-4" aria-hidden="true" tabindex="-1"></a>matrix at once.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The means rise steadily with time, as the plot suggested.</p>
 <p>In the correlation matrix, read along any row. Correlation is high next to the diagonal — adjacent times are near 0.9 — and falls away as the gap widens, down to around 0.5 between the first and last times. That decay with lag is the pattern AR(1) is built for, and it is why compound symmetry, which forces every pair to share one correlation, would fit these data badly.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Create a pairwise scatter plot for the cattle data. Analyse and describe the key features of the observed correlations.</li>
 </ol>
@@ -588,13 +594,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJt
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q05">
+<div class="cell" data-exercise="q05" data-envir="lsda-session">
 <div>
 <div id="webr-19" class="exercise-cell">
 
 </div>
 <script type="webr-19-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJfX19fX18oY2F0dGxlWywgYygyLCAzLCA3LCAxMildLCBtYWluID0gXCJXZWlnaHRzIGF0IHRpbWVzIDEsIDIsIDYgYW5kIDExXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDUifSwiY29kZSI6Il9fX19fXyhjYXR0bGVbLCBjKDIsIDMsIDcsIDEyKV0sIG1haW4gPSBcIldlaWdodHMgYXQgdGltZXMgMSwgMiwgNiBhbmQgMTFcIikifQ==
 </script>
 </div>
 </div>
@@ -606,10 +612,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJf
 <span id="interpolate-21-4"><a href="#interpolate-21-4" aria-hidden="true" tabindex="-1"></a>points grows?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q05" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Four times are shown rather than all eleven, because an 11 by 11 grid of panels is unreadable. The panels for adjacent times are tight, near-linear clouds; those for widely separated times are much more diffuse. This is the same information as the correlation matrix, seen directly.</p>
 </div>
+</details>
 <ol start="5" type="1">
 <li>Divide the cattle dataset into two groups, Group A and Group B. For each group, determine the sample means at each time point, as well as the sample covariance and sample correlation.</li>
 </ol>
@@ -618,13 +626,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJf
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q06">
+<div class="cell" data-exercise="q06" data-envir="lsda-session">
 <div>
 <div id="webr-24" class="exercise-cell">
 
 </div>
 <script type="webr-24-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJBIDwtIGNhdHRsZVtjYXR0bGUkZ3JvdXAgPT0gX19fX19fLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSBfX19fX18sIC0xXVxuX19fX19fKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDYifSwiY29kZSI6IkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSBfX19fX18sIC0xXVxuQiA8LSBjYXR0bGVbY2F0dGxlJGdyb3VwID09IF9fX19fXywgLTFdXG5fX19fX18oQSA9IGNvbE1lYW5zKEEpLCBCID0gY29sTWVhbnMoQikpIn0=
 </script>
 </div>
 </div>
@@ -635,10 +643,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJB
 <span id="interpolate-26-3"><a href="#interpolate-26-3" aria-hidden="true" tabindex="-1"></a>Two plots side by side is <span class="st">`</span><span class="at">par(mfcol = c(1, 2))</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q06" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q06">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Group A starts heavier. By the last time point the two groups have converged and crossed over, so the difference between them is not constant — it changes with time. A model with only a group effect could not represent that; you need an interaction between group and time, which is what you fit in week 3.</p>
 </div>
+</details>
 <ol start="6" type="1">
 <li>Produce pairwise scatter plots for each group. Identify and discuss any similarities or differences between the two groups evident in the plots.</li>
 </ol>
@@ -647,13 +657,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJB
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSlcbkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAwLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAxLCAtMV1cbnJiaW5kKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q07">
+<div class="cell" data-exercise="q07" data-envir="lsda-session">
 <div>
 <div id="webr-29" class="exercise-cell">
 
 </div>
 <script type="webr-29-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJwYXIobWZyb3cgPSBjKDEsIDIpKVxucGFpcnMoX19fX19fWywgYygxLCAyLCA2LCAxMSldLCBtYWluID0gXCJHcm91cCBBXCIpXG5wYWlycyhfX19fX19bLCBjKDEsIDIsIDYsIDExKV0sIG1haW4gPSBcIkdyb3VwIEJcIilcbnBhcihtZnJvdyA9IGMoMSwgMSkpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDcifSwiY29kZSI6InBhcihtZnJvdyA9IGMoMSwgMikpXG5wYWlycyhfX19fX19bLCBjKDEsIDIsIDYsIDExKV0sIG1haW4gPSBcIkdyb3VwIEFcIilcbnBhaXJzKF9fX19fX1ssIGMoMSwgMiwgNiwgMTEpXSwgbWFpbiA9IFwiR3JvdXAgQlwiKVxucGFyKG1mcm93ID0gYygxLCAxKSkifQ==
 </script>
 </div>
 </div>
@@ -663,10 +673,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJw
 <span id="interpolate-31-2"><a href="#interpolate-31-2" aria-hidden="true" tabindex="-1"></a>Give each a <span class="st">`</span><span class="at">main</span><span class="st">`</span> title so you can tell them apart.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q07" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q07">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The correlation structure looks similar in both groups: the same tightening near the diagonal and loosening away from it. That matters for modelling, because it means one covariance structure can reasonably be assumed to hold for both groups rather than fitting each separately.</p>
 </div>
+</details>
 <ol start="7" type="1">
 <li>Plot the sample means of both groups against time within a single figure. Provide your interpretations and conclusions drawn from the figure.</li>
 </ol>
@@ -675,13 +687,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJw
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSlcbkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAwLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAxLCAtMV1cbnJiaW5kKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q08">
+<div class="cell" data-exercise="q08" data-envir="lsda-session">
 <div>
 <div id="webr-34" class="exercise-cell">
 
 </div>
 <script type="webr-34-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiJwbG90KHRpbWUsIGNvbE1lYW5zKEEpLCB0eXBlID0gXCJiXCIsIHBjaCA9IDE2LCB5bGltID0gcmFuZ2UoY2F0dGxlWywgLTFdKSxcbiAgICAgeGxhYiA9IFwiVGltZVwiLCB5bGFiID0gXCJNZWFuIHdlaWdodCAoa2cpXCIpXG5fX19fX18odGltZSwgY29sTWVhbnMoQiksIHR5cGUgPSBcImJcIiwgcGNoID0gMTcsIGNvbCA9IFwicmVkXCIpXG5sZWdlbmQoXCJ0b3BsZWZ0XCIsIGMoXCJHcm91cCBBXCIsIFwiR3JvdXAgQlwiKSwgcGNoID0gYygxNiwgMTcpLFxuICAgICAgIGNvbCA9IGMoXCJibGFja1wiLCBcInJlZFwiKSwgYnR5ID0gXCJuXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDgifSwiY29kZSI6InBsb3QodGltZSwgY29sTWVhbnMoQSksIHR5cGUgPSBcImJcIiwgcGNoID0gMTYsIHlsaW0gPSByYW5nZShjYXR0bGVbLCAtMV0pLFxuICAgICB4bGFiID0gXCJUaW1lXCIsIHlsYWIgPSBcIk1lYW4gd2VpZ2h0IChrZylcIilcbl9fX19fXyh0aW1lLCBjb2xNZWFucyhCKSwgdHlwZSA9IFwiYlwiLCBwY2ggPSAxNywgY29sID0gXCJyZWRcIilcbmxlZ2VuZChcInRvcGxlZnRcIiwgYyhcIkdyb3VwIEFcIiwgXCJHcm91cCBCXCIpLCBwY2ggPSBjKDE2LCAxNyksXG4gICAgICAgY29sID0gYyhcImJsYWNrXCIsIFwicmVkXCIpLCBidHkgPSBcIm5cIikifQ==
 </script>
 </div>
 </div>
@@ -692,10 +704,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiJw
 <span id="interpolate-36-3"><a href="#interpolate-36-3" aria-hidden="true" tabindex="-1"></a><span class="st">item 6.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q08" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q08">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The two mean curves cross. Group A is heavier at first, its growth flattens after about time 4, and group B overtakes it. This crossing is the treatment effect, and it is a difference in <em>slope</em> rather than in level.</p>
 </div>
+</details>
 <p>Q2 You will work with longitudinal data on lung function growth in school-age girls from Topeka, Kansas, as part of the Six Cities Study of Air Pollution and Health. The dataset contains repeated pulmonary function measurements from 299 girls, typically enrolled around ages 6-10 and followed annually until high school graduation or loss to follow-up. The number of observations per individual ranges from 1 to 12, making the dataset unbalanced with respect to age.</p>
 <p>At each visit, lung function was measured using simple spirometry, and the outcome of interest is the logarithm of the ratio of forced expiratory volume in 1 second (FEV1) to height, i.e., log(FEV1/height).</p>
 <p>The dataset is available in the course package.</p>
@@ -717,13 +731,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiJw
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSlcbkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAwLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAxLCAtMV1cbnJiaW5kKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q10">
+<div class="cell" data-exercise="q10" data-envir="lsda-session">
 <div>
 <div id="webr-39" class="exercise-cell">
 
 </div>
 <script type="webr-39-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJkYXRhKGZldjEsIHBhY2thZ2UgPSBcImxzZGFcIilcbl9fX19fXyhmZXYxKSAgICAgICAgICAgICAgICAgIyBvYnNlcnZhdGlvbnNcbmxlbmd0aChfX19fX18oZmV2MSRpZCkpICAgICMgZ2lybHMifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTAifSwiY29kZSI6ImRhdGEoZmV2MSwgcGFja2FnZSA9IFwibHNkYVwiKVxuX19fX19fKGZldjEpICAgICAgICAgICAgICAgICAjIG9ic2VydmF0aW9uc1xubGVuZ3RoKF9fX19fXyhmZXYxJGlkKSkgICAgIyBnaXJscyJ9
 </script>
 </div>
 </div>
@@ -734,10 +748,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJk
 <span id="interpolate-41-3"><a href="#interpolate-41-3" aria-hidden="true" tabindex="-1"></a>values.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q10" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q10">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>1993 observations from 299 girls — about 6.7 visits each on average, but that average conceals a lot, as the next item shows.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Summarise the number of observations per individual. What does this tell you about the balance of the data?</li>
 </ol>
@@ -746,13 +762,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJk
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSlcbkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAwLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAxLCAtMV1cbnJiaW5kKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKVxuZGF0YShmZXYxLCBwYWNrYWdlID0gXCJsc2RhXCIpXG5ucm93KGZldjEpICAgICAgICAgICAgICAgICAjIG9ic2VydmF0aW9uc1xubGVuZ3RoKHVuaXF1ZShmZXYxJGlkKSkgICAgIyBnaXJscyJ9
 </script>
 </div>
-<div class="cell" data-exercise="q11">
+<div class="cell" data-exercise="q11" data-envir="lsda-session">
 <div>
 <div id="webr-44" class="exercise-cell">
 
 </div>
 <script type="webr-44-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJwZXJfZ2lybCA8LSBfX19fX18oZmV2MSRpZClcbnN1bW1hcnkoYXMubnVtZXJpYyhwZXJfZ2lybCkpXG5oaXN0KGFzLm51bWVyaWMocGVyX2dpcmwpLCBicmVha3MgPSAwOjEyLCB4bGFiID0gXCJWaXNpdHMgcGVyIGdpcmxcIiwgbWFpbiA9IFwiXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTEifSwiY29kZSI6InBlcl9naXJsIDwtIF9fX19fXyhmZXYxJGlkKVxuc3VtbWFyeShhcy5udW1lcmljKHBlcl9naXJsKSlcbmhpc3QoYXMubnVtZXJpYyhwZXJfZ2lybCksIGJyZWFrcyA9IDA6MTIsIHhsYWIgPSBcIlZpc2l0cyBwZXIgZ2lybFwiLCBtYWluID0gXCJcIikifQ==
 </script>
 </div>
 </div>
@@ -763,11 +779,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJw
 <span id="interpolate-46-3"><a href="#interpolate-46-3" aria-hidden="true" tabindex="-1"></a>If every girl had the same count, the data would be balanced — what do you see?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q11" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q11">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The distribution is right-skewed. Most girls have several visits, but some have only one or two. So the data are <strong>unbalanced</strong>: <span class="math inline">\(n_i\)</span> differs between girls.</p>
 <p>This is not a defect and does not need fixing. It does have two consequences. The design matrices differ in size between girls, so the model has to be written per subject. And a girl with two visits carries far less information than one with twelve, which is exactly what produces shrinkage in the week 3 predictions.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Produce a plot of log(fev1 / height) against age for 50 randomly selected girls. Connect points for the same individual. Comment on the variability between individuals and the measurement patterns over age.</li>
 </ol>
@@ -776,13 +794,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJw
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSlcbkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAwLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAxLCAtMV1cbnJiaW5kKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKVxuZGF0YShmZXYxLCBwYWNrYWdlID0gXCJsc2RhXCIpXG5ucm93KGZldjEpICAgICAgICAgICAgICAgICAjIG9ic2VydmF0aW9uc1xubGVuZ3RoKHVuaXF1ZShmZXYxJGlkKSkgICAgIyBnaXJsc1xucGVyX2dpcmwgPC0gdGFibGUoZmV2MSRpZCkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q12">
+<div class="cell" data-exercise="q12" data-envir="lsda-session">
 <div>
 <div id="webr-49" class="exercise-cell">
 
 </div>
 <script type="webr-49-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJzZXQuc2VlZCgxMjMpXG5pZHMgPC0gX19fX19fKHVuaXF1ZShmZXYxJGlkKSwgX19fX19fKVxuc3ViIDwtIGZldjFbZmV2MSRpZCBfX19fX18gaWRzLCBdXG5wbG90KHN1YiRhZ2UsIHN1YiRsb2dmZXYxX2h0LCB0eXBlID0gXCJuXCIsXG4gICAgIHhsYWIgPSBcIkFnZSAoeWVhcnMpXCIsIHlsYWIgPSBcImxvZyhGRVYxIC8gaGVpZ2h0KVwiKVxuZm9yIChpIGluIGlkcykge1xuICBnIDwtIHN1YltzdWIkaWQgPT0gaSwgXVxuICBsaW5lcyhnJGFnZVtvcmRlcihnJGFnZSldLCBnJGxvZ2ZldjFfaHRbb3JkZXIoZyRhZ2UpXSwgY29sID0gXCJncmV5NTBcIilcbn0ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTIifSwiY29kZSI6InNldC5zZWVkKDEyMylcbmlkcyA8LSBfX19fX18odW5pcXVlKGZldjEkaWQpLCBfX19fX18pXG5zdWIgPC0gZmV2MVtmZXYxJGlkIF9fX19fXyBpZHMsIF1cbnBsb3Qoc3ViJGFnZSwgc3ViJGxvZ2ZldjFfaHQsIHR5cGUgPSBcIm5cIixcbiAgICAgeGxhYiA9IFwiQWdlICh5ZWFycylcIiwgeWxhYiA9IFwibG9nKEZFVjEgLyBoZWlnaHQpXCIpXG5mb3IgKGkgaW4gaWRzKSB7XG4gIGcgPC0gc3ViW3N1YiRpZCA9PSBpLCBdXG4gIGxpbmVzKGckYWdlW29yZGVyKGckYWdlKV0sIGckbG9nZmV2MV9odFtvcmRlcihnJGFnZSldLCBjb2wgPSBcImdyZXk1MFwiKVxufSJ9
 </script>
 </div>
 </div>
@@ -794,11 +812,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJz
 <span id="interpolate-51-4"><a href="#interpolate-51-4" aria-hidden="true" tabindex="-1"></a>Set a seed so your plot is reproducible.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q12" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q12">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The spaghetti plot for the unbalanced case. Compared with the cattle data, notice that the lines start and stop at different ages and have different numbers of points — that is the imbalance made visible.</p>
 <p>There is substantial variation between girls in both level and slope, which is the motivation for allowing a random intercept <em>and</em> a random slope in week 2.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Compute and plot the average log(fev1 / height) at each age, aggregating across individuals.</li>
 </ol>
@@ -807,13 +827,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJz
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiZGF0YShjYXR0bGUpXG50aW1lIDwtIDE6MTFcbm1lYW5zIDwtIGNvbE1lYW5zKGNhdHRsZVssIC0xXSlcbkEgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAwLCAtMV1cbkIgPC0gY2F0dGxlW2NhdHRsZSRncm91cCA9PSAxLCAtMV1cbnJiaW5kKEEgPSBjb2xNZWFucyhBKSwgQiA9IGNvbE1lYW5zKEIpKVxuZGF0YShmZXYxLCBwYWNrYWdlID0gXCJsc2RhXCIpXG5ucm93KGZldjEpICAgICAgICAgICAgICAgICAjIG9ic2VydmF0aW9uc1xubGVuZ3RoKHVuaXF1ZShmZXYxJGlkKSkgICAgIyBnaXJsc1xucGVyX2dpcmwgPC0gdGFibGUoZmV2MSRpZClcbnNldC5zZWVkKDEyMylcbmlkcyA8LSBzYW1wbGUodW5pcXVlKGZldjEkaWQpLCA1MClcbnN1YiA8LSBmZXYxW2ZldjEkaWQgJWluJSBpZHMsIF1cbmZvciAoaSBpbiBpZHMpIHtcbiAgZyA8LSBzdWJbc3ViJGlkID09IGksIF1cbn0ifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q13">
+<div class="cell" data-exercise="q13" data-envir="lsda-session">
 <div>
 <div id="webr-54" class="exercise-cell">
 
 </div>
 <script type="webr-54-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEzIn0sImNvZGUiOiJieV9hZ2UgPC0gX19fX19fKGxvZ2ZldjFfaHQgfiByb3VuZChhZ2UpLCBkYXRhID0gZmV2MSwgRlVOID0gX19fX19fKVxubmFtZXMoYnlfYWdlKSA8LSBjKFwiYWdlXCIsIFwibWVhbl9sb2dmZXYxX2h0XCIpXG5wbG90KGJ5X2FnZSwgcGNoID0gMTYsIHhsYWIgPSBcIkFnZSAoeWVhcnMpXCIsIHlsYWIgPSBcIk1lYW4gbG9nKEZFVjEgLyBoZWlnaHQpXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTMifSwiY29kZSI6ImJ5X2FnZSA8LSBfX19fX18obG9nZmV2MV9odCB+IHJvdW5kKGFnZSksIGRhdGEgPSBmZXYxLCBGVU4gPSBfX19fX18pXG5uYW1lcyhieV9hZ2UpIDwtIGMoXCJhZ2VcIiwgXCJtZWFuX2xvZ2ZldjFfaHRcIilcbnBsb3QoYnlfYWdlLCBwY2ggPSAxNiwgeGxhYiA9IFwiQWdlICh5ZWFycylcIiwgeWxhYiA9IFwiTWVhbiBsb2coRkVWMSAvIGhlaWdodClcIikifQ==
 </script>
 </div>
 </div>
@@ -825,11 +845,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEzIn0sImNvZGUiOiJi
 <span id="interpolate-56-4"><a href="#interpolate-56-4" aria-hidden="true" tabindex="-1"></a>worth bearing <span class="cf">in</span> mind when you read the plot.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q13" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q13">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Averaging within each age gives the population-level growth curve, which rises steadily through adolescence.</p>
 <p>Ages were rounded before averaging because girls were not measured on a common grid; without rounding, most ages would be supported by a single girl. Even so the extremes are based on few observations, so treat the ends of the curve with caution.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week01">
 <section id="week-1-complete" class="level2">
 <h2 class="anchored" data-anchor-id="week-1-complete">Week 1 complete</h2>

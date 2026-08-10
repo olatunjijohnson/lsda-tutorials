@@ -503,13 +503,13 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Imxp
 <ol type="1">
 <li>Load the <code>scotland_lip</code> dataset from the course package and check the columns of the data and ensure that you understand what each column means.</li>
 </ol>
-<div class="cell" data-exercise="q01">
+<div class="cell" data-exercise="q01" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDEifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -519,10 +519,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiIi
 <span id="interpolate-6-2"><a href="#interpolate-6-2" aria-hidden="true" tabindex="-1"></a>it. Look at the columns before going on.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q01" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q01">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>An <code>sf</code> object: the attribute table and the county polygons together. <code>cases</code> and <code>expected</code> are the observed and expected counts, and <code>aff</code> is the proportion of the workforce in agriculture, fishing and forestry — a proxy for outdoor work and so for sunlight exposure.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Calculate the standardized incidence ratios (SIRs) in the Scotland counties, defined as observed cases divided by expected cases, map and interpret it.</li>
 </ol>
@@ -531,13 +533,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdCkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJzY290JFNJUiA8LSBzY290JGNhc2VzIF9fX19fXyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxudG1fc2hhcGUoc2NvdCkgK1xuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6InNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgX19fX19fIHNjb3QkZXhwZWN0ZWRcblxuIyBQbG90IFNJUiB1c2luZyB0bWFwXG50bV9zaGFwZShzY290KSArXG4gIHRtX2ZpbGwoXCJTSVJcIiwgc3R5bGUgPSBcInF1YW50aWxlXCIsIHBhbGV0dGUgPSBcIllsT3JSZFwiLCB0aXRsZSA9IFwiU0lSXCIpICtcbiAgdG1fYm9yZGVycygpICtcbiAgdG1fbGF5b3V0KG1haW4udGl0bGUgPSBcIlN0YW5kYXJkaXplZCBJbmNpZGVuY2UgUmF0aW9zIChTSVIpIGluIFNjb3RsYW5kXCIpIn0=
 </script>
 </div>
 </div>
@@ -549,11 +551,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJz
 <span id="interpolate-11-4"><a href="#interpolate-11-4" aria-hidden="true" tabindex="-1"></a>visually distinct.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The SIR is observed over expected, so 1 means “as many cases as the county’s population structure predicts”.</p>
 <p>Read the map with the next item in mind. The most extreme values tend to sit in counties with small expected counts, because an SIR based on 2 expected cases is extremely noisy — observing 4 gives an SIR of 2 with nothing unusual happening. That instability is the problem the CAR models in week 10 exist to solve.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Plot the scatter plot of the SIR and aff. Is there any substantial association between the variables?</li>
 </ol>
@@ -562,13 +566,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJz
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-14" class="exercise-cell">
 
 </div>
 <script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -579,11 +583,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIi
 <span id="interpolate-16-3"><a href="#interpolate-16-3" aria-hidden="true" tabindex="-1"></a>slope is the expected direction.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>A weak positive association, in the direction the science predicts: more outdoor work, more sunlight, more lip cancer.</p>
 <p>The scatter is wide, so this is suggestive rather than conclusive on its own — and note that neither the SIR nor this relationship accounts for the spatial correlation you are about to detect.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on Queen contiguity and map the neighbors obtained.</li>
 </ol>
@@ -592,13 +598,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIikifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-19" class="exercise-cell">
 
 </div>
 <script type="webr-19-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJuYl9xdWVlbiA8LSBfX19fX18oc2NvdCwgcXVlZW4gPSBfX19fX18pXG5uZWlnaGJvcl9jb3VudHMgPC0gY2FyZChuYl9xdWVlbilcbmRhdGEuZnJhbWUoY291bnR5ID0gc2NvdCRjb3VudHkgLCBub19uZWlnYm91cnMgPSBuZWlnaGJvcl9jb3VudHMpXG5wbG90KHN0X2dlb21ldHJ5KHNjb3QpLCBib3JkZXIgPSBcImxpZ2h0Z3JheVwiKVxucGxvdChuYl9xdWVlbiwgc3RfZ2VvbWV0cnkoc2NvdCksIG1haW4gPSBcIlF1ZWVuIENvbnRpZ3VpdHkgTmVpZ2hib3JzXCIsIGFkZCA9IFRSVUUpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6Im5iX3F1ZWVuIDwtIF9fX19fXyhzY290LCBxdWVlbiA9IF9fX19fXylcbm5laWdoYm9yX2NvdW50cyA8LSBjYXJkKG5iX3F1ZWVuKVxuZGF0YS5mcmFtZShjb3VudHkgPSBzY290JGNvdW50eSAsIG5vX25laWdib3VycyA9IG5laWdoYm9yX2NvdW50cylcbnBsb3Qoc3RfZ2VvbWV0cnkoc2NvdCksIGJvcmRlciA9IFwibGlnaHRncmF5XCIpXG5wbG90KG5iX3F1ZWVuLCBzdF9nZW9tZXRyeShzY290KSwgbWFpbiA9IFwiUXVlZW4gQ29udGlndWl0eSBOZWlnaGJvcnNcIiwgYWRkID0gVFJVRSkifQ==
 </script>
 </div>
 </div>
@@ -611,11 +617,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJu
 <span id="interpolate-21-5"><a href="#interpolate-21-5" aria-hidden="true" tabindex="-1"></a>feature of the geography, not a bug — though <span class="st">`</span><span class="at">snap</span><span class="st">`</span> can bridge small gaps.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Queen contiguity treats counties sharing a corner as neighbours. The plotted network shows how the counties connect.</p>
 <p>Three counties end up with no neighbours at all: Orkney, Shetland and the Western Isles. That is not a bug — an island genuinely shares no boundary with anything. You have to decide what to do about it, and the choice affects everything downstream. Options are to allow empty sets with <code>zero.policy = TRUE</code>, to use a rule that always yields neighbours such as k nearest or a distance threshold, or to bridge the gap with a snapping tolerance, remembering that the tolerance is in the units of the geometry — metres here.</p>
 </div>
+</details>
 <ol start="5" type="1">
 <li>Which county or counties has the largest number of neigbours.</li>
 </ol>
@@ -624,13 +632,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJu
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q05">
+<div class="cell" data-exercise="q05" data-envir="lsda-session">
 <div>
 <div id="webr-24" class="exercise-cell">
 
 </div>
 <script type="webr-24-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDUifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -640,10 +648,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiIi
 <span id="interpolate-26-2"><a href="#interpolate-26-2" aria-hidden="true" tabindex="-1"></a>county attains it.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q05" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The most connected county sits in the middle of the mainland, as you would expect. Under a binary weights matrix it will exert more total influence on the statistics than a peripheral county, which is one reason row standardisation is often preferred.</p>
 </div>
+</details>
 <ol start="6" type="1">
 <li>Produce a map showing the wigtown county and its neighbors.</li>
 </ol>
@@ -652,13 +662,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZCJ9
 </script>
 </div>
-<div class="cell" data-exercise="q06">
+<div class="cell" data-exercise="q06" data-envir="lsda-session">
 <div>
 <div id="webr-29" class="exercise-cell">
 
 </div>
 <script type="webr-29-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDYifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -668,10 +678,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIi
 <span id="interpolate-31-2"><a href="#interpolate-31-2" aria-hidden="true" tabindex="-1"></a><span class="st">the three categories: the county itself, its neighbours, and everywhere else.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q06" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q06">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Wigtown and its neighbours, drawn to make the adjacency concrete. It is worth tracing one county by eye like this before trusting a 56 by 56 matrix built by a function.</p>
 </div>
+</details>
 <ol start="7" type="1">
 <li>Construct the spatial weights matrix using the binary coding, and the row standardized (1/number of neighbors) coding.</li>
 </ol>
@@ -680,13 +692,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZFxud2lndG93bl9pbmRleCA8LSB3aGljaChzY290JGNvdW50eSA9PSBcIndpZ3Rvd25cIilcbndpZ3Rvd25fbmIgPC0gbmJfcXVlZW5bW3dpZ3Rvd25faW5kZXhdXVxuc2NvdCRuZWlnaGJvcnMgPC0gXCJvdGhlclwiXG5zY290JG5laWdoYm9yc1t3aWd0b3duX2luZGV4XSA8LSBcImFyZWFcIlxuc2NvdCRuZWlnaGJvcnNbd2lndG93bl9uYl0gPC0gXCJuZWlnaGJvcnNcIlxuZ2dwbG90KHNjb3QpICsgZ2VvbV9zZihhZXMoZmlsbCA9IG5laWdoYm9ycykpICsgdGhlbWVfYncoKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJyZWRcIiwgXCJncmF5XCIsIFwid2hpdGVcIikpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q07">
+<div class="cell" data-exercise="q07" data-envir="lsda-session">
 <div>
 <div id="webr-34" class="exercise-cell">
 
 </div>
 <script type="webr-34-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJXX2JpbmFyeSA8LSBfX19fX18obmJfcXVlZW4sIHN0eWxlID0gXCJfX19fX19cIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19iaW5hcnlbMToxMCwgMToxMF1cblxuV19yb3dzdGQgPC0gbmIybWF0KG5iX3F1ZWVuLCBzdHlsZSA9IFwiX19fX19fXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbldfcm93c3RkWzE6MTAsIDE6MTBdIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDcifSwiY29kZSI6IldfYmluYXJ5IDwtIF9fX19fXyhuYl9xdWVlbiwgc3R5bGUgPSBcIl9fX19fX1wiLCB6ZXJvLnBvbGljeSA9IFRSVUUpXG5XX2JpbmFyeVsxOjEwLCAxOjEwXVxuXG5XX3Jvd3N0ZCA8LSBuYjJtYXQobmJfcXVlZW4sIHN0eWxlID0gXCJfX19fX19cIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19yb3dzdGRbMToxMCwgMToxMF0ifQ==
 </script>
 </div>
 </div>
@@ -698,13 +710,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJX
 <span id="interpolate-36-4"><a href="#interpolate-36-4" aria-hidden="true" tabindex="-1"></a>Islands with no neighbours need <span class="st">`</span><span class="at">zero.policy = TRUE</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q07" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q07">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Two encodings of the same neighbour list.</p>
 <p><strong>Binary</strong> gives every neighbour a weight of 1, so a county with eight neighbours contributes eight units of influence and one with two contributes two.</p>
 <p><strong>Row-standardised</strong> divides by the number of neighbours, so every county’s neighbours carry the same total weight of 1. Check the row sums to see this.</p>
 <p>The choice changes Moran’s I and it changes what a CAR model smooths towards. It belongs in the methods section, not left implicit.</p>
 </div>
+</details>
 <ol start="8" type="1">
 <li>Check for the evidence of spatial correlation using Moran I test?</li>
 </ol>
@@ -713,13 +727,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJX
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZFxud2lndG93bl9pbmRleCA8LSB3aGljaChzY290JGNvdW50eSA9PSBcIndpZ3Rvd25cIilcbndpZ3Rvd25fbmIgPC0gbmJfcXVlZW5bW3dpZ3Rvd25faW5kZXhdXVxuc2NvdCRuZWlnaGJvcnMgPC0gXCJvdGhlclwiXG5zY290JG5laWdoYm9yc1t3aWd0b3duX2luZGV4XSA8LSBcImFyZWFcIlxuc2NvdCRuZWlnaGJvcnNbd2lndG93bl9uYl0gPC0gXCJuZWlnaGJvcnNcIlxuZ2dwbG90KHNjb3QpICsgZ2VvbV9zZihhZXMoZmlsbCA9IG5laWdoYm9ycykpICsgdGhlbWVfYncoKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJyZWRcIiwgXCJncmF5XCIsIFwid2hpdGVcIikpXG5XX2JpbmFyeSA8LSBuYjJtYXQobmJfcXVlZW4sIHN0eWxlID0gXCJCXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbldfYmluYXJ5WzE6MTAsIDE6MTBdXG5cbldfcm93c3RkIDwtIG5iMm1hdChuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19yb3dzdGRbMToxMCwgMToxMF0ifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q08">
+<div class="cell" data-exercise="q08" data-envir="lsda-session">
 <div>
 <div id="webr-39" class="exercise-cell">
 
 </div>
 <script type="webr-39-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiIjIENyZWF0ZSBzcGF0aWFsIHdlaWdodHMgbGlzdFxubHcgPC0gbmIybGlzdHcobmJfcXVlZW4sIHN0eWxlID0gXCJXXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbl9fX19fXyhzY290JFNJUiwgbHcsIHplcm8ucG9saWN5ID0gVFJVRSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDgifSwiY29kZSI6IiMgQ3JlYXRlIHNwYXRpYWwgd2VpZ2h0cyBsaXN0XG5sdyA8LSBuYjJsaXN0dyhuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuX19fX19fKHNjb3QkU0lSLCBsdywgemVyby5wb2xpY3kgPSBUUlVFKSJ9
 </script>
 </div>
 </div>
@@ -732,12 +746,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiIj
 <span id="interpolate-41-5"><a href="#interpolate-41-5" aria-hidden="true" tabindex="-1"></a>than zero.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q08" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q08">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Moran’s I with a small p-value: there is strong evidence of positive spatial autocorrelation, meaning neighbouring counties have similar SIRs.</p>
 <p>Note the expectation reported alongside the statistic. Under the null, Moran’s I is not centred on zero but on <span class="math inline">\(-1/(n-1)\)</span>, about <span class="math inline">\(-0.018\)</span> for 56 counties. Compare the statistic with that, not with 0.</p>
 <p>This result is the justification for week 10. If neighbouring counties are genuinely alike, a model can borrow strength between them — which is what makes the unstable small-area SIRs estimable.</p>
 </div>
+</details>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
@@ -748,13 +764,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiIj
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZFxud2lndG93bl9pbmRleCA8LSB3aGljaChzY290JGNvdW50eSA9PSBcIndpZ3Rvd25cIilcbndpZ3Rvd25fbmIgPC0gbmJfcXVlZW5bW3dpZ3Rvd25faW5kZXhdXVxuc2NvdCRuZWlnaGJvcnMgPC0gXCJvdGhlclwiXG5zY290JG5laWdoYm9yc1t3aWd0b3duX2luZGV4XSA8LSBcImFyZWFcIlxuc2NvdCRuZWlnaGJvcnNbd2lndG93bl9uYl0gPC0gXCJuZWlnaGJvcnNcIlxuZ2dwbG90KHNjb3QpICsgZ2VvbV9zZihhZXMoZmlsbCA9IG5laWdoYm9ycykpICsgdGhlbWVfYncoKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJyZWRcIiwgXCJncmF5XCIsIFwid2hpdGVcIikpXG5XX2JpbmFyeSA8LSBuYjJtYXQobmJfcXVlZW4sIHN0eWxlID0gXCJCXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbldfYmluYXJ5WzE6MTAsIDE6MTBdXG5cbldfcm93c3RkIDwtIG5iMm1hdChuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19yb3dzdGRbMToxMCwgMToxMF1cbiMgQ3JlYXRlIHNwYXRpYWwgd2VpZ2h0cyBsaXN0XG5sdyA8LSBuYjJsaXN0dyhuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxubW9yYW4udGVzdChzY290JFNJUiwgbHcsIHplcm8ucG9saWN5ID0gVFJVRSkifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q09">
+<div class="cell" data-exercise="q09" data-envir="lsda-session">
 <div>
 <div id="webr-44" class="exercise-cell">
 
 </div>
 <script type="webr-44-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJjb29yZHMgPC0gc3RfY29vcmRpbmF0ZXMoc3RfY2VudHJvaWQoc2NvdCkpXG5rbm4zIDwtIF9fX19fXyhjb29yZHMsIGsgPSBfX19fX18pXG5uYl9rbm4zIDwtIGtubjJuYihrbm4zKVxucGxvdChzdF9nZW9tZXRyeShzY290KSwgYm9yZGVyID0gXCJsaWdodGdyYXlcIilcbnBsb3QobmJfa25uMywgY29vcmRzLCBtYWluID0gXCIzLU5lYXJlc3QgTmVpZ2hib3IgQ29ubmVjdGl2aXR5XCIsIGFkZCA9IFQpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDkifSwiY29kZSI6ImNvb3JkcyA8LSBzdF9jb29yZGluYXRlcyhzdF9jZW50cm9pZChzY290KSlcbmtubjMgPC0gX19fX19fKGNvb3JkcywgayA9IF9fX19fXylcbm5iX2tubjMgPC0ga25uMm5iKGtubjMpXG5wbG90KHN0X2dlb21ldHJ5KHNjb3QpLCBib3JkZXIgPSBcImxpZ2h0Z3JheVwiKVxucGxvdChuYl9rbm4zLCBjb29yZHMsIG1haW4gPSBcIjMtTmVhcmVzdCBOZWlnaGJvciBDb25uZWN0aXZpdHlcIiwgYWRkID0gVCkifQ==
 </script>
 </div>
 </div>
@@ -766,10 +782,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJj
 <span id="interpolate-46-4"><a href="#interpolate-46-4" aria-hidden="true" tabindex="-1"></a>depending on what you think adjacency should mean.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q09" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q09">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>k nearest neighbours guarantees every county exactly three neighbours, islands included. That solves the empty-set problem, but at a price: adjacency is no longer symmetric in the way contiguity is, and a county can be “near” something across a substantial stretch of sea.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on distance and map the neighbors obtained.</li>
 </ol>
@@ -778,13 +796,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJj
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZFxud2lndG93bl9pbmRleCA8LSB3aGljaChzY290JGNvdW50eSA9PSBcIndpZ3Rvd25cIilcbndpZ3Rvd25fbmIgPC0gbmJfcXVlZW5bW3dpZ3Rvd25faW5kZXhdXVxuc2NvdCRuZWlnaGJvcnMgPC0gXCJvdGhlclwiXG5zY290JG5laWdoYm9yc1t3aWd0b3duX2luZGV4XSA8LSBcImFyZWFcIlxuc2NvdCRuZWlnaGJvcnNbd2lndG93bl9uYl0gPC0gXCJuZWlnaGJvcnNcIlxuZ2dwbG90KHNjb3QpICsgZ2VvbV9zZihhZXMoZmlsbCA9IG5laWdoYm9ycykpICsgdGhlbWVfYncoKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJyZWRcIiwgXCJncmF5XCIsIFwid2hpdGVcIikpXG5XX2JpbmFyeSA8LSBuYjJtYXQobmJfcXVlZW4sIHN0eWxlID0gXCJCXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbldfYmluYXJ5WzE6MTAsIDE6MTBdXG5cbldfcm93c3RkIDwtIG5iMm1hdChuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19yb3dzdGRbMToxMCwgMToxMF1cbiMgQ3JlYXRlIHNwYXRpYWwgd2VpZ2h0cyBsaXN0XG5sdyA8LSBuYjJsaXN0dyhuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxubW9yYW4udGVzdChzY290JFNJUiwgbHcsIHplcm8ucG9saWN5ID0gVFJVRSlcbmNvb3JkcyA8LSBzdF9jb29yZGluYXRlcyhzdF9jZW50cm9pZChzY290KSlcbmtubjMgPC0ga25lYXJuZWlnaChjb29yZHMsIGsgPSAzKVxubmJfa25uMyA8LSBrbm4ybmIoa25uMykifQ==
 </script>
 </div>
-<div class="cell" data-exercise="q10">
+<div class="cell" data-exercise="q10" data-envir="lsda-session">
 <div>
 <div id="webr-49" class="exercise-cell">
 
 </div>
 <script type="webr-49-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTAifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -794,10 +812,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiIi
 <span id="interpolate-51-2"><a href="#interpolate-51-2" aria-hidden="true" tabindex="-1"></a>metres, so the bounds must be too.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q10" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q10">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>A distance threshold instead. The bound is in metres, because the geometry is. Choosing it is a modelling decision: too small and islands are isolated again, too large and everything is everyone’s neighbour.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on contiguity Neighbors of order 2 and map the neighbors obtained.</li>
 </ol>
@@ -806,13 +826,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZFxud2lndG93bl9pbmRleCA8LSB3aGljaChzY290JGNvdW50eSA9PSBcIndpZ3Rvd25cIilcbndpZ3Rvd25fbmIgPC0gbmJfcXVlZW5bW3dpZ3Rvd25faW5kZXhdXVxuc2NvdCRuZWlnaGJvcnMgPC0gXCJvdGhlclwiXG5zY290JG5laWdoYm9yc1t3aWd0b3duX2luZGV4XSA8LSBcImFyZWFcIlxuc2NvdCRuZWlnaGJvcnNbd2lndG93bl9uYl0gPC0gXCJuZWlnaGJvcnNcIlxuZ2dwbG90KHNjb3QpICsgZ2VvbV9zZihhZXMoZmlsbCA9IG5laWdoYm9ycykpICsgdGhlbWVfYncoKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJyZWRcIiwgXCJncmF5XCIsIFwid2hpdGVcIikpXG5XX2JpbmFyeSA8LSBuYjJtYXQobmJfcXVlZW4sIHN0eWxlID0gXCJCXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbldfYmluYXJ5WzE6MTAsIDE6MTBdXG5cbldfcm93c3RkIDwtIG5iMm1hdChuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19yb3dzdGRbMToxMCwgMToxMF1cbiMgQ3JlYXRlIHNwYXRpYWwgd2VpZ2h0cyBsaXN0XG5sdyA8LSBuYjJsaXN0dyhuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxubW9yYW4udGVzdChzY290JFNJUiwgbHcsIHplcm8ucG9saWN5ID0gVFJVRSlcbmNvb3JkcyA8LSBzdF9jb29yZGluYXRlcyhzdF9jZW50cm9pZChzY290KSlcbmtubjMgPC0ga25lYXJuZWlnaChjb29yZHMsIGsgPSAzKVxubmJfa25uMyA8LSBrbm4ybmIoa25uMylcbmRpc3RzIDwtIGRuZWFybmVpZ2goY29vcmRzLCBkMSA9IDAsIGQyID0gNTApIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q11">
+<div class="cell" data-exercise="q11" data-envir="lsda-session">
 <div>
 <div id="webr-54" class="exercise-cell">
 
 </div>
 <script type="webr-54-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTEifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -822,10 +842,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiIi
 <span id="interpolate-56-2"><a href="#interpolate-56-2" aria-hidden="true" tabindex="-1"></a><span class="st">neighbours"</span>, which widens the definition of local considerably.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q11" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q11">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Second-order contiguity means neighbours of neighbours. This widens the definition of “local” considerably and will smooth more aggressively in a model.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Construct the spatial weights matrix using inverse distance values.</li>
 </ol>
@@ -834,13 +856,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIiwic2V0dXAiOnRydWV9LCJjb2RlIjoiIyBSZWFkIHNoYXBlZmlsZSAobWFrZSBzdXJlIHRoZSAuc2hwLCAuZGJmLCAuc2h4IGZpbGVzIGFyZSBhbGwgcHJlc2VudClcbnNjb3QgPC0gc2NvdGxhbmRfbGlwXG5cbiMgVmlldyBzdHJ1Y3R1cmUgb2YgdGhlIGRhdGFzZXRcbmdsaW1wc2Uoc2NvdClcbnNjb3QkU0lSIDwtIHNjb3QkY2FzZXMgLyBzY290JGV4cGVjdGVkXG5cbiMgUGxvdCBTSVIgdXNpbmcgdG1hcFxuICB0bV9maWxsKFwiU0lSXCIsIHN0eWxlID0gXCJxdWFudGlsZVwiLCBwYWxldHRlID0gXCJZbE9yUmRcIiwgdGl0bGUgPSBcIlNJUlwiKSArXG4gIHRtX2JvcmRlcnMoKSArXG4gIHRtX2xheW91dChtYWluLnRpdGxlID0gXCJTdGFuZGFyZGl6ZWQgSW5jaWRlbmNlIFJhdGlvcyAoU0lSKSBpbiBTY290bGFuZFwiKVxuZ2dwbG90KHNjb3QsIGFlcyh4ID0gYWZmLCB5ID0gU0lSKSkgK1xuICBnZW9tX3BvaW50KGNvbG9yID0gXCJibHVlXCIpICtcbiAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IFRSVUUsIGNvbG9yID0gXCJyZWRcIikgK1xuICBsYWJzKHRpdGxlID0gXCJTSVIgdnMuIGFmZlwiLCB4ID0gXCJQcm9wb3J0aW9uIGluIGFmZlwiLCB5ID0gXCJTSVJcIilcbm5iX3F1ZWVuIDwtIHBvbHkybmIoc2NvdCwgcXVlZW4gPSBUUlVFKVxubmVpZ2hib3JfY291bnRzIDwtIGNhcmQobmJfcXVlZW4pXG5kYXRhLmZyYW1lKGNvdW50eSA9IHNjb3QkY291bnR5ICwgbm9fbmVpZ2JvdXJzID0gbmVpZ2hib3JfY291bnRzKVxubWF4X24gPC0gbWF4KG5laWdoYm9yX2NvdW50cylcbm1vc3RfY29ubmVjdGVkIDwtIHNjb3QkY291bnR5W3doaWNoKG5laWdoYm9yX2NvdW50cyA9PSBtYXhfbildXG5tb3N0X2Nvbm5lY3RlZFxud2lndG93bl9pbmRleCA8LSB3aGljaChzY290JGNvdW50eSA9PSBcIndpZ3Rvd25cIilcbndpZ3Rvd25fbmIgPC0gbmJfcXVlZW5bW3dpZ3Rvd25faW5kZXhdXVxuc2NvdCRuZWlnaGJvcnMgPC0gXCJvdGhlclwiXG5zY290JG5laWdoYm9yc1t3aWd0b3duX2luZGV4XSA8LSBcImFyZWFcIlxuc2NvdCRuZWlnaGJvcnNbd2lndG93bl9uYl0gPC0gXCJuZWlnaGJvcnNcIlxuZ2dwbG90KHNjb3QpICsgZ2VvbV9zZihhZXMoZmlsbCA9IG5laWdoYm9ycykpICsgdGhlbWVfYncoKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJyZWRcIiwgXCJncmF5XCIsIFwid2hpdGVcIikpXG5XX2JpbmFyeSA8LSBuYjJtYXQobmJfcXVlZW4sIHN0eWxlID0gXCJCXCIsIHplcm8ucG9saWN5ID0gVFJVRSlcbldfYmluYXJ5WzE6MTAsIDE6MTBdXG5cbldfcm93c3RkIDwtIG5iMm1hdChuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxuV19yb3dzdGRbMToxMCwgMToxMF1cbiMgQ3JlYXRlIHNwYXRpYWwgd2VpZ2h0cyBsaXN0XG5sdyA8LSBuYjJsaXN0dyhuYl9xdWVlbiwgc3R5bGUgPSBcIldcIiwgemVyby5wb2xpY3kgPSBUUlVFKVxubW9yYW4udGVzdChzY290JFNJUiwgbHcsIHplcm8ucG9saWN5ID0gVFJVRSlcbmNvb3JkcyA8LSBzdF9jb29yZGluYXRlcyhzdF9jZW50cm9pZChzY290KSlcbmtubjMgPC0ga25lYXJuZWlnaChjb29yZHMsIGsgPSAzKVxubmJfa25uMyA8LSBrbm4ybmIoa25uMylcbmRpc3RzIDwtIGRuZWFybmVpZ2goY29vcmRzLCBkMSA9IDAsIGQyID0gNTApXG5uYl9vcmRlcjIgPC0gbmJsYWcobmJfcXVlZW4sIDIpIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q12">
+<div class="cell" data-exercise="q12" data-envir="lsda-session">
 <div>
 <div id="webr-59" class="exercise-cell">
 
 </div>
 <script type="webr-59-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMTIifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -850,11 +872,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiIi
 <span id="interpolate-61-2"><a href="#interpolate-61-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">glist</span><span class="st">`</span>. Closer neighbours then carry more weight than distant ones.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q12" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q12">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Inverse-distance weights let closer neighbours count for more, rather than treating all neighbours alike. It is the most intuitively appealing scheme of the four, though it introduces a dependence on the distance units and on how centroids were computed.</p>
 <p>Taken together, items 9 to 12 make the real point of the week: <strong>there is no single correct W</strong>. Each encodes a different idea of what makes two areas neighbours, each gives different answers, and the choice must be reported and justified rather than accepted as a default.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week09">
 </div></section>
 <section id="week-9-complete" class="level2">

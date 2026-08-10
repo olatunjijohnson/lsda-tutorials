@@ -56,17 +56,36 @@ pre, .cell-output, table { overflow-x: auto; max-width: 100%; }
   .lsda-fb { background: rgba(255,255,255,.07); }
 }
 
-/* ---- explanation, revealed once the exercise has run -------------------- */
+/* ---- explanation ---------------------------------------------------------
+   A <details>: opened automatically once the exercise has run, and clickable
+   at any time so it is never unreachable. Closed, it is a single clickable
+   line that advertises itself; open, it is the same panel as before. */
 .lsda-explain {
-  margin: .75rem 0 1.5rem; padding: .85rem 1.1rem;
+  margin: .75rem 0 1.5rem; padding: .55rem 1.1rem;
   border-left: 4px solid #0d6efd; border-radius: 0 .4rem .4rem 0;
   background: rgba(13,110,253,.06);
 }
+.lsda-explain[open] { padding-bottom: .85rem; }
 .lsda-explain-head {
   font-weight: 600; font-size: .85rem; letter-spacing: .02em;
-  text-transform: uppercase; color: #0d6efd; margin-bottom: .4rem;
+  text-transform: uppercase; color: #0d6efd;
+  cursor: pointer; list-style: none; user-select: none;
+  display: flex; align-items: center; gap: .45rem;
 }
-.lsda-explain.is-revealed { animation: lsda-fade .35s ease-out; }
+.lsda-explain-head::-webkit-details-marker { display: none; }
+/* the disclosure triangle, rotated when open */
+.lsda-explain-head::before {
+  content: ""; flex: none; width: 0; height: 0;
+  border-left: .4rem solid currentColor;
+  border-top: .3rem solid transparent; border-bottom: .3rem solid transparent;
+  transition: transform .2s ease;
+}
+.lsda-explain[open] > .lsda-explain-head::before { transform: rotate(90deg); }
+.lsda-explain-head:hover { text-decoration: underline; }
+.lsda-explain-head:focus-visible { outline: 2px solid #0d6efd; outline-offset: 3px; }
+.lsda-explain-body { margin-top: .5rem; }
+.lsda-explain-body > :last-child { margin-bottom: 0; }
+.lsda-explain[open] > .lsda-explain-body { animation: lsda-fade .35s ease-out; }
 @keyframes lsda-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; } }
 @media (prefers-color-scheme: dark) {
   .lsda-explain { background: rgba(13,110,253,.14); }

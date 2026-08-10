@@ -1,9 +1,12 @@
 /* ---------------------------------------------------------------------------
  * Tutorial progress tracker.
  *
- * Counts how many exercises on the page have been run and produced output
- * without an error, shows a small live counter, and reveals the week's summary
- * once every exercise has been run.
+ * Two jobs:
+ *   - reveal each exercise's "What this shows" note once that exercise has
+ *     produced output. Reading the explanation before running anything teaches
+ *     nothing; reading it beside your own result teaches a lot.
+ *   - count how many exercises have been run, show a small live counter, and
+ *     reveal the week's summary once every one of them has.
  *
  * What this evidences, and what it does not:
  *   - It shows that each exercise was executed in THIS browser session and did
@@ -17,8 +20,6 @@
 (function () {
   "use strict";
 
-  var STORE_PREFIX = "lsda-progress:";
-
   function ready(fn) {
     if (document.readyState !== "loading") fn();
     else document.addEventListener("DOMContentLoaded", fn);
@@ -26,40 +27,105 @@
 
   ready(function () {
     var panel = document.getElementById("week-complete");
-    var cells = Array.prototype.slice.call(
-      document.querySelectorAll(".exercise-cell")
-    ).filter(function (c) {
-      // Setup and display-only cells have no editor, so they are not exercises.
-      return c.querySelector(".exercise-editor, .cm-editor");
-    });
 
-    if (!cells.length || !panel) return;
+    // ---- what counts as an exercise ---------------------------------------
+    //
+    // quarto-live wraps each one in <div class="cell" data-exercise="qNN">
+    // holding an empty <div class="exercise-cell"> for OJS to render into. The
+    // same data-exercise value also appears on that exercise's setup, hint and
+    // solution blocks, which carry no .exercise-cell -- so this selector picks
+    // out exactly the interactive ones.
+    //
+    // Reading the placeholders rather than the rendered editors matters twice
+    // over. The editors are created by OJS, which runs after DOMContentLoaded
+    // and after webR has booted, several seconds later: an earlier version of
+    // this file collected the list once at load, found it empty, and returned
+    // without ever running again -- which is why explanations were never
+    // revealed. And because the placeholders are in the static markup, the
+    // total is right from the first moment, so the end-of-week panel cannot
+    // appear early just because only some editors have rendered so far.
+    function exerciseCells() {
+      return Array.prototype.slice
+        .call(document.querySelectorAll('.cell[data-exercise] > div > .exercise-cell'))
+        .map(function (el) { return el.closest(".cell[data-exercise]"); });
+    }
 
-    var key = STORE_PREFIX + (document.body.dataset.week || location.pathname);
-    var doneSet = new Set();
+    // ---- what counts as having been run -----------------------------------
+    //
+    // webR renders text results into .cell-output and plots into
+    // .cell-output-display. Both must be matched by exact class token: every
+    // exercise is given an empty .cell-output-container the moment the page
+    // renders, before anything has been run, so a substring match on
+    // "cell-output" reports every exercise as finished from the outset.
+    //
+    // An R error arrives as a Quarto "important" callout, NOT as
+    // .cell-output-stderr -- that is where ordinary message() output goes, and
+    // treating it as failure would fail every exercise that loads a package.
+    function hasOutput(cell) {
+      return !!cell.querySelector(".cell-output, .cell-output-display");
+    }
+    function hasError(cell) {
+      return !!cell.querySelector(".callout-important, .alert-danger");
+    }
+    function busy(cell) {
+      return !!cell.querySelector(".exercise-editor-eval-indicator:not(.d-none)");
+    }
 
-    try {
-      var saved = window.sessionStorage.getItem(key);
-      if (saved) JSON.parse(saved).forEach(function (i) { doneSet.add(i); });
-    } catch (e) { /* sessionStorage unavailable: carry on without it */ }
+    // Not every exercise prints something. `library(MASS); data(epil)` in week
+    // 4 is a whole cell that produces no output at all, and judging it purely
+    // on output would leave that week impossible to finish. So a cell also
+    // counts once the student has run it and the run has come back.
+    //
+    // Attempts are recorded from the event the editor fires on commit, which
+    // covers both the Run button and Ctrl-Enter. It is listened for in the
+    // capture phase because the editor dispatches it without bubbling, and it
+    // is a true record of the student acting: the evaluation the runtime does
+    // for itself as the page loads fires no such event.
+    var attempted = new Set();
 
-    // ---- the counter chip -------------------------------------------------
-    var chip = document.createElement("div");
-    chip.className = "lsda-progress-chip";
-    chip.setAttribute("role", "status");
-    chip.setAttribute("aria-live", "polite");
-    document.body.appendChild(chip);
+    function ran(cell) {
+      if (!cell || hasError(cell)) return false;
+      return hasOutput(cell) || (attempted.has(cell.getAttribute("data-exercise")) &&
+                                 !busy(cell));
+    }
 
-    function render(override) {
-      var n = (typeof override === "number" && override > doneSet.size) ? override : doneSet.size,
-          total = cells.length;
-      chip.textContent = n + " / " + total + " exercises run";
-      chip.classList.toggle("is-complete", n >= total);
-      if (n >= total) {
+    // ---- the counter chip --------------------------------------------------
+    //
+    // Progress is read back off the page each time rather than stored: a reload
+    // clears the outputs because it restarts the R session, and the count has
+    // to say the same thing. Carrying a saved count across a reload would claim
+    // work that the session behind it no longer has.
+    var chip = null;
+    var done = new Set();
+
+    function render(total) {
+      if (!total) return;               // nothing rendered yet, nothing to say
+      if (!chip) {
+        chip = document.createElement("div");
+        chip.className = "lsda-progress-chip";
+        chip.setAttribute("role", "status");
+        chip.setAttribute("aria-live", "polite");
+        document.body.appendChild(chip);
+      }
+      // Only write when something changed. The observer below watches the
+      // whole body, and rewriting identical text is still a DOM mutation --
+      // it would wake the observer, which would sweep, which would write
+      // again, round and round.
+      var n = Math.min(done.size, total);
+      var text = n + " / " + total + " exercises run";
+      if (chip.textContent !== text) chip.textContent = text;
+      if (chip.classList.contains("is-complete") !== (n >= total)) {
+        chip.classList.toggle("is-complete", n >= total);
+      }
+
+      if (panel && n >= total) {
         panel.hidden = false;
         panel.classList.add("is-revealed");
+        // Quarto renders the empty ::: {.lsda-stamp} block as a div holding
+        // whitespace, so this has to be a trimmed test -- an emptiness check on
+        // the raw text is false from the start and the stamp never gets written.
         var stamp = panel.querySelector(".lsda-stamp");
-        if (stamp && !stamp.textContent) {
+        if (stamp && !stamp.textContent.trim()) {
           stamp.textContent =
             "All " + total + " exercises run — " +
             new Date().toLocaleString(undefined, {
@@ -67,113 +133,68 @@
             });
         }
       }
-      try {
-        window.sessionStorage.setItem(key, JSON.stringify(Array.from(doneSet)));
-      } catch (e) { /* ignore */ }
     }
 
-    // ---- watch each exercise for successful output ------------------------
-    // The runtime emits cell-output-container / cell-output-display /
-    // cell-output-stdout, never a bare "cell-output". A ".cell-output"
-    // selector matches the exact class token only, so it never fired -- which
-    // is why nothing was being detected. Match any class containing it.
-    function hasOutput(cell) {
-      return !!cell.querySelector(
-        '[class*="cell-output"], .exercise-grade, canvas, img'
-      );
-    }
-    function hasError(cell) {
-      // A runtime error is rendered as cell-output-stderr; a failed grading
-      // check as an alert-danger.
-      return !!cell.querySelector('.cell-output-stderr, .alert-danger');
-    }
-
-    // Explanations sit hidden until the exercise above them has produced
-    // output. Reading "what this shows" before running anything teaches
-    // nothing; reading it beside your own result teaches a lot.
+    // ---- one pass over the page -------------------------------------------
     //
-    // The runtime renders output through OJS, which REPLACES the exercise node
-    // rather than filling it in. So observing the original .exercise-cell is
-    // useless -- it gets swapped out. Instead watch the whole document and, on
-    // each change, ask a positional question: is there any output element
-    // between this explanation and the previous one? Re-querying every time
-    // means node replacement does not matter.
-    var explains = Array.prototype.slice.call(
-      document.querySelectorAll(".lsda-explain")
-    );
-
-    // For an explanation E, the exercise it belongs to is the nearest
-    // exercise cell above it. Reveal E when that cell has produced output.
-    //
-    // Anchoring to the previous *explanation* instead would misfire on the
-    // first one: with no explanation above it, output from the package-install
-    // cell at the top of the page would count and reveal it immediately.
-    function cellFor(el) {
-      var cells = document.querySelectorAll(".exercise-cell");
-      var best = null;
-      for (var i = 0; i < cells.length; i++) {
-        if (el.compareDocumentPosition(cells[i]) & Node.DOCUMENT_POSITION_PRECEDING) {
-          best = cells[i];
-        }
-      }
-      return best;
-    }
-
-    function producedOutput(cell, el) {
-      if (!cell) return false;
-      var outs = document.querySelectorAll('[class*="cell-output"], .exercise-grade');
-      for (var i = 0; i < outs.length; i++) {
-        var o = outs[i];
-        if (o.classList.contains("cell-output-stderr") ||
-            o.classList.contains("alert-danger")) continue;   // an error is not a result
-        var pos = cell.compareDocumentPosition(o);
-        var inside = !!(pos & Node.DOCUMENT_POSITION_CONTAINED_BY);
-        var between = !!(pos & Node.DOCUMENT_POSITION_FOLLOWING) &&
-                      !!(el.compareDocumentPosition(o) & Node.DOCUMENT_POSITION_PRECEDING);
-        if (inside || between) return true;
-      }
-      return false;
-    }
-
+    // Everything is matched by id rather than by DOM position. An explanation
+    // carries data-for="qNN" and belongs to the cell with data-exercise="qNN",
+    // wherever either happens to sit. Position-based matching was fragile
+    // because OJS rewrites the nodes as it renders them.
     function sweep() {
-      var changed = false;
-      for (var i = 0; i < explains.length; i++) {
-        var el = explains[i];
-        if (!el.hidden) continue;
-        if (producedOutput(cellFor(el), el)) {
-          el.hidden = false;
-          el.classList.add("is-revealed");
-          changed = true;
-        }
-      }
-      // the completion counter uses the same evidence
-      var done = explains.filter(function (e) { return !e.hidden; }).length;
-      if (changed) render(done);
+      var cells = exerciseCells();
+      if (!cells.length) return;
+
+      cells.forEach(function (cell) {
+        var id = cell.getAttribute("data-exercise");
+        if (ran(cell)) done.add(id); else done.delete(id);
+      });
+
+      // Explanations are <details>, so the student can always open one by
+      // hand. Opening it for them the moment their exercise produces output is
+      // just the better moment to read it -- never the only way in.
+      document.querySelectorAll(".lsda-explain").forEach(function (el) {
+        if (el.open) return;
+        var id = el.getAttribute("data-for");
+        if (!id || !done.has(id)) return;
+        el.open = true;
+        el.classList.add("is-revealed");
+      });
+
+      render(cells.length);
     }
 
-    cells.forEach(function (cell, i) {
-      var mark = function () {
-        if (hasOutput(cell) && !hasError(cell)) {
-          if (!doneSet.has(i)) { doneSet.add(i); render(); }
-        } else if (hasError(cell) && doneSet.has(i)) {
-          doneSet.delete(i); render();
-        }
-      };
-      new MutationObserver(mark).observe(cell, { childList: true, subtree: true });
-      mark();
+    // Coalesce bursts of mutations into one sweep. The timer is deliberately
+    // not restarted while one is already armed: re-arming on every mutation
+    // would let a steady trickle of them postpone the sweep indefinitely.
+    var pending = null;
+    function scheduleSweep() {
+      if (pending) return;
+      pending = window.setTimeout(function () { pending = null; sweep(); }, 100);
+    }
+
+    document.addEventListener("input", function (e) {
+      if (!e.detail || !e.detail.commit) return;
+      var cell = e.target && e.target.closest && e.target.closest(".cell[data-exercise]");
+      if (!cell) return;
+      attempted.add(cell.getAttribute("data-exercise"));
+      // Look again once the run has had a chance to start and to finish. The
+      // observer catches most of it; these cover a cell that renders nothing,
+      // where the only change is the spinner going out.
+      window.setTimeout(sweep, 400);
+      window.setTimeout(sweep, 2000);
+    }, true);
+
+    // One observer on the whole document: it survives the node replacement
+    // that OJS does while rendering, and it also catches the editors arriving
+    // in the first place. Class changes matter too -- that is how the
+    // evaluation spinner goes on and off.
+    new MutationObserver(function () {
+      scheduleSweep();
+    }).observe(document.body, {
+      childList: true, subtree: true, attributes: true, attributeFilter: ["class"]
     });
 
-    // One observer on the whole document, which survives node replacement.
-    new MutationObserver(function () {
-      sweep();
-      cells.forEach(function (cell, i) {
-        if (hasOutput(cell) && !hasError(cell) && !doneSet.has(i)) {
-          doneSet.add(i); render();
-        }
-      });
-    }).observe(document.body, { childList: true, subtree: true });
-
     sweep();
-    render();
   });
 })();

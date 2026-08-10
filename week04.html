@@ -489,42 +489,42 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOnRydWV9LCJjb2RlIjoiLmxz
 
 </div>
 <script type="webr-3-contents">
-eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImxpYnJhcnkobHNkYSlcbmxpYnJhcnkoTUFTUykifQ==
+eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImxpYnJhcnkobHNkYSlcbmxpYnJhcnkoTUFTUylcbiMgZ2xtbVBRTCgpIGluIGl0ZW0gNyBpcyBNQVNTJ3MsIGJ1dCBpdCBmaXRzIHRocm91Z2ggbmxtZTo6bG1lIGFuZCBmYWlscyB3aXRoXG4jIFwicGFja2FnZSAnbmxtZScgaXMgZXNzZW50aWFsXCIgdW5sZXNzIG5sbWUgaXMgYXR0YWNoZWQsIG5vdCBtZXJlbHkgaW5zdGFsbGVkLlxubGlicmFyeShubG1lKSJ9
 </script>
 </div>
 </div>
 <p>Q1: In this tutorial, the epilepsy data set will be analysed in using GLMs and GLMMs. The epilepsy seizure data can be obtained from package in . Get the data using</p>
-<div class="cell" data-exercise="given01">
+<div class="cell" data-exercise="given01" data-envir="lsda-session">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZ2l2ZW4wMSJ9LCJjb2RlIjoibGlicmFyeShNQVNTKVxuZGF0YShlcGlsKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJnaXZlbjAxIn0sImNvZGUiOiJsaWJyYXJ5KE1BU1MpXG5kYXRhKGVwaWwpIn0=
 </script>
 </div>
 </div>
 <p>The dataset contain two-week seizure counts for 59 epileptics. The number of seizures was recorded for a baseline period of 8 weeks, and then patients were randomly assigned to a treatment group or a control group. Counts were then recorded for four successive two-week periods. Detailed information about the data can be obtained using the following code.</p>
-<div class="cell" data-exercise="given02">
+<div class="cell" data-exercise="given02" data-envir="lsda-session">
 <div>
 <div id="webr-5" class="exercise-cell">
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZ2l2ZW4wMiJ9LCJjb2RlIjoiaGVscChlcGlsKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJnaXZlbjAyIn0sImNvZGUiOiJoZWxwKGVwaWwpIn0=
 </script>
 </div>
 </div>
 <ol type="1">
 <li>For each placebo and treatment group, extract the epilepsy seizure counts at each period as a single vector and form a data frame with row vector containing the counts at different periods.</li>
 </ol>
-<div class="cell" data-exercise="q02">
+<div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
 <div id="webr-6" class="exercise-cell">
 
 </div>
 <script type="webr-6-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDIifSwiY29kZSI6IiJ9
 </script>
 </div>
 </div>
@@ -534,11 +534,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIi
 <span id="interpolate-8-2"><a href="#interpolate-8-2" aria-hidden="true" tabindex="-1"></a>patient, split by treatment group — so subset by <span class="st">`</span><span class="at">trt</span><span class="st">`</span> and then reshape.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q02" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q02">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The reshaped counts give one row per patient and one column per two-week period, separately for the placebo and treatment arms. This is the wide layout you need for the covariance and correlation matrices in the next item — the modelling later uses the long form.</p>
 <p>Look at the counts themselves: they are small, skewed, and a few patients have very large values. That shape is what makes a Poisson model appropriate and a Gaussian one not.</p>
 </div>
+</details>
 <ol start="2" type="1">
 <li>Based on (1), for each group calculate the sample covariance matrix and sample correlation matrix.</li>
 </ol>
@@ -547,13 +549,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiIi
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShNQVNTKVxubGlicmFyeShsYXR0aWNlKVxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXIpXG5cbiMgRGlzcGxheSBlcGlsIGRhdGFcblxuZGF0YShlcGlsKVxuXG5cbiMgRGlzcGxheSB0cmVhdG1lbnQsIHBlcmlvZCwgYW5kIHN1YmplY3QgZGlzdHJpYnV0aW9uc1xubGlzdChcbiAgdHJ0ID0gdGFibGUoZXBpbCR0cnQpLFxuICBwZXJpb2QgPSB0YWJsZShlcGlsJHBlcmlvZCksXG4gIHN1YmplY3QgPSB0YWJsZShlcGlsJHN1YmplY3QpXG4pXG5cbiMgQ3JlYXRlIGEgc3VtbWFyeSB0YWJsZSBmb3IgZWFjaCB0cmVhdG1lbnQgZ3JvdXBcbmVwaWxfc3VtbWFyeSA8LSBlcGlsICU+JVxuICBzZWxlY3Qoc3ViamVjdCwgcGVyaW9kLCB0cnQsIHkpICU+JVxuICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gcGVyaW9kLCB2YWx1ZXNfZnJvbSA9IHkpXG5cbiMgU3BsaXQgaW50byBwbGFjZWJvIGFuZCB0cmVhdG1lbnQgZ3JvdXBzXG5wbGFjZWJvIDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInBsYWNlYm9cIikgJT4lIHNlbGVjdCgtYyh0cnQsIHN1YmplY3QpKVxudHJlYXRtZW50IDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInByb2dhYmlkZVwiKSAlPiUgc2VsZWN0KC1jKHRydCwgc3ViamVjdCkpXG5cbiMgUmVuYW1lIGNvbHVtbnMgdG8gcmVmbGVjdCBwZXJpb2RzXG5uYW1lcyhwbGFjZWJvKSA8LSBwYXN0ZTAoXCJwZXJpb2RcIiwgbmFtZXMocGxhY2VibykpXG5uYW1lcyh0cmVhdG1lbnQpIDwtIHBhc3RlMChcInBlcmlvZFwiLCBuYW1lcyh0cmVhdG1lbnQpKSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q03">
+<div class="cell" data-exercise="q03" data-envir="lsda-session">
 <div>
 <div id="webr-11" class="exercise-cell">
 
 </div>
 <script type="webr-11-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJfX19fX18ocGxhY2VibylcbmNvdih0cmVhdG1lbnQpXG5fX19fX18ocGxhY2VibylcbmNvcih0cmVhdG1lbnQpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDMifSwiY29kZSI6Il9fX19fXyhwbGFjZWJvKVxuY292KHRyZWF0bWVudClcbl9fX19fXyhwbGFjZWJvKVxuY29yKHRyZWF0bWVudCkifQ==
 </script>
 </div>
 </div>
@@ -563,11 +565,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJf
 <span id="interpolate-13-2"><a href="#interpolate-13-2" aria-hidden="true" tabindex="-1"></a><span class="st">within-patient correlation similar in the placebo and treatment arms?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q03" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q03">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The correlation matrices are the point. Within a patient, seizure counts across the four periods are strongly and fairly uniformly correlated — a patient who seizes often in one period does so in all of them.</p>
 <p>That is not a nuisance to be removed; it is real biological variation in susceptibility between patients. Ignoring it, as the GLM in item 5 does, treats each of the four periods as four independent pieces of evidence when they are much closer to one.</p>
 </div>
+</details>
 <ol start="3" type="1">
 <li>Based on (1), for each group produce a pairwise scatter plot. Report your finding.</li>
 </ol>
@@ -580,13 +584,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJf
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShNQVNTKVxubGlicmFyeShsYXR0aWNlKVxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXIpXG5cbiMgRGlzcGxheSBlcGlsIGRhdGFcblxuZGF0YShlcGlsKVxuXG5cbiMgRGlzcGxheSB0cmVhdG1lbnQsIHBlcmlvZCwgYW5kIHN1YmplY3QgZGlzdHJpYnV0aW9uc1xubGlzdChcbiAgdHJ0ID0gdGFibGUoZXBpbCR0cnQpLFxuICBwZXJpb2QgPSB0YWJsZShlcGlsJHBlcmlvZCksXG4gIHN1YmplY3QgPSB0YWJsZShlcGlsJHN1YmplY3QpXG4pXG5cbiMgQ3JlYXRlIGEgc3VtbWFyeSB0YWJsZSBmb3IgZWFjaCB0cmVhdG1lbnQgZ3JvdXBcbmVwaWxfc3VtbWFyeSA8LSBlcGlsICU+JVxuICBzZWxlY3Qoc3ViamVjdCwgcGVyaW9kLCB0cnQsIHkpICU+JVxuICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gcGVyaW9kLCB2YWx1ZXNfZnJvbSA9IHkpXG5cbiMgU3BsaXQgaW50byBwbGFjZWJvIGFuZCB0cmVhdG1lbnQgZ3JvdXBzXG5wbGFjZWJvIDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInBsYWNlYm9cIikgJT4lIHNlbGVjdCgtYyh0cnQsIHN1YmplY3QpKVxudHJlYXRtZW50IDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInByb2dhYmlkZVwiKSAlPiUgc2VsZWN0KC1jKHRydCwgc3ViamVjdCkpXG5cbiMgUmVuYW1lIGNvbHVtbnMgdG8gcmVmbGVjdCBwZXJpb2RzXG5uYW1lcyhwbGFjZWJvKSA8LSBwYXN0ZTAoXCJwZXJpb2RcIiwgbmFtZXMocGxhY2VibykpXG5uYW1lcyh0cmVhdG1lbnQpIDwtIHBhc3RlMChcInBlcmlvZFwiLCBuYW1lcyh0cmVhdG1lbnQpKVxuY292KHBsYWNlYm8pXG5jb3YodHJlYXRtZW50KVxuY29yKHBsYWNlYm8pXG5jb3IodHJlYXRtZW50KSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q04">
+<div class="cell" data-exercise="q04" data-envir="lsda-session">
 <div>
 <div id="webr-16" class="exercise-cell">
 
 </div>
 <script type="webr-16-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJfX19fX18ocGxhY2VibywgbWFpbj1cIlBsYWNlYm9cIilcbnBhaXJzKHRyZWF0bWVudCwgbWFpbj1cIlRyZWF0bWVudFwiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDQifSwiY29kZSI6Il9fX19fXyhwbGFjZWJvLCBtYWluPVwiUGxhY2Vib1wiKVxucGFpcnModHJlYXRtZW50LCBtYWluPVwiVHJlYXRtZW50XCIpIn0=
 </script>
 </div>
 </div>
@@ -596,10 +600,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJf
 <span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a>the tidy ellipses you saw <span class="cf">for</span> the cattle weights.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q04" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q04">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The pairwise plots show the same thing as the correlation matrices, in a form where the skewness is visible too. Compare these clouds with the tidy ellipses of the cattle weights in week 1: count data are not symmetric, and a few patients sit far out on every axis at once.</p>
 </div>
+</details>
 <ol start="4" type="1">
 <li>Consider a Poisson GLM applied to the dataset to analyse the effect of treatment on seizure counts. Assume that the number of seisure count follows a Poisson distribution with mean <span class="math inline">\(\lambda\)</span>, where</li>
 </ol>
@@ -610,13 +616,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJf
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShNQVNTKVxubGlicmFyeShsYXR0aWNlKVxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXIpXG5cbiMgRGlzcGxheSBlcGlsIGRhdGFcblxuZGF0YShlcGlsKVxuXG5cbiMgRGlzcGxheSB0cmVhdG1lbnQsIHBlcmlvZCwgYW5kIHN1YmplY3QgZGlzdHJpYnV0aW9uc1xubGlzdChcbiAgdHJ0ID0gdGFibGUoZXBpbCR0cnQpLFxuICBwZXJpb2QgPSB0YWJsZShlcGlsJHBlcmlvZCksXG4gIHN1YmplY3QgPSB0YWJsZShlcGlsJHN1YmplY3QpXG4pXG5cbiMgQ3JlYXRlIGEgc3VtbWFyeSB0YWJsZSBmb3IgZWFjaCB0cmVhdG1lbnQgZ3JvdXBcbmVwaWxfc3VtbWFyeSA8LSBlcGlsICU+JVxuICBzZWxlY3Qoc3ViamVjdCwgcGVyaW9kLCB0cnQsIHkpICU+JVxuICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gcGVyaW9kLCB2YWx1ZXNfZnJvbSA9IHkpXG5cbiMgU3BsaXQgaW50byBwbGFjZWJvIGFuZCB0cmVhdG1lbnQgZ3JvdXBzXG5wbGFjZWJvIDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInBsYWNlYm9cIikgJT4lIHNlbGVjdCgtYyh0cnQsIHN1YmplY3QpKVxudHJlYXRtZW50IDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInByb2dhYmlkZVwiKSAlPiUgc2VsZWN0KC1jKHRydCwgc3ViamVjdCkpXG5cbiMgUmVuYW1lIGNvbHVtbnMgdG8gcmVmbGVjdCBwZXJpb2RzXG5uYW1lcyhwbGFjZWJvKSA8LSBwYXN0ZTAoXCJwZXJpb2RcIiwgbmFtZXMocGxhY2VibykpXG5uYW1lcyh0cmVhdG1lbnQpIDwtIHBhc3RlMChcInBlcmlvZFwiLCBuYW1lcyh0cmVhdG1lbnQpKVxuY292KHBsYWNlYm8pXG5jb3YodHJlYXRtZW50KVxuY29yKHBsYWNlYm8pXG5jb3IodHJlYXRtZW50KSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q05">
+<div class="cell" data-exercise="q05" data-envir="lsda-session">
 <div>
 <div id="webr-21" class="exercise-cell">
 
 </div>
 <script type="webr-21-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJlcGlsLmdsbSA8LSBnbG0oeSB+IGxiYXNlKnRydCtsYWdlK3BlcmlvZCwgZmFtaWx5PV9fX19fXywgZGF0YT1lcGlsKVxuXG5zdW1tYXJ5KGVwaWwuZ2xtKVxuXG4xLXBjaGlzcSg4NjkuMzcsIDIzMCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDUifSwiY29kZSI6ImVwaWwuZ2xtIDwtIGdsbSh5IH4gbGJhc2UqdHJ0K2xhZ2UrcGVyaW9kLCBmYW1pbHk9X19fX19fLCBkYXRhPWVwaWwpXG5cbnN1bW1hcnkoZXBpbC5nbG0pXG5cbjEtcGNoaXNxKDg2OS4zNywgMjMwKSJ9
 </script>
 </div>
 </div>
@@ -629,12 +635,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJl
 <span id="interpolate-23-5"><a href="#interpolate-23-5" aria-hidden="true" tabindex="-1"></a>baseline rate.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q05" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Read the coefficients as log rate ratios: <code>exp(coef)</code> is the multiplicative effect on the expected count. The coefficient on <code>lbase</code> is close to 1, meaning the seizure rate is roughly proportional to the baseline rate, which is what you would hope.</p>
 <p>Now look at the residual deviance against its degrees of freedom, and at the chi-squared p-value computed underneath. The deviance is far larger than the degrees of freedom, so the model fits badly: there is much more variation than a Poisson with these covariates allows.</p>
 <p>There are two possible causes and this test cannot separate them — genuine overdispersion, or the correlation within patients that the model is ignoring. Item 7 addresses the second.</p>
 </div>
+</details>
 <ol start="5" type="1">
 <li>In Question (4) above, if the variable <em>Period</em> is treated as a factor with four levels, use the model to refit the data. Observe if each time period has a significant effect and interpret your results.</li>
 </ol>
@@ -643,13 +651,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJl
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShNQVNTKVxubGlicmFyeShsYXR0aWNlKVxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXIpXG5cbiMgRGlzcGxheSBlcGlsIGRhdGFcblxuZGF0YShlcGlsKVxuXG5cbiMgRGlzcGxheSB0cmVhdG1lbnQsIHBlcmlvZCwgYW5kIHN1YmplY3QgZGlzdHJpYnV0aW9uc1xubGlzdChcbiAgdHJ0ID0gdGFibGUoZXBpbCR0cnQpLFxuICBwZXJpb2QgPSB0YWJsZShlcGlsJHBlcmlvZCksXG4gIHN1YmplY3QgPSB0YWJsZShlcGlsJHN1YmplY3QpXG4pXG5cbiMgQ3JlYXRlIGEgc3VtbWFyeSB0YWJsZSBmb3IgZWFjaCB0cmVhdG1lbnQgZ3JvdXBcbmVwaWxfc3VtbWFyeSA8LSBlcGlsICU+JVxuICBzZWxlY3Qoc3ViamVjdCwgcGVyaW9kLCB0cnQsIHkpICU+JVxuICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gcGVyaW9kLCB2YWx1ZXNfZnJvbSA9IHkpXG5cbiMgU3BsaXQgaW50byBwbGFjZWJvIGFuZCB0cmVhdG1lbnQgZ3JvdXBzXG5wbGFjZWJvIDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInBsYWNlYm9cIikgJT4lIHNlbGVjdCgtYyh0cnQsIHN1YmplY3QpKVxudHJlYXRtZW50IDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInByb2dhYmlkZVwiKSAlPiUgc2VsZWN0KC1jKHRydCwgc3ViamVjdCkpXG5cbiMgUmVuYW1lIGNvbHVtbnMgdG8gcmVmbGVjdCBwZXJpb2RzXG5uYW1lcyhwbGFjZWJvKSA8LSBwYXN0ZTAoXCJwZXJpb2RcIiwgbmFtZXMocGxhY2VibykpXG5uYW1lcyh0cmVhdG1lbnQpIDwtIHBhc3RlMChcInBlcmlvZFwiLCBuYW1lcyh0cmVhdG1lbnQpKVxuY292KHBsYWNlYm8pXG5jb3YodHJlYXRtZW50KVxuY29yKHBsYWNlYm8pXG5jb3IodHJlYXRtZW50KVxuZXBpbC5nbG0gPC0gZ2xtKHkgfiBsYmFzZSp0cnQrbGFnZStwZXJpb2QsIGZhbWlseT1wb2lzc29uLCBkYXRhPWVwaWwpXG5cblxuMS1wY2hpc3EoODY5LjM3LCAyMzApIn0=
 </script>
 </div>
-<div class="cell" data-exercise="q06">
+<div class="cell" data-exercise="q06" data-envir="lsda-session">
 <div>
 <div id="webr-26" class="exercise-cell">
 
 </div>
 <script type="webr-26-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJmcGVyaW9kIDwtIF9fX19fXyhlcGlsJHBlcmlvZClcblxuZmVwaWwgPC0gZGF0YS5mcmFtZShlcGlsLGZwZXJpb2QpXG5cbmZlcGlsLmdsbSA8LSBnbG0oeX5sYmFzZSp0cnQrbGFnZStmcGVyaW9kLCBmYW1pbHk9cG9pc3NvbiwgZGF0YT1mZXBpbClcblxuc3VtbWFyeShmZXBpbC5nbG0pXG5cbjEtcGNoaXNxKCA4NjcuNiwyMjgpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDYifSwiY29kZSI6ImZwZXJpb2QgPC0gX19fX19fKGVwaWwkcGVyaW9kKVxuXG5mZXBpbCA8LSBkYXRhLmZyYW1lKGVwaWwsZnBlcmlvZClcblxuZmVwaWwuZ2xtIDwtIGdsbSh5fmxiYXNlKnRydCtsYWdlK2ZwZXJpb2QsIGZhbWlseT1wb2lzc29uLCBkYXRhPWZlcGlsKVxuXG5zdW1tYXJ5KGZlcGlsLmdsbSlcblxuMS1wY2hpc3EoIDg2Ny42LDIyOCkifQ==
 </script>
 </div>
 </div>
@@ -659,11 +667,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJm
 <span id="interpolate-28-2"><a href="#interpolate-28-2" aria-hidden="true" tabindex="-1"></a>instead of assuming a straight<span class="sc">-</span>line trend <span class="cf">in</span> period number.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q06" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q06">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>Treating <code>period</code> as a factor lets each of the four periods take its own effect instead of forcing a straight line in period number. It costs two extra parameters.</p>
 <p>The deviance barely improves, which says the linear-in-period assumption was not the problem. That is useful negative information: the misfit is not about the shape of the time trend.</p>
 </div>
+</details>
 <ol start="6" type="1">
 <li>Reconsider Questions (4) and (5), but this time use GLMM (PQL approach) to analyse the data, incorporating a random intercept.</li>
 </ol>
@@ -672,13 +682,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJm
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoibGlicmFyeShNQVNTKVxubGlicmFyeShsYXR0aWNlKVxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXIpXG5cbiMgRGlzcGxheSBlcGlsIGRhdGFcblxuZGF0YShlcGlsKVxuXG5cbiMgRGlzcGxheSB0cmVhdG1lbnQsIHBlcmlvZCwgYW5kIHN1YmplY3QgZGlzdHJpYnV0aW9uc1xubGlzdChcbiAgdHJ0ID0gdGFibGUoZXBpbCR0cnQpLFxuICBwZXJpb2QgPSB0YWJsZShlcGlsJHBlcmlvZCksXG4gIHN1YmplY3QgPSB0YWJsZShlcGlsJHN1YmplY3QpXG4pXG5cbiMgQ3JlYXRlIGEgc3VtbWFyeSB0YWJsZSBmb3IgZWFjaCB0cmVhdG1lbnQgZ3JvdXBcbmVwaWxfc3VtbWFyeSA8LSBlcGlsICU+JVxuICBzZWxlY3Qoc3ViamVjdCwgcGVyaW9kLCB0cnQsIHkpICU+JVxuICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gcGVyaW9kLCB2YWx1ZXNfZnJvbSA9IHkpXG5cbiMgU3BsaXQgaW50byBwbGFjZWJvIGFuZCB0cmVhdG1lbnQgZ3JvdXBzXG5wbGFjZWJvIDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInBsYWNlYm9cIikgJT4lIHNlbGVjdCgtYyh0cnQsIHN1YmplY3QpKVxudHJlYXRtZW50IDwtIGZpbHRlcihlcGlsX3N1bW1hcnksIHRydCA9PSBcInByb2dhYmlkZVwiKSAlPiUgc2VsZWN0KC1jKHRydCwgc3ViamVjdCkpXG5cbiMgUmVuYW1lIGNvbHVtbnMgdG8gcmVmbGVjdCBwZXJpb2RzXG5uYW1lcyhwbGFjZWJvKSA8LSBwYXN0ZTAoXCJwZXJpb2RcIiwgbmFtZXMocGxhY2VibykpXG5uYW1lcyh0cmVhdG1lbnQpIDwtIHBhc3RlMChcInBlcmlvZFwiLCBuYW1lcyh0cmVhdG1lbnQpKVxuY292KHBsYWNlYm8pXG5jb3YodHJlYXRtZW50KVxuY29yKHBsYWNlYm8pXG5jb3IodHJlYXRtZW50KVxuZXBpbC5nbG0gPC0gZ2xtKHkgfiBsYmFzZSp0cnQrbGFnZStwZXJpb2QsIGZhbWlseT1wb2lzc29uLCBkYXRhPWVwaWwpXG5cblxuMS1wY2hpc3EoODY5LjM3LCAyMzApXG5mcGVyaW9kIDwtIGFzLmZhY3RvcihlcGlsJHBlcmlvZClcblxuZmVwaWwgPC0gZGF0YS5mcmFtZShlcGlsLGZwZXJpb2QpXG5cbmZlcGlsLmdsbSA8LSBnbG0oeX5sYmFzZSp0cnQrbGFnZStmcGVyaW9kLCBmYW1pbHk9cG9pc3NvbiwgZGF0YT1mZXBpbClcblxuXG4xLXBjaGlzcSggODY3LjYsMjI4KSJ9
 </script>
 </div>
-<div class="cell" data-exercise="q07">
+<div class="cell" data-exercise="q07" data-envir="lsda-session">
 <div>
 <div id="webr-31" class="exercise-cell">
 
 </div>
 <script type="webr-31-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJlcGlsLmdsbW0gPC0gX19fX19fKHl+bGJhc2UqdHJ0K2xhZ2UrcGVyaW9kLHJhbmRvbT1+X19fX19ffHN1YmplY3QsIGZhbWlseT1wb2lzc29uLCBkYXRhPWVwaWwpXG5cbnN1bW1hcnkoZXBpbC5nbG1tKVxuXG5mZXBpbC5nbG1tIDwtIGdsbW1QUUwoeX5sYmFzZSp0cnQrbGFnZStmcGVyaW9kLHJhbmRvbT1+MXxzdWJqZWN0LCBmYW1pbHk9cG9pc3NvbiwgZGF0YT1mZXBpbClcblxuc3VtbWFyeShmZXBpbC5nbG1tKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiJxMDcifSwiY29kZSI6ImVwaWwuZ2xtbSA8LSBfX19fX18oeX5sYmFzZSp0cnQrbGFnZStwZXJpb2QscmFuZG9tPX5fX19fX198c3ViamVjdCwgZmFtaWx5PXBvaXNzb24sIGRhdGE9ZXBpbClcblxuc3VtbWFyeShlcGlsLmdsbW0pXG5cbmZlcGlsLmdsbW0gPC0gZ2xtbVBRTCh5fmxiYXNlKnRydCtsYWdlK2ZwZXJpb2QscmFuZG9tPX4xfHN1YmplY3QsIGZhbWlseT1wb2lzc29uLCBkYXRhPWZlcGlsKVxuXG5zdW1tYXJ5KGZlcGlsLmdsbW0pIn0=
 </script>
 </div>
 </div>
@@ -691,14 +701,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJl
 <span id="interpolate-33-5"><a href="#interpolate-33-5" aria-hidden="true" tabindex="-1"></a>Compare the standard errors with the GLM<span class="sc">:</span> what happened, and why?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<div class="lsda-explain" data-for="q07" hidden="">
-<div class="lsda-explain-head">What this shows</div>
+<details class="lsda-explain" data-for="q07">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
 <p>The random intercept is the substantive change. Each patient now has their own baseline rate, so patients who simply seize more than their covariates predict are accounted for rather than inflating the apparent evidence.</p>
 <p>Two things to compare with the GLM in item 5.</p>
 <p>The <strong>standard errors</strong> are larger, particularly for the between-patient covariates such as <code>trt</code>. Ignoring the clustering had overstated how much independent information the data carried.</p>
 <p>The <strong>random intercept standard deviation</strong> is substantial. That is the between-patient variation in susceptibility, and it is exactly what the Poisson GLM had to absorb as overdispersion.</p>
 <p>One more point about interpretation. A GLMM coefficient is <em>subject-specific</em>: it compares the same patient under two covariate values. The GEE you meet next week estimates a population-averaged effect instead, and for a non-linear link the two are genuinely different quantities.</p>
 </div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week04">
 <section id="week-4-complete" class="level2">
 <h2 class="anchored" data-anchor-id="week-4-complete">Week 4 complete</h2>
