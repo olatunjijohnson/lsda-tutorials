@@ -50,8 +50,9 @@
     chip.setAttribute("aria-live", "polite");
     document.body.appendChild(chip);
 
-    function render() {
-      var n = doneSet.size, total = cells.length;
+    function render(override) {
+      var n = (typeof override === "number" && override > doneSet.size) ? override : doneSet.size,
+          total = cells.length;
       chip.textContent = n + " / " + total + " exercises run";
       chip.classList.toggle("is-complete", n >= total);
       if (n >= total) {
@@ -87,48 +88,92 @@
       return !!cell.querySelector('.cell-output-stderr, .alert-danger');
     }
 
-    // Explanations sit hidden next to their exercise until it has produced
+    // Explanations sit hidden until the exercise above them has produced
     // output. Reading "what this shows" before running anything teaches
-    // nothing; reading it while looking at your own result teaches a lot.
+    // nothing; reading it beside your own result teaches a lot.
     //
-    // Pair them exactly rather than by document order: the page opens with
-    // several non-editable setup cells, so "the Nth explanation belongs to the
-    // Nth cell" is wrong. Each cell's payload carries its exercise label, so
-    // decode that and match it against data-for.
-    function exerciseIdOf(cell) {
-      var id = cell.id;                       // e.g. "webr-7"
-      if (!id) return null;
-      var sc = document.querySelector('script[type="' + id + '-contents"]');
-      if (!sc) return null;
-      try {
-        var payload = JSON.parse(atob(sc.textContent.trim()));
-        return (payload.attr && payload.attr.exercise) || null;
-      } catch (e) { return null; }
+    // The runtime renders output through OJS, which REPLACES the exercise node
+    // rather than filling it in. So observing the original .exercise-cell is
+    // useless -- it gets swapped out. Instead watch the whole document and, on
+    // each change, ask a positional question: is there any output element
+    // between this explanation and the previous one? Re-querying every time
+    // means node replacement does not matter.
+    var explains = Array.prototype.slice.call(
+      document.querySelectorAll(".lsda-explain")
+    );
+
+    // For an explanation E, the exercise it belongs to is the nearest
+    // exercise cell above it. Reveal E when that cell has produced output.
+    //
+    // Anchoring to the previous *explanation* instead would misfire on the
+    // first one: with no explanation above it, output from the package-install
+    // cell at the top of the page would count and reveal it immediately.
+    function cellFor(el) {
+      var cells = document.querySelectorAll(".exercise-cell");
+      var best = null;
+      for (var i = 0; i < cells.length; i++) {
+        if (el.compareDocumentPosition(cells[i]) & Node.DOCUMENT_POSITION_PRECEDING) {
+          best = cells[i];
+        }
+      }
+      return best;
     }
 
-    function explainFor(cell) {
-      var ex = exerciseIdOf(cell);
-      if (!ex) return null;
-      return document.querySelector('.lsda-explain[data-for="' + ex + '"]');
+    function producedOutput(cell, el) {
+      if (!cell) return false;
+      var outs = document.querySelectorAll('[class*="cell-output"], .exercise-grade');
+      for (var i = 0; i < outs.length; i++) {
+        var o = outs[i];
+        if (o.classList.contains("cell-output-stderr") ||
+            o.classList.contains("alert-danger")) continue;   // an error is not a result
+        var pos = cell.compareDocumentPosition(o);
+        var inside = !!(pos & Node.DOCUMENT_POSITION_CONTAINED_BY);
+        var between = !!(pos & Node.DOCUMENT_POSITION_FOLLOWING) &&
+                      !!(el.compareDocumentPosition(o) & Node.DOCUMENT_POSITION_PRECEDING);
+        if (inside || between) return true;
+      }
+      return false;
+    }
+
+    function sweep() {
+      var changed = false;
+      for (var i = 0; i < explains.length; i++) {
+        var el = explains[i];
+        if (!el.hidden) continue;
+        if (producedOutput(cellFor(el), el)) {
+          el.hidden = false;
+          el.classList.add("is-revealed");
+          changed = true;
+        }
+      }
+      // the completion counter uses the same evidence
+      var done = explains.filter(function (e) { return !e.hidden; }).length;
+      if (changed) render(done);
     }
 
     cells.forEach(function (cell, i) {
-      var ex = explainFor(cell);
       var mark = function () {
         if (hasOutput(cell) && !hasError(cell)) {
-          if (ex && ex.hidden) { ex.hidden = false; ex.classList.add("is-revealed"); }
           if (!doneSet.has(i)) { doneSet.add(i); render(); }
         } else if (hasError(cell) && doneSet.has(i)) {
-          // An error after a success un-marks it, so the counter stays honest.
           doneSet.delete(i); render();
         }
       };
-      new MutationObserver(mark).observe(cell, {
-        childList: true, subtree: true
-      });
+      new MutationObserver(mark).observe(cell, { childList: true, subtree: true });
       mark();
     });
 
+    // One observer on the whole document, which survives node replacement.
+    new MutationObserver(function () {
+      sweep();
+      cells.forEach(function (cell, i) {
+        if (hasOutput(cell) && !hasError(cell) && !doneSet.has(i)) {
+          doneSet.add(i); render();
+        }
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+
+    sweep();
     render();
   });
 })();
