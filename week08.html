@@ -533,6 +533,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 <span id="interpolate-6-4"><a href="#interpolate-6-4" aria-hidden="true" tabindex="-1"></a>Watch what happens to the nugget estimate and to its confidence interval.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q01" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Three fits, differing only in the formula.</p>
+<p><strong>Model 2 versus model 1.</strong> The nugget is estimated at about 0.00087, roughly 2.7% of the spatial variance, with a confidence interval running to infinity — completely uninformative. The log-likelihood is identical to model 1 to four decimal places, so the extra parameter has bought no fit at all.</p>
+<p>This is a design consequence, not a failure. The nugget describes behaviour at distances shorter than the closest pair of stations, and the Galicia network has very few such pairs, so the likelihood is almost flat in <span class="math inline">\(\tau^2\)</span>. If you need to estimate a nugget, put close pairs into the design deliberately.</p>
+<p><strong>Model 3.</strong> PM10 enters with a coefficient around 0.011 and a Wald p-value below 0.001. Note also what happened to the covariance parameters: the process variance falls from 0.0323 to 0.0304 and the correlation scale from 9.02 to 7.86 km. The covariate has absorbed part of the spatial structure, because PM10 is itself spatially smooth. Fixed and random parts of a spatial model are not separable.</p>
+<p>One caution before you conclude PM10 matters. The likelihood ratio test gives <span class="math inline">\(2 \times (180.80 - 179.12) = 3.35\)</span> on 1 degree of freedom, so <span class="math inline">\(p \approx 0.067\)</span> — much weaker than the Wald test suggests. The Wald test holds the covariance parameters fixed at their estimates while the likelihood ratio test lets them re-estimate, and here they move noticeably. When the two disagree, trust the likelihood ratio test.</p>
+</div>
 <ol start="2" type="1">
 <li><p>Which of the three models you have just fitted, <span class="math inline">\(\ref{eq:glgm_no_cov}\)</span> , <span class="math inline">\(\ref{eq:glgm_no_cov_nug}\)</span> and <span class="math inline">\(\ref{eq:glgm_lin}\)</span>, do you consider the best model? Why?</p></li>
 <li><p>What do the estimates of the parameters of your best model mean?</p></li>
@@ -557,6 +565,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJw
 <span id="interpolate-10-6"><a href="#interpolate-10-6" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">uniroot()</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q03" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p><span class="math inline">\(\phi\)</span> is a scale parameter, not a distance at which correlation dies away — the multiplier depends on the smoothness <span class="math inline">\(\kappa\)</span>. Converting it gives a practical range of about 43 km for model 1 and 37 km for model 3: the distance beyond which correlation has fallen to roughly 0.05.</p>
+<p>Report the practical range, not <span class="math inline">\(\phi\)</span>. It is the number a collaborator can interpret, and it is what tells you how far the data can reach when predicting.</p>
+</div>
 <ol start="4" type="1">
 <li>Using Models <span class="math inline">\(\ref{eq:glgm_no_cov}\)</span> and <span class="math inline">\(\ref{eq:glgm_lin}\)</span>, generate spatial predictions for the log-transformed lead concentration across Galicia at a 1 km resolution. Utilize the provided grid <code>galicia_grid</code> and predictor variables <code>galicia_pred</code> to perform these predictions. Create maps showing both the predicted log lead concentrations and their corresponding standard errors.</li>
 </ol>
@@ -577,6 +590,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJk
 <span id="interpolate-14-3"><a href="#interpolate-14-3" aria-hidden="true" tabindex="-1"></a>Map both the predicted mean and the standard error. The second map is the one</span>
 <span id="interpolate-14-4"><a href="#interpolate-14-4" aria-hidden="true" tabindex="-1"></a>that tells you where to trust the first.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q04" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Two maps, and the second is as important as the first.</p>
+<p>The <strong>prediction surface</strong> is smooth and looks equally confident everywhere, which it is not.</p>
+<p>The <strong>standard error surface</strong> shows why. Uncertainty is low around the stations and rises in the gaps and towards the edges, where prediction becomes extrapolation. The kriging variance is <span class="math inline">\(\sigma^2 - \mathbf{c}_0^{\mathrm{T}}\boldsymbol{\Sigma}^{-1}\mathbf{c}_0\)</span>: near data the subtracted term is large, and far away the correlations decay to nothing and the variance returns to the prior variance, meaning the model has nothing to add beyond the overall mean.</p>
+<p>The scale over which that happens is the practical range from item 3 — about 43 km. A location further than that from any station is effectively uninformed.</p>
+<p>Presenting the prediction map without the uncertainty map invites exactly the over-confident reading the model was fitted to avoid. If the question is whether lead exceeds a threshold, give an exceedance probability, which uses both.</p>
 </div>
 <ol start="5" type="1">
 <li><p>Compare the mean predictions and associated uncertainties from the two models. Discuss the similarities and differences observed, particularly in terms of spatial patterns and predictive uncertainty.</p></li>

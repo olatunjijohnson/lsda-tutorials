@@ -534,6 +534,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJs
 <span id="interpolate-8-2"><a href="#interpolate-8-2" aria-hidden="true" tabindex="-1"></a>patient, split by treatment group — so subset by <span class="st">`</span><span class="at">trt</span><span class="st">`</span> and then reshape.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q02" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The reshaped counts give one row per patient and one column per two-week period, separately for the placebo and treatment arms. This is the wide layout you need for the covariance and correlation matrices in the next item — the modelling later uses the long form.</p>
+<p>Look at the counts themselves: they are small, skewed, and a few patients have very large values. That shape is what makes a Poisson model appropriate and a Gaussian one not.</p>
+</div>
 <ol start="2" type="1">
 <li>Based on (1), for each group calculate the sample covariance matrix and sample correlation matrix.</li>
 </ol>
@@ -552,6 +557,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJf
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-12-1"><a href="#interpolate-12-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">cov()</span><span class="st">`</span> and <span class="st">`</span><span class="at">cor()</span><span class="st">`</span> on each group<span class="st">'s matrix of counts. Compare the two: is the</span></span>
 <span id="interpolate-12-2"><a href="#interpolate-12-2" aria-hidden="true" tabindex="-1"></a><span class="st">within-patient correlation similar in the placebo and treatment arms?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q03" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The correlation matrices are the point. Within a patient, seizure counts across the four periods are strongly and fairly uniformly correlated — a patient who seizes often in one period does so in all of them.</p>
+<p>That is not a nuisance to be removed; it is real biological variation in susceptibility between patients. Ignoring it, as the GLM in item 5 does, treats each of the four periods as four independent pieces of evidence when they are much closer to one.</p>
 </div>
 <ol start="3" type="1">
 <li>Based on (1), for each group produce a pairwise scatter plot. Report your finding.</li>
@@ -575,6 +585,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJw
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-16-1"><a href="#interpolate-16-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">pairs()</span><span class="st">`</span> on each group. Counts are skewed, so the clouds will look quite unlike</span>
 <span id="interpolate-16-2"><a href="#interpolate-16-2" aria-hidden="true" tabindex="-1"></a>the tidy ellipses you saw <span class="cf">for</span> the cattle weights.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q04" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The pairwise plots show the same thing as the correlation matrices, in a form where the skewness is visible too. Compare these clouds with the tidy ellipses of the cattle weights in week 1: count data are not symmetric, and a few patients sit far out on every axis at once.</p>
 </div>
 <ol start="4" type="1">
 <li>Consider a Poisson GLM applied to the dataset to analyse the effect of treatment on seizure counts. Assume that the number of seisure count follows a Poisson distribution with mean <span class="math inline">\(\lambda\)</span>, where</li>
@@ -600,6 +614,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJl
 <span id="interpolate-20-5"><a href="#interpolate-20-5" aria-hidden="true" tabindex="-1"></a>baseline rate.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q05" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Read the coefficients as log rate ratios: <code>exp(coef)</code> is the multiplicative effect on the expected count. The coefficient on <code>lbase</code> is close to 1, meaning the seizure rate is roughly proportional to the baseline rate, which is what you would hope.</p>
+<p>Now look at the residual deviance against its degrees of freedom, and at the chi-squared p-value computed underneath. The deviance is far larger than the degrees of freedom, so the model fits badly: there is much more variation than a Poisson with these covariates allows.</p>
+<p>There are two possible causes and this test cannot separate them — genuine overdispersion, or the correlation within patients that the model is ignoring. Item 7 addresses the second.</p>
+</div>
 <ol start="5" type="1">
 <li>In Question (4) above, if the variable <em>Period</em> is treated as a factor with four levels, use the model to refit the data. Observe if each time period has a significant effect and interpret your results.</li>
 </ol>
@@ -618,6 +638,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJl
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-24-1"><a href="#interpolate-24-1" aria-hidden="true" tabindex="-1"></a>Wrap <span class="st">`</span><span class="at">period</span><span class="st">`</span> <span class="cf">in</span> <span class="st">`</span><span class="at">factor()</span><span class="st">`</span> so each of the four periods gets its own coefficient</span>
 <span id="interpolate-24-2"><a href="#interpolate-24-2" aria-hidden="true" tabindex="-1"></a>instead of assuming a straight<span class="sc">-</span>line trend <span class="cf">in</span> period number.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q06" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Treating <code>period</code> as a factor lets each of the four periods take its own effect instead of forcing a straight line in period number. It costs two extra parameters.</p>
+<p>The deviance barely improves, which says the linear-in-period assumption was not the problem. That is useful negative information: the misfit is not about the shape of the time trend.</p>
 </div>
 <ol start="6" type="1">
 <li>Reconsider Questions (4) and (5), but this time use GLMM (PQL approach) to analyse the data, incorporating a random intercept.</li>
@@ -640,6 +665,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJs
 <span id="interpolate-28-4"><a href="#interpolate-28-4" aria-hidden="true" tabindex="-1"></a>expects are accounted <span class="cf">for</span> rather than inflating the apparent precision.</span>
 <span id="interpolate-28-5"><a href="#interpolate-28-5" aria-hidden="true" tabindex="-1"></a>Compare the standard errors with the GLM<span class="sc">:</span> what happened, and why?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q07" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The random intercept is the substantive change. Each patient now has their own baseline rate, so patients who simply seize more than their covariates predict are accounted for rather than inflating the apparent evidence.</p>
+<p>Two things to compare with the GLM in item 5.</p>
+<p>The <strong>standard errors</strong> are larger, particularly for the between-patient covariates such as <code>trt</code>. Ignoring the clustering had overstated how much independent information the data carried.</p>
+<p>The <strong>random intercept standard deviation</strong> is substantial. That is the between-patient variation in susceptibility, and it is exactly what the Poisson GLM had to absorb as overdispersion.</p>
+<p>One more point about interpretation. A GLMM coefficient is <em>subject-specific</em>: it compares the same patient under two covariate values. The GEE you meet next week estimates a population-averaged effect instead, and for a non-linear link the two are genuinely different quantities.</p>
 </div>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week04">
 <section id="week-4-complete" class="level2">

@@ -504,6 +504,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 <span id="interpolate-7-4"><a href="#interpolate-7-4" aria-hidden="true" tabindex="-1"></a>it look clustered, regular, or neither?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q01" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The ant nest pattern, and the summary gives the window, the number of points and the average intensity.</p>
+<p>Look at the plot and form an opinion before computing anything: does it look clustered, evenly spread, or neither? Point pattern analysis rewards having a prior expectation, because several of the statistics are easy to misread.</p>
+</div>
 <ol start="2" type="1">
 <li>Perform exploratory data analysis on the point pattern, including quadrat counting and kernel intensity estimation?</li>
 </ol>
@@ -525,6 +530,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJR
 <span id="interpolate-11-4"><a href="#interpolate-11-4" aria-hidden="true" tabindex="-1"></a>The bandwidth matters<span class="sc">:</span> too small and you see noise, too large and you smooth the</span>
 <span id="interpolate-11-5"><a href="#interpolate-11-5" aria-hidden="true" tabindex="-1"></a>structure away.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q02" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Two complementary views of the <strong>first-order</strong> structure — how the density of points varies across the window.</p>
+<p><strong>Quadrat counts</strong> are crude but directly testable. <strong>Kernel intensity</strong> is smooth and easier to look at, but the bandwidth is a choice: too small and you are looking at noise, too large and you smooth the structure away.</p>
+<p>Neither says anything about whether points interact with one another. That is second-order structure, and it comes later.</p>
 </div>
 <ol start="3" type="1">
 <li>Fit spatial point process models to the data, starting with a homogeneous Poisson process and then extending to an inhomogeneous Poisson process with spatial covariates?</li>
@@ -548,6 +559,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJw
 <span id="interpolate-15-5"><a href="#interpolate-15-5" aria-hidden="true" tabindex="-1"></a>intensity. Only the first<span class="sc">-</span>order structure has changed.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q03" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The homogeneous model assumes constant intensity; the inhomogeneous one lets the log intensity vary linearly across the window.</p>
+<p>Both are still Poisson processes, and this is the point students most often miss: in both, points are placed <strong>independently</strong> given the intensity. Only the first-order structure has changed. Neither model contains any interaction between points.</p>
+</div>
 <ol start="4" type="1">
 <li>Assess the goodness-of-fit of the fitted models using quadrat tests?</li>
 </ol>
@@ -569,11 +585,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJf
 <span id="interpolate-19-4"><a href="#interpolate-19-4" aria-hidden="true" tabindex="-1"></a>points.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q04" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>A small p-value says the homogeneous Poisson model does not fit.</p>
+<p>It does not say why. The test compares observed and expected counts per cell, so it responds to a varying intensity and to interaction between points in exactly the same way. To distinguish them you need the K-function — and even that needs care, as item 7 shows.</p>
+<p>Note also the warning about small expected counts: the chi-squared approximation is unreliable when quadrats contain few points, which is a reason to be cautious about the exact p-value rather than just the conclusion.</p>
+</div>
 <ol start="5" type="1">
 <li>Analyze the second-order properties of the point pattern using the K-function, and interpret whether the pattern is clustered, regular, or random?</li>
 </ol>
-<section id="challenge" class="level2">
-<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <div class="cell" data-exercise="q05">
 <div>
 <div id="webr-21" class="exercise-cell">
@@ -592,6 +612,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJw
 <span id="interpolate-23-4"><a href="#interpolate-23-4" aria-hidden="true" tabindex="-1"></a><span class="st">compete for space, so think about which you would expect before you look.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q05" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Ripley’s K with a simulation envelope under complete spatial randomness.</p>
+<p>Above the theoretical curve suggests clustering, below suggests regularity or inhibition. For ant nests, competition for space and forage makes regularity the biologically plausible expectation.</p>
+</div>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
 <li>Fit a model with a quadratic trend surface using x + y + I(x^2) + I(y^2) as covariates. Compare it with the linear model.</li>
 </ol>
@@ -612,6 +639,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiJw
 <span id="interpolate-27-3"><a href="#interpolate-27-3" aria-hidden="true" tabindex="-1"></a>Compare with the linear<span class="sc">-</span>trend fit using <span class="st">`</span><span class="at">AIC()</span><span class="st">`</span>. A quadratic surface can capture</span>
 <span id="interpolate-27-4"><a href="#interpolate-27-4" aria-hidden="true" tabindex="-1"></a>a ridge or a hollow that a plane cannot.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q06" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The quadratic trend surface can capture a ridge or a hollow in intensity that a plane cannot. Compare with the linear fit by AIC.</p>
+<p>Be careful about what this shows: a better-fitting intensity surface tells you the points are unevenly distributed, not that they interact.</p>
 </div>
 <ol start="2" type="1">
 <li>Simulate 99 point patterns from your best model and compare their envelope with the observed K-function using envelope().</li>
@@ -635,6 +667,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJi
 <span id="interpolate-31-5"><a href="#interpolate-31-5" aria-hidden="true" tabindex="-1"></a>If the observed K now sits inside the envelope, the inhomogeneity explained the</span>
 <span id="interpolate-31-6"><a href="#interpolate-31-6" aria-hidden="true" tabindex="-1"></a>apparent clustering.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q07" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>This is the sharpest idea in the week.</p>
+<p>The envelope is now simulated from the <strong>fitted inhomogeneous model</strong> rather than from complete spatial randomness. That changes the question from “are these points arranged as if uniform and independent?” to “is there anything left once the trend is accounted for?”.</p>
+<p>It matters because a varying intensity alone produces more close pairs than CSR predicts, and so makes an independent pattern look clustered. Comparing against CSR confounds first-order and second-order structure. If the observed K now sits inside the envelope, the apparent clustering was inhomogeneity all along.</p>
+<p>This confounding is the most common real error in point pattern analysis, and it is worth remembering well beyond this course.</p>
 </div>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week11">
 </div></section>

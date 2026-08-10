@@ -519,6 +519,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJk
 <span id="interpolate-6-2"><a href="#interpolate-6-2" aria-hidden="true" tabindex="-1"></a>it. Look at the columns before going on.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q01" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>An <code>sf</code> object: the attribute table and the county polygons together. <code>cases</code> and <code>expected</code> are the observed and expected counts, and <code>aff</code> is the proportion of the workforce in agriculture, fishing and forestry — a proxy for outdoor work and so for sunlight exposure.</p>
+</div>
 <ol start="2" type="1">
 <li>Calculate the standardized incidence ratios (SIRs) in the Scotland counties, defined as observed cases divided by expected cases, map and interpret it.</li>
 </ol>
@@ -540,6 +544,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJz
 <span id="interpolate-10-4"><a href="#interpolate-10-4" aria-hidden="true" tabindex="-1"></a>visually distinct.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q02" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The SIR is observed over expected, so 1 means “as many cases as the county’s population structure predicts”.</p>
+<p>Read the map with the next item in mind. The most extreme values tend to sit in counties with small expected counts, because an SIR based on 2 expected cases is extremely noisy — observing 4 gives an SIR of 2 with nothing unusual happening. That instability is the problem the CAR models in week 10 exist to solve.</p>
+</div>
 <ol start="3" type="1">
 <li>Plot the scatter plot of the SIR and aff. Is there any substantial association between the variables?</li>
 </ol>
@@ -559,6 +568,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJw
 <span id="interpolate-14-2"><a href="#interpolate-14-2" aria-hidden="true" tabindex="-1"></a>sunlight exposure, which is a known risk factor <span class="cf">for</span> lip cancer — so a positive</span>
 <span id="interpolate-14-3"><a href="#interpolate-14-3" aria-hidden="true" tabindex="-1"></a>slope is the expected direction.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q03" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>A weak positive association, in the direction the science predicts: more outdoor work, more sunlight, more lip cancer.</p>
+<p>The scatter is wide, so this is suggestive rather than conclusive on its own — and note that neither the SIR nor this relationship accounts for the spatial correlation you are about to detect.</p>
 </div>
 <ol start="4" type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on Queen contiguity and map the neighbors obtained.</li>
@@ -582,6 +596,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJs
 <span id="interpolate-18-5"><a href="#interpolate-18-5" aria-hidden="true" tabindex="-1"></a>feature of the geography, not a bug — though <span class="st">`</span><span class="at">snap</span><span class="st">`</span> can bridge small gaps.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q04" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Queen contiguity treats counties sharing a corner as neighbours. The plotted network shows how the counties connect.</p>
+<p>Three counties end up with no neighbours at all: Orkney, Shetland and the Western Isles. That is not a bug — an island genuinely shares no boundary with anything. You have to decide what to do about it, and the choice affects everything downstream. Options are to allow empty sets with <code>zero.policy = TRUE</code>, to use a rule that always yields neighbours such as k nearest or a distance threshold, or to bridge the gap with a snapping tolerance, remembering that the tolerance is in the units of the geometry — metres here.</p>
+</div>
 <ol start="5" type="1">
 <li>Which county or counties has the largest number of neigbours.</li>
 </ol>
@@ -601,6 +620,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1In0sImNvZGUiOiJj
 <span id="interpolate-22-2"><a href="#interpolate-22-2" aria-hidden="true" tabindex="-1"></a>county attains it.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q05" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The most connected county sits in the middle of the mainland, as you would expect. Under a binary weights matrix it will exert more total influence on the statistics than a peripheral county, which is one reason row standardisation is often preferred.</p>
+</div>
 <ol start="6" type="1">
 <li>Produce a map showing the wigtown county and its neighbors.</li>
 </ol>
@@ -619,6 +642,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA2In0sImNvZGUiOiIi
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-26-1"><a href="#interpolate-26-1" aria-hidden="true" tabindex="-1"></a>Find Wigtown<span class="st">'s index, pull its neighbours out of the neighbour list, then map</span></span>
 <span id="interpolate-26-2"><a href="#interpolate-26-2" aria-hidden="true" tabindex="-1"></a><span class="st">the three categories: the county itself, its neighbours, and everywhere else.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q06" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Wigtown and its neighbours, drawn to make the adjacency concrete. It is worth tracing one county by eye like this before trusting a 56 by 56 matrix built by a function.</p>
 </div>
 <ol start="7" type="1">
 <li>Construct the spatial weights matrix using the binary coding, and the row standardized (1/number of neighbors) coding.</li>
@@ -641,11 +668,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA3In0sImNvZGUiOiJX
 <span id="interpolate-30-4"><a href="#interpolate-30-4" aria-hidden="true" tabindex="-1"></a>Islands with no neighbours need <span class="st">`</span><span class="at">zero.policy = TRUE</span><span class="st">`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q07" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Two encodings of the same neighbour list.</p>
+<p><strong>Binary</strong> gives every neighbour a weight of 1, so a county with eight neighbours contributes eight units of influence and one with two contributes two.</p>
+<p><strong>Row-standardised</strong> divides by the number of neighbours, so every county’s neighbours carry the same total weight of 1. Check the row sums to see this.</p>
+<p>The choice changes Moran’s I and it changes what a CAR model smooths towards. It belongs in the methods section, not left implicit.</p>
+</div>
 <ol start="8" type="1">
 <li>Check for the evidence of spatial correlation using Moran I test?</li>
 </ol>
-<section id="challenge" class="level2">
-<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <div class="cell" data-exercise="q08">
 <div>
 <div id="webr-32" class="exercise-cell">
@@ -665,6 +697,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA4In0sImNvZGUiOiJs
 <span id="interpolate-34-5"><a href="#interpolate-34-5" aria-hidden="true" tabindex="-1"></a>than zero.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q08" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Moran’s I with a small p-value: there is strong evidence of positive spatial autocorrelation, meaning neighbouring counties have similar SIRs.</p>
+<p>Note the expectation reported alongside the statistic. Under the null, Moran’s I is not centred on zero but on <span class="math inline">\(-1/(n-1)\)</span>, about <span class="math inline">\(-0.018\)</span> for 56 counties. Compare the statistic with that, not with 0.</p>
+<p>This result is the justification for week 10. If neighbouring counties are genuinely alike, a model can borrow strength between them — which is what makes the unstable small-area SIRs estimable.</p>
+</div>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on 3 nearest neighbors and map the neighbors obtained.</li>
 </ol>
@@ -686,6 +726,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA5In0sImNvZGUiOiJj
 <span id="interpolate-38-4"><a href="#interpolate-38-4" aria-hidden="true" tabindex="-1"></a>depending on what you think adjacency should mean.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q09" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>k nearest neighbours guarantees every county exactly three neighbours, islands included. That solves the empty-set problem, but at a price: adjacency is no longer symmetric in the way contiguity is, and a county can be “near” something across a substantial stretch of sea.</p>
+</div>
 <ol start="2" type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on distance and map the neighbors obtained.</li>
 </ol>
@@ -704,6 +748,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEwIn0sImNvZGUiOiJu
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-42-1"><a href="#interpolate-42-1" aria-hidden="true" tabindex="-1"></a>The distance<span class="sc">-</span>based constructor <span class="cf">in</span> <span class="st">`</span><span class="at">spdep</span><span class="st">`</span> takes a lower and an upper bound. The geometry is <span class="cf">in</span></span>
 <span id="interpolate-42-2"><a href="#interpolate-42-2" aria-hidden="true" tabindex="-1"></a>metres, so the bounds must be too.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q10" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>A distance threshold instead. The bound is in metres, because the geometry is. Choosing it is a modelling decision: too small and islands are isolated again, too large and everything is everyone’s neighbour.</p>
 </div>
 <ol start="3" type="1">
 <li>Calculate the neighbors of each of the regions of Scotland based on contiguity Neighbors of order 2 and map the neighbors obtained.</li>
@@ -724,6 +772,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTExIn0sImNvZGUiOiJu
 <span id="interpolate-46-2"><a href="#interpolate-46-2" aria-hidden="true" tabindex="-1"></a><span class="st">neighbours"</span>, which widens the definition of local considerably.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q11" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Second-order contiguity means neighbours of neighbours. This widens the definition of “local” considerably and will smooth more aggressively in a model.</p>
+</div>
 <ol start="4" type="1">
 <li>Construct the spatial weights matrix using inverse distance values.</li>
 </ol>
@@ -742,6 +794,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTEyIn0sImNvZGUiOiJk
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-50-1"><a href="#interpolate-50-1" aria-hidden="true" tabindex="-1"></a>Compute inverse distances between centroids, then pass them to <span class="st">`</span><span class="at">nb2mat()</span><span class="st">`</span> via</span>
 <span id="interpolate-50-2"><a href="#interpolate-50-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">glist</span><span class="st">`</span>. Closer neighbours then carry more weight than distant ones.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q12" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Inverse-distance weights let closer neighbours count for more, rather than treating all neighbours alike. It is the most intuitively appealing scheme of the four, though it introduces a dependence on the distance units and on how centroids were computed.</p>
+<p>Taken together, items 9 to 12 make the real point of the week: <strong>there is no single correct W</strong>. Each encodes a different idea of what makes two areas neighbours, each gives different answers, and the choice must be reported and justified rather than accepted as a default.</p>
 </div>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week09">
 </div></section>

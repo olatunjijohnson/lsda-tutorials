@@ -534,11 +534,16 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAxIn0sImNvZGUiOiJs
 <span id="interpolate-6-7"><a href="#interpolate-6-7" aria-hidden="true" tabindex="-1"></a>expected.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q01" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>Two things are happening here.</p>
+<p>The adjacency matrix is built from the polygons as in week 9. Note the <code>snap</code> argument in metres — the geometry is in metres, so a tolerance meant to bridge the islands has to be too, and 200 would be 200 metres rather than 200 km.</p>
+<p>Then <code>S.CARleroux</code> fits the Bayesian model by MCMC. Read the output for the <code>aff</code> coefficient and its credible interval, and check the model has converged before trusting anything else.</p>
+<p>The <code>offset(log(expected))</code> is doing essential work. Without it you are modelling the number of cases, which mostly reflects population size. With it, the linear predictor describes the log relative risk — how the observed count compares with what the county’s demographic structure predicts. That is the epidemiological quantity.</p>
+</div>
 <ol start="2" type="1">
 <li>Map the relative risk of lip cancer and their uncertainty for each of the counties. Interpret the result noting that the relative risk quantifies whether county <span class="math inline">\(i\)</span> has higher (<span class="math inline">\(\theta_i&gt;1\)</span>) or lower (<span class="math inline">\(\theta_i&lt;1\)</span>) risk than the average risk in the standard population.</li>
 </ol>
-<section id="challenge" class="level2">
-<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <div class="cell" data-exercise="q02">
 <div>
 <div id="webr-8" class="exercise-cell">
@@ -559,6 +564,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAyIn0sImNvZGUiOiJz
 <span id="interpolate-10-6"><a href="#interpolate-10-6" aria-hidden="true" tabindex="-1"></a>expected counts are small and the raw SIR is therefore noisiest.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q02" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The smoothed relative risk, and its uncertainty, mapped.</p>
+<p>Compare the smoothed map with the raw SIR map from week 9. The counties that move most are those with <strong>small expected counts</strong>: where the data are weak, the CAR prior pulls the estimate towards the neighbourhood average; where the data are strong, the likelihood dominates and the estimate barely moves.</p>
+<p>That is borrowing strength, and it is the same idea as BLUP shrinkage in week 3 — a compromise between what one unit’s own data say and what its neighbours say, weighted by how much information the unit provides.</p>
+<p>The uncertainty map matters as much as the estimate map. A relative risk of 1.9 means something quite different with a narrow posterior than with a wide one.</p>
+</div>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
 <li>Map the probability that the relative risk is greater than 2.</li>
 </ol>
@@ -580,6 +594,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTAzIn0sImNvZGUiOiJS
 <span id="interpolate-14-4"><a href="#interpolate-14-4" aria-hidden="true" tabindex="-1"></a>point estimate, but how confident we are that risk is elevated.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<div class="lsda-explain" data-for="q03" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The posterior probability that relative risk exceeds 2, computed by counting the proportion of posterior samples above 2 for each county.</p>
+<p>This is a more useful statement than a point estimate for anyone making a decision. “The estimated risk is 1.9” leaves open how confident we are; “<span class="math inline">\(P(\theta_i &gt; 2 \mid \text{data}) = 0.8\)</span>” answers the question directly. Being able to compute any functional of the posterior straight from the samples is one of the practical advantages of the Bayesian approach.</p>
+</div>
 <ol start="2" type="1">
 <li>Fit another model where ( u_i ) is modeled using a Intrinsic Conditional Autoregressive (CAR) distribution</li>
 </ol>
@@ -599,6 +618,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA0In0sImNvZGUiOiJt
 <span id="interpolate-18-2"><a href="#interpolate-18-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">S.CARleroux</span><span class="st">`'s arguments. Compare the fitted risks: ICAR assumes the spatial</span></span>
 <span id="interpolate-18-3"><a href="#interpolate-18-3" aria-hidden="true" tabindex="-1"></a><span class="st">structure is entirely local, so it tends to smooth more.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="lsda-explain" data-for="q04" hidden="">
+<div class="lsda-explain-head">What this shows</div>
+<p>The ICAR model fixes the spatial dependence parameter at its maximum, so all the area-level variation is assumed spatially structured.</p>
+<p>Compare its fitted risks with the Leroux model’s. ICAR generally smooths more, because it has no way to represent an area effect that is simply idiosyncratic. Leroux estimates the balance between structured and unstructured variation instead of assuming it, which is usually the safer default — but it is worth seeing what the stronger assumption does to the map.</p>
 </div>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week10">
 </div></section>
