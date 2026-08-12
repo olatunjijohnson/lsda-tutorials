@@ -53,7 +53,7 @@
     "href": "week07.html#challenge",
     "title": "Spatial data analysis: week 7 tutorial",
     "section": "Challenge",
-    "text": "Challenge\nUsing the dataset named loaloa, Fit an appropriate model and examine the residual for the evidence of spatial correlation. This dataset is from Loaloa prevalence survey collected in Cameroon and some part of Nigeria. Hint: Repeat the task in question 1 to 6. To learn more about the data, read the readme file named “ReadMe_loaloa.txt”"
+    "text": "Challenge\nUsing the dataset named loaloa, fit an appropriate model and examine the residuals for evidence of spatial correlation. The data come from a Loa loa prevalence survey in Cameroon and part of Nigeria: 197 villages, each with the number of people examined and the number infected, plus elevation and NDVI vegetation covariates.\nHint: repeat the steps from questions 1 to 6. For what each column means, run ?loaloa — the documentation comes with the course package, so it works in the browser as well as in RStudio."
   },
   {
     "objectID": "week07.html#week-7-complete",
