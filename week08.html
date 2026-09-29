@@ -656,7 +656,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </ol>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
-<p>Use the <code>Liberia</code> data from the <code>RiskMap</code> package to build a binomial geostatistical model to investigate the relationship between log elevation and onchocerciasis prevalence in Liberia.. The dataset can be called in R using data(liberia). This data-set contains counts of reported onchocerciasis (or riverblindess) cases from 91 villages sampled across Liberia. The variables are as follows:</p>
+<p>Use the <code>Liberia</code> data from the <code>RiskMap</code> package to build a binomial geostatistical model to investigate the relationship between log elevation and onchocerciasis prevalence in Liberia. The dataset can be called in R using data(liberia). This data-set contains counts of reported onchocerciasis (or river blindness) cases from 90 villages sampled across Liberia. The variables are as follows:</p>
 <ul>
 <li><p>lat latitude of the of sampled villages.</p></li>
 <li><p>long longitude of the sampled villages.</p></li>
@@ -680,6 +680,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </script>
 </div>
 </div>
+<details class="lsda-explain" data-for="q05">
+<summary class="lsda-explain-head">What this shows</summary>
+<div class="lsda-explain-body">
+<p><code>glgpm()</code> fits the binomial model by Monte Carlo maximum likelihood, and the Monte Carlo error can be large relative to the reported standard errors. On these data, refitting with different seeds gave log-elevation estimates from 0.23 to 0.41, each with a reported standard error of about 0.02. Before trusting a fit, refit it with another seed, and with more samples through <code>control_mcmc = set_control_sim(n_sim = ...)</code>, and check the estimates agree.</p>
+<p>For reference, the maximum likelihood fit (computed with the Laplace approximation and checked by profiling the likelihood over the range) gives 0.337 (SE 0.068) for log elevation, a spatial variance of 0.087 and a range of about 46 km. Doubling elevation multiplies the odds of nodules by <span class="math inline">\(e^{0.337 \ln 2} = 1.26\)</span> (95% CI 1.15 to 1.39). The standard error is larger than the binomial GLM’s (0.040) because the model now allows for spatial correlation.</p>
+</div>
+</details>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week08">
 </div></section>
 <section id="week-8-complete" class="level2">
