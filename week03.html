@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Longitudinal Data Analysis: week 3 tutorial – LSDA Tutorials</title>
+<title>Week 3 tutorial: Inference for linear mixed models – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean" id="toc-q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean" class="nav-link active" data-scroll-target="#q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean">Q2: how far a predicted random effect is pulled towards the mean</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-choosing-fitting-and-checking-a-linear-mixed-model" id="toc-q1-choosing-fitting-and-checking-a-linear-mixed-model" class="nav-link" data-scroll-target="#q1-choosing-fitting-and-checking-a-linear-mixed-model">Q1: choosing, fitting and checking a linear mixed model</a></li>
+  <li><a href="#q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean" id="toc-q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean" class="nav-link" data-scroll-target="#q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean">Q2: how far a predicted random effect is pulled towards the mean</a></li>
   <li><a href="#week-3-complete" id="toc-week-3-complete" class="nav-link" data-scroll-target="#week-3-complete">Week 3 complete</a>
   <ul class="collapse">
   <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
@@ -430,7 +435,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Longitudinal Data Analysis: week 3 tutorial</h1>
+<h1 class="title">Week 3 tutorial: Inference for linear mixed models</h1>
 </div>
 
 
@@ -485,7 +490,25 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>Q1: For the cattle data, use the linear mixed model with random intercept and random slope in Day: to model the bodyweight growth of cattle over the observation period, where <span class="math inline">\(\mathbf{b}_i\)</span>=<span class="math inline">\((b_{i1},b_{i2})'\sim N_2(\mathbf{0}, \mathbf{G})\)</span> with <span class="math inline">\(\mathbf{G}\)</span> being (<span class="math inline">\(2\times 2\)</span>) positive definite and <span class="math inline">\(\varepsilon_i=(\varepsilon_{i1},...,\varepsilon_{i11})'\sim
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Week 2 fitted linear mixed models. This week is about deciding <em>which</em> one to keep, and then checking that it is defensible: comparing covariance structures, choosing between ML and REML, testing a variance component on the boundary of its parameter space, and reading the diagnostic plots.</p>
+<p>By the end of this sheet you should be able to:</p>
+<ul>
+<li>select a structure for <span class="math inline">\(\mathbf{R}_i\)</span> and for <span class="math inline">\(\mathbf{G}\)</span> using likelihood ratio tests and information criteria;</li>
+<li>say when REML should be used instead of ML, and why;</li>
+<li>handle a test whose null puts a variance on the boundary;</li>
+<li>interpret the fitted model, with confidence intervals; and</li>
+<li>check the model’s assumptions, including the two separate normality assumptions, and know what each diagnostic plot can and cannot tell you.</li>
+</ul>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p><code>cattle</code> is the growth experiment from week 1: <strong>60 animals</strong> randomised to two treatment groups of 30, weighed on the same <strong>eleven occasions two weeks apart</strong>, giving 660 measurements. The design is balanced, and the data arrive in wide form, one row per animal, with <code>group</code> followed by <code>t1</code> to <code>t11</code>. The first exercise reshapes them to long form, which is what <code>lme()</code> needs.</p>
+</section>
+</section>
+<section id="q1-choosing-fitting-and-checking-a-linear-mixed-model" class="level2">
+<h2 class="anchored" data-anchor-id="q1-choosing-fitting-and-checking-a-linear-mixed-model">Q1: choosing, fitting and checking a linear mixed model</h2>
+<p>For the cattle data, use the linear mixed model with random intercept and random slope in Day: to model the bodyweight growth of cattle over the observation period, where <span class="math inline">\(\mathbf{b}_i\)</span>=<span class="math inline">\((b_{i1},b_{i2})'\sim N_2(\mathbf{0}, \mathbf{G})\)</span> with <span class="math inline">\(\mathbf{G}\)</span> being (<span class="math inline">\(2\times 2\)</span>) positive definite and <span class="math inline">\(\varepsilon_i=(\varepsilon_{i1},...,\varepsilon_{i11})'\sim
 N_{11}(\mathbf{0},\mathbf{R}_i)\)</span> with <span class="math inline">\(\mathbf{R}_i\)</span> being (<span class="math inline">\(11\times
 11\)</span>) positive definite.</p>
 <div class="cell" data-exercise="q01" data-envir="lsda-session">
@@ -513,7 +536,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </details>
 <ol type="1">
 <li><p>Express the above model in matrix form and explain the corresponding matrices/vectors.</p></li>
-<li><p>In R, use the function <code>lme()</code> to analyze the data by specifying <span class="math inline">\(\mathbf{G}\)</span> as general covariance structure and <span class="math inline">\(\mathbf{R}_i\)</span> as<br>
+<li><p>In R, use the function <code>lme()</code> to analyse the data by specifying <span class="math inline">\(\mathbf{G}\)</span> as general covariance structure and <span class="math inline">\(\mathbf{R}_i\)</span> as<br>
 2.1. independent covariance structure,</p></li>
 </ol>
 <div class="cell" data-exercise="q04" data-setup="true">
@@ -766,7 +789,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </details>
 <ol start="5" type="1">
 <li>Based on the selected model, fitted using the REML method, answer the following questions:<br>
-5.1. Produce the standardized residuals plot (i.e., residuals against fitted values) and the residual qqnorm plot. Justify whether the fitted model is good.</li>
+5.1. Produce the standardised residuals plot (i.e., residuals against fitted values) and the residual qqnorm plot. Justify whether the fitted model is good.</li>
 </ol>
 <div class="cell" data-exercise="q14" data-setup="true">
 <script type="exercise-setup-q14-contents">
@@ -914,6 +937,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Compare these with the group curves in item 17: they track the individual points much more closely. That gap between the population line and the subject line is the random effect, and its size is what <span class="math inline">\(\mathbf{G}\)</span> measures.</p>
 </div>
 </details>
+</section>
 <section id="q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean" class="level2">
 <h2 class="anchored" data-anchor-id="q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean">Q2: how far a predicted random effect is pulled towards the mean</h2>
 <p>Item 15 asked you to check the random-effects assumption with a QQ plot of the predicted <span class="math inline">\(\hat b_i\)</span>. This section asks what those predictions actually <em>are</em>. They are not the per-subject averages you would get by fitting each subject separately, and the difference has a formula.</p>

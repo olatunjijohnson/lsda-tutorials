@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Longitudinal data analysis: week 5 tutorial – LSDA Tutorials</title>
+<title>Week 5 tutorial: Generalised estimating equations – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#q2-what-the-working-correlation-does-and-does-not-change" id="toc-q2-what-the-working-correlation-does-and-does-not-change" class="nav-link active" data-scroll-target="#q2-what-the-working-correlation-does-and-does-not-change">Q2: what the working correlation does, and does not, change</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-fitting-a-marginal-model-by-gee" id="toc-q1-fitting-a-marginal-model-by-gee" class="nav-link" data-scroll-target="#q1-fitting-a-marginal-model-by-gee">Q1: fitting a marginal model by GEE</a></li>
+  <li><a href="#q2-what-the-working-correlation-does-and-does-not-change" id="toc-q2-what-the-working-correlation-does-and-does-not-change" class="nav-link" data-scroll-target="#q2-what-the-working-correlation-does-and-does-not-change">Q2: what the working correlation does, and does not, change</a></li>
   <li><a href="#week-5-complete" id="toc-week-5-complete" class="nav-link" data-scroll-target="#week-5-complete">Week 5 complete</a>
   <ul class="collapse">
   <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
@@ -430,7 +435,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Longitudinal data analysis: week 5 tutorial</h1>
+<h1 class="title">Week 5 tutorial: Generalised estimating equations</h1>
 </div>
 
 
@@ -485,44 +490,67 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>In a study of the effects of vitamin A deficiency in preschool children (available in the course package as <code>ichs</code>), 250 children were examined at an initial clinic visit and again at 3 month intervals for 15 months (at 3, 6, 9, 12 and 15 months after the first visit). The investigators are particularly interested in assessing whether or not the children with vitamin A deficiency are at increased risk of developing respiratory infection. At each examination, the presence or absence of respiratory infection, the child’s age in years, gender, and whether they suffered from vitamin A deficiency are recorded. The ICHS data file has the following columns:</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Weeks 2 to 4 modelled the correlation within a subject explicitly, through random effects and a structure for <span class="math inline">\(\mathbf{R}_i\)</span>. Generalised estimating equations take the opposite approach: specify only the mean, treat the correlation as a nuisance to be guessed at, and repair the standard errors afterwards. The result is consistent even when the guess is wrong — which is both the method’s strength and the source of most of the confusion about it.</p>
+<p>By the end of this sheet you should be able to:</p>
+<ul>
+<li>write down a marginal model for a binary longitudinal response;</li>
+<li>fit it by GEE, choosing a working correlation structure;</li>
+<li>explain the difference between the naive and the robust (sandwich) standard errors, and say which to report;</li>
+<li>see for yourself that the estimates barely move when the working correlation changes, while the standard errors do; and</li>
+<li>distinguish a marginal, population-averaged coefficient from a subject-specific one.</li>
+</ul>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>The Indonesian Children’s Health Study (<code>ichs</code>) followed <strong>250 preschool children</strong>, examined at an initial clinic visit and then every three months for fifteen months — at 3, 6, 9, 12 and 15 months, so <strong>1500 observations</strong> in all. The question is whether children with vitamin A deficiency are at greater risk of respiratory infection.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Column</th>
+<th style="text-align: left;">Column</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: left;">Child ID</td>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;">child identifier</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: left;">Respiratory infection status (0 = absence, 1 = presence)</td>
+<td style="text-align: left;"><code>infection</code></td>
+<td style="text-align: left;">respiratory infection: 0 = absent, 1 = present — the response</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: left;">Time (in months)</td>
+<td style="text-align: left;"><code>time</code></td>
+<td style="text-align: left;">months since the first visit</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: left;">Gender (0 = male, 1 = female)</td>
+<td style="text-align: left;"><code>gender</code></td>
+<td style="text-align: left;">0 = male, 1 = female</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: left;">Vitamin A (0 = not deficient, 1 = deficient)</td>
+<td style="text-align: left;"><code>vitA</code></td>
+<td style="text-align: left;">vitamin A status: 0 = not deficient, 1 = deficient</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: left;">Age (in years)</td>
+<td style="text-align: left;"><code>age</code></td>
+<td style="text-align: left;">age in years</td>
 </tr>
 </tbody>
 </table>
+<p>The code below copies the data to <code>ICHS</code> and renames these columns to <code>ID</code>, <code>Y</code>, <code>Time</code>, <code>Gender</code>, <code>VitaminA</code> and <code>age</code>, so that the model formulae read closer to the notation used in the lectures. Both names refer to the same column.</p>
+</section>
+</section>
+<section id="q1-fitting-a-marginal-model-by-gee" class="level2">
+<h2 class="anchored" data-anchor-id="q1-fitting-a-marginal-model-by-gee">Q1: fitting a marginal model by GEE</h2>
 <ol type="1">
-<li><p>Let <span class="math inline">\(Y_i\)</span> be the vector of responses for the <span class="math inline">\(i\)</span>th child, consisting of the elements <span class="math inline">\(Y_{ij}\)</span>, which are observations on whether the child has a respiratory infection at time <span class="math inline">\(t_{ij}\)</span> (recorded in months; Yes=1 and No=0). Write down a model for <span class="math inline">\(E(Y_{ij})\)</span> with an appropriate link function that is linear in an intercept and additive terms for time, age, gender, and vitamin A status. Also, write down <span class="math inline">\(\mbox{Var}(Y_{ij})\)</span> given the nature of the response.</p></li>
-<li><p>Fit the model in part (1) without taking the within-subject correlation into account, i.e., taking all the observations from the children as if they were independent. Based on this fit, is there any sufficient evidence to suggest that the mean pattern of respiratory response is associated with the presence or absence of vitamin A deficiency? State the null hypothesis corresponding to this question in your model (a), describe the test statistic and p-value on which you draw the conclusion, and state your conclusion.</p></li>
+<li><p>Let <span class="math inline">\(Y_i\)</span> be the vector of responses for the <span class="math inline">\(i\)</span>th child, consisting of the elements <span class="math inline">\(Y_{ij}\)</span>, which are observations on whether the child has a respiratory infection at time <span class="math inline">\(t_{ij}\)</span> (recorded in months; Yes=1 and No=0). Write down a model for <span class="math inline">\(E(Y_{ij})\)</span> with an appropriate link function, linear in an intercept and additive terms for time, age, gender and vitamin A status. Write down <span class="math inline">\(\mbox{Var}(Y_{ij})\)</span> as well, given the nature of the response.</p></li>
+<li><p>Fit the model from part (1) <strong>without</strong> accounting for the within-subject correlation — that is, treating all 1500 observations as independent.</p>
+<p>Is there evidence that respiratory infection is associated with vitamin A deficiency? State the null hypothesis in terms of the parameters of your model, give the test statistic and p-value you base the answer on, and state your conclusion.</p></li>
 </ol>
 <div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
@@ -553,7 +581,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </details>
 <ol start="3" type="1">
 <li><p>Write down a model that extends the model in part (1) by taking into account the within-subject correlation among repeated measurements.</p></li>
-<li><p>Fit your model in part (3) to the data. Assuming that your model for the within-subject correlation is correct, conduct a hypothesis test for the null hypothesis in part (2). State your conclusion. Does the result agree with that in part (2)? Based on the results from your R output, give an explanation for your conclusion. Provide a summary of your model selection and justify your choice.</p></li>
+<li><p>Fit the model from part (3). Assuming the working correlation is adequate, test the same null hypothesis as in part (2).</p>
+<p>Does your conclusion agree with the one you reached in part (2)? Using the R output, explain why the two differ or agree, and justify which model you would report.</p></li>
 </ol>
 <div class="cell" data-exercise="q04" data-setup="true">
 <script type="exercise-setup-q04-contents">
@@ -585,11 +614,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>The <strong>estimates barely move</strong> across the four working correlations. Vitamin A goes from about 0.287 under independence to about 0.276 under exchangeable, a change far smaller than its standard error. That is the consistency result happening in front of you: get the working correlation wrong and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is still fine.</p>
 <p>The <strong>robust standard errors barely move either</strong> — around 0.223 in both. That is not a coincidence: the sandwich estimator builds the covariance from the observed residuals rather than from the assumed structure, so it does not care much which structure you assumed. Had you looked at the naive standard errors instead, they would have moved a great deal.</p>
 <p>The estimated exchangeable correlation is about 0.51, which is substantial: two visits on the same child are strongly related, and the independence assumption was clearly false. It simply did not damage the estimates.</p>
-<p><code>run_app("gee_robustness")</code> shows the other half of this, where the naive standard error goes wrong by around 70% while the robust one holds.</p>
+<p><code>run_app("gee_robustness")</code> shows the other half of this: the naive standard error is wrong by tens of per cent while the robust one holds. Which way it is wrong depends on the covariate. For one that varies <strong>within</strong> a subject, as in the app, ignoring positive correlation makes the naive standard error too <strong>large</strong>; for one that varies <strong>between</strong> subjects, such as <code>vitA</code> here, it makes it too <strong>small</strong> — which is the dangerous direction, because it overstates the evidence.</p>
 </div>
 </details>
 <ol start="5" type="1">
-<li>Is there any sufficient evidence to suggest that the probability of respiratory infection changes over the 15 month study period? Is there any sufficient evidence to suggest that it is worthwhile to take gender into account in understanding the risk of respiratory infection in this population of children?</li>
+<li>Is there evidence that the probability of respiratory infection changes over the fifteen months of the study? And is there evidence that gender is worth keeping in the model?</li>
 </ol>
 <div class="cell" data-exercise="q05" data-setup="true">
 <script type="exercise-setup-q05-contents">
@@ -623,6 +652,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Finally, remember what these coefficients mean. They are <strong>population-averaged</strong> log odds ratios, comparing groups of children. They are not the change for an individual child, which is what the GLMM in week 4 estimated. For a logit link the two differ, and reporting one as the other misdescribes the finding.</p>
 </div>
 </details>
+</section>
 <section id="q2-what-the-working-correlation-does-and-does-not-change" class="level2">
 <h2 class="anchored" data-anchor-id="q2-what-the-working-correlation-does-and-does-not-change">Q2: what the working correlation does, and does not, change</h2>
 <p>Items 2 and 4 fitted the same mean model under four working correlations. This section makes the comparison explicit, and then asks which of the two competing answers about vitamin A you should report.</p>

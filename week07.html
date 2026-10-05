@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial data analysis: week 7 tutorial – LSDA Tutorials</title>
+<title>Week 7 tutorial: Exploring geostatistical data and the variogram – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-exploring-the-data-and-building-a-variogram" id="toc-q1-exploring-the-data-and-building-a-variogram" class="nav-link" data-scroll-target="#q1-exploring-the-data-and-building-a-variogram">Q1: exploring the data and building a variogram</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
   <li><a href="#q2-reading-variograms" id="toc-q2-reading-variograms" class="nav-link" data-scroll-target="#q2-reading-variograms">Q2: reading variograms</a></li>
   <li><a href="#week-7-complete" id="toc-week-7-complete" class="nav-link" data-scroll-target="#week-7-complete">Week 7 complete</a>
   <ul class="collapse">
@@ -431,7 +436,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial data analysis: week 7 tutorial</h1>
+<h1 class="title">Week 7 tutorial: Exploring geostatistical data and the variogram</h1>
 </div>
 
 
@@ -500,46 +505,59 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>In this tutorial sheet, you will learn the following:</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>By the end of this sheet you should be able to:</p>
 <ul>
-<li>how to explore and visualise geostatistical data;</li>
-<li>how to explore the association between outcomes and covariates;</li>
-<li>how to construct a variogram; and</li>
-<li>understand how the spatial correlation can (or cannot be reflected) in the empirical variogram</li>
+<li>explore and visualise geostatistical data;</li>
+<li>examine the association between an outcome and a covariate;</li>
+<li>construct an empirical variogram and read the nugget, sill and range off it; and</li>
+<li>judge whether a variogram is evidence of spatial correlation, or only of noise.</li>
 </ul>
-<p>We analyse the Galicia dataset, often used in geostatistical analysis, refers to lead concentration data from a network of meteorological stations across the Galicia region in Northwest Spain. The Galicia dataset has the following columns:</p>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>The <code>galicia</code> data record <strong>lead concentration measured in moss</strong> at 132 sampling stations across Galicia, in north-west Spain, with a co-located measurement of airborne particulate matter. Moss takes up metals from the air, so it serves as a natural monitor of what has been deposited. These data are the running example for this week and the next.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Column</th>
+<th style="text-align: left;">Column</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: left;">Lead concentration</td>
+<td style="text-align: left;"><code>lead</code></td>
+<td style="text-align: left;">lead concentration</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: left;">Logarithm of lead concentration</td>
+<td style="text-align: left;"><code>loglead</code></td>
+<td style="text-align: left;">log lead concentration — <strong>this is the response you will model</strong></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: left;">Longitude</td>
+<td style="text-align: left;"><code>long</code></td>
+<td style="text-align: left;">longitude, decimal degrees</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: left;">Latitude</td>
+<td style="text-align: left;"><code>lat</code></td>
+<td style="text-align: left;">latitude, decimal degrees</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: left;">pm10</td>
+<td style="text-align: left;"><code>pm10</code></td>
+<td style="text-align: left;">particulate matter under 10 micrometres</td>
 </tr>
 </tbody>
 </table>
+<p><code>RiskMap</code>, which you also attach below, ships a <em>different</em> dataset that is also called <code>galicia</code>. Always name the package you mean: <code>data(galicia, package = "lsda")</code>.</p>
+</section>
+</section>
+<section id="q1-exploring-the-data-and-building-a-variogram" class="level2">
+<h2 class="anchored" data-anchor-id="q1-exploring-the-data-and-building-a-variogram">Q1: exploring the data and building a variogram</h2>
 <ol type="1">
-<li>Load the <code>galicia</code> dataset from the course package and check the columns of the data and ensure that you understand what each column means.</li>
+<li>Load the <code>galicia</code> dataset from the course package and check that you understand what each column holds.</li>
 </ol>
 <div class="cell" data-exercise="q01" data-envir="lsda-session">
 <div>
@@ -601,7 +619,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="3" type="1">
-<li>Plot the scatter plot of the log of the lead concentration and PM10 . Is there any substantial association between the variables?</li>
+<li>Plot log lead concentration against PM10. Is there a substantial association between the two?</li>
 </ol>
 <div class="cell" data-exercise="q03" data-setup="true">
 <script type="exercise-setup-q03-contents">
@@ -633,7 +651,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="4" type="1">
-<li>Construct a variogram for residual <span class="math inline">\(\hat{Z}\)</span> from <span class="math display">\[Y_i = \beta_0 + \beta_1 d(x_i) + Z_i,\]</span> where <span class="math inline">\(Y_i\)</span> is the log-lead concentration and <span class="math inline">\(d(x)\)</span> is the PM<span class="math inline">\(_{10}\)</span>. Is there evidence of spatial correlation?</li>
+<li>Construct a variogram for residual <span class="math inline">\(\hat{Z}\)</span> from <span class="math display">\[Y_i = \beta_0 + \beta_1 d(x_i) + Z_i,\]</span> where <span class="math inline">\(Y_i\)</span> is the log lead concentration and <span class="math inline">\(d(x_i)\)</span> is PM<span class="math inline">\(_{10}\)</span> at location <span class="math inline">\(x_i\)</span>. Is there evidence of spatial correlation?</li>
 </ol>
 <div class="cell" data-exercise="q04" data-setup="true">
 <script type="exercise-setup-q04-contents">
@@ -667,7 +685,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="5" type="1">
-<li>Remove the covariate and observe how the variogram changes. Is there any difference in the variogram and what does this imply?</li>
+<li>Now remove the covariate and build the variogram again. How does it change, and what does that tell you about what PM10 was accounting for?</li>
 </ol>
 <div class="cell" data-exercise="q05" data-setup="true">
 <script type="exercise-setup-q05-contents">
@@ -700,7 +718,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="6" type="1">
-<li>Perform a confirmatory test for the existence of spatial correlation using the Monte Carlo strategy. Can you confirm an existence of spatial correlation? Is there any effect of the number of permutation on your conclusion?</li>
+<li>Carry out a confirmatory Monte Carlo test for spatial correlation. Does it confirm what you saw in the previous two items? Vary the number of permutations: does your conclusion depend on it?</li>
 </ol>
 <div class="cell" data-exercise="q06" data-setup="true">
 <script type="exercise-setup-q06-contents">
@@ -734,6 +752,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>If your conclusion flips between 99 and 999 permutations, that is informative in itself: the result is marginal and should be reported that way rather than presented as a finding.</p>
 </div>
 </details>
+</section>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <p>Using the dataset named <code>loaloa</code>, fit an appropriate model and examine the residuals for evidence of spatial correlation. The data come from a Loa loa prevalence survey in Cameroon and part of Nigeria: 197 villages, each with the number of people examined and the number infected, plus elevation and NDVI vegetation covariates.</p>

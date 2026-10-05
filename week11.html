@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial data analysis: week 11 tutorial – LSDA Tutorials</title>
+<title>Week 11 tutorial: Spatial point processes – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-exploring-and-modelling-a-point-pattern" id="toc-q1-exploring-and-modelling-a-point-pattern" class="nav-link" data-scroll-target="#q1-exploring-and-modelling-a-point-pattern">Q1: exploring and modelling a point pattern</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
   <li><a href="#q2-real-covariates-and-the-envelope-you-should-be-comparing-against" id="toc-q2-real-covariates-and-the-envelope-you-should-be-comparing-against" class="nav-link" data-scroll-target="#q2-real-covariates-and-the-envelope-you-should-be-comparing-against">Q2: real covariates, and the envelope you should be comparing against</a></li>
   <li><a href="#week-11-complete" id="toc-week-11-complete" class="nav-link" data-scroll-target="#week-11-complete">Week 11 complete</a>
   <ul class="collapse">
@@ -431,7 +436,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial data analysis: week 11 tutorial</h1>
+<h1 class="title">Week 11 tutorial: Spatial point processes</h1>
 </div>
 
 
@@ -476,14 +481,20 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Indl
 </script>
 </div>
 </div>
-<p>In this tutorial sheet, you will learn the following:</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>In weeks 7 to 10 the locations were fixed and you modelled a value measured at them. Here the locations <em>are</em> the data: what you model is where the points fall and how many there are.</p>
+<p>By the end of this sheet you should be able to:</p>
 <ul>
-<li>Load and visualize a spatial point pattern dataset,</li>
-<li>Explore first- and second-order properties,</li>
-<li>Fit a homogeneous and inhomogeneous Poisson model,</li>
-<li>Assess model goodness-of-fit.</li>
+<li>load and visualise a spatial point pattern;</li>
+<li>explore its first-order (intensity) and second-order (interaction) properties;</li>
+<li>fit homogeneous and inhomogeneous Poisson process models; and</li>
+<li>assess goodness of fit, and say what a simulation envelope is testing.</li>
 </ul>
-<p>In this tutorial, we analyse the spatial distribution of nests of two ant species, Messor wasmanni and Cataglyphis bicolor, recorded at a site in northern Greece. The dataset <code>ants</code> from the <code>spatstat.data</code> package contains locations of 97 ant nests within a sampling window.. You can load the data using</p>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>The <code>ants</code> data record the nests of two ant species, <em>Messor wasmanni</em> and <em>Cataglyphis bicolor</em>, at a site in northern Greece. There are <strong>97 nests</strong> in all — 68 Messor and 29 Cataglyphis — within an irregular polygonal sampling window. The species label is carried as a <em>mark</em> on each point, so this is a marked point pattern; the questions below mostly treat the nests as a single unmarked pattern.</p>
+<p>The data come with <code>spatstat.data</code> rather than with the course package, so you load them with <code>data(ants)</code> after attaching that package.</p>
 <div class="cell" data-exercise="given01" data-envir="lsda-session">
 <div>
 <div id="webr-2" class="exercise-cell">
@@ -494,8 +505,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </script>
 </div>
 </div>
+</section>
+</section>
+<section id="q1-exploring-and-modelling-a-point-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="q1-exploring-and-modelling-a-point-pattern">Q1: exploring and modelling a point pattern</h2>
 <ol type="1">
-<li>Visualize the ant nest spatial point pattern data from the spatstat.data package?</li>
+<li>Load and plot the ant nest point pattern, and summarise it.</li>
 </ol>
 <div class="cell" data-exercise="q01" data-envir="lsda-session">
 <div>
@@ -523,7 +538,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="2" type="1">
-<li>Perform exploratory data analysis on the point pattern, including quadrat counting and kernel intensity estimation?</li>
+<li>Explore the pattern’s first-order properties using quadrat counts and a kernel estimate of the intensity. Does the intensity look constant across the window?</li>
 </ol>
 <div class="cell" data-exercise="q02" data-setup="true">
 <script type="exercise-setup-q02-contents">
@@ -558,7 +573,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="3" type="1">
-<li>Fit spatial point process models to the data, starting with a homogeneous Poisson process and then extending to an inhomogeneous Poisson process with spatial covariates?</li>
+<li>Fit a homogeneous Poisson process, then an inhomogeneous one whose intensity depends on the coordinates. Compare them.</li>
 </ol>
 <div class="cell" data-exercise="q03" data-setup="true">
 <script type="exercise-setup-q03-contents">
@@ -592,7 +607,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="4" type="1">
-<li>Assess the goodness-of-fit of the fitted models using quadrat tests?</li>
+<li>Assess the goodness of fit of both models using quadrat tests.</li>
 </ol>
 <div class="cell" data-exercise="q04" data-setup="true">
 <script type="exercise-setup-q04-contents">
@@ -626,7 +641,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="5" type="1">
-<li>Analyze the second-order properties of the point pattern using the K-function, and interpret whether the pattern is clustered, regular, or random?</li>
+<li>Examine the second-order properties using Ripley’s <span class="math inline">\(K\)</span>-function. Is the pattern clustered, regular, or consistent with complete spatial randomness?</li>
 </ol>
 <div class="cell" data-exercise="q05" data-setup="true">
 <script type="exercise-setup-q05-contents">
@@ -658,10 +673,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Above the theoretical curve suggests clustering, below suggests regularity or inhibition. For ant nests, competition for space and forage makes regularity the biologically plausible expectation.</p>
 </div>
 </details>
+</section>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
-<li>Fit a model with a quadratic trend surface using x + y + I(x^2) + I(y^2) as covariates. Compare it with the linear model.</li>
+<li>Fit a model with a quadratic trend surface, using <code>x + y + I(x^2) + I(y^2)</code> as covariates, and compare it with the linear one.</li>
 </ol>
 <div class="cell" data-exercise="q06" data-setup="true">
 <script type="exercise-setup-q06-contents">
@@ -694,7 +710,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="2" type="1">
-<li>Simulate 99 point patterns from your best model and compare their envelope with the observed K-function using envelope().</li>
+<li>Simulate 99 point patterns from your best model and compare the resulting envelope with the observed <span class="math inline">\(K\)</span>-function, using <code>envelope()</code>.</li>
 </ol>
 <div class="cell" data-exercise="q07" data-setup="true">
 <script type="exercise-setup-q07-contents">

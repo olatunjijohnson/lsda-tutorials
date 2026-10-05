@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Longitudinal data analysis: week 2 tutorial – LSDA Tutorials</title>
+<title>Week 2 tutorial: Linear mixed models – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#q2-correlation-structures-when-the-times-are-not-a-grid" id="toc-q2-correlation-structures-when-the-times-are-not-a-grid" class="nav-link active" data-scroll-target="#q2-correlation-structures-when-the-times-are-not-a-grid">Q2: correlation structures when the times are not a grid</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-fitting-and-comparing-linear-mixed-models" id="toc-q1-fitting-and-comparing-linear-mixed-models" class="nav-link" data-scroll-target="#q1-fitting-and-comparing-linear-mixed-models">Q1: fitting and comparing linear mixed models</a></li>
+  <li><a href="#q2-correlation-structures-when-the-times-are-not-a-grid" id="toc-q2-correlation-structures-when-the-times-are-not-a-grid" class="nav-link" data-scroll-target="#q2-correlation-structures-when-the-times-are-not-a-grid">Q2: correlation structures when the times are not a grid</a></li>
   <li><a href="#week-2-complete" id="toc-week-2-complete" class="nav-link" data-scroll-target="#week-2-complete">Week 2 complete</a>
   <ul class="collapse">
   <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
@@ -430,7 +435,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Longitudinal data analysis: week 2 tutorial</h1>
+<h1 class="title">Week 2 tutorial: Linear mixed models</h1>
 </div>
 
 
@@ -485,7 +490,62 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>Q1: For the <code>fev1</code> data, consider a linear mixed model of the form <span class="math display">\[
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Week 1 showed that measurements on the same subject are correlated. The linear mixed model is the first tool for doing something about it: a random effect <span class="math inline">\(\mathbf{b}_i\)</span> lets each subject have its own intercept and slope, and <span class="math inline">\(\mathbf{R}_i\)</span> describes what correlation is left over within a subject once that is accounted for.</p>
+<p>By the end of this sheet you should be able to:</p>
+<ul>
+<li>write a linear mixed model in matrix form and say what each matrix holds;</li>
+<li>fit one with <code>lme()</code>, choosing a structure for <span class="math inline">\(\mathbf{R}_i\)</span>;</li>
+<li>compare covariance structures with likelihood ratio tests and information criteria; and</li>
+<li>interpret the fitted fixed effects and variance components.</li>
+</ul>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p><code>fev1</code> records lung function growth in <strong>299 school-age girls from Topeka, Kansas</strong>, followed as part of the Six Cities Study of Air Pollution and Health. Each girl was enrolled at around age 6 to 10 and measured roughly annually, but at ages of her own: the number of observations per girl ranges from 1 to 12, so the data are <strong>unbalanced</strong> and there is no grid of common time points. There are 1993 measurements in all.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;">identifier for each girl</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>age</code></td>
+<td style="text-align: left;">age at measurement, years</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>ht</code></td>
+<td style="text-align: left;">height at measurement, metres</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>baseage</code>, <code>baseht</code></td>
+<td style="text-align: left;">age and height at the first visit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>fev1</code></td>
+<td style="text-align: left;">forced expiratory volume in one second, litres</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>logfev1</code></td>
+<td style="text-align: left;">log of <code>fev1</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>logfev1_ht</code></td>
+<td style="text-align: left;">log(<code>fev1</code>/<code>ht</code>), the response modelled here</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="q1-fitting-and-comparing-linear-mixed-models" class="level2">
+<h2 class="anchored" data-anchor-id="q1-fitting-and-comparing-linear-mixed-models">Q1: fitting and comparing linear mixed models</h2>
+<p>For the <code>fev1</code> data, consider a linear mixed model of the form <span class="math display">\[
 \log\left( \frac{\text{FEV}_1}{\text{Height}} \right)_{ij} = \beta_0 + \beta_1 \text{Age}_{ij} + b_{0i} + b_{1i} \text{Age}_{ij} + \varepsilon_{ij},
 \]</span> where</p>
 <ul>
@@ -499,7 +559,7 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 <p>Note that <span class="math inline">\(\mathbf{b}_i \sim N(\mathbf{0}, \mathbf{G})\)</span> and <span class="math inline">\(\boldsymbol{\varepsilon}_i \sim N(\mathbf{0},\mathbf{R}_i)\)</span>.</p>
 <ol type="1">
 <li><p>Express the above model in matrix form and explain the corresponding matrices/vectors.</p></li>
-<li><p>In R, use the function <code>lme()</code> to analyze the data by specifying <span class="math inline">\(\mathbf{G}\)</span> as general covariance structure and <span class="math inline">\(\mathbf{R}_i\)</span> as</p>
+<li><p>In R, use the function <code>lme()</code> to analyse the data by specifying <span class="math inline">\(\mathbf{G}\)</span> as general covariance structure and <span class="math inline">\(\mathbf{R}_i\)</span> as</p>
 <p>2.1. independent covariance structure,<br>
 2.2. compound symmetry covariance structure,<br>
 2.3. AR(1) structure,<br>
@@ -724,6 +784,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>When you write this up, state each of these in a sentence about lung function rather than about the model.</p>
 </div>
 </details>
+</section>
 <section id="q2-correlation-structures-when-the-times-are-not-a-grid" class="level2">
 <h2 class="anchored" data-anchor-id="q2-correlation-structures-when-the-times-are-not-a-grid">Q2: correlation structures when the times are not a grid</h2>
 <p>Everything above was fitted to 60 cattle weighed on the same eleven days, where <code>corAR1()</code> indexes observations 1 to 11 and <span class="math inline">\(\rho^{|j-k|}\)</span> means what you expect. This section repeats the exercise on data with no common time points, where that reading of AR(1) is not available.</p>

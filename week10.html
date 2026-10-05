@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial data analysis: week 10 tutorial – LSDA Tutorials</title>
+<title>Week 10 tutorial: Area-level modelling with CAR models – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-fitting-a-car-model-to-areal-counts" id="toc-q1-fitting-a-car-model-to-areal-counts" class="nav-link" data-scroll-target="#q1-fitting-a-car-model-to-areal-counts">Q1: fitting a CAR model to areal counts</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
   <li><a href="#q2-the-lecture-example-and-choosing-between-car-models" id="toc-q2-the-lecture-example-and-choosing-between-car-models" class="nav-link" data-scroll-target="#q2-the-lecture-example-and-choosing-between-car-models">Q2: the lecture example, and choosing between CAR models</a></li>
   <li><a href="#week-10-complete" id="toc-week-10-complete" class="nav-link" data-scroll-target="#week-10-complete">Week 10 complete</a>
   <ul class="collapse">
@@ -431,7 +436,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial data analysis: week 10 tutorial</h1>
+<h1 class="title">Week 10 tutorial: Area-level modelling with CAR models</h1>
 </div>
 
 
@@ -500,12 +505,57 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>In this tutorial sheet, you will learn the following:</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Last week you found spatial autocorrelation in the Scottish lip cancer data and saw that raw SIRs are unstable in counties with few expected cases. This week you fit models that address both: the spatial correlation is built into the model, and estimates for small counties borrow strength from their neighbours.</p>
+<p>By the end of this sheet you should be able to:</p>
 <ul>
-<li>how to fit a spatial model to area-level data;</li>
-<li>how to perform spatial predictions and visualise summaries of the predictive distribution</li>
+<li>fit a Poisson model for areal counts with spatially structured random effects;</li>
+<li>map the estimated relative risk together with its uncertainty;</li>
+<li>compute posterior probabilities such as <span class="math inline">\(\Pr(\theta_i &gt; 2)\)</span>; and</li>
+<li>compare CAR specifications and choose between them.</li>
 </ul>
-<p>We analyse the Lip cancer data in scotland. The data contain, for each of the Scotland counties, the number of observed and expected lip cancer cases among males in Scotland between 1975-1980, and a variable that indicates the proportion of the population engaged in agriculture, fishing, or forestry (aff). The aff variable is related to exposure to sunlight which is a risk factor for lip cancer. The data also contain the shapefile of the Scotland counties and everything can be found in <code>scotland_lip</code></p>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>The same <code>scotland_lip</code> data as last week: <strong>male lip cancer in the 56 Scottish counties, 1975–80</strong>, with observed and expected case counts and the proportion of the workforce in agriculture, fishing and forestry (<code>aff</code>) as a proxy for sunlight exposure.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>county</code></td>
+<td style="text-align: left;">county name</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cases</code></td>
+<td style="text-align: left;">observed cases</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>expected</code></td>
+<td style="text-align: left;">cases expected from the age and sex structure</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>aff</code></td>
+<td style="text-align: left;">proportion employed in agriculture, fishing or forestry</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sir</code></td>
+<td style="text-align: left;">standardised incidence ratio, <code>cases / expected</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>geometry</code></td>
+<td style="text-align: left;">the county boundary</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="q1-fitting-a-car-model-to-areal-counts" class="level2">
+<h2 class="anchored" data-anchor-id="q1-fitting-a-car-model-to-areal-counts">Q1: fitting a CAR model to areal counts</h2>
 <ol type="1">
 <li>Fit a model assuming that the observed cancer cases, <span class="math inline">\(Y_i\)</span>, are conditionally independently Poisson distributed:</li>
 </ol>
@@ -556,7 +606,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="2" type="1">
-<li>Map the relative risk of lip cancer and their uncertainty for each of the counties. Interpret the result noting that the relative risk quantifies whether county <span class="math inline">\(i\)</span> has higher (<span class="math inline">\(\theta_i&gt;1\)</span>) or lower (<span class="math inline">\(\theta_i&lt;1\)</span>) risk than the average risk in the standard population.</li>
+<li>Map the estimated relative risk of lip cancer for each county, together with its uncertainty, and interpret what you see. Recall that the relative risk says whether county <span class="math inline">\(i\)</span> is at higher (<span class="math inline">\(\theta_i &gt; 1\)</span>) or lower (<span class="math inline">\(\theta_i &lt; 1\)</span>) risk than the standard population.</li>
 </ol>
 <div class="cell" data-exercise="q02" data-setup="true">
 <script type="exercise-setup-q02-contents">
@@ -592,6 +642,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>The uncertainty map matters as much as the estimate map. A relative risk of 1.9 means something quite different with a narrow posterior than with a wide one.</p>
 </div>
 </details>
+</section>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <ol type="1">
@@ -628,7 +679,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="2" type="1">
-<li>Fit another model where <span class="math inline">\(\phi_i\)</span> is modeled using an Intrinsic Conditional Autoregressive (ICAR) distribution</li>
+<li>Fit another model where <span class="math inline">\(\phi_i\)</span> is modelled using an intrinsic conditional autoregressive (ICAR) distribution</li>
 </ol>
 <div class="cell" data-exercise="q04" data-setup="true">
 <script type="exercise-setup-q04-contents">

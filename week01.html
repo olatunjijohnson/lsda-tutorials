@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Longitudinal Data Analysis: week 1 tutorial – LSDA Tutorials</title>
+<title>Week 1 tutorial: Introduction to longitudinal data – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#q3-when-there-are-no-common-time-points-at-all" id="toc-q3-when-there-are-no-common-time-points-at-all" class="nav-link active" data-scroll-target="#q3-when-there-are-no-common-time-points-at-all">Q3: when there are no common time points at all</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-describing-a-balanced-longitudinal-dataset" id="toc-q1-describing-a-balanced-longitudinal-dataset" class="nav-link" data-scroll-target="#q1-describing-a-balanced-longitudinal-dataset">Q1: describing a balanced longitudinal dataset</a></li>
+  <li><a href="#q2-an-unbalanced-dataset-measured-at-times-of-its-own" id="toc-q2-an-unbalanced-dataset-measured-at-times-of-its-own" class="nav-link" data-scroll-target="#q2-an-unbalanced-dataset-measured-at-times-of-its-own">Q2: an unbalanced dataset, measured at times of its own</a></li>
+  <li><a href="#q3-when-there-are-no-common-time-points-at-all" id="toc-q3-when-there-are-no-common-time-points-at-all" class="nav-link" data-scroll-target="#q3-when-there-are-no-common-time-points-at-all">Q3: when there are no common time points at all</a></li>
   <li><a href="#week-1-complete" id="toc-week-1-complete" class="nav-link" data-scroll-target="#week-1-complete">Week 1 complete</a>
   <ul class="collapse">
   <li><a href="#what-you-have-learnt" id="toc-what-you-have-learnt" class="nav-link" data-scroll-target="#what-you-have-learnt">What you have learnt</a></li>
@@ -430,7 +436,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Longitudinal Data Analysis: week 1 tutorial</h1>
+<h1 class="title">Week 1 tutorial: Introduction to longitudinal data</h1>
 </div>
 
 
@@ -485,9 +491,45 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>Q1: This question relates to the cattle data, available in the course package as <code>cattle</code>.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This first sheet is about <em>looking</em> at longitudinal data before modelling any of it. Everything you do here — the spaghetti plot, the correlation matrix, the pairwise scatter plots — is there to show you the one feature that makes these data different from anything in a first regression course: measurements on the same subject are correlated, and ignoring that is a mistake.</p>
+<p>By the end of this sheet you should be able to:</p>
+<ul>
+<li>load a longitudinal dataset and describe its shape, including whether it is balanced;</li>
+<li>draw and read a spaghetti plot;</li>
+<li>compute and interpret the mean profile, the covariance matrix and the correlation matrix over time; and</li>
+<li>compare groups graphically, and say what a difference in profiles looks like.</li>
+</ul>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>Two datasets are used.</p>
+<p><strong><code>cattle</code></strong> is a growth experiment: 60 animals were randomised to two treatment groups of 30, put out to pasture, and weighed on the same eleven occasions two weeks apart. Because every animal was weighed on every occasion, the design is <strong>balanced</strong>, and the data are stored in <em>wide</em> form — one row per animal.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>group</code></td>
+<td style="text-align: left;">treatment group, 0 or 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>t1</code> … <code>t11</code></td>
+<td style="text-align: left;">bodyweight in kg at each of the eleven occasions</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>fev1</code></strong> is the contrasting case, introduced in Q2: an observational study in which girls were measured at ages of their own, so the data are <strong>unbalanced</strong> and stored in <em>long</em> form — one row per measurement.</p>
+</section>
+</section>
+<section id="q1-describing-a-balanced-longitudinal-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="q1-describing-a-balanced-longitudinal-dataset">Q1: describing a balanced longitudinal dataset</h2>
 <ol type="1">
-<li>Consult the R online manuals, specifically “An Introduction to R” (PDF file), Section 7, titled “Reading Data from Files.” Proceed to import the dataset into R.</li>
+<li>Load the <code>cattle</code> data from the course package and check its shape: how many animals, and how many measurements on each?</li>
 </ol>
 <div class="cell" data-exercise="q02" data-envir="lsda-session">
 <div>
@@ -702,7 +744,10 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>The two mean curves cross. Group A is heavier at first, its growth flattens after about time 4, and group B overtakes it. This crossing is the treatment effect, and it is a difference in <em>slope</em> rather than in level.</p>
 </div>
 </details>
-<p>Q2 You will work with longitudinal data on lung function growth in school-age girls from Topeka, Kansas, as part of the Six Cities Study of Air Pollution and Health. The dataset contains repeated pulmonary function measurements from 299 girls, typically enrolled around ages 6-10 and followed annually until high school graduation or loss to follow-up. The number of observations per individual ranges from 1 to 12, making the dataset unbalanced with respect to age.</p>
+</section>
+<section id="q2-an-unbalanced-dataset-measured-at-times-of-its-own" class="level2">
+<h2 class="anchored" data-anchor-id="q2-an-unbalanced-dataset-measured-at-times-of-its-own">Q2: an unbalanced dataset, measured at times of its own</h2>
+<p>You will now work with longitudinal data on lung function growth in school-age girls from Topeka, Kansas, collected as part of the Six Cities Study of Air Pollution and Health. The dataset contains repeated pulmonary function measurements from 299 girls, typically enrolled around ages 6-10 and followed annually until high school graduation or loss to follow-up. The number of observations per individual ranges from 1 to 12, making the dataset unbalanced with respect to age.</p>
 <p>At each visit, lung function was measured using simple spirometry, and the outcome of interest is the logarithm of the ratio of forced expiratory volume in 1 second (FEV1) to height, i.e., log(FEV1/height).</p>
 <p>The dataset is available in the course package.</p>
 <p>Key variables include:</p>
@@ -845,6 +890,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Ages were rounded before averaging because girls were not measured on a common grid; without rounding, most ages would be supported by a single girl. Even so the extremes are based on few observations, so treat the ends of the curve with caution.</p>
 </div>
 </details>
+</section>
 <section id="q3-when-there-are-no-common-time-points-at-all" class="level2">
 <h2 class="anchored" data-anchor-id="q3-when-there-are-no-common-time-points-at-all">Q3: when there are no common time points at all</h2>
 <p>The cattle were weighed on the same eleven days and the Topeka girls attended at ages that differ between girls. There is a third case, and it is the most common one in practice: every subject is measured at times of its own, so no two subjects share a time point at all.</p>

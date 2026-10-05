@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial data analysis: week 8 tutorial – LSDA Tutorials</title>
+<title>Week 8 tutorial: Geostatistical modelling and prediction – LSDA Tutorials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -416,7 +416,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  </ul></li>
+  <li><a href="#q1-fitting-a-linear-geostatistical-model" id="toc-q1-fitting-a-linear-geostatistical-model" class="nav-link" data-scroll-target="#q1-fitting-a-linear-geostatistical-model">Q1: fitting a linear geostatistical model</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
   <li><a href="#q2-the-lecture-example-and-the-question-a-map-is-usually-asked" id="toc-q2-the-lecture-example-and-the-question-a-map-is-usually-asked" class="nav-link" data-scroll-target="#q2-the-lecture-example-and-the-question-a-map-is-usually-asked">Q2: the lecture example, and the question a map is usually asked</a></li>
   <li><a href="#week-8-complete" id="toc-week-8-complete" class="nav-link" data-scroll-target="#week-8-complete">Week 8 complete</a>
   <ul class="collapse">
@@ -431,7 +436,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial data analysis: week 8 tutorial</h1>
+<h1 class="title">Week 8 tutorial: Geostatistical modelling and prediction</h1>
 </div>
 
 
@@ -500,55 +505,67 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6ImRh
 </script>
 </div>
 </div>
-<p>In this tutorial sheet, you will learn the following:</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Last week you established that the Galicia residuals are spatially correlated. This week you put that correlation into a model and use it to predict.</p>
+<p>By the end of this sheet you should be able to:</p>
 <ul>
-<li>how to fit a linear geostatistical model with and without the nugget effect and understand the differences;</li>
-<li>how to perform spatial predictions with and without covariates; and</li>
-<li>how to compute and visualise summaries of the predictive distribution</li>
+<li>fit a linear geostatistical model, with and without a nugget, and say what the difference buys you;</li>
+<li>interpret the estimated covariance parameters;</li>
+<li>predict at unobserved locations, with and without a covariate; and</li>
+<li>compute and map summaries of the predictive distribution, including exceedance probabilities.</li>
 </ul>
-<p>We analyse the Galicia dataset, often used in geostatistical analysis, refers to lead concentration data from a network of 121 meteorological stations across the Galicia region in Northwest Spain. The Galicia dataset has the following columns:</p>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>The same <code>galicia</code> data as last week: <strong>lead concentration measured in moss</strong> at 132 sampling stations across Galicia, in north-west Spain, with a co-located measurement of airborne particulate matter.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Column</th>
+<th style="text-align: left;">Column</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: left;">Lead concentration</td>
+<td style="text-align: left;"><code>lead</code></td>
+<td style="text-align: left;">lead concentration</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: left;">Logarithm of lead concentration</td>
+<td style="text-align: left;"><code>loglead</code></td>
+<td style="text-align: left;">log lead concentration — the response</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: left;">Longitude</td>
+<td style="text-align: left;"><code>long</code></td>
+<td style="text-align: left;">longitude, decimal degrees</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: left;">Latitude</td>
+<td style="text-align: left;"><code>lat</code></td>
+<td style="text-align: left;">latitude, decimal degrees</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: left;">pm10</td>
+<td style="text-align: left;"><code>pm10</code></td>
+<td style="text-align: left;">particulate matter under 10 micrometres</td>
 </tr>
 </tbody>
 </table>
+<p>Two further objects are used for prediction: <code>galicia_grid</code>, a 1 km grid covering the region, and <code>galicia_pred</code>, which holds PM10 at each grid point so that a model with the covariate can be used to predict.</p>
+<p>As last week, <code>RiskMap</code> ships a different dataset also called <code>galicia</code>, so load this one with <code>data(galicia, package = "lsda")</code>.</p>
+</section>
+</section>
+<section id="q1-fitting-a-linear-geostatistical-model" class="level2">
+<h2 class="anchored" data-anchor-id="q1-fitting-a-linear-geostatistical-model">Q1: fitting a linear geostatistical model</h2>
 <ol type="1">
-<li>Fit linear geostatistical models to the log transformed lead concentration as follows.
+<li><p>Fit three linear geostatistical models to the log-transformed lead concentration. In each, <span class="math inline">\(S(x_i)\)</span> is a stationary Gaussian process with a Matérn correlation function and <span class="math inline">\(\kappa = 1.5\)</span>.</p>
 <ul>
-<li>Do not including any covariate, and do not include the nugget effect i.e. <span class="math display">\[\begin{equation}\label{eq:glgm_no_cov}
+<li><strong>Model 1</strong> — no covariate and no nugget: <span class="math display">\[\begin{equation}\label{eq:glgm_no_cov}
    \log(Y_i) = \beta_0 + S(x_i),
-\end{equation}\]</span> where <span class="math inline">\(S(x_i)\)</span> is a stationary Gaussian process with Matern correlation function with kappa = 1.5.</li>
-<li>Do not including any covariate, but include the nugget effect i.e. <span class="math display">\[\begin{equation}\label{eq:glgm_no_cov_nug}
+\end{equation}\]</span></li>
+<li><strong>Model 2</strong> — no covariate, but with a nugget: <span class="math display">\[\begin{equation}\label{eq:glgm_no_cov_nug}
    \log(Y_i) = \beta_0 + S(x_i) + Z_i,
-\end{equation}\]</span> where and <span class="math inline">\(Z_i\)</span> are i.i.d. Gaussian random variables. What does the estimate of the nugget effect tell you about its importance in this model?</li>
-<li>Fit another model including the east-west ordinates ( of the geo-coordinates as a covariate on the linear scale, but excluding the nugget effect. <span class="math display">\[\begin{equation}\label{eq:glgm_lin}
-   \log(Y_i) = \beta_0 + \beta_1 x_{i, 1} + S(x_i).
-\end{equation}\]</span> How did adding <span class="math inline">\(x_{i, 1}\)</span> affect the estimates of the covariance parameters?</li>
+\end{equation}\]</span> where the <span class="math inline">\(Z_i\)</span> are independent Gaussian variables with variance <span class="math inline">\(\tau^2\)</span>. What does the estimated nugget tell you about how much it matters here?</li>
+<li><strong>Model 3</strong> — PM10 as a covariate, no nugget: <span class="math display">\[\begin{equation}\label{eq:glgm_lin}
+   \log(Y_i) = \beta_0 + \beta_1 d(x_i) + S(x_i),
+\end{equation}\]</span> where <span class="math inline">\(d(x_i)\)</span> is PM10 at location <span class="math inline">\(x_i\)</span>. How does adding <span class="math inline">\(d(x_i)\)</span> change the estimated covariance parameters?</li>
 </ul></li>
 </ol>
 <div class="cell" data-exercise="q01" data-envir="lsda-session">
@@ -580,8 +597,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="2" type="1">
-<li><p>Which of the three models you have just fitted, <span class="math inline">\(\ref{eq:glgm_no_cov}\)</span> , <span class="math inline">\(\ref{eq:glgm_no_cov_nug}\)</span> and <span class="math inline">\(\ref{eq:glgm_lin}\)</span>, do you consider the best model? Why?</p></li>
-<li><p>What do the estimates of the parameters of your best model mean?</p></li>
+<li><p>Which of the three models do you consider the best? Justify your choice.</p></li>
+<li><p>Interpret the estimated parameters of the model you chose. Say what each one means in the units of the problem, not just whether it is significant.</p></li>
 </ol>
 <div class="cell" data-exercise="q03" data-setup="true">
 <script type="exercise-setup-q03-contents">
@@ -616,7 +633,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="4" type="1">
-<li>Using Models <span class="math inline">\(\ref{eq:glgm_no_cov}\)</span> and <span class="math inline">\(\ref{eq:glgm_lin}\)</span>, generate spatial predictions for the log-transformed lead concentration across Galicia at a 1 km resolution. Utilize the provided grid <code>galicia_grid</code> and predictor variables <code>galicia_pred</code> to perform these predictions. Create maps showing both the predicted log lead concentrations and their corresponding standard errors.</li>
+<li>Using <strong>Model 1</strong> and <strong>Model 3</strong>, predict log lead concentration across Galicia on a 1 km grid, using <code>galicia_grid</code> for the locations and <code>galicia_pred</code> for PM10 at those locations. Map both the predicted values and their standard errors.</li>
 </ol>
 <div class="cell" data-exercise="q04" data-setup="true">
 <script type="exercise-setup-q04-contents">
@@ -652,20 +669,45 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 </details>
 <ol start="5" type="1">
-<li><p>Compare the mean predictions and associated uncertainties from the two models. Discuss the similarities and differences observed, particularly in terms of spatial patterns and predictive uncertainty.</p></li>
-<li><p>Identify the geographical areas where the predictive uncertainty is lowest. Provide an explanation for why uncertainty is reduced in these regions, considering the spatial structure of the data and the influence of nearby observations.</p></li>
+<li><p>Compare the two sets of predictions. Where do they agree, where do they differ, and which is more certain?</p></li>
+<li><p>Where is the predictive uncertainty lowest? Explain why, in terms of the estimated spatial structure and where the sampling stations are.</p></li>
 </ol>
+</section>
 <section id="challenge" class="level2">
 <h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
-<p>Use the <code>Liberia</code> data from the <code>RiskMap</code> package to build a binomial geostatistical model to investigate the relationship between log elevation and onchocerciasis prevalence in Liberia. The dataset can be called in R using <code>data("liberia", package = "RiskMap")</code> — name the package, because the course package has a different dataset of the same name. This data-set contains counts of reported onchocerciasis (or river blindness) cases from 90 villages sampled across Liberia. The variables are as follows:</p>
-<ul>
-<li><p>lat latitude of the of sampled villages.</p></li>
-<li><p>long longitude of the sampled villages.</p></li>
-<li><p>ntest number of tested people for the presence nodules.</p></li>
-<li><p>npos number of people that tested positive for the presence of nodules.</p></li>
-<li><p>elevation the elevation in meters of the sampled village.</p></li>
-<li><p>log_elevation the log-transformed elevation in meters of the sampled village.</p></li>
-</ul>
+<p>Build a <strong>binomial</strong> geostatistical model for onchocerciasis (river blindness) prevalence in Liberia, and investigate its relationship with log elevation.</p>
+<p>The response is now a count out of a total rather than a continuous measurement, so this extends everything above to the generalised case.</p>
+<p>Load the data with <code>data("liberia", package = "RiskMap")</code> — name the package, because the course package carries a <em>different</em> dataset under the same name. It holds nodule counts from 90 sampled villages:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>lat</code>, <code>long</code></td>
+<td style="text-align: left;">latitude and longitude of the village</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ntest</code></td>
+<td style="text-align: left;">number of people tested for the presence of nodules</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>npos</code></td>
+<td style="text-align: left;">number testing positive</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>elevation</code></td>
+<td style="text-align: left;">village elevation, metres</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>log_elevation</code></td>
+<td style="text-align: left;">log of <code>elevation</code></td>
+</tr>
+</tbody>
+</table>
 <div class="cell" data-exercise="q05" data-setup="true">
 <script type="exercise-setup-q05-contents">
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoicTA1Iiwic2V0dXAiOnRydWV9LCJjb2RlIjoiICAgICAgICMgTG9hZCByZXF1aXJlZCBsaWJyYXJpZXNcbmxpYnJhcnkodGlkeXZlcnNlKVxubGlicmFyeShzZilcbmxpYnJhcnkoUmlza01hcClcblxuIyBMb2FkIHRoZSBkYXRhXG5cbiMgQ3JlYXRlIGEgc3BhdGlhbCBvYmplY3RcbmdhbGljaWFfc2YgPC0gc3RfYXNfc2YoZ2FsaWNpYSwgY29vcmRzID0gYyhcImxvbmdcIiwgXCJsYXRcIiksIGNycz0gNDMyNilcblxuY3JzX2dhbGljaWEgPC0gcHJvcG9zZV91dG0oZ2FsaWNpYV9zZilcbmdhbGljaWFfc2YgPC0gc3RfdHJhbnNmb3JtKGdhbGljaWFfc2YsIGNycyA9IGNyc19nYWxpY2lhKVxuXG5cbiMgRml0dGluZyBhIExpbmVhciBnZW9zdGF0aXN0aWNhbCBtb2RlbFxuXG4jIE1vZGVsIDEgLSBsb2coWWkgKSA9IFxcYmV0YTAgKyBTKHhpICksXG5tb2RlbDEgPC0gZ2xncG0oZm9ybXVsYSA9IGxvZ2xlYWQgfiBncChrYXBwYSA9IDEuNSksIFxuICAgICAgICAgICAgICAgIGZhbWlseSA9IFwiZ2F1c3NpYW5cIixcbiAgICAgICAgICAgICAgICBkYXRhID0gZ2FsaWNpYV9zZilcblxuXG4jIEZpdHRpbmcgYSBMaW5lYXIgZ2Vvc3RhdGlzdGljYWwgbW9kZWxcblxuIyBNb2RlbCAyIC0gbG9nKFlpICkgPSBcXGJldGEwICsgUyh4aSApICsgWl9pLFxubW9kZWwyIDwtIGdsZ3BtKGZvcm11bGEgPSBsb2dsZWFkIH4gZ3AobnVnZ2V0ID0gTlVMTCwga2FwcGEgPSAxLjUpLCBcbiAgICAgICAgICAgICAgICBmYW1pbHkgPSBcImdhdXNzaWFuXCIsXG4gICAgICAgICAgICAgICAgZGF0YSA9IGdhbGljaWFfc2YpXG5cbiMgTW9kZWwgMyAtIGxvZyhZaSApID0gXFxiZXRhMCArIFxcYmV0YTEgeGksMSArIFMoeGkgKSxcbm1vZGVsMyA8LSBnbGdwbShmb3JtdWxhID0gbG9nbGVhZCB+IHBtMTAgICsgZ3Aoa2FwcGEgPSAxLjUpLCBcbiAgICAgICAgICAgICAgICBmYW1pbHkgPSBcImdhdXNzaWFuXCIsXG4gICAgICAgICAgICAgICAgZGF0YSA9IGdhbGljaWFfc2YpXG5cbnBhcl9oYXQgPC0gY29lZihtb2RlbDMpXG5wYXJfaGF0XG5wcmFjdGljYWxfcmFuZ2UgPC0gdW5pcm9vdChmdW5jdGlvbih4KSBtYXRlcm5fY29yKHgsIHBoaSA9IHBhcl9oYXQkcGhpLCBrYXBwYSA9IDEuNSkgLSAwLjA1LFxuICAgICAgICBsb3dlciA9IDAuMDAxLCB1cHBlciA9IDEwMCkkcm9vdFxucHJhY3RpY2FsX3JhbmdlXG5wcmVkaWN0b3JzIDwtIGdhbGljaWFfcHJlZFxuZ3JpZF9wcmVkIDwtIGdhbGljaWFfZ3JpZCAlPiUgXG4gIHN0X2FzX3NmKC4sIGNvb3JkcyA9IGMoXCJYXCIsIFwiWVwiKSwgY3JzID0gY3JzX2dhbGljaWEpICU+JSBzdF9hc19zZmMoKVxuXG5cbiMgUHJlZGljdCBsaW5lYXIgcHJlZGljdG9yXG5wcmVkX1NfbGIxIDwtIHByZWRfb3Zlcl9ncmlkKG1vZGVsMSwgZ3JpZF9wcmVkID0gZ3JpZF9wcmVkLFxuICAgICAgICAgICAgICAgcHJlZGljdG9ycyA9IHByZWRpY3RvcnMpXG5cbiMgUHJlZGljdCBUKHgpXG5cbnByZWRfVF9sYjEgPC0gcHJlZF90YXJnZXRfZ3JpZChwcmVkX1NfbGIxLFxuICAgICAgICAgICAgICAgIHBkX3N1bW1hcnkgPSBsaXN0KG1lYW4gPSBtZWFuLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0ZF9lcnIgPSBzZCkpXG5cblxuXG4jIFByZWRpY3QgbGluZWFyIHByZWRpY3RvclxucHJlZF9TX2xiMyA8LSBwcmVkX292ZXJfZ3JpZChtb2RlbDMsIGdyaWRfcHJlZCA9IGdyaWRfcHJlZCxcbiAgICAgICAgICAgICAgIHByZWRpY3RvcnMgPSBwcmVkaWN0b3JzKVxuXG4jIFByZWRpY3QgVCh4KVxuXG5wcmVkX1RfbGIzIDwtIHByZWRfdGFyZ2V0X2dyaWQocHJlZF9TX2xiMyxcbiAgICAgICAgICAgICAgICBwZF9zdW1tYXJ5ID0gbGlzdChtZWFuID0gbWVhbixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdGRfZXJyID0gc2QpKSJ9
