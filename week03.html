@@ -565,7 +565,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <summary class="lsda-explain-head">What this shows</summary>
 <div class="lsda-explain-body">
 <p>The four fixed effects are the intercept, the growth rate, the group difference in level, and the group difference in <em>slope</em> — the interaction, which is the parameter the experiment exists to estimate.</p>
-<p>Note the random intercept only at this stage. The question specifies a random slope as well, and you will add it in item 9. Comparing R_i structures with the simpler G first is deliberate: with a random slope, ARMA(1,1) does not converge on these data, because a random slope already makes the marginal correlation depend on the gap between days and an ARMA error does the same thing. The two compete to explain one feature, and the likelihood has no clear maximum.</p>
+<p>Note the random intercept only at this stage. The question specifies a random slope as well, and you will add it in item 3, when you choose a structure for <span class="math inline">\(\mathbf{G}\)</span>. Comparing R_i structures with the simpler G first is deliberate: with a random slope, ARMA(1,1) does not converge on these data, because a random slope already makes the marginal correlation depend on the gap between days and an ARMA error does the same thing. The two compete to explain one feature, and the likelihood has no clear maximum.</p>
 </div>
 </details>
 <p>2.2. compound symmetry covariance structure,</p>
@@ -934,15 +934,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <summary class="lsda-explain-head">What this shows</summary>
 <div class="lsda-explain-body">
 <p>Subject-specific predictions, the default <code>level = 1</code>, which add each animal’s own random intercept and slope.</p>
-<p>Compare these with the group curves in item 17: they track the individual points much more closely. That gap between the population line and the subject line is the random effect, and its size is what <span class="math inline">\(\mathbf{G}\)</span> measures.</p>
+<p>Compare these with the group-level curves from the previous item: they track the individual points much more closely. That gap between the population line and the subject line is the random effect, and its size is what <span class="math inline">\(\mathbf{G}\)</span> measures.</p>
 </div>
 </details>
 </section>
 <section id="q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean" class="level2">
 <h2 class="anchored" data-anchor-id="q2-how-far-a-predicted-random-effect-is-pulled-towards-the-mean">Q2: how far a predicted random effect is pulled towards the mean</h2>
-<p>Item 15 asked you to check the random-effects assumption with a QQ plot of the predicted <span class="math inline">\(\hat b_i\)</span>. This section asks what those predictions actually <em>are</em>. They are not the per-subject averages you would get by fitting each subject separately, and the difference has a formula.</p>
+<p>Q1 item 5.2 asked you to check the random-effects assumption with a QQ plot of the predicted <span class="math inline">\(\hat b_i\)</span>. This section asks what those predictions actually <em>are</em>. They are not the per-subject averages you would get by fitting each subject separately, and the difference has a formula.</p>
 <p>The <code>cd4</code> data are used because the number of observations per subject varies from 1 to 12, and the amount of shrinkage depends on exactly that.</p>
-<ol start="19" type="1">
+<ol type="1">
 <li>Fit a random intercept model for <span class="math inline">\(\sqrt{\text{CD4}}\)</span> on time, then verify the shrinkage formula: the predicted random effect equals the subject’s mean raw deviation multiplied by <span class="math inline">\(k_i = \sigma_b^2/(\sigma_b^2+\sigma^2/n_i)\)</span>.</li>
 </ol>
 <div class="cell" data-exercise="q19" data-setup="true">
@@ -979,7 +979,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Read the two extremes. As <span class="math inline">\(n_i \to \infty\)</span>, <span class="math inline">\(k_i \to 1\)</span> and the subject is believed entirely. As <span class="math inline">\(n_i \to 0\)</span> information, <span class="math inline">\(k_i \to 0\)</span> and the subject is given the population mean. Everything in between is a weighted compromise, with the weight set by how much that particular subject has told you.</p>
 </div>
 </details>
-<ol start="20" type="1">
+<ol start="2" type="1">
 <li>Plot the predicted random effects against the raw deviations, and tabulate the average shrinkage factor by how many observations a subject contributed. Who gets pulled the furthest?</li>
 </ol>
 <div class="cell" data-exercise="q20" data-setup="true">

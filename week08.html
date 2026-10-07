@@ -735,7 +735,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <h2 class="anchored" data-anchor-id="q2-the-lecture-example-and-the-question-a-map-is-usually-asked">Q2: the lecture example, and the question a map is usually asked</h2>
 <p>The Galicia analysis above predicts a surface. A surface is rarely the decision; the decision is usually whether somewhere is over a limit. This section repeats the modelling on the data from the lectures and then produces the summary that answers that question directly.</p>
 <p><code>gm_no2</code> holds nitrogen dioxide at 25 monitoring stations across Greater Manchester, with distance to the nearest major road as a covariate, and <code>gm_grid</code> is a 4996-point grid covering the conurbation carrying the same covariate.</p>
-<ol start="7" type="1">
+<ol type="1">
 <li>Fit the model from the lectures — NO<span class="math inline">\(_2\)</span> on road distance with a Matérn spatial process — and predict over <code>gm_grid</code>. Map the predictive mean and the predictive standard error.</li>
 </ol>
 <div class="cell" data-exercise="q06" data-setup="true">
@@ -771,7 +771,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Twenty-five stations is a small design for a region this size. That is realistic — monitoring networks are expensive — and it is why the uncertainty map matters more here, not less.</p>
 </div>
 </details>
-<ol start="8" type="1">
+<ol start="2" type="1">
 <li>The UK annual mean limit value for NO<span class="math inline">\(_2\)</span> is 40 µg/m<span class="math inline">\(^3\)</span>. Recompute the prediction summaries to include the probability that each grid cell exceeds it, and map that. How many cells is the model confident about, and how many is it genuinely unsure about?</li>
 </ol>
 <div class="cell" data-exercise="q07" data-setup="true">
@@ -808,7 +808,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>One caution. These probabilities are computed with the covariance parameters held at their estimates. They are plug-in probabilities, so they are slightly over-confident for the same reason plug-in prediction intervals are too narrow.</p>
 </div>
 </details>
-<ol start="9" type="1">
+<ol start="3" type="1">
 <li>Not every dataset has spatial structure worth modelling. Fit a Gaussian geostatistical model to the <code>liberia</code> data in the course package — height-for-age z-scores for 267 clusters, with the local malaria incidence rate as a covariate — and decide from the output whether the spatial term is earning its place.</li>
 </ol>
 <div class="cell" data-exercise="q08" data-setup="true">

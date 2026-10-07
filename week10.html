@@ -715,7 +715,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <h2 class="anchored" data-anchor-id="q2-the-lecture-example-and-choosing-between-car-models">Q2: the lecture example, and choosing between CAR models</h2>
 <p>The Scotland analysis used a Poisson likelihood with an offset, because the data were counts of cases against expected counts. The lecture example is a binomial one: of the children measured in each district, how many were obese. This section fits it, then asks how you would choose between the three random-effects structures the lectures introduced.</p>
 <p><code>nw_obesity</code> holds the 33 local authority districts of North West England, with <code>num_obese</code> out of <code>total_sampled</code> children and the district’s average IDACI score, a measure of income deprivation affecting children.</p>
-<ol start="5" type="1">
+<ol type="1">
 <li>Build the adjacency matrix and fit the binomial ICAR model from the lectures. Does deprivation predict childhood obesity?</li>
 </ol>
 <div class="cell" data-exercise="q05" data-setup="true">
@@ -751,7 +751,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Read the size of it on a scale you can interpret. IDACI runs from 0.058 to 0.307 across these districts, a spread of about 0.25. Multiplying by 2.46 gives about 0.62 on the log-odds scale between the least and most deprived district, an odds ratio of about 1.9 — obesity odds roughly doubling across the range of deprivation in the region. That is a large effect, and it is what the raw map already hinted at: Manchester, Knowsley and Liverpool sit at the top of both.</p>
 </div>
 </details>
-<ol start="6" type="1">
+<ol start="2" type="1">
 <li>The lectures introduced three ways to structure the random effects: ICAR, BYM and Leroux. Fit all three to these data and compare them by DIC. Which would you report, and how much does the choice matter?</li>
 </ol>
 <div class="cell" data-exercise="q06" data-setup="true">

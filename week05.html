@@ -656,7 +656,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <section id="q2-what-the-working-correlation-does-and-does-not-change" class="level2">
 <h2 class="anchored" data-anchor-id="q2-what-the-working-correlation-does-and-does-not-change">Q2: what the working correlation does, and does not, change</h2>
 <p>Items 2 and 4 fitted the same mean model under four working correlations. This section makes the comparison explicit, and then asks which of the two competing answers about vitamin A you should report.</p>
-<ol start="6" type="1">
+<ol type="1">
 <li>Build a table with one row per working correlation, holding the vitamin A coefficient, its <strong>naive</strong> standard error and its <strong>robust</strong> standard error. Which column moves between rows, and which does not?</li>
 </ol>
 <div class="cell" data-exercise="q06" data-setup="true">
@@ -723,7 +723,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>That is the rule in practice: report robust standard errors always, and treat close agreement between naive and robust as weak evidence that your working correlation was reasonable.</p>
 </div>
 </details>
-<ol start="7" type="1">
+<ol start="2" type="1">
 <li><code>geeglm()</code> reports QIC, the GEE analogue of AIC. Compute it for the three working correlations and say which you would choose — and how much the choice matters here.</li>
 </ol>
 <div class="cell" data-exercise="q07" data-setup="true">
@@ -759,7 +759,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Note what this does <strong>not</strong> mean. Independence scoring well does not mean the observations are independent — the estimated exchangeable correlation is <span class="math inline">\(\hat\alpha = 0.51\)</span>, which is substantial. It means that for estimating <em>this</em> mean model, assuming independence and repairing the standard errors with the sandwich costs you very little efficiency. That is a statement about efficiency, not about the biology.</p>
 </div>
 </details>
-<ol start="8" type="1">
+<ol start="3" type="1">
 <li>In week 4 you fitted this same model as a GLMM and got about 0.60 for vitamin A by adaptive quadrature. Here you get about 0.28. Both are correct. Explain what each estimates, and say which you would report to a health ministry deciding whether to fund a vitamin A programme.</li>
 </ol>
 <div id="week-complete" class="lsda-complete" hidden="" data-week="week05">

@@ -697,7 +697,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <div class="lsda-explain-body">
 <p>Read the coefficients as log rate ratios: <code>exp(coef)</code> is the multiplicative effect on the expected count. The coefficient on <code>lbase</code> is close to 1, meaning the seizure rate is roughly proportional to the baseline rate, which is what you would hope.</p>
 <p>Now look at the residual deviance against its degrees of freedom, and at the chi-squared p-value computed underneath. The deviance is far larger than the degrees of freedom, so the model fits badly: there is much more variation than a Poisson with these covariates allows.</p>
-<p>There are two possible causes and this test cannot separate them — genuine overdispersion, or the correlation within patients that the model is ignoring. Item 7 addresses the second.</p>
+<p>There are two possible causes and this test cannot separate them — genuine overdispersion, or the correlation within patients that the model is ignoring. Item 6 addresses the second.</p>
 </div>
 </details>
 <ol start="5" type="1">
@@ -773,7 +773,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <h2 class="anchored" data-anchor-id="q2-a-binary-response-and-how-the-likelihood-is-approximated">Q2: a binary response, and how the likelihood is approximated</h2>
 <p>The epilepsy response is a count, and for counts the approximations below behave well. Binary responses are the hard case, and they are what you meet next week, so it is worth seeing the difference here.</p>
 <p>The <code>ichs</code> data in the course package record whether each of 250 preschool children had a respiratory infection at each of six visits, together with their vitamin A status. Six binary observations per child is very little information per cluster — exactly where penalised quasi-likelihood is known to struggle.</p>
-<ol start="7" type="1">
+<ol type="1">
 <li>Fit a logistic GLMM for respiratory infection on time, age, gender and vitamin A status, with a random intercept per child, using penalised quasi-likelihood. Report the estimated effect of vitamin A deficiency and the between-child standard deviation.</li>
 </ol>
 <div class="cell" data-exercise="q08" data-setup="true">
@@ -793,7 +793,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 <div class="cell" data-exercise="q08" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q08">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-36-1"><a href="#interpolate-36-1" aria-hidden="true" tabindex="-1"></a>The same fitter as item <span class="dv">6</span><span class="sc">:</span> <span class="st">`</span><span class="at">glmmPQL()</span><span class="st">`</span> from <span class="st">`</span><span class="at">MASS</span><span class="st">`</span>. A random intercept per child</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-36-1"><a href="#interpolate-36-1" aria-hidden="true" tabindex="-1"></a>The same fitter as Q1 item <span class="dv">6</span><span class="sc">:</span> <span class="st">`</span><span class="at">glmmPQL()</span><span class="st">`</span> from <span class="st">`</span><span class="at">MASS</span><span class="st">`</span>. A random intercept per child</span>
 <span id="interpolate-36-2"><a href="#interpolate-36-2" aria-hidden="true" tabindex="-1"></a>is <span class="st">`</span><span class="at">random = ~ 1 | id</span><span class="st">`</span>. The response is <span class="dv">0</span><span class="sc">/</span><span class="dv">1</span>, so <span class="st">`</span><span class="at">family = binomial</span><span class="st">`</span>.</span>
 <span id="interpolate-36-3"><a href="#interpolate-36-3" aria-hidden="true" tabindex="-1"></a>Read two things off the output<span class="sc">:</span> the <span class="st">`</span><span class="at">vitAdeficient</span><span class="st">`</span> row of the coefficient</span>
 <span id="interpolate-36-4"><a href="#interpolate-36-4" aria-hidden="true" tabindex="-1"></a>table, and the random<span class="sc">-</span>intercept standard deviation above it.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -803,11 +803,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <summary class="lsda-explain-head">What this shows</summary>
 <div class="lsda-explain-body">
 <p>PQL puts the vitamin A coefficient at about <strong>0.48</strong> on the log-odds scale, with a between-child standard deviation of about <strong>2.33</strong>.</p>
-<p>That standard deviation is large. On the logit scale a value of 2.33 means children differ enormously in their underlying susceptibility — far more than the covariates explain. Keep both numbers; item 8 refits the same model by a better approximation and you will compare.</p>
+<p>That standard deviation is large. On the logit scale a value of 2.33 means children differ enormously in their underlying susceptibility — far more than the covariates explain. Keep both numbers; the next item refits the same model by a better approximation and you will compare.</p>
 <p>Note the interpretation. Because the random intercept is held fixed, <span class="math inline">\(\exp(0.48) \approx 1.6\)</span> is the odds ratio <strong>for a given child</strong> — the subject-specific effect. Next week’s GEE answers a different question about the same data.</p>
 </div>
 </details>
-<ol start="8" type="1">
+<ol start="2" type="1">
 <li>Refit the same model by Laplace approximation and then by adaptive Gaussian quadrature with 25 points, and compare all three sets of estimates. Which differences matter, and what do they tell you about PQL?</li>
 </ol>
 <div class="cell" data-exercise="q09" data-setup="true">

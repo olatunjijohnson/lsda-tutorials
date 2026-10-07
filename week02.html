@@ -737,8 +737,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <!-- within-subject covariance structures to the cattle data. -->
 <!-- 1. Using the linear model with independent random errors, -->
 <!-- select the most appropriate model for modelling the cattle data. -->
-<!-- <!-- % \item Assess the quality of the model chosen in the previous step. -->
-<p>–&gt;</p>
+<!-- % \item Assess the quality of the model chosen in the previous step. -->
 <!-- 2. Based on the linear model containing the cubic -->
 <!-- polynomial in time and all the pairwise interactions, use compound -->
 <!-- symmetry covariance structure to model the within-subject -->
@@ -789,7 +788,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <h2 class="anchored" data-anchor-id="q2-correlation-structures-when-the-times-are-not-a-grid">Q2: correlation structures when the times are not a grid</h2>
 <p>Everything above was fitted to 60 cattle weighed on the same eleven days, where <code>corAR1()</code> indexes observations 1 to 11 and <span class="math inline">\(\rho^{|j-k|}\)</span> means what you expect. This section repeats the exercise on data with no common time points, where that reading of AR(1) is not available.</p>
 <p>The <code>cd4</code> data hold CD4+ counts for 369 men around HIV seroconversion, between 1 and 12 observations each, at 1342 distinct times. Weeks 2 and 3 model <span class="math inline">\(\sqrt{\text{CD4}}\)</span>, which stabilises the variance of a count-like response.</p>
-<ol start="13" type="1">
+<ol type="1">
 <li>Fit a random intercept model for <span class="math inline">\(\sqrt{\text{CD4}}\)</span> on time, then add compound symmetry to it, and compare the two. What has the second model bought?</li>
 </ol>
 <div class="cell" data-exercise="q13" data-setup="true">
@@ -823,7 +822,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>The practical rule: a random intercept and compound symmetry are two names for one structure. Use one or the other, never both.</p>
 </div>
 </details>
-<ol start="14" type="1">
+<ol start="2" type="1">
 <li>Now replace compound symmetry with a correlation that decays with the <em>time gap</em>. Does that buy anything, and why could you not have used <code>corAR1()</code> here?</li>
 </ol>
 <div class="cell" data-exercise="q14" data-setup="true">

@@ -636,7 +636,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <summary class="lsda-explain-head">What this shows</summary>
 <div class="lsda-explain-body">
 <p>A small p-value says the homogeneous Poisson model does not fit.</p>
-<p>It does not say why. The test compares observed and expected counts per cell, so it responds to a varying intensity and to interaction between points in exactly the same way. To distinguish them you need the K-function — and even that needs care, as item 7 shows.</p>
+<p>It does not say why. The test compares observed and expected counts per cell, so it responds to a varying intensity and to interaction between points in exactly the same way. To distinguish them you need the K-function — and even that needs care, as the envelope comparison in Q2 shows.</p>
 <p>Note also the warning about small expected counts: the chi-squared approximation is unreliable when quadrats contain few points, which is a reason to be cautious about the exact p-value rather than just the conclusion.</p>
 </div>
 </details>
@@ -729,7 +729,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 </div>
 <div class="cell" data-exercise="q07" data-hint="true">
 <div class="webr-ojs-exercise exercise-hint d-none" data-exercise="q07">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-35-1"><a href="#interpolate-35-1" aria-hidden="true" tabindex="-1"></a>The same envelope <span class="cf">function</span> you used <span class="cf">in</span> item <span class="dv">5</span> accepts a <span class="sc">*</span>fitted model<span class="sc">*</span> <span class="cf">in</span> place</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="interpolate-35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="interpolate-35-1"><a href="#interpolate-35-1" aria-hidden="true" tabindex="-1"></a>The same envelope <span class="cf">function</span> you used <span class="cf">in</span> Q1 item <span class="dv">5</span> accepts a <span class="sc">*</span>fitted model<span class="sc">*</span> <span class="cf">in</span> place</span>
 <span id="interpolate-35-2"><a href="#interpolate-35-2" aria-hidden="true" tabindex="-1"></a>of the point pattern, <span class="cf">in</span> which case it simulates from that model rather than</span>
 <span id="interpolate-35-3"><a href="#interpolate-35-3" aria-hidden="true" tabindex="-1"></a>from complete spatial randomness. That is the sharper test<span class="sc">:</span> it asks whether</span>
 <span id="interpolate-35-4"><a href="#interpolate-35-4" aria-hidden="true" tabindex="-1"></a>anything is left unexplained once the trend is accounted for.</span>
@@ -751,7 +751,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <h2 class="anchored" data-anchor-id="q2-real-covariates-and-the-envelope-you-should-be-comparing-against">Q2: real covariates, and the envelope you should be comparing against</h2>
 <p>The ants have no measured covariates, so the trend surface above had to be built out of the coordinates themselves. This section uses a pattern that comes with covariates attached, and then makes the comparison that the lectures single out as the most common error in point pattern analysis.</p>
 <p><code>bei</code> records 3604 <em>Beilschmiedia pendula</em> trees in a 1000 by 500 metre plot on Barro Colorado Island, and <code>bei.extra</code> carries elevation (<code>elev</code>) and slope (<code>grad</code>) over the same window.</p>
-<ol start="8" type="1">
+<ol type="1">
 <li>Fit a homogeneous Poisson process and then an inhomogeneous one with elevation and slope, and compare them.</li>
 </ol>
 <div class="cell" data-exercise="q08" data-setup="true">
@@ -784,7 +784,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>Take the size of the slope coefficient seriously. <code>grad</code> is a dimensionless gradient, mostly between 0 and 0.35 here, so moving from flat ground to the steepest parts multiplies the intensity by about <span class="math inline">\(e^{5.85 \times 0.3} \approx 5.8\)</span>. That is a first-order effect: a statement about <em>where</em> trees are, with no claim yet about whether they influence each other.</p>
 </div>
 </details>
-<ol start="9" type="1">
+<ol start="2" type="1">
 <li>Now the comparison that matters. Compute the <span class="math inline">\(K\)</span>-function envelope under CSR, and then the inhomogeneous <span class="math inline">\(K\)</span>-function envelope under the fitted model, and read both at 10, 25 and 50 metres. What does each tell you?</li>
 </ol>
 <div class="cell" data-exercise="q09" data-setup="true">

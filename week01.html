@@ -895,7 +895,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <h2 class="anchored" data-anchor-id="q3-when-there-are-no-common-time-points-at-all">Q3: when there are no common time points at all</h2>
 <p>The cattle were weighed on the same eleven days and the Topeka girls attended at ages that differ between girls. There is a third case, and it is the most common one in practice: every subject is measured at times of its own, so no two subjects share a time point at all.</p>
 <p>The <code>cd4</code> data in the course package hold CD4+ cell counts for men enrolled in a study of HIV seroconversion. <code>time</code> is measured in years, with zero at seroconversion, so it runs negative before and positive after.</p>
-<ol start="14" type="1">
+<ol type="1">
 <li>Establish what kind of design this is. How many subjects are there, how many observations does each contribute, and how many <em>distinct</em> observation times appear in the file?</li>
 </ol>
 <div class="cell" data-exercise="q14" data-setup="true">
@@ -930,7 +930,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoibHNkYS1zZXNzaW9uIiwiZXZhbCI6dHJ1ZSwiZXhl
 <p>That breaks a tool you used in Q1 without thinking about it. “The sample mean at each time point” was a sensible summary for 60 cattle weighed on the same eleven days. Here it would give you over a thousand means, most of them averages of one or two observations. The same applies to the sample covariance matrix across times: there is no matrix to form.</p>
 </div>
 </details>
-<ol start="15" type="1">
+<ol start="2" type="1">
 <li>Draw the individual trajectories, and add a summary of the average pattern that does not depend on subjects sharing time points. What does the average CD4+ trajectory do around seroconversion?</li>
 </ol>
 <div class="cell" data-exercise="q15" data-setup="true">
